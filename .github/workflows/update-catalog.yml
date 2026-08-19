@@ -31,10 +31,23 @@ jobs:
         run: |
           python parser.py
 
+      - name: Upload Store77 debug files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: store77-debug
+          path: |
+            store77_debug.html
+            store77_links.json
+          if-no-files-found: warn
+
       - name: Save updated catalog
         run: |
           git config user.name "D&V STORE Bot"
           git config user.email "actions@github.com"
+
           git add products.json
+
           git diff --cached --quiet || git commit -m "Update Store77 catalog"
+
           git push
