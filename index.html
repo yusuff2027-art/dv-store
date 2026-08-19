@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>D&V STORE — Магазин техники</title>
+<title>D&V STORE</title>
 
 <style>
 * {
@@ -14,295 +14,249 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     background: #f5f5f7;
     color: #111;
 }
 
-/* HEADER */
-
-.header {
+header {
     background: #000;
     color: #fff;
-    padding: 18px 16px 20px;
+    padding: 18px 16px;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10;
 }
 
-.header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header {
+    max-width: 1100px;
+    margin: auto;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 800;
     letter-spacing: -1px;
 }
 
 .logo span {
-    color: #888;
+    color: #777;
 }
-
-.cart {
-    font-size: 24px;
-}
-
-/* SEARCH */
 
 .search {
-    margin-top: 16px;
+    margin-top: 15px;
 }
 
 .search input {
     width: 100%;
-    border: none;
-    outline: none;
-    background: #1c1c1e;
-    color: white;
     padding: 14px 16px;
+    border: 0;
+    outline: none;
     border-radius: 14px;
+    background: #1c1c1e;
+    color: #fff;
     font-size: 16px;
 }
 
 .search input::placeholder {
-    color: #999;
+    color: #aaa;
 }
-
-/* CATEGORIES */
 
 .categories {
+    max-width: 1100px;
+    margin: auto;
+    padding: 15px 16px;
     display: flex;
-    gap: 9px;
+    gap: 8px;
     overflow-x: auto;
-    padding: 16px;
-    scrollbar-width: none;
 }
 
-.categories::-webkit-scrollbar {
-    display: none;
-}
-
-.category {
-    background: white;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
+.categories button {
+    border: 1px solid #ddd;
+    background: #fff;
     padding: 10px 15px;
+    border-radius: 12px;
     white-space: nowrap;
-    font-size: 14px;
     font-weight: 600;
-    cursor: pointer;
 }
 
-.category.active {
+.categories button.active {
     background: #000;
-    color: white;
+    color: #fff;
 }
-
-/* HERO */
 
 .hero {
-    margin: 0 16px 22px;
-    padding: 28px 22px;
+    max-width: 1100px;
+    margin: 5px auto 25px;
+    padding: 35px 22px;
     border-radius: 22px;
-    background: linear-gradient(135deg, #111, #333);
+    background: linear-gradient(135deg,#050505,#333);
     color: white;
-    overflow: hidden;
 }
 
 .hero small {
     color: #aaa;
-    font-size: 13px;
 }
 
 .hero h1 {
-    font-size: 30px;
+    font-size: 34px;
     line-height: 1.05;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .hero p {
     color: #ccc;
-    font-size: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
-.hero-button {
+.hero a {
     display: inline-block;
-    background: white;
-    color: black;
-    padding: 11px 17px;
+    background: #fff;
+    color: #000;
+    padding: 12px 18px;
     border-radius: 12px;
-    font-weight: 700;
     text-decoration: none;
+    font-weight: 700;
 }
-
-/* SECTION */
 
 .section {
+    max-width: 1100px;
+    margin: auto;
     padding: 0 16px;
 }
 
-.section-title {
+.title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
-.section-title h2 {
-    font-size: 22px;
+.title h2 {
+    font-size: 23px;
 }
 
-.section-title span {
-    font-size: 13px;
+.title span {
     color: #777;
+    font-size: 13px;
 }
-
-/* PRODUCTS */
 
 .products {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 12px;
-    padding-bottom: 30px;
 }
 
-.product {
-    background: white;
+.card {
+    background: #fff;
     border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
 
-.product-image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+.image {
+    height: 190px;
     background: #f7f7f7;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
-.product-image img {
+.image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     padding: 10px;
 }
 
-.product-info {
+.info {
     padding: 12px;
 }
 
-.product-name {
-    font-size: 15px;
+.name {
     font-weight: 700;
-    line-height: 1.2;
+    font-size: 15px;
     min-height: 36px;
 }
 
-.product-details {
-    margin-top: 7px;
+.details {
     color: #777;
     font-size: 12px;
-    line-height: 1.4;
-    min-height: 32px;
+    margin-top: 7px;
+    line-height: 1.5;
+    min-height: 30px;
 }
 
-.product-price {
-    margin-top: 10px;
-    font-size: 18px;
+.price {
+    font-size: 19px;
     font-weight: 800;
+    margin-top: 10px;
 }
 
-.available {
-    margin-top: 5px;
+.stock {
     color: #16a34a;
     font-size: 12px;
     font-weight: 600;
+    margin-top: 5px;
 }
 
-.product-button {
+.more {
     display: block;
     text-align: center;
-    margin-top: 10px;
     background: #000;
-    color: white;
+    color: #fff;
     text-decoration: none;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 11px;
+    border-radius: 11px;
+    margin-top: 10px;
     font-size: 13px;
     font-weight: 700;
 }
 
-/* EMPTY */
-
 .empty {
     display: none;
     text-align: center;
-    padding: 40px 10px;
+    padding: 50px 10px;
     color: #777;
 }
 
-/* FOOTER */
+footer {
+    background: #000;
+    color: #fff;
+    margin-top: 35px;
+    padding: 30px 16px;
+}
 
 .footer {
-    background: #000;
-    color: white;
-    padding: 30px 16px;
-    margin-top: 20px;
+    max-width: 1100px;
+    margin: auto;
 }
 
 .footer-logo {
     font-size: 22px;
     font-weight: 800;
-    margin-bottom: 10px;
 }
 
-.footer p {
+footer p {
     color: #aaa;
+    margin-top: 10px;
     font-size: 13px;
-    line-height: 1.5;
 }
 
 .telegram {
     display: inline-block;
     margin-top: 18px;
     background: #229ED9;
-    color: white;
+    color: #fff;
     text-decoration: none;
     padding: 12px 18px;
     border-radius: 12px;
     font-weight: 700;
 }
 
-/* DESKTOP */
-
-@media (min-width: 700px) {
-
-    .header {
-        padding-left: calc((100% - 1100px) / 2);
-        padding-right: calc((100% - 1100px) / 2);
-    }
-
-    .categories,
-    .hero,
-    .section {
-        max-width: 1100px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
+@media (min-width:700px) {
     .products {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .hero {
-        margin-top: 10px;
+        grid-template-columns: repeat(4,1fr);
     }
 }
 </style>
@@ -310,60 +264,35 @@ body {
 
 <body>
 
-<!-- HEADER -->
+<header>
+    <div class="header">
 
-<header class="header">
-
-    <div class="header-top">
         <div class="logo">
             D<span>&</span>V STORE
         </div>
 
-        <div class="cart">
-            🛒
+        <div class="search">
+            <input
+                id="search"
+                type="text"
+                placeholder="🔎 Найти смартфон..."
+            >
         </div>
-    </div>
 
-    <div class="search">
-        <input
-            type="text"
-            id="search"
-            placeholder="🔎 Найти товар..."
-            oninput="searchProducts()"
-        >
     </div>
-
 </header>
-
-
-<!-- CATEGORIES -->
 
 <div class="categories">
 
-    <button class="category active" onclick="filterProducts('all', this)">
-        Все
-    </button>
+    <button class="active" data-brand="Все">Все</button>
 
-    <button class="category" onclick="filterProducts('Apple', this)">
-        🍎 Apple
-    </button>
+    <button data-brand="Apple">🍎 Apple</button>
 
-    <button class="category" onclick="filterProducts('Samsung', this)">
-        Samsung
-    </button>
+    <button data-brand="Samsung">Samsung</button>
 
-    <button class="category" onclick="filterProducts('Xiaomi', this)">
-        Xiaomi
-    </button>
-
-    <button class="category" onclick="filterProducts('Наушники', this)">
-        🎧 Наушники
-    </button>
+    <button data-brand="Xiaomi">Xiaomi</button>
 
 </div>
-
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -375,65 +304,56 @@ body {
     </h1>
 
     <p>
-        Смартфоны, Apple, Samsung,
-        Xiaomi и аксессуары.
+        Смартфоны и техника по выгодным ценам.
     </p>
 
-    <a href="#products" class="hero-button">
-        Смотреть товары
+    <a href="#catalog">
+        Смотреть каталог
     </a>
 
 </section>
 
+<section class="section" id="catalog">
 
-<!-- PRODUCTS -->
-
-<section class="section">
-
-    <div class="section-title">
+    <div class="title">
         <h2>Популярное</h2>
         <span id="count"></span>
     </div>
 
-    <div id="products" class="products"></div>
+    <div class="products" id="products"></div>
 
-    <div id="empty" class="empty">
+    <div class="empty" id="empty">
         😔<br><br>
-        Ничего не нашли
+        Ничего не найдено
     </div>
 
 </section>
 
+<footer>
 
-<!-- FOOTER -->
+    <div class="footer">
 
-<footer class="footer">
+        <div class="footer-logo">
+            D&V STORE
+        </div>
 
-    <div class="footer-logo">
-        D&V STORE
+        <p>
+            Магазин современной техники.
+        </p>
+
+        <a
+            class="telegram"
+            href="https://t.me/"
+            target="_blank"
+        >
+            ✈️ Telegram
+        </a>
+
     </div>
-
-    <p>
-        Магазин современной техники.
-        Выбирай. Сравнивай. Покупай.
-    </p>
-
-    <a
-        class="telegram"
-        href="https://t.me/"
-        target="_blank"
-    >
-        ✈️ Наш Telegram
-    </a>
 
 </footer>
 
-
 <script>
-
-/* =========================
-   ТОВАРЫ
-========================= */
 
 const products = [
 
@@ -443,9 +363,8 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "глубокий синий",
-        available: true,
-        url: "https://store77.net/apple_iphone_17_pro_max_1/",
-        image: "https://store77.net:443/upload/iblock/175/c9pexu0t4qtzopumdsjgc6jvlkryd6sj.jpg"
+        image: "https://store77.net:443/upload/iblock/175/c9pexu0t4qtzopumdsjgc6jvlkryd6sj.jpg",
+        url: "https://store77.net/apple_iphone_17_pro_max_1/"
     },
 
     {
@@ -454,9 +373,8 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "космический оранжевый",
-        available: true,
-        url: "https://store77.net/apple_iphone_17_pro_1/",
-        image: "https://store77.net:443/upload/iblock/85d/pj1n8t86c1zc0zu0ri62j5wzblrqkqhu.jpg"
+        image: "https://store77.net:443/upload/iblock/85d/pj1n8t86c1zc0zu0ri62j5wzblrqkqhu.jpg",
+        url: "https://store77.net/apple_iphone_17_pro_1/"
     },
 
     {
@@ -465,9 +383,8 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "черный",
-        available: true,
-        url: "https://store77.net/apple_iphone_17_/",
-        image: "https://store77.net/upload/iblock/f7f/jsbdg8u104tqv2hx3e67742f110k7ij0.jpg"
+        image: "https://store77.net/upload/iblock/f7f/jsbdg8u104tqv2hx3e67742f110k7ij0.jpg",
+        url: "https://store77.net/apple_iphone_17_/"
     },
 
     {
@@ -476,9 +393,8 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "",
-        available: true,
-        url: "https://store77.net/apple_iphone_17e/",
-        image: "https://store77.net/bitrix/templates/v11/img/og-default.png"
+        image: "https://store77.net/bitrix/templates/v11/img/og-default.png",
+        url: "https://store77.net/apple_iphone_17e/"
     },
 
     {
@@ -487,9 +403,8 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "",
-        available: true,
-        url: "https://store77.net/apple_iphone_air/",
-        image: "https://store77.net/bitrix/templates/v11/img/og-default.png"
+        image: "https://store77.net/bitrix/templates/v11/img/og-default.png",
+        url: "https://store77.net/apple_iphone_air/"
     },
 
     {
@@ -498,9 +413,8 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "",
-        available: true,
-        url: "https://store77.net/apple_iphone_16_pro_max_2/",
-        image: "https://store77.net/bitrix/templates/v11/img/og-default.png"
+        image: "https://store77.net/bitrix/templates/v11/img/og-default.png",
+        url: "https://store77.net/apple_iphone_16_pro_max_2/"
     },
 
     {
@@ -509,85 +423,110 @@ const products = [
         brand: "Apple",
         memory: "256 ГБ",
         color: "",
-        available: true,
-        url: "https://store77.net/apple_iphone_16_pro_2/",
-        image: "https://store77.net/bitrix/templates/v11/img/og-default.png"
+        image: "https://store77.net/bitrix/templates/v11/img/og-default.png",
+        url: "https://store77.net/apple_iphone_16_pro_2/"
     },
 
     {
         name: "Samsung Galaxy S26 Ultra",
-        price: "Уточнить",
+        price: "Цена уточняется",
         brand: "Samsung",
         memory: "",
         color: "",
-        available: true,
-        url: "https://store77.net/samsung_galaxy_s26_ultra_2/",
-        image: "https://store77.net/bitrix/templates/v11/img/og-default.png"
+        image: "https://store77.net/bitrix/templates/v11/img/og-default.png",
+        url: "https://store77.net/samsung_galaxy_s26_ultra_2/"
     },
 
     {
         name: "Xiaomi 17 Ultra",
-        price: "Уточнить",
+        price: "Цена уточняется",
         brand: "Xiaomi",
         memory: "",
         color: "",
-        available: true,
-        url: "https://store77.net/xiaomi_17_ultra/",
-        image: "https://store77.net/bitrix/templates/v11/img/og-default.png"
+        image: "https://store77.net/bitrix/templates/v11/img/og-default.png",
+        url: "https://store77.net/xiaomi_17_ultra/"
     }
 
 ];
 
 
-/* =========================
-   ОТОБРАЖЕНИЕ
-========================= */
+const productsBox = document.getElementById("products");
+const empty = document.getElementById("empty");
+const count = document.getElementById("count");
+const search = document.getElementById("search");
 
-let currentFilter = "all";
+let selectedBrand = "Все";
 
-function renderProducts(list) {
 
-    const container = document.getElementById("products");
-    const empty = document.getElementById("empty");
-    const count = document.getElementById("count");
+function showProducts() {
 
-    container.innerHTML = "";
+    const query = search.value.toLowerCase().trim();
 
-    count.textContent = list.length + " товаров";
+    const filtered = products.filter(product => {
 
-    if (list.length === 0) {
+        const text = (
+            product.name +
+            " " +
+            product.brand +
+            " " +
+            product.memory +
+            " " +
+            product.color
+        ).toLowerCase();
+
+        const searchOK = text.includes(query);
+
+        const brandOK =
+            selectedBrand === "Все" ||
+            product.brand === selectedBrand;
+
+        return searchOK && brandOK;
+
+    });
+
+
+    productsBox.innerHTML = "";
+
+    count.textContent = filtered.length + " товаров";
+
+
+    if (filtered.length === 0) {
+
         empty.style.display = "block";
+
         return;
     }
 
+
     empty.style.display = "none";
 
-    list.forEach(product => {
 
-        const card = document.createElement("article");
+    filtered.forEach(product => {
 
-        card.className = "product";
+        const card = document.createElement("div");
+
+        card.className = "card";
+
 
         card.innerHTML = `
 
-            <div class="product-image">
+            <div class="image">
 
                 <img
                     src="${product.image}"
                     alt="${product.name}"
-                    loading="lazy"
                     onerror="this.src='https://store77.net/bitrix/templates/v11/img/og-default.png'"
                 >
 
             </div>
 
-            <div class="product-info">
+            <div class="info">
 
-                <div class="product-name">
+                <div class="name">
                     ${product.name}
                 </div>
 
-                <div class="product-details">
+                <div class="details">
 
                     ${product.memory
                         ? "Память: " + product.memory
@@ -601,21 +540,16 @@ function renderProducts(list) {
 
                 </div>
 
-                <div class="product-price">
+                <div class="price">
                     ${product.price}
                 </div>
 
-                <div class="available">
-
-                    ● ${product.available
-                        ? "В наличии"
-                        : "Нет в наличии"
-                    }
-
+                <div class="stock">
+                    ● В наличии
                 </div>
 
                 <a
-                    class="product-button"
+                    class="more"
                     href="${product.url}"
                     target="_blank"
                 >
@@ -623,83 +557,39 @@ function renderProducts(list) {
                 </a>
 
             </div>
-
         `;
 
-        container.appendChild(card);
+
+        productsBox.appendChild(card);
 
     });
+
 }
 
 
-/* =========================
-   ФИЛЬТР
-========================= */
+document.querySelectorAll(".categories button").forEach(button => {
 
-function filterProducts(filter, button) {
+    button.addEventListener("click", () => {
 
-    currentFilter = filter;
-
-    document
-        .querySelectorAll(".category")
-        .forEach(btn => btn.classList.remove("active"));
-
-    button.classList.add("active");
-
-    applyFilters();
-}
-
-
-/* =========================
-   ПОИСК
-========================= */
-
-function searchProducts() {
-    applyFilters();
-}
-
-
-function applyFilters() {
-
-    const query =
         document
-            .getElementById("search")
-            .value
-            .toLowerCase()
-            .trim();
+            .querySelectorAll(".categories button")
+            .forEach(btn => btn.classList.remove("active"));
 
-    let result = products.filter(product => {
+        button.classList.add("active");
 
-        const text = (
-            product.name +
-            " " +
-            product.brand +
-            " " +
-            product.memory +
-            " " +
-            product.color
-        ).toLowerCase();
+        selectedBrand = button.dataset.brand;
 
-        const matchesSearch =
-            text.includes(query);
-
-        const matchesCategory =
-            currentFilter === "all" ||
-            product.brand === currentFilter;
-
-        return matchesSearch && matchesCategory;
+        showProducts();
 
     });
 
-    renderProducts(result);
-}
+});
 
 
-/* =========================
-   START
-========================= */
+search.addEventListener("input", showProducts);
 
-renderProducts(products);
+
+showProducts();
 
 </script>
 
