@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>D&V STORE — техника и электроника</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>D&V STORE — техника</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,31 +21,42 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     background: #f5f5f7;
     color: #111;
 }
 
 header {
-    background: #111;
-    color: #fff;
-    padding: 16px 20px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 3px 15px rgba(0,0,0,.15);
+
+    background: rgba(17,17,17,.96);
+
+    backdrop-filter: blur(15px);
+
+    color: white;
+
+    padding: 16px 20px;
 }
 
 .header-inner {
     max-width: 1250px;
     margin: auto;
+
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 900;
     white-space: nowrap;
 }
@@ -53,107 +71,186 @@ header {
 
 .search input {
     width: 100%;
+
     padding: 14px 20px;
+
     border: none;
-    border-radius: 30px;
-    font-size: 15px;
     outline: none;
+
+    border-radius: 30px;
+
+    font-size: 16px;
 }
 
 .container {
     max-width: 1250px;
+
     margin: auto;
-    padding: 22px 20px;
+
+    padding: 25px 20px;
 }
 
 .hero {
-    background: linear-gradient(135deg, #111, #292929);
-    color: #fff;
-    border-radius: 24px;
-    padding: 40px 28px;
-    margin-bottom: 22px;
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #292929
+        );
+
+    color: white;
+
+    border-radius: 25px;
+
+    padding: 40px 30px;
+
+    margin-bottom: 25px;
 }
 
 .hero h1 {
-    font-size: 40px;
+    font-size: 42px;
+
     margin-bottom: 10px;
 }
 
 .hero p {
-    color: #ccc;
-    font-size: 16px;
+    color: #cfcfcf;
+
+    font-size: 17px;
 }
 
-.catalog-info {
+.stats {
+    margin-top: 20px;
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    gap: 15px;
+    gap: 12px;
+
+    flex-wrap: wrap;
 }
 
-.catalog-count {
-    color: #777;
+.stat {
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 12px;
+
+    padding: 10px 14px;
+
     font-size: 14px;
 }
 
 .categories {
     display: flex;
+
     gap: 10px;
+
     overflow-x: auto;
+
     padding-bottom: 15px;
+
+    scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
 }
 
 .category {
     flex-shrink: 0;
-    background: #fff;
+
     border: 1px solid #ddd;
-    border-radius: 30px;
-    padding: 10px 17px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 11px 18px;
+
     cursor: pointer;
+
     font-size: 14px;
+
     transition: .2s;
 }
 
 .category:hover,
 .category.active {
     background: #111;
-    color: #fff;
+
+    color: white;
+
     border-color: #111;
 }
 
 .products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 18px;
 }
 
 .product {
-    background: #fff;
-    border-radius: 18px;
+    background: white;
+
+    border-radius: 20px;
+
     overflow: hidden;
-    box-shadow: 0 4px 18px rgba(0,0,0,.07);
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.07);
+
     transition: .25s;
 }
 
 .product:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.13);
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.12);
 }
 
 .product-image {
-    height: 240px;
+    height: 245px;
+
     background: #fafafa;
-    padding: 15px;
+
+    padding: 18px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
+    position: relative;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
+
+    transition: .2s;
+}
+
+.product:hover
+.product-image img {
+    transform: scale(1.04);
+}
+
+.no-image {
+    color: #aaa;
+
+    text-align: center;
+
+    font-size: 14px;
 }
 
 .product-info {
@@ -162,41 +259,65 @@ header {
 
 .product-name {
     font-size: 16px;
-    font-weight: 800;
+
+    font-weight: 750;
+
     line-height: 1.3;
+
     min-height: 42px;
 }
 
 .product-meta {
     color: #777;
+
     font-size: 13px;
+
     margin-top: 8px;
+
     min-height: 18px;
 }
 
 .price {
-    font-size: 21px;
+    font-size: 22px;
+
     font-weight: 900;
-    margin-top: 12px;
+
+    margin-top: 13px;
 }
 
 .stock {
-    color: #159447;
-    font-size: 13px;
     margin-top: 6px;
+
+    font-size: 13px;
+
+    color: #159447;
+}
+
+.out {
+    color: #d33;
 }
 
 .details {
     width: 100%;
+
     border: none;
+
     background: #111;
-    color: #fff;
+
+    color: white;
+
     padding: 13px;
-    border-radius: 10px;
+
+    border-radius: 11px;
+
     margin-top: 14px;
+
     cursor: pointer;
+
     font-weight: 700;
+
     font-size: 14px;
+
     transition: .2s;
 }
 
@@ -206,121 +327,200 @@ header {
 
 .empty {
     grid-column: 1 / -1;
+
     text-align: center;
+
     padding: 70px 20px;
+
     color: #777;
 }
 
 .loader {
     grid-column: 1 / -1;
+
     text-align: center;
-    padding: 70px 20px;
+
+    padding: 70px;
+
     color: #777;
 }
 
 .modal {
     display: none;
+
     position: fixed;
+
     inset: 0;
-    background: rgba(0,0,0,.72);
+
     z-index: 1000;
+
+    background:
+        rgba(0,0,0,.75);
+
     padding: 20px;
+
     overflow-y: auto;
 }
 
 .modal.active {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
 .modal-box {
     width: 100%;
+
     max-width: 900px;
-    background: #fff;
+
+    background: white;
+
     border-radius: 25px;
+
     padding: 25px;
+
     position: relative;
+
+    max-height: 95vh;
+
+    overflow-y: auto;
 }
 
 .close {
     position: absolute;
+
     right: 20px;
-    top: 13px;
-    font-size: 32px;
+    top: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #eee;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
     cursor: pointer;
+
     z-index: 5;
 }
 
 .modal-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 30px;
 }
 
 .modal-image {
-    height: 430px;
+    height: 450px;
+
     background: #f7f7f7;
+
     border-radius: 20px;
-    padding: 20px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
+    padding: 25px;
 }
 
 .modal-image img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
 }
 
 .modal-title {
-    font-size: 29px;
+    font-size: 30px;
+
     font-weight: 900;
-    padding-right: 30px;
-    margin-bottom: 15px;
+
+    line-height: 1.15;
+
+    padding-right: 40px;
 }
 
 .modal-price {
-    font-size: 30px;
+    font-size: 31px;
+
     font-weight: 900;
+
     margin: 20px 0;
 }
 
 .modal-row {
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid #eee;
 }
 
 .modal-label {
-    color: #777;
+    color: #888;
+
     font-size: 13px;
-    margin-bottom: 4px;
+
+    margin-bottom: 3px;
 }
 
 .modal-value {
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.source-note {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background: #f5f5f7;
+
+    border-radius: 10px;
+
+    color: #777;
+
+    font-size: 12px;
 }
 
 footer {
-    margin-top: 50px;
+    margin-top: 60px;
+
     background: #111;
-    color: #aaa;
-    padding: 30px 20px;
+
+    color: #999;
+
     text-align: center;
+
+    padding: 30px 20px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
+
     .products {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+            repeat(3, 1fr);
     }
+
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
 
     .header-inner {
         flex-direction: column;
-        align-items: stretch;
+
         gap: 12px;
     }
 
@@ -329,12 +529,14 @@ footer {
     }
 
     .products {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
+
         gap: 12px;
     }
 
     .product-image {
-        height: 180px;
+        height: 190px;
     }
 
     .product-info {
@@ -354,7 +556,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 29px;
+        font-size: 30px;
     }
 
     .modal-content {
@@ -366,26 +568,40 @@ footer {
     }
 
     .modal-title {
-        font-size: 24px;
+        font-size: 25px;
     }
+
 }
 
 @media (max-width: 430px) {
 
+    .container {
+        padding:
+            15px 10px;
+    }
+
     .products {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
     }
 
     .product-image {
-        height: 145px;
+        height: 155px;
+
+        padding: 10px;
+    }
+
+    .product-info {
+        padding: 10px;
     }
 
     .details {
         padding: 11px 5px;
-        font-size: 12px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -399,17 +615,19 @@ footer {
         </div>
 
         <div class="search">
+
             <input
                 id="search"
-                type="search"
-                placeholder="🔎 Найти товар..."
-                autocomplete="off"
+                type="text"
+                placeholder="🔎 Найти iPhone, Samsung, Xiaomi..."
             >
+
         </div>
 
     </div>
 
 </header>
+
 
 <main class="container">
 
@@ -418,64 +636,99 @@ footer {
         <h1>D&V STORE</h1>
 
         <p>
-            Техника и электроника по актуальным ценам
+            Техника и электроника
         </p>
+
+        <div class="stats">
+
+            <div class="stat">
+                📦 <span id="productCount">0</span> товаров
+            </div>
+
+            <div class="stat">
+                🔄 Каталог обновляется
+            </div>
+
+        </div>
 
     </section>
 
-    <div class="categories">
 
-        <button class="category active" data-category="all">
-            Все товары
+    <div
+        class="categories"
+        id="categories"
+    >
+
+        <button
+            class="category active"
+            data-category="all"
+        >
+            Все
         </button>
 
-        <button class="category" data-category="Apple">
+        <button
+            class="category"
+            data-category="Apple"
+        >
             🍎 Apple
         </button>
 
-        <button class="category" data-category="Samsung">
+        <button
+            class="category"
+            data-category="Samsung"
+        >
             Samsung
         </button>
 
-        <button class="category" data-category="Xiaomi">
+        <button
+            class="category"
+            data-category="Xiaomi"
+        >
             Xiaomi
         </button>
 
-        <button class="category" data-category="Huawei">
-            Huawei
-        </button>
-
-        <button class="category" data-category="Google">
-            Google
-        </button>
-
-        <button class="category" data-category="OnePlus">
-            OnePlus
-        </button>
-
-        <button class="category" data-category="Poco">
-            Poco
-        </button>
-
-        <button class="category" data-category="Honor">
+        <button
+            class="category"
+            data-category="Honor"
+        >
             Honor
         </button>
 
-        <button class="category" data-category="Nothing">
+        <button
+            class="category"
+            data-category="Google"
+        >
+            Google
+        </button>
+
+        <button
+            class="category"
+            data-category="OnePlus"
+        >
+            OnePlus
+        </button>
+
+        <button
+            class="category"
+            data-category="Huawei"
+        >
+            Huawei
+        </button>
+
+        <button
+            class="category"
+            data-category="Nothing"
+        >
             Nothing
         </button>
 
     </div>
 
-    <div class="catalog-info">
 
-        <div class="catalog-count" id="catalogCount">
-            Загрузка каталога...
-        </div>
-
-    </div>
-
-    <section class="products" id="products">
+    <section
+        class="products"
+        id="products"
+    >
 
         <div class="loader">
             Загружаем каталог...
@@ -484,6 +737,7 @@ footer {
     </section>
 
 </main>
+
 
 <footer>
 
@@ -494,11 +748,19 @@ footer {
 
 <!-- MODAL -->
 
-<div class="modal" id="modal">
+<div
+    class="modal"
+    id="modal"
+>
 
     <div class="modal-box">
 
-        <div class="close" onclick="closeModal()">×</div>
+        <div
+            class="close"
+            id="closeModal"
+        >
+            ×
+        </div>
 
         <div class="modal-content">
 
@@ -512,17 +774,19 @@ footer {
 
             </div>
 
+
             <div>
 
                 <div
                     class="modal-title"
-                    id="modalName">
-                </div>
+                    id="modalName"
+                ></div>
 
                 <div
                     class="modal-price"
-                    id="modalPrice">
-                </div>
+                    id="modalPrice"
+                ></div>
+
 
                 <div class="modal-row">
 
@@ -532,10 +796,11 @@ footer {
 
                     <div
                         class="modal-value"
-                        id="modalBrand">
-                    </div>
+                        id="modalBrand"
+                    ></div>
 
                 </div>
+
 
                 <div class="modal-row">
 
@@ -545,10 +810,11 @@ footer {
 
                     <div
                         class="modal-value"
-                        id="modalMemory">
-                    </div>
+                        id="modalMemory"
+                    ></div>
 
                 </div>
+
 
                 <div class="modal-row">
 
@@ -558,10 +824,11 @@ footer {
 
                     <div
                         class="modal-value"
-                        id="modalColor">
-                    </div>
+                        id="modalColor"
+                    ></div>
 
                 </div>
+
 
                 <div class="modal-row">
 
@@ -571,8 +838,16 @@ footer {
 
                     <div
                         class="modal-value"
-                        id="modalAvailable">
-                    </div>
+                        id="modalAvailable"
+                    ></div>
+
+                </div>
+
+
+                <div class="source-note">
+
+                    Цена и наличие обновляются
+                    автоматически.
 
                 </div>
 
@@ -591,428 +866,26 @@ let products = [];
 
 let currentCategory = "all";
 
+
 const productsContainer =
-    document.getElementById("products");
+    document.getElementById(
+        "products"
+    );
 
 const searchInput =
-    document.getElementById("search");
-
-const catalogCount =
-    document.getElementById("catalogCount");
-
-const fallbackImage =
-    "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80";
-
-
-/* ============================
-   ЗАГРУЗКА
-============================ */
-
-async function loadProducts() {
-
-    try {
-
-        const response =
-            await fetch(
-                "products.json?t=" +
-                Date.now()
-            );
-
-        if (!response.ok) {
-            throw new Error(
-                "products.json не найден"
-            );
-        }
-
-        const data =
-            await response.json();
-
-        if (!Array.isArray(data)) {
-            throw new Error(
-                "products.json должен содержать массив"
-            );
-        }
-
-        products = data;
-
-        renderProducts();
-
-    } catch (error) {
-
-        console.error(error);
-
-        catalogCount.textContent =
-            "Ошибка загрузки каталога";
-
-        productsContainer.innerHTML = `
-
-            <div class="empty">
-
-                <h2>
-                    Не удалось загрузить каталог
-                </h2>
-
-                <p>
-                    Проверь, что файл
-                    <b>products.json</b>
-                    находится рядом с
-                    <b>index.html</b>.
-                </p>
-
-            </div>
-
-        `;
-    }
-}
-
-
-/* ============================
-   КАРТОЧКИ
-============================ */
-
-function renderProducts() {
-
-    const search =
-        searchInput.value
-        .toLowerCase()
-        .trim();
-
-    const filtered =
-        products.filter(product => {
-
-            const name =
-                String(
-                    product.name || ""
-                ).toLowerCase();
-
-            const brand =
-                String(
-                    product.brand || ""
-                ).toLowerCase();
-
-            const memory =
-                String(
-                    product.memory || ""
-                ).toLowerCase();
-
-            const color =
-                String(
-                    product.color || ""
-                ).toLowerCase();
-
-            const category =
-                String(
-                    product.category ||
-                    product.brand ||
-                    ""
-                ).toLowerCase();
-
-            const matchesSearch =
-                name.includes(search) ||
-                brand.includes(search) ||
-                memory.includes(search) ||
-                color.includes(search);
-
-            const matchesCategory =
-                currentCategory === "all" ||
-                category ===
-                currentCategory.toLowerCase();
-
-            return (
-                matchesSearch &&
-                matchesCategory
-            );
-
-        });
-
-
-    catalogCount.textContent =
-        "Товаров: " + filtered.length;
-
-
-    if (!filtered.length) {
-
-        productsContainer.innerHTML = `
-
-            <div class="empty">
-
-                <h2>
-                    Ничего не найдено
-                </h2>
-
-                <p>
-                    Попробуй изменить запрос
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    productsContainer.innerHTML =
-        filtered.map(product => {
-
-            const index =
-                products.indexOf(product);
-
-            const image =
-                product.image ||
-                fallbackImage;
-
-            const meta = [
-                product.memory,
-                product.color
-            ]
-            .filter(Boolean)
-            .join(" · ");
-
-
-            return `
-
-                <article class="product">
-
-                    <div class="product-image">
-
-                        <img
-                            src="${escapeAttr(image)}"
-                            alt="${escapeAttr(product.name || "Товар")}"
-                            loading="lazy"
-                            onerror="this.onerror=null;this.src='${fallbackImage}'"
-                        >
-
-                    </div>
-
-                    <div class="product-info">
-
-                        <div class="product-name">
-
-                            ${escapeHtml(
-                                product.name ||
-                                "Товар"
-                            )}
-
-                        </div>
-
-                        <div class="product-meta">
-
-                            ${escapeHtml(meta)}
-
-                        </div>
-
-                        <div class="price">
-
-                            ${escapeHtml(
-                                product.price ||
-                                "Цена уточняется"
-                            )}
-
-                        </div>
-
-                        <div class="stock">
-
-                            ${
-                                product.available
-                                ? "● В наличии"
-                                : "● Нет в наличии"
-                            }
-
-                        </div>
-
-                        <button
-                            class="details"
-                            onclick="openProduct(${index})"
-                        >
-                            Подробнее
-                        </button>
-
-                    </div>
-
-                </article>
-
-            `;
-
-        }).join("");
-}
-
-
-/* ============================
-   ТОВАР
-============================ */
-
-function openProduct(index) {
-
-    const product =
-        products[index];
-
-    if (!product) return;
-
-
-    const modalImage =
-        document.getElementById(
-            "modalImage"
-        );
-
-
-    modalImage.src =
-        product.image ||
-        fallbackImage;
-
-    modalImage.onerror =
-        function() {
-
-            this.onerror = null;
-
-            this.src =
-                fallbackImage;
-
-        };
-
-
     document.getElementById(
-        "modalName"
-    ).textContent =
-        product.name || "Товар";
+        "search"
+    );
 
-
+const modal =
     document.getElementById(
-        "modalPrice"
-    ).textContent =
-        product.price ||
-        "Цена уточняется";
-
-
-    document.getElementById(
-        "modalBrand"
-    ).textContent =
-        product.brand || "—";
-
-
-    document.getElementById(
-        "modalMemory"
-    ).textContent =
-        product.memory || "—";
-
-
-    document.getElementById(
-        "modalColor"
-    ).textContent =
-        product.color || "—";
-
-
-    document.getElementById(
-        "modalAvailable"
-    ).textContent =
-        product.available
-        ? "В наличии"
-        : "Нет в наличии";
-
-
-    document
-        .getElementById("modal")
-        .classList.add("active");
-}
-
-
-function closeModal() {
-
-    document
-        .getElementById("modal")
-        .classList.remove("active");
-
-}
-
-
-/* Закрытие по фону */
-
-document
-    .getElementById("modal")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-                closeModal();
-            }
-
-        }
+        "modal"
     );
 
 
-/* ESC */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Escape"
-        ) {
-            closeModal();
-        }
-
-    }
-);
-
-
-/* ============================
-   ПОИСК
-============================ */
-
-searchInput.addEventListener(
-    "input",
-    renderProducts
-);
-
-
-/* ============================
-   КАТЕГОРИИ
-============================ */
-
-document
-    .querySelectorAll(".category")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                document
-                    .querySelectorAll(
-                        ".category"
-                    )
-                    .forEach(btn =>
-                        btn.classList.remove(
-                            "active"
-                        )
-                    );
-
-                this.classList.add(
-                    "active"
-                );
-
-                currentCategory =
-                    this.dataset.category;
-
-                renderProducts();
-
-            }
-        );
-
-    });
-
-
-/* ============================
-   БЕЗОПАСНЫЙ HTML
-============================ */
-
 function escapeHtml(value) {
 
-    return String(value)
+    return String(value ?? "")
         .replace(
             /&/g,
             "&amp;"
@@ -1037,20 +910,439 @@ function escapeHtml(value) {
 }
 
 
-function escapeAttr(value) {
+async function loadProducts() {
 
-    return escapeHtml(value);
+    try {
+
+        const response =
+            await fetch(
+                "products.json?t="
+                + Date.now()
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "products.json не найден"
+            );
+        }
+
+        products =
+            await response.json();
+
+        document.getElementById(
+            "productCount"
+        ).textContent =
+            products.length;
+
+        renderProducts();
+
+    } catch (error) {
+
+        console.error(error);
+
+        productsContainer.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Не удалось загрузить каталог
+                </h2>
+
+                <p>
+                    Проверь файл products.json
+                </p>
+
+            </div>
+
+        `;
+
+    }
 
 }
 
 
-/* ============================
-   START
-============================ */
+function renderProducts() {
+
+    const search =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+    const filtered =
+        products.filter(product => {
+
+            const name =
+                String(
+                    product.name || ""
+                ).toLowerCase();
+
+            const brand =
+                String(
+                    product.brand || ""
+                ).toLowerCase();
+
+            const category =
+                String(
+                    product.category || ""
+                ).toLowerCase();
+
+
+            const matchesSearch =
+                !search
+                ||
+                name.includes(search)
+                ||
+                brand.includes(search)
+                ||
+                category.includes(search);
+
+
+            const matchesCategory =
+                currentCategory === "all"
+                ||
+                category ===
+                currentCategory.toLowerCase();
+
+
+            return (
+                matchesSearch
+                &&
+                matchesCategory
+            );
+
+        });
+
+
+    if (!filtered.length) {
+
+        productsContainer.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Ничего не найдено
+                </h2>
+
+                <p>
+                    Попробуй изменить запрос
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    productsContainer.innerHTML =
+        filtered.map(
+            product => {
+
+                const image =
+                    product.image || "";
+
+
+                const imageHTML =
+                    image
+
+                    ?
+
+                    `
+                    <img
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(product.name)}"
+                        loading="lazy"
+                        onerror="
+                            this.style.display='none';
+                            this.parentElement.innerHTML='<div class=&quot;no-image&quot;>Фото пока нет</div>';
+                        "
+                    >
+                    `
+
+                    :
+
+                    `
+                    <div class="no-image">
+                        Фото пока нет
+                    </div>
+                    `;
+
+
+                const meta =
+                    [
+                        product.memory,
+                        product.color
+                    ]
+                    .filter(Boolean)
+                    .map(escapeHtml)
+                    .join(" · ");
+
+
+                const stock =
+                    product.available
+
+                    ?
+
+                    `
+                    <div class="stock">
+                        ● В наличии
+                    </div>
+                    `
+
+                    :
+
+                    `
+                    <div class="stock out">
+                        ● Нет в наличии
+                    </div>
+                    `;
+
+
+                return `
+
+                    <article class="product">
+
+                        <div class="product-image">
+
+                            ${imageHTML}
+
+                        </div>
+
+
+                        <div class="product-info">
+
+                            <div class="product-name">
+
+                                ${escapeHtml(
+                                    product.name
+                                    ||
+                                    "Товар"
+                                )}
+
+                            </div>
+
+
+                            <div class="product-meta">
+
+                                ${meta}
+
+                            </div>
+
+
+                            <div class="price">
+
+                                ${escapeHtml(
+                                    product.price
+                                    ||
+                                    "Цена уточняется"
+                                )}
+
+                            </div>
+
+
+                            ${stock}
+
+
+                            <button
+                                class="details"
+                                onclick="openProduct('${escapeHtml(product.id)}')"
+                            >
+                                Подробнее
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+function openProduct(id) {
+
+    const product =
+        products.find(
+            item =>
+                String(item.id)
+                === String(id)
+        );
+
+
+    if (!product) {
+        return;
+    }
+
+
+    document.getElementById(
+        "modalImage"
+    ).src =
+        product.image || "";
+
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
+        product.name
+        ||
+        "Товар";
+
+
+    document.getElementById(
+        "modalPrice"
+    ).textContent =
+        product.price
+        ||
+        "Цена уточняется";
+
+
+    document.getElementById(
+        "modalBrand"
+    ).textContent =
+        product.brand
+        ||
+        "—";
+
+
+    document.getElementById(
+        "modalMemory"
+    ).textContent =
+        product.memory
+        ||
+        "—";
+
+
+    document.getElementById(
+        "modalColor"
+    ).textContent =
+        product.color
+        ||
+        "—";
+
+
+    document.getElementById(
+        "modalAvailable"
+    ).textContent =
+        product.available
+        ?
+        "В наличии"
+        :
+        "Нет в наличии";
+
+
+    modal.classList.add(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeModal() {
+
+    modal.classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+document.getElementById(
+    "closeModal"
+).addEventListener(
+    "click",
+    closeModal
+);
+
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target === modal
+        ) {
+            closeModal();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+            closeModal();
+        }
+
+    }
+);
+
+
+searchInput.addEventListener(
+    "input",
+    renderProducts
+);
+
+
+document
+    .querySelectorAll(
+        ".category"
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(
+                        ".category"
+                    )
+                    .forEach(
+                        btn =>
+                            btn.classList.remove(
+                                "active"
+                            )
+                    );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentCategory =
+                    button.dataset.category;
+
+
+                renderProducts();
+
+            }
+        );
+
+    });
+
 
 loadProducts();
 
 </script>
 
 </body>
+
 </html>
