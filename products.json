@@ -1,1 +1,302 @@
-[]
+[
+  {
+    "name": "Продукция Apple",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "12 ГБ",
+    "color": "",
+    "available": true,
+    "url": "https://store77.net/apple_brand_zone/",
+    "image": "https://store77.net/bitrix/templates/v11/img/og-default.png"
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "глубокий синий",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_17_pro_max_1/",
+    "image": "https://store77.net:443/upload/iblock/175/c9pexu0t4qtzopumdsjgc6jvlkryd6sj.jpg"
+  },
+  {
+    "name": "Apple iPhone 17 Pro",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "космический оранжевый",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_17_pro_1/",
+    "image": "https://store77.net:443/upload/iblock/85d/pj1n8t86c1zc0zu0ri62j5wzblrqkqhu.jpg"
+  },
+  {
+    "name": "Apple iPhone 17",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "черный",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_17_/",
+    "image": "https://store77.net/upload/iblock/f7f/jsbdg8u104tqv2hx3e67742f110k7ij0.jpg"
+  },
+  {
+    "name": "Apple iPhone 17e",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "белый",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_17e/",
+    "image": "https://store77.net/upload/iblock/d3f/7xo0edl9pdoswpshgyaevjv2opk1lzjv.jpg"
+  },
+  {
+    "name": "Apple iPhone Air",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "небесно-голубой",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_air/",
+    "image": "https://store77.net/upload/iblock/e1e/kdmqg3qyjdlveq2pzboorog5g95e4y30.jpg"
+  },
+  {
+    "name": "Apple iPhone 16 Pro Max",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "пустынный титан",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_16_pro_max_2/",
+    "image": "https://store77.net/upload/iblock/f96/f96ea23039ddcae0c274db3a8697b55d.jpeg"
+  },
+  {
+    "name": "Apple iPhone 16 Pro",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "белый титан",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_16_pro_2/",
+    "image": "https://store77.net/upload/iblock/fd1/fd1a46da5a75b7997483594c8c6dc249.jpeg"
+  },
+  {
+    "name": "Apple iPhone 16 Plus",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "белый",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_16_plus_2/",
+    "image": "https://store77.net/upload/iblock/abb/abb5e94eb1edf096699880b324162011.jpg"
+  },
+  {
+    "name": "Apple iPhone 16",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "черный",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_16_2/",
+    "image": "https://store77.net/upload/iblock/302/3028dd9faeee9ebe293e78aca06ac845.jpg"
+  },
+  {
+    "name": "Apple iPhone 16e",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "черный",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_16e/",
+    "image": "https://store77.net/upload/iblock/95f/clh2zzpw71ytrkvami27iixc39qrwo9j.jpg"
+  },
+  {
+    "name": "Apple iPhone 15 Pro Max",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "синий титан",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_15_pro_max_2/",
+    "image": "https://store77.net/upload/iblock/9e7/skr0d33iaqktqmo0ha9f17u1y2fert4v.jpg"
+  },
+  {
+    "name": "Apple iPhone 15 Pro",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "натуральный титан",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_15_pro_2/",
+    "image": "https://store77.net/upload/iblock/a25/so5euk3e9sn3tstg8wcr63c95kbhrt5p.jpg"
+  },
+  {
+    "name": "Apple iPhone 13",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "черный",
+    "available": true,
+    "url": "https://store77.net/apple_iphone_13/",
+    "image": "https://store77.net/upload/iblock/72c/72cc9e93cc15bb0db3183815102315ae.png"
+  },
+  {
+    "name": "Apple iPad Pro 11\" M5 (2025)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "Теги без RuStore 22 Новинка 22",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_pro_11_m5_2025/",
+    "image": "https://store77.net/upload/iblock/ca3/upx6ar20pngz6dc1mm9yasgl50v2zd30.jpeg"
+  },
+  {
+    "name": "Apple iPad Pro 13\" M5 (2025)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "Теги без RuStore 22 Новинка 22",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_pro_13_m5_2025/",
+    "image": "https://store77.net/upload/iblock/b3d/lkvjrslprh1624zc4l0dwpfm5anepp6b.jpeg"
+  },
+  {
+    "name": "Apple iPad Air 11\" (2026)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 32 Новинка 32",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_air_11_2026/",
+    "image": "https://store77.net/upload/iblock/1c1/orh00335g1gvdgfrtbq0eyvnlqkipqs8.jpg"
+  },
+  {
+    "name": "Apple iPad Air 13\" (2026)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 32 Новинка 32",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_air_13_2026/",
+    "image": "https://store77.net/upload/iblock/abc/cidvlbgglw29meg3iq6rlo7utoicje5k.jpg"
+  },
+  {
+    "name": "Apple iPad Air 11\" (2025)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 25 Найдено то",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_air_11_2025/",
+    "image": "https://store77.net/upload/iblock/e80/h502762ocxxys50vsnif9qirawxjp0gy.jpg"
+  },
+  {
+    "name": "Apple iPad Air 13\" (2025)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 24 Найдено то",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_air_13_2025/",
+    "image": "https://store77.net/upload/iblock/da0/1491bbs0bh2wbnjwetyr6xlq2ng7yyek.jpg"
+  },
+  {
+    "name": "Apple iPad Air 11\" (2024)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 19 Найдено то",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_air_11_2024/",
+    "image": "https://store77.net/upload/iblock/cc0/0hm3nqsjow1g3w5cgvl2h3o0kjwb21x5.png"
+  },
+  {
+    "name": "Apple iPad Air 13\" (2024)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "256 ГБ",
+    "color": "Теги без RuStore 13 Найдено то",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_air_13_2024/",
+    "image": "https://store77.net/upload/iblock/05c/p4bssf3mc1027xw2insj02tr8suxzod5.png"
+  },
+  {
+    "name": "Apple iPad 11\" (2025)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 17 Новинка 17",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_11_2025/",
+    "image": "https://store77.net/upload/iblock/94f/knsbsiug35r7y5i5uxmcx2ukqpqzrbga.jpg"
+  },
+  {
+    "name": "Apple iPad mini (2024)",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Теги без RuStore 20 Найдено то",
+    "available": true,
+    "url": "https://store77.net/apple_ipad_mini_2024/",
+    "image": "https://store77.net/upload/iblock/0af/bjhd456zib330gcb72xv7k7l8i8w698u.jpeg"
+  },
+  {
+    "name": "Клавиатуры для планшетов",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "карамель",
+    "available": true,
+    "url": "https://store77.net/klaviatury_dlya_planshetov/",
+    "image": "https://store77.net/upload/iblock/ee8/1dsgv0zxuycug2f9337l1vtp9b3rf1fy.jpeg"
+  },
+  {
+    "name": "Стилусы для планшетов",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "128 ГБ",
+    "color": "Найдено товаров",
+    "available": true,
+    "url": "https://store77.net/stilusy_dlya_planshetov/",
+    "image": "https://store77.net/upload/iblock/0b3/v09v52c6pid3wv86it1kcyxxig1qjle6.jpg"
+  },
+  {
+    "name": "Apple MacBook",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "8 ГБ",
+    "color": "Показать еще",
+    "available": true,
+    "url": "https://store77.net/apple_macbook/",
+    "image": "https://store77.net/upload/iblock/ddb/ddbf38d67dd56b1b428af2c13af92659.jpg"
+  },
+  {
+    "name": "Apple MacBook Neo",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "8 ГБ",
+    "color": "Теги Гарантия 2 года 8 Новинка",
+    "available": true,
+    "url": "https://store77.net/apple_macbook_neo/",
+    "image": "https://store77.net/upload/iblock/200/o5p1vb02pgxtqhqu0lynqaiz6swz39fd.jpg"
+  },
+  {
+    "name": "MacBook Air M5 13.6”",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "16 ГБ",
+    "color": "Теги Гарантия 2 года 12 Новинк",
+    "available": true,
+    "url": "https://store77.net/macbook_air_m5_13_6/",
+    "image": "https://store77.net/upload/iblock/6f2/b83tj5r8se40vj3fw772ka3ncicc6gry.jpg"
+  },
+  {
+    "name": "MacBook Air M5 15”",
+    "price": "77 Р",
+    "brand": "",
+    "memory": "16 ГБ",
+    "color": "Теги Гарантия 2 года 12 Новинк",
+    "available": true,
+    "url": "https://store77.net/macbook_air_m5_15/",
+    "image": "https://store77.net/upload/iblock/985/usmm4f1cgh306rd51vwes9kxecwwpvdm.jpg"
+  }
+]
