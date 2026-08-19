@@ -34,11 +34,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 20px;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 900;
     letter-spacing: 1px;
     white-space: nowrap;
@@ -72,12 +72,12 @@ header {
     background: linear-gradient(135deg, #111, #292929);
     color: white;
     border-radius: 22px;
-    padding: 35px 25px;
+    padding: 38px 25px;
     margin-bottom: 22px;
 }
 
 .hero h1 {
-    font-size: 38px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 
@@ -91,7 +91,6 @@ header {
     gap: 10px;
     overflow-x: auto;
     padding-bottom: 15px;
-    margin-bottom: 10px;
 }
 
 .category {
@@ -137,17 +136,12 @@ header {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    position: relative;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
-
-.image-error {
-    font-size: 45px;
 }
 
 .product-info {
@@ -158,6 +152,7 @@ header {
     font-size: 17px;
     font-weight: 700;
     min-height: 44px;
+    line-height: 1.25;
 }
 
 .product-meta {
@@ -179,20 +174,40 @@ header {
     margin-top: 6px;
 }
 
-.details {
-    width: 100%;
-    border: none;
-    background: #111;
-    color: white;
-    padding: 13px;
-    border-radius: 10px;
+.buttons {
+    display: flex;
+    gap: 8px;
     margin-top: 14px;
+}
+
+.details,
+.order {
+    flex: 1;
+    border: none;
+    color: white;
+    padding: 12px 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.details {
+    background: #111;
 }
 
 .details:hover {
-    background: #ff7a00;
+    background: #444;
+}
+
+.order {
+    background: #229ed9;
+}
+
+.order:hover {
+    background: #1685b8;
 }
 
 .empty {
@@ -209,11 +224,61 @@ header {
     grid-column: 1 / -1;
 }
 
+/* CONTACTS */
+
+.contacts {
+    margin-top: 35px;
+    background: #111;
+    color: white;
+    border-radius: 22px;
+    padding: 28px;
+}
+
+.contacts h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.contact-card {
+    background: #222;
+    border-radius: 15px;
+    padding: 18px;
+}
+
+.contact-card .icon {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.contact-card .label {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.contact-card a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.contact-card a:hover {
+    color: #ff7a00;
+}
+
+/* MODAL */
+
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.75);
     z-index: 1000;
     padding: 20px;
     overflow-y: auto;
@@ -237,8 +302,8 @@ header {
 .close {
     position: absolute;
     right: 18px;
-    top: 15px;
-    font-size: 28px;
+    top: 12px;
+    font-size: 32px;
     cursor: pointer;
     z-index: 5;
 }
@@ -269,6 +334,7 @@ header {
     font-size: 30px;
     font-weight: 900;
     margin-bottom: 15px;
+    line-height: 1.15;
 }
 
 .modal-price {
@@ -288,17 +354,55 @@ header {
     margin-bottom: 3px;
 }
 
+.modal-order {
+    display: block;
+    margin-top: 22px;
+    width: 100%;
+    background: #229ed9;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.modal-order:hover {
+    background: #1685b8;
+}
+
+/* FOOTER */
+
 footer {
-    margin-top: 50px;
+    margin-top: 45px;
     background: #111;
     color: #aaa;
     padding: 30px 20px;
     text-align: center;
 }
 
+.footer-logo {
+    color: white;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.footer-logo span {
+    color: #ff7a00;
+}
+
+/* MOBILE */
+
 @media (max-width: 1000px) {
+
     .products {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -335,7 +439,11 @@ footer {
     }
 
     .hero h1 {
-        font-size: 28px;
+        font-size: 29px;
+    }
+
+    .hero {
+        padding: 30px 20px;
     }
 
     .modal-content {
@@ -344,6 +452,10 @@ footer {
 
     .modal-image {
         height: 300px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -364,6 +476,15 @@ footer {
     .price {
         font-size: 17px;
     }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .details,
+    .order {
+        width: 100%;
+    }
 }
 </style>
 </head>
@@ -379,11 +500,13 @@ footer {
         </div>
 
         <div class="search">
+
             <input
                 type="text"
                 id="search"
                 placeholder="🔎 Найти товар..."
             >
+
         </div>
 
     </div>
@@ -406,43 +529,73 @@ footer {
 
     <div class="categories">
 
-        <button class="category active" data-category="all">
+        <button
+            class="category active"
+            data-category="all"
+        >
             Все товары
         </button>
 
-        <button class="category" data-category="Apple">
+        <button
+            class="category"
+            data-category="Apple"
+        >
             🍎 Apple
         </button>
 
-        <button class="category" data-category="Samsung">
+        <button
+            class="category"
+            data-category="Samsung"
+        >
             Samsung
         </button>
 
-        <button class="category" data-category="Xiaomi">
+        <button
+            class="category"
+            data-category="Xiaomi"
+        >
             Xiaomi
         </button>
 
-        <button class="category" data-category="Huawei">
+        <button
+            class="category"
+            data-category="Huawei"
+        >
             Huawei
         </button>
 
-        <button class="category" data-category="Honor">
+        <button
+            class="category"
+            data-category="Honor"
+        >
             Honor
         </button>
 
-        <button class="category" data-category="Google">
+        <button
+            class="category"
+            data-category="Google"
+        >
             Google
         </button>
 
-        <button class="category" data-category="OnePlus">
+        <button
+            class="category"
+            data-category="OnePlus"
+        >
             OnePlus
         </button>
 
-        <button class="category" data-category="Poco">
+        <button
+            class="category"
+            data-category="Poco"
+        >
             Poco
         </button>
 
-        <button class="category" data-category="Nothing">
+        <button
+            class="category"
+            data-category="Nothing"
+        >
             Nothing
         </button>
 
@@ -460,15 +613,103 @@ footer {
 
     </section>
 
+
+    <!-- КОНТАКТЫ -->
+
+    <section class="contacts">
+
+        <h2>
+            📍 D&V STORE
+        </h2>
+
+        <div class="contact-grid">
+
+
+            <div class="contact-card">
+
+                <div class="icon">
+                    📍
+                </div>
+
+                <div class="label">
+                    Адрес магазина
+                </div>
+
+                <a
+                    href="https://yandex.ru/maps/org/dv_store/179122901606?si=mjgm0kypxfxr88nz7yr3d2u12w"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Профсоюзная ул., 109, корп. 2
+                </a>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">
+                    📞
+                </div>
+
+                <div class="label">
+                    Телефон
+                </div>
+
+                <a href="tel:+79933617829">
+                    +7 (993) 361-78-29
+                </a>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">
+                    ✈️
+                </div>
+
+                <div class="label">
+                    Заказ
+                </div>
+
+                <a
+                    href="https://t.me/DV_STORE_ORDER"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Написать в Telegram
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
 </main>
 
 
 <footer>
 
-    © 2026 D&V STORE
+    <div class="footer-logo">
+        D&V <span>STORE</span>
+    </div>
+
+    <div>
+        Техника и электроника
+    </div>
+
+    <div style="margin-top:8px;">
+        © 2026 D&V STORE
+    </div>
 
 </footer>
 
+
+
+<!-- MODAL -->
 
 <div
     class="modal"
@@ -484,7 +725,9 @@ footer {
             ×
         </div>
 
+
         <div class="modal-content">
+
 
             <div class="modal-image">
 
@@ -503,6 +746,7 @@ footer {
                     class="modal-title"
                     id="modalName"
                 ></div>
+
 
                 <div
                     class="modal-price"
@@ -561,6 +805,17 @@ footer {
 
                 </div>
 
+
+                <a
+                    id="modalOrder"
+                    class="modal-order"
+                    href="https://t.me/DV_STORE_ORDER"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    ✈️ Заказать в Telegram
+                </a>
+
             </div>
 
         </div>
@@ -568,6 +823,7 @@ footer {
     </div>
 
 </div>
+
 
 
 <script>
@@ -584,10 +840,9 @@ const searchInput =
     document.getElementById("search");
 
 
-
 /*
 ==================================================
-ПРАВИЛЬНЫЙ ПУТЬ К КАРТИНКЕ НА GITHUB PAGES
+ПУТЬ К ФОТО
 ==================================================
 */
 
@@ -604,10 +859,6 @@ function getImageUrl(image) {
     }
 
 
-    /*
-    Если scraper сохранил полный URL
-    */
-
     if (
         image.startsWith("http://") ||
         image.startsWith("https://") ||
@@ -619,28 +870,19 @@ function getImageUrl(image) {
     }
 
 
-    /*
-    Убираем лишние ./ и /
-    */
-
     image = image
         .replace(/^\.\/+/, "")
         .replace(/^\/+/, "");
 
-
-    /*
-    GitHub Pages нашего сайта
-    */
 
     return "/dv-store/" + image;
 
 }
 
 
-
 /*
 ==================================================
-ЗАЩИТА HTML
+HTML SECURITY
 ==================================================
 */
 
@@ -656,10 +898,9 @@ function escapeHtml(text) {
 }
 
 
-
 /*
 ==================================================
-ЗАГРУЗКА PRODUCTS.JSON
+ЗАГРУЗКА КАТАЛОГА
 ==================================================
 */
 
@@ -667,25 +908,28 @@ async function loadProducts() {
 
     try {
 
-        const response = await fetch(
-            "./products.json?t=" + Date.now()
-        );
+        const response =
+            await fetch(
+                "./products.json?t=" +
+                Date.now()
+            );
 
 
         if (!response.ok) {
 
             throw new Error(
-                "Не удалось загрузить products.json"
+                "products.json не найден"
             );
 
         }
 
 
-        products = await response.json();
+        products =
+            await response.json();
 
 
         console.log(
-            "D&V STORE: товаров:",
+            "D&V STORE товаров:",
             products.length
         );
 
@@ -695,10 +939,7 @@ async function loadProducts() {
 
     } catch (error) {
 
-        console.error(
-            "Ошибка каталога:",
-            error
-        );
+        console.error(error);
 
 
         productsContainer.innerHTML = `
@@ -706,11 +947,11 @@ async function loadProducts() {
             <div class="empty">
 
                 <h2>
-                    Ошибка загрузки каталога
+                    Не удалось загрузить каталог
                 </h2>
 
                 <p>
-                    Проверь файл products.json
+                    Проверь products.json
                 </p>
 
             </div>
@@ -722,10 +963,9 @@ async function loadProducts() {
 }
 
 
-
 /*
 ==================================================
-ОТОБРАЖЕНИЕ ТОВАРОВ
+ТОВАРЫ
 ==================================================
 */
 
@@ -741,13 +981,15 @@ function renderProducts() {
         products.filter(product => {
 
             const name =
-                String(product.name || "")
-                    .toLowerCase();
+                String(
+                    product.name || ""
+                ).toLowerCase();
 
 
             const brand =
-                String(product.brand || "")
-                    .toLowerCase();
+                String(
+                    product.brand || ""
+                ).toLowerCase();
 
 
             const category =
@@ -778,7 +1020,6 @@ function renderProducts() {
         });
 
 
-
     if (!filtered.length) {
 
         productsContainer.innerHTML = `
@@ -802,13 +1043,14 @@ function renderProducts() {
     }
 
 
-
     productsContainer.innerHTML =
 
         filtered.map(product => {
 
             const index =
-                products.indexOf(product);
+                products.indexOf(
+                    product
+                );
 
 
             const image =
@@ -835,10 +1077,9 @@ function renderProducts() {
                                 src="${escapeHtml(image)}"
                                 alt="${escapeHtml(product.name || "Товар")}"
                                 loading="lazy"
-
                                 onerror="
                                     this.style.display='none';
-                                    this.parentElement.classList.add('image-error');
+                                    this.parentElement.innerHTML='<div style=&quot;font-size:50px;color:#aaa;&quot;>📱</div>';
                                 "
                             >
 
@@ -863,7 +1104,6 @@ function renderProducts() {
                     </div>
 
 
-
                     <div class="product-info">
 
 
@@ -877,7 +1117,6 @@ function renderProducts() {
                         </div>
 
 
-
                         <div class="product-meta">
 
                             ${escapeHtml(
@@ -887,21 +1126,16 @@ function renderProducts() {
 
                             ${
                                 product.color
-
                                 ?
-
                                 " · " +
                                 escapeHtml(
                                     product.color
                                 )
-
                                 :
-
                                 ""
                             }
 
                         </div>
-
 
 
                         <div class="price">
@@ -914,31 +1148,39 @@ function renderProducts() {
                         </div>
 
 
-
                         <div class="stock">
 
                             ${
                                 product.available
-
                                 ?
-
                                 "● В наличии"
-
                                 :
-
                                 "● Нет в наличии"
                             }
 
                         </div>
 
 
+                        <div class="buttons">
 
-                        <button
-                            class="details"
-                            onclick="openProduct(${index})"
-                        >
-                            Подробнее
-                        </button>
+                            <button
+                                class="details"
+                                onclick="openProduct(${index})"
+                            >
+                                Подробнее
+                            </button>
+
+
+                            <a
+                                class="order"
+                                href="https://t.me/DV_STORE_ORDER"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Заказать
+                            </a>
+
+                        </div>
 
 
                     </div>
@@ -952,10 +1194,9 @@ function renderProducts() {
 }
 
 
-
 /*
 ==================================================
-ОТКРЫТЬ ТОВАР
+ОТКРЫТИЕ ТОВАРА
 ==================================================
 */
 
@@ -982,13 +1223,18 @@ function openProduct(index) {
         );
 
 
-    modalImage.style.display =
-        image ? "block" : "none";
-
-
     if (image) {
 
-        modalImage.src = image;
+        modalImage.src =
+            image;
+
+        modalImage.style.display =
+            "block";
+
+    } else {
+
+        modalImage.style.display =
+            "none";
 
     }
 
@@ -1033,14 +1279,30 @@ function openProduct(index) {
     ).textContent =
 
         product.available
-
         ?
-
         "В наличии"
-
         :
-
         "Нет в наличии";
+
+
+    /*
+    Ссылка заказа с названием товара
+    */
+
+    const orderText =
+        encodeURIComponent(
+            "Здравствуйте! Хочу заказать: " +
+            (product.name || "товар") +
+            ". Цена: " +
+            (product.price || "уточнить")
+        );
+
+
+    document.getElementById(
+        "modalOrder"
+    ).href =
+        "https://t.me/DV_STORE_ORDER?text=" +
+        orderText;
 
 
     document.getElementById(
@@ -1052,10 +1314,9 @@ function openProduct(index) {
 }
 
 
-
 /*
 ==================================================
-ЗАКРЫТЬ
+ЗАКРЫТИЕ
 ==================================================
 */
 
@@ -1069,13 +1330,6 @@ function closeModal() {
 
 }
 
-
-
-/*
-==================================================
-КЛИК ПО ФОНУ
-==================================================
-*/
 
 document
     .getElementById("modal")
@@ -1095,7 +1349,6 @@ document
     );
 
 
-
 /*
 ==================================================
 ПОИСК
@@ -1106,7 +1359,6 @@ searchInput.addEventListener(
     "input",
     renderProducts
 );
-
 
 
 /*
@@ -1151,7 +1403,6 @@ document
         );
 
     });
-
 
 
 /*
