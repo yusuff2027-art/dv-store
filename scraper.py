@@ -8,11 +8,8 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# ============================================================
-# D&V STORE — AppleAvenue scraper
-# ============================================================
-
 BASE_URL = "https://apple-avenue.ru"
+CATALOG_URL = "https://apple-avenue.ru/catalog/"
 
 OUTPUT_FILE = Path("products.json")
 IMAGES_DIR = Path("images")
@@ -23,391 +20,173 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/139.0.0.0 Safari/537.36"
     ),
-    "Accept": (
-        "text/html,application/xhtml+xml,"
-        "application/xml;q=0.9,image/avif,image/webp,"
-        "image/apng,*/*;q=0.8"
-    ),
-    "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
-    "Connection": "keep-alive",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,"
+              "image/avif,image/webp,image/apng,*/*;q=0.8",
+    "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Referer": BASE_URL + "/",
 }
-
-
-# ============================================================
-# КАТЕГОРИИ
-# ============================================================
-
-CATEGORY_URLS = {
-    "Apple": [
-        "/catalog/iphone/",
-        "/catalog/ipad/",
-        "/catalog/macbook_air_1/",
-        "/catalog/macbook_pro_1/",
-        "/catalog/apple_watch/",
-        "/catalog/airpods/",
-    ],
-
-    "Samsung": [
-        "/catalog/samsung/",
-    ],
-
-    "Xiaomi": [
-        "/catalog/xiaomi/",
-    ],
-
-    "Honor": [
-        "/catalog/honor/",
-    ],
-
-    "Google": [
-        "/catalog/google/",
-    ],
-
-    "OnePlus": [
-        "/catalog/oneplus/",
-    ],
-
-    "Huawei": [
-        "/catalog/huawei/",
-    ],
-
-    "Nothing": [
-        "/catalog/nothing/",
-    ],
-}
-
 
 session = requests.Session()
 session.headers.update(HEADERS)
 
 
-# ============================================================
-# ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-# ============================================================
-
-def clean_text(text):
+def clean(text):
     if not text:
         return ""
-
     return re.sub(r"\s+", " ", text).strip()
-
-
-def normalize_url(url):
-    if not url:
-        return ""
-
-    url = url.split("#")[0]
-
-    return url.rstrip("/")
 
 
 def make_id(name, url):
     value = f"{name}-{url}".lower()
-
-    value = re.sub(
-        r"[^a-zа-я0-9]+",
-        "-",
-        value,
-        flags=re.IGNORECASE,
-    )
-
+    value = re.sub(r"[^a-zа-я0-9]+", "-", value)
     value = re.sub(r"-+", "-", value)
-
     return value.strip("-")[:150]
 
 
 def get_soup(url):
     try:
-        response = session.get(
-            url,
-            timeout=30,
-        )
+        r = session.get(url, timeout=30)
 
-        response.raise_for_status()
+        print(f"[HTTP {r.status_code}] {url}")
 
-        return BeautifulSoup(
-            response.text,
-            "html.parser",
-        )
+        if r.status_code != 200:
+            return None
 
-    except Exception as error:
-        print(f"[ERROR] {url}")
-        print(error)
+        return BeautifulSoup(r.text, "html.parser")
+
+    except Exception as e:
+        print("[REQUEST ERROR]", url, e)
         return None
 
 
-# ============================================================
-# ЦЕНА
-# ============================================================
-
-def extract_price(soup):
-    if soup is None:
-        return ""
-
-    # Сначала ищем JSON-LD
-    for script in soup.find_all(
-        "script",
-        type="application/ld+json",
-    ):
-        try:
-            data = json.loads(
-                script.string or script.get_text()
-            )
-
-            objects = (
-                data
-                if isinstance(data, list)
-                else [data]
-            )
-
-            for obj in objects:
-
-                if not isinstance(obj, dict):
-                    continue
-
-                offers = obj.get("offers")
-
-                if isinstance(offers, dict):
-                    price = offers.get("price")
-
-                    if price:
-                        return format_price(price)
-
-        except Exception:
-            pass
-
-    # Потом ищем классы Bitrix
-    selectors = [
-        ".price",
-        ".product-item-price-current",
-        ".catalog-detail-price",
-        ".price_value",
-        ".product-price",
-        ".detail_price",
-    ]
-
-    for selector in selectors:
-
-        element = soup.select_one(selector)
-
-        if element:
-
-            text = clean_text(
-                element.get_text(" ", strip=True)
-            )
-
-            price = extract_price_from_text(text)
-
-            if price:
-                return price
-
-    # Последний вариант — весь текст
-    text = clean_text(
-        soup.get_text(" ", strip=True)
-    )
-
-    return extract_price_from_text(text)
-
-
-def extract_price_from_text(text):
-
+def extract_price(text):
     if not text:
         return ""
 
     patterns = [
-        r"(\d[\d\s]{2,})\s*(?:₽|руб\.?|рублей)",
-        r"(\d[\d\s]{2,})\s*р\.",
+        r"(\d[\d\s]{2,})\s*руб\.?",
+        r"(\d[\d\s]{2,})\s*₽",
     ]
 
     for pattern in patterns:
+        m = re.search(pattern, text, re.I)
 
-        match = re.search(
-            pattern,
-            text,
-            flags=re.IGNORECASE,
-        )
-
-        if match:
-
-            number = re.sub(
-                r"\D",
-                "",
-                match.group(1),
-            )
+        if m:
+            number = re.sub(r"\D", "", m.group(1))
 
             if number:
-
-                return format_price(
-                    number
-                )
+                return f"{int(number):,}".replace(",", " ") + " ₽"
 
     return ""
 
 
-def format_price(value):
-
-    value = str(value)
-
-    value = re.sub(
-        r"[^\d]",
-        "",
-        value,
-    )
-
-    if not value:
+def extract_memory(text):
+    if not text:
         return ""
 
-    return f"{int(value):,}".replace(
-        ",",
-        " ",
-    ) + " ₽"
+    m = re.search(
+        r"\b(64|128|256|512|1024|2048)\s*(ГБ|GB|ТБ|TB)\b",
+        text,
+        re.I,
+    )
 
-
-# ============================================================
-# НАЗВАНИЕ
-# ============================================================
-
-def extract_name(soup):
-
-    if soup is None:
+    if not m:
         return ""
 
-    h1 = soup.find("h1")
+    value = m.group(1)
+    unit = m.group(2).upper()
 
-    if h1:
+    if unit in ("TB", "ТБ"):
+        unit = "ТБ"
+    else:
+        unit = "ГБ"
 
-        name = clean_text(
-            h1.get_text(
-                " ",
-                strip=True,
-            )
-        )
-
-        if name:
-            return name
-
-    meta = soup.find(
-        "meta",
-        property="og:title",
-    )
-
-    if meta:
-
-        name = clean_text(
-            meta.get("content", "")
-        )
-
-        if name:
-            return name
-
-    title = soup.find("title")
-
-    if title:
-
-        name = clean_text(
-            title.get_text(
-                " ",
-                strip=True,
-            )
-        )
-
-        name = re.sub(
-            r"\s*купить.*$",
-            "",
-            name,
-            flags=re.IGNORECASE,
-        )
-
-        return name.strip()
-
-    return ""
+    return f"{value} {unit}"
 
 
-# ============================================================
-# ФОТО
-# ============================================================
-
-def get_image_url(product_url, soup):
-
-    if soup is None:
-        return ""
-
-    # OG image
-    meta = soup.find(
-        "meta",
-        property="og:image",
-    )
-
-    if meta:
-
-        content = meta.get(
-            "content"
-        )
-
-        if content:
-
-            return urljoin(
-                product_url,
-                content,
-            )
-
-    # Twitter image
-    meta = soup.find(
-        "meta",
-        attrs={
-            "name": "twitter:image"
-        },
-    )
-
-    if meta:
-
-        content = meta.get(
-            "content"
-        )
-
-        if content:
-
-            return urljoin(
-                product_url,
-                content,
-            )
-
-    # Изображения товара
-    selectors = [
-        ".product-detail-image img",
-        ".catalog-detail-image img",
-        ".product-image img",
-        ".detail-picture img",
-        ".product-item-image img",
+def extract_color(text):
+    colors = [
+        "Deep Blue",
+        "Cosmic Orange",
+        "Black Titanium",
+        "White Titanium",
+        "Natural Titanium",
+        "Blue Titanium",
+        "Desert Titanium",
+        "Midnight",
+        "Starlight",
+        "Black",
+        "White",
+        "Blue",
+        "Green",
+        "Pink",
+        "Purple",
+        "Yellow",
+        "Red",
+        "Orange",
+        "Silver",
+        "Grey",
+        "Gray",
+        "Черный",
+        "Чёрный",
+        "Белый",
+        "Синий",
+        "Зеленый",
+        "Зелёный",
+        "Розовый",
+        "Фиолетовый",
+        "Желтый",
+        "Жёлтый",
+        "Красный",
+        "Оранжевый",
+        "Серебристый",
+        "Графитовый",
+        "Титановый",
     ]
 
-    for selector in selectors:
+    lower = text.lower()
 
-        img = soup.select_one(
-            selector
-        )
+    for color in colors:
+        if color.lower() in lower:
+            return color
 
-        if img:
+    return ""
 
-            src = (
-                img.get("data-src")
-                or img.get("data-original")
-                or img.get("src")
+
+def get_image(soup, product_url):
+    if soup is None:
+        return ""
+
+    # 1. OpenGraph
+    for prop in ["og:image", "og:image:url"]:
+
+        meta = soup.find("meta", property=prop)
+
+        if meta and meta.get("content"):
+            return urljoin(
+                product_url,
+                meta["content"],
             )
 
-            if src and not src.startswith("data:"):
+    # 2. Twitter image
+    meta = soup.find(
+        "meta",
+        attrs={"name": "twitter:image"},
+    )
 
-                return urljoin(
-                    product_url,
-                    src,
-                )
+    if meta and meta.get("content"):
+        return urljoin(
+            product_url,
+            meta["content"],
+        )
 
-    # Последний вариант
+    # 3. Картинки товара
     for img in soup.find_all("img"):
 
         src = (
             img.get("data-src")
             or img.get("data-original")
+            or img.get("data-lazy")
             or img.get("src")
         )
 
@@ -417,25 +196,17 @@ def get_image_url(product_url, soup):
         if src.startswith("data:"):
             continue
 
-        full = urljoin(
-            product_url,
-            src,
-        )
+        full = urljoin(product_url, src)
 
-        parsed = urlparse(full)
-
-        if parsed.netloc == urlparse(
-            BASE_URL
-        ).netloc:
-
+        if "apple-avenue.ru" in full:
             return full
 
     return ""
 
 
-def download_image(url, product_id):
+def download_image(image_url, product_id):
 
-    if not url:
+    if not image_url:
         return ""
 
     try:
@@ -445,7 +216,7 @@ def download_image(url, product_id):
             exist_ok=True,
         )
 
-        parsed = urlparse(url)
+        parsed = urlparse(image_url)
 
         extension = Path(
             parsed.path
@@ -459,346 +230,185 @@ def download_image(url, product_id):
         ]:
             extension = ".jpg"
 
-        filename = (
-            product_id
-            + extension
-        )
+        filename = product_id + extension
 
         destination = (
-            IMAGES_DIR
-            / filename
+            IMAGES_DIR / filename
         )
 
-        response = session.get(
-            url,
+        if destination.exists():
+            return f"images/{filename}"
+
+        r = session.get(
+            image_url,
             timeout=30,
+            headers={
+                "Referer": BASE_URL + "/"
+            },
         )
 
-        response.raise_for_status()
+        if r.status_code != 200:
+            return ""
 
-        content_type = (
-            response.headers
-            .get("content-type", "")
-            .lower()
-        )
-
-        if (
-            "image" not in content_type
-            and not url.lower().endswith(
-                (".jpg", ".jpeg", ".png", ".webp")
-            )
-        ):
-            print(
-                "[IMAGE SKIP]",
-                url,
-            )
-
+        if len(r.content) < 1000:
             return ""
 
         destination.write_bytes(
-            response.content
+            r.content
         )
 
         print(
-            "[IMAGE OK]",
+            "[IMAGE]",
             filename,
         )
 
-        return (
-            f"images/{filename}"
-        )
+        return f"images/{filename}"
 
-    except Exception as error:
+    except Exception as e:
 
         print(
             "[IMAGE ERROR]",
-            url,
-            error,
+            image_url,
+            e,
         )
 
         return ""
 
 
-# ============================================================
-# ПАМЯТЬ
-# ============================================================
-
-def detect_memory(text):
-
-    if not text:
-        return ""
-
-    match = re.search(
-        r"\b("
-        r"64|128|256|512|1024|2048"
-        r")\s*"
-        r"(ГБ|GB|TB|ТБ)"
-        r"\b",
-        text,
-        flags=re.IGNORECASE,
-    )
-
-    if not match:
-        return ""
-
-    value = match.group(1)
-    unit = match.group(2).lower()
-
-    if unit in ["tb", "тб"]:
-        return f"{value} ТБ"
-
-    return f"{value} ГБ"
-
-
-# ============================================================
-# ЦВЕТ
-# ============================================================
-
-def detect_color(text):
-
-    if not text:
-        return ""
-
-    colors = [
-        "черный",
-        "чёрный",
-        "black",
-
-        "белый",
-        "white",
-
-        "синий",
-        "blue",
-
-        "голубой",
-
-        "красный",
-        "red",
-
-        "зеленый",
-        "зелёный",
-        "green",
-
-        "оранжевый",
-        "orange",
-
-        "фиолетовый",
-        "purple",
-
-        "розовый",
-        "pink",
-
-        "желтый",
-        "жёлтый",
-        "yellow",
-
-        "золотой",
-        "gold",
-
-        "серебристый",
-        "silver",
-
-        "серый",
-        "gray",
-        "grey",
-
-        "титановый",
-        "titanium",
-
-        "графитовый",
-        "graphite",
-    ]
-
-    lower = text.lower()
-
-    for color in colors:
-
-        if color in lower:
-
-            return color.capitalize()
-
-    return ""
-
-
-# ============================================================
-# ПРОВЕРКА — ЭТО ТОВАР ИЛИ НЕТ
-# ============================================================
-
-def looks_like_product(url, name):
-
-    if not name:
-        return False
+def looks_like_product(url, text):
 
     path = urlparse(url).path.lower()
 
-    bad_parts = [
-        "/catalog/",
-        "/filter/",
+    # Исключаем служебные страницы
+    excluded = [
         "/search/",
         "/compare/",
         "/favorite/",
         "/cart/",
         "/personal/",
-        "/services/",
-        "/news/",
-        "/brands/",
+        "/catalog/compare",
+        "/catalog/favorite",
     ]
 
-    # Если это сама категория
-    if path.endswith("/catalog/"):
+    if any(x in path for x in excluded):
         return False
 
-    # Сама страница категории
-    if path.count("/") <= 3:
+    # Ссылка должна быть внутри catalog
+    if not path.startswith("/catalog/"):
         return False
 
-    # Фильтры не товары
-    if "/filter/" in path:
-        return False
+    # Не сама категория
+    if path.rstrip("/") in [
+        "/catalog",
+        "/catalog/iphone",
+    ]:
+        # iPhone здесь специально не исключаем ниже
+        pass
 
-    # Название должно быть похожим
-    product_words = [
+    text = clean(text).lower()
+
+    keywords = [
         "iphone",
         "ipad",
         "macbook",
         "airpods",
         "apple watch",
-        "samsung",
-        "galaxy",
+        "samsung galaxy",
         "xiaomi",
         "redmi",
         "poco",
-        "honor",
-        "pixel",
-        "oneplus",
         "huawei",
-        "nothing",
+        "honor",
+        "google pixel",
+        "oneplus",
+        "nothing phone",
     ]
 
-    lower_name = name.lower()
-
     return any(
-        word in lower_name
-        for word in product_words
+        keyword in text
+        for keyword in keywords
     )
 
 
-# ============================================================
-# ССЫЛКИ НА ТОВАРЫ
-# ============================================================
+def get_product_links():
 
-def get_product_links(category_url):
-
-    category_full_url = urljoin(
-        BASE_URL,
-        category_url,
-    )
-
-    soup = get_soup(
-        category_full_url
-    )
-
-    if soup is None:
-        return []
+    print()
+    print("=" * 60)
+    print("ИЩЕМ ТОВАРЫ")
+    print("=" * 60)
 
     links = set()
 
-    domain = urlparse(
-        BASE_URL
-    ).netloc
+    # Реальные категории AppleAvenue
+    catalog_pages = [
+        "/catalog/iphone/",
+        "/catalog/apple/",
+        "/catalog/",
+    ]
 
-    for a in soup.find_all("a"):
+    for category in catalog_pages:
 
-        href = a.get("href")
+        url = urljoin(
+            BASE_URL,
+            category,
+        )
 
-        if not href:
+        soup = get_soup(url)
+
+        if not soup:
             continue
 
-        full_url = normalize_url(
-            urljoin(
-                category_full_url,
+        print(
+            f"[CATALOG] {url}"
+        )
+
+        for a in soup.find_all("a"):
+
+            href = a.get("href")
+
+            if not href:
+                continue
+
+            full = urljoin(
+                url,
                 href,
             )
-        )
 
-        parsed = urlparse(
-            full_url
-        )
+            parsed = urlparse(full)
 
-        if parsed.netloc != domain:
-            continue
+            if parsed.netloc != urlparse(
+                BASE_URL
+            ).netloc:
+                continue
 
-        if "/filter/" in parsed.path:
-            continue
-
-        if any(
-            bad in parsed.path.lower()
-            for bad in [
-                "/search/",
-                "/compare/",
-                "/favorite/",
-                "/cart/",
-                "/personal/",
-            ]
-        ):
-            continue
-
-        # Не добавляем саму категорию
-        if normalize_url(
-            full_url
-        ) == normalize_url(
-            category_full_url
-        ):
-            continue
-
-        # Берём только ссылки, где текст похож
-        link_text = clean_text(
-            a.get_text(
-                " ",
-                strip=True,
+            text = clean(
+                a.get_text(
+                    " ",
+                    strip=True,
+                )
             )
-        )
 
-        href_lower = parsed.path.lower()
+            if not text:
+                continue
 
-        product_hint = (
-            any(
-                word in href_lower
-                for word in [
-                    "iphone",
-                    "ipad",
-                    "macbook",
-                    "airpods",
-                    "watch",
-                    "samsung",
-                    "galaxy",
-                    "xiaomi",
-                    "redmi",
-                    "poco",
-                    "honor",
-                    "pixel",
-                    "oneplus",
-                    "huawei",
-                    "nothing",
-                ]
-            )
-            or len(link_text) > 8
-        )
+            if looks_like_product(
+                full,
+                text,
+            ):
 
-        if product_hint:
+                links.add(
+                    full.split("?")[0]
+                )
 
-            links.add(
-                full_url
-            )
+    print()
+    print(
+        f"[FOUND] Найдено ссылок: {len(links)}"
+    )
 
     return sorted(links)
 
 
-# ============================================================
-# ПАРСИНГ ТОВАРА
-# ============================================================
-
-def parse_product(url, category):
+def parse_product(url):
 
     print(
         "[PRODUCT]",
@@ -807,50 +417,74 @@ def parse_product(url, category):
 
     soup = get_soup(url)
 
-    if soup is None:
+    if not soup:
         return None
 
-    name = extract_name(
-        soup
-    )
+    # Название
+    name = ""
 
-    if not looks_like_product(
-        url,
-        name,
-    ):
+    h1 = soup.find("h1")
+
+    if h1:
+        name = clean(
+            h1.get_text(
+                " ",
+                strip=True,
+            )
+        )
+
+    if not name:
+
+        meta = soup.find(
+            "meta",
+            property="og:title",
+        )
+
+        if meta:
+            name = clean(
+                meta.get(
+                    "content",
+                    "",
+                )
+            )
+
+    if not name:
         return None
 
-    text = clean_text(
+    # Весь текст
+    text = clean(
         soup.get_text(
             " ",
             strip=True,
         )
     )
 
+    # Цена
     price = extract_price(
-        soup
+        text
     )
 
     if not price:
-        price = "Цена уточняется"
+        return None
 
-    memory = detect_memory(
+    # Характеристики
+    memory = extract_memory(
         name + " " + text
     )
 
-    color = detect_color(
+    color = extract_color(
         name
     )
 
     if not color:
-
-        color = detect_color(
+        color = extract_color(
             text
         )
 
-    image_url = get_image_url(
-        url,
+    # Фото
+    image_url = get_image(
         soup,
+        url,
     )
 
     product_id = make_id(
@@ -863,100 +497,155 @@ def parse_product(url, category):
         product_id,
     )
 
-    available = (
-        "в наличии" in text.lower()
-        or "есть в наличии" in text.lower()
-    )
+    # Бренд
+    lower = name.lower()
 
-    return {
+    if "iphone" in lower or "ipad" in lower:
+        brand = "Apple"
+
+    elif "samsung" in lower:
+        brand = "Samsung"
+
+    elif (
+        "xiaomi" in lower
+        or "redmi" in lower
+        or "poco" in lower
+    ):
+        brand = "Xiaomi"
+
+    elif "huawei" in lower:
+        brand = "Huawei"
+
+    elif "honor" in lower:
+        brand = "Honor"
+
+    elif "pixel" in lower:
+        brand = "Google"
+
+    elif "oneplus" in lower:
+        brand = "OnePlus"
+
+    elif "nothing" in lower:
+        brand = "Nothing"
+
+    else:
+        brand = "Другие"
+
+    product = {
         "id": product_id,
         "name": name,
         "price": price,
-        "brand": category,
-        "category": category,
+        "brand": brand,
+        "category": brand,
         "memory": memory,
         "color": color,
-        "available": available,
+        "available": True,
         "image": local_image,
         "source": "AppleAvenue",
         "source_url": url,
         "updated": time.strftime(
-            "%Y-%m-%d %H:%M"
+            "%Y-%m-%d"
         ),
     }
 
+    print(
+        "[OK]",
+        name,
+        "|",
+        price,
+        "| image:",
+        bool(local_image),
+    )
 
-# ============================================================
-# MAIN
-# ============================================================
+    return product
+
+
+def save(products):
+
+    OUTPUT_FILE.write_text(
+        json.dumps(
+            products,
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    print()
+    print("=" * 60)
+    print("ГОТОВО")
+    print(
+        "Товаров:",
+        len(products),
+    )
+
+    print(
+        "Фото:",
+        sum(
+            bool(x.get("image"))
+            for x in products
+        ),
+    )
+
+    print(
+        "Цен:",
+        sum(
+            bool(x.get("price"))
+            for x in products
+        ),
+    )
+
+    print("=" * 60)
+
 
 def main():
 
-    print("=" * 70)
-    print("D&V STORE — APPLE AVENUE SCRAPER")
-    print("=" * 70)
+    print("=" * 60)
+    print("D&V STORE — AppleAvenue")
+    print("=" * 60)
 
-    all_products = []
-    seen_urls = set()
+    links = get_product_links()
 
-    for category, category_urls in CATEGORY_URLS.items():
+    if not links:
 
         print()
         print(
-            f"========== {category} =========="
+            "ОШИБКА: товары не найдены."
         )
 
-        for category_url in category_urls:
+        # Создаём валидный JSON,
+        # чтобы workflow показал проблему
+        save([])
 
-            links = get_product_links(
-                category_url
+        return
+
+    products = []
+
+    # Ограничение убираем — собираем весь найденный каталог
+    for number, url in enumerate(
+        links,
+        start=1,
+    ):
+
+        print(
+            f"\n[{number}/{len(links)}]"
+        )
+
+        product = parse_product(
+            url
+        )
+
+        if product:
+            products.append(
+                product
             )
 
-            print(
-                f"[CATEGORY] {category_url}"
-            )
+        time.sleep(0.3)
 
-            print(
-                f"[LINKS] найдено: {len(links)}"
-            )
-
-            for product_url in links:
-
-                if product_url in seen_urls:
-                    continue
-
-                seen_urls.add(
-                    product_url
-                )
-
-                try:
-
-                    product = parse_product(
-                        product_url,
-                        category,
-                    )
-
-                    if product:
-
-                        all_products.append(
-                            product
-                        )
-
-                except Exception as error:
-
-                    print(
-                        "[PRODUCT ERROR]",
-                        product_url,
-                        error,
-                    )
-
-                time.sleep(0.5)
-
-    # Убираем дубликаты
+    # Удаляем дубли
     unique = {}
 
-    for product in all_products:
-
+    for product in products:
         unique[
             product["id"]
         ] = product
@@ -970,21 +659,7 @@ def main():
         x["name"].lower()
     )
 
-    OUTPUT_FILE.write_text(
-        json.dumps(
-            products,
-            ensure_ascii=False,
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-
-    print()
-    print("=" * 70)
-    print(
-        f"ГОТОВО! ТОВАРОВ: {len(products)}"
-    )
-    print("=" * 70)
+    save(products)
 
 
 if __name__ == "__main__":
