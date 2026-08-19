@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Чё По Технике</title>
-  <meta name="description" content="Каталог техники с актуальными ценами">
+  <title>D&V STORE</title>
+  <meta name="description" content="D&V STORE — каталог современной техники">
 
   <style>
     * {
@@ -14,15 +14,37 @@
       padding: 0;
     }
 
+    :root {
+      --bg: #080a0d;
+      --card: #111419;
+      --card2: #161a20;
+      --border: #252b33;
+      --text: #ffffff;
+      --muted: #8d96a3;
+      --green: #00ff88;
+      --green-dark: #06130c;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #0b0d10;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
       min-height: 100vh;
     }
 
-    button {
+    button,
+    input {
       font-family: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* HEADER */
@@ -30,16 +52,16 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(18px);
-      background: rgba(11, 13, 16, 0.88);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 1000;
+      background: rgba(8, 10, 13, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
-    .header-inner {
+    .header {
       max-width: 1200px;
       margin: auto;
-      padding: 16px 20px;
+      padding: 15px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -47,28 +69,29 @@
     }
 
     .logo {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
+      font-size: 22px;
+      font-weight: 950;
+      letter-spacing: -1px;
     }
 
     .logo span {
-      color: #00ff88;
+      color: var(--green);
     }
 
-    .status {
+    .online {
+      color: var(--muted);
       font-size: 12px;
-      color: #8f98a3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .status-dot {
-      display: inline-block;
+    .online-dot {
       width: 7px;
       height: 7px;
-      background: #00ff88;
       border-radius: 50%;
-      margin-right: 5px;
-      box-shadow: 0 0 10px #00ff88;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
     }
 
     /* MAIN */
@@ -76,7 +99,7 @@
     main {
       max-width: 1200px;
       margin: auto;
-      padding: 30px 20px 60px;
+      padding: 35px 20px 70px;
     }
 
     .hero {
@@ -84,45 +107,46 @@
     }
 
     .hero h1 {
-      font-size: clamp(30px, 6vw, 52px);
-      line-height: 1;
+      font-size: clamp(36px, 7vw, 64px);
+      line-height: .95;
+      letter-spacing: -3px;
       font-weight: 950;
-      letter-spacing: -2px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .hero h1 span {
-      color: #00ff88;
+      color: var(--green);
     }
 
     .hero p {
-      color: #8f98a3;
+      color: var(--muted);
+      max-width: 650px;
+      line-height: 1.55;
       font-size: 15px;
-      max-width: 600px;
-      line-height: 1.5;
     }
 
     /* SEARCH */
 
-    .search-box {
-      margin: 25px 0;
+    .search {
       position: relative;
+      margin: 25px 0 30px;
     }
 
-    .search-box input {
+    .search input {
       width: 100%;
-      padding: 16px 18px 16px 48px;
-      background: #15181d;
-      border: 1px solid #252a31;
+      height: 54px;
+      padding: 0 18px 0 50px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: white;
       border-radius: 15px;
-      color: #fff;
-      font-size: 16px;
       outline: none;
+      font-size: 16px;
       transition: .2s;
     }
 
-    .search-box input:focus {
-      border-color: #00ff88;
+    .search input:focus {
+      border-color: var(--green);
       box-shadow: 0 0 0 3px rgba(0,255,136,.08);
     }
 
@@ -134,24 +158,26 @@
       font-size: 20px;
     }
 
-    /* CATALOG */
+    /* TOP */
 
-    .catalog-top {
+    .catalog-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 15px;
-      gap: 10px;
+      margin-bottom: 16px;
     }
 
-    .catalog-top h2 {
-      font-size: 20px;
+    .catalog-header h2 {
+      font-size: 21px;
+      font-weight: 900;
     }
 
-    .counter {
-      color: #7f8995;
+    .count {
+      color: var(--muted);
       font-size: 13px;
     }
+
+    /* PRODUCTS */
 
     .products {
       display: grid;
@@ -159,25 +185,23 @@
       gap: 16px;
     }
 
-    /* PRODUCT CARD */
-
-    .product-card {
-      background: #13161a;
-      border: 1px solid #23282f;
-      border-radius: 18px;
+    .product {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 19px;
       overflow: hidden;
-      transition: transform .2s, border-color .2s, box-shadow .2s;
+      transition: .2s;
     }
 
-    .product-card:hover {
+    .product:hover {
       transform: translateY(-3px);
       border-color: rgba(0,255,136,.35);
-      box-shadow: 0 10px 35px rgba(0,0,0,.3);
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
     }
 
     .product-image {
       width: 100%;
-      height: 220px;
+      height: 230px;
       background: #fff;
       display: flex;
       align-items: center;
@@ -190,88 +214,97 @@
       height: 100%;
       object-fit: contain;
       padding: 15px;
+      display: block;
     }
 
-    .no-image {
-      font-size: 45px;
+    .image-placeholder {
+      font-size: 55px;
       opacity: .25;
     }
 
-    .product-content {
+    .product-body {
       padding: 15px;
     }
 
     .product-name {
       font-size: 16px;
-      font-weight: 800;
       line-height: 1.3;
+      font-weight: 850;
       min-height: 42px;
       margin-bottom: 8px;
     }
 
-    .product-info {
-      color: #8e98a4;
+    .product-meta {
+      color: var(--muted);
       font-size: 13px;
       min-height: 19px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .product-price {
+    .price {
       font-size: 21px;
       font-weight: 950;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+    .stock {
+      color: var(--green);
       font-size: 12px;
-      color: #00ff88;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       margin-bottom: 12px;
     }
 
-    .availability-dot {
+    .stock-dot {
       width: 6px;
       height: 6px;
+      background: var(--green);
       border-radius: 50%;
-      background: #00ff88;
     }
 
-    .details-btn {
+    .stock.out {
+      color: #ff6969;
+    }
+
+    .stock.out .stock-dot {
+      background: #ff6969;
+    }
+
+    .details {
       width: 100%;
-      padding: 12px;
-      border: 0;
+      border: none;
       border-radius: 11px;
-      background: #00ff88;
-      color: #06130c;
-      font-weight: 900;
+      padding: 12px;
+      background: var(--green);
+      color: var(--green-dark);
       font-size: 14px;
+      font-weight: 900;
       cursor: pointer;
       transition: .2s;
     }
 
-    .details-btn:hover {
-      transform: scale(1.02);
-      filter: brightness(1.08);
+    .details:active {
+      transform: scale(.98);
     }
 
     /* LOADING */
 
     .loading {
+      grid-column: 1 / -1;
       text-align: center;
       padding: 70px 20px;
-      color: #8d97a3;
+      color: var(--muted);
     }
 
     .loader {
       width: 38px;
       height: 38px;
-      border: 3px solid #252a30;
-      border-top-color: #00ff88;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
       margin: 0 auto 15px;
+      border-radius: 50%;
+      border: 3px solid #272c33;
+      border-top-color: var(--green);
+      animation: spin .8s linear infinite;
     }
 
     @keyframes spin {
@@ -280,20 +313,10 @@
       }
     }
 
-    .error {
-      background: #17191d;
-      border: 1px solid #3a2525;
-      color: #ff7474;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-    }
-
     /* PRODUCT PAGE */
 
     .product-page {
       display: none;
-      animation: fadeIn .25s ease;
     }
 
     .product-page.active {
@@ -304,99 +327,87 @@
       display: none;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .back-btn {
-      background: #171a1f;
-      color: #fff;
-      border: 1px solid #292e35;
+    .back {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: white;
       padding: 11px 16px;
       border-radius: 11px;
       cursor: pointer;
-      font-weight: 700;
-      margin-bottom: 22px;
+      font-weight: 750;
+      margin-bottom: 25px;
     }
 
-    .back-btn:hover {
-      border-color: #00ff88;
+    .back:hover {
+      border-color: var(--green);
     }
 
-    .product-detail {
+    .detail {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      gap: 35px;
     }
 
-    .detail-gallery {
-      background: #fff;
-      border-radius: 22px;
-      min-height: 480px;
+    .detail-image {
+      background: white;
+      border-radius: 23px;
+      min-height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
 
-    .detail-gallery img {
+    .detail-image img {
       width: 100%;
       height: 100%;
-      max-height: 600px;
+      max-height: 650px;
       object-fit: contain;
       padding: 30px;
     }
 
     .detail-info {
-      padding: 10px 0;
+      padding-top: 10px;
     }
 
-    .detail-brand {
-      color: #00ff88;
+    .brand {
+      color: var(--green);
       font-size: 13px;
-      font-weight: 800;
       text-transform: uppercase;
+      font-weight: 900;
       letter-spacing: 1px;
       margin-bottom: 10px;
     }
 
     .detail-title {
-      font-size: clamp(28px, 5vw, 46px);
-      line-height: 1.05;
-      letter-spacing: -1.5px;
-      font-weight: 950;
-      margin-bottom: 18px;
-    }
-
-    .detail-price {
-      font-size: 34px;
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1;
+      letter-spacing: -2px;
       font-weight: 950;
       margin-bottom: 20px;
     }
 
-    .detail-available {
+    .detail-price {
+      font-size: 35px;
+      font-weight: 950;
+      margin-bottom: 20px;
+    }
+
+    .detail-stock {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 9px 13px;
+      border-radius: 10px;
+      color: var(--green);
       background: rgba(0,255,136,.08);
       border: 1px solid rgba(0,255,136,.18);
-      border-radius: 10px;
-      color: #00ff88;
       font-size: 13px;
       margin-bottom: 25px;
     }
 
     .specs {
-      border-top: 1px solid #252a30;
+      border-top: 1px solid var(--border);
     }
 
     .spec {
@@ -404,34 +415,29 @@
       justify-content: space-between;
       gap: 20px;
       padding: 15px 0;
-      border-bottom: 1px solid #252a30;
+      border-bottom: 1px solid var(--border);
     }
 
     .spec-name {
-      color: #858e99;
+      color: var(--muted);
     }
 
     .spec-value {
       text-align: right;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .detail-actions {
+    .contact {
+      width: 100%;
       margin-top: 25px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .contact-btn {
-      flex: 1;
-      padding: 15px;
-      border: 0;
-      border-radius: 12px;
-      background: #00ff88;
-      color: #06130c;
-      font-weight: 900;
-      cursor: pointer;
+      border: none;
+      border-radius: 13px;
+      background: var(--green);
+      color: var(--green-dark);
+      padding: 16px;
       font-size: 15px;
+      font-weight: 950;
+      cursor: pointer;
     }
 
     /* MOBILE */
@@ -443,8 +449,9 @@
     }
 
     @media (max-width: 700px) {
+
       main {
-        padding: 22px 14px 50px;
+        padding: 25px 14px 60px;
       }
 
       .products {
@@ -453,10 +460,10 @@
       }
 
       .product-image {
-        height: 180px;
+        height: 175px;
       }
 
-      .product-content {
+      .product-body {
         padding: 12px;
       }
 
@@ -464,35 +471,31 @@
         font-size: 14px;
       }
 
-      .product-price {
+      .price {
         font-size: 18px;
       }
 
-      .product-detail {
+      .detail {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
-      .detail-gallery {
-        min-height: 330px;
+      .detail-image {
+        min-height: 350px;
       }
 
       .detail-title {
-        font-size: 30px;
+        font-size: 32px;
       }
 
       .detail-price {
-        font-size: 28px;
+        font-size: 29px;
       }
     }
 
     @media (max-width: 400px) {
-      .products {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .product-image {
-        height: 155px;
+        height: 150px;
       }
     }
   </style>
@@ -501,16 +504,20 @@
 <body>
 
 <header>
-  <div class="header-inner">
+
+  <div class="header">
+
     <div class="logo">
-      Чё По <span>Технике</span>
+      D&V <span>STORE</span>
     </div>
 
-    <div class="status">
-      <span class="status-dot"></span>
-      Каталог онлайн
+    <div class="online">
+      <span class="online-dot"></span>
+      Онлайн
     </div>
+
   </div>
+
 </header>
 
 
@@ -518,35 +525,69 @@
 
   <!-- КАТАЛОГ -->
 
-  <section class="catalog-page" id="catalogPage">
+  <section
+    id="catalogPage"
+    class="catalog-page"
+  >
 
     <div class="hero">
-      <h1>Чё по <span>ценам?</span></h1>
+
+      <h1>
+        D&V <span>STORE</span>
+      </h1>
+
       <p>
-        Смотрим технику, сравниваем цены и выбираем выгодные варианты.
+        Современная техника по выгодным ценам.
+        Выбирай товар и смотри подробную информацию
+        прямо на нашем сайте.
       </p>
+
     </div>
 
-    <div class="search-box">
-      <span class="search-icon">🔎</span>
+
+    <div class="search">
+
+      <span class="search-icon">
+        🔎
+      </span>
+
       <input
-        type="text"
         id="searchInput"
+        type="text"
         placeholder="Поиск телефона или техники..."
         autocomplete="off"
       >
+
     </div>
 
-    <div class="catalog-top">
-      <h2>🔥 Техника</h2>
-      <div class="counter" id="counter">Загрузка...</div>
+
+    <div class="catalog-header">
+
+      <h2>
+        🔥 Каталог
+      </h2>
+
+      <div
+        class="count"
+        id="counter"
+      >
+        Загрузка...
+      </div>
+
     </div>
 
-    <div id="products" class="products">
+
+    <div
+      class="products"
+      id="products"
+    >
 
       <div class="loading">
+
         <div class="loader"></div>
-        Загружаем каталог...
+
+        Загружаем товары...
+
       </div>
 
     </div>
@@ -556,11 +597,18 @@
 
   <!-- СТРАНИЦА ТОВАРА -->
 
-  <section class="product-page" id="productPage">
+  <section
+    id="productPage"
+    class="product-page"
+  >
 
-    <button class="back-btn" onclick="showCatalog()">
-      ← Назад к товарам
+    <button
+      class="back"
+      onclick="showCatalog()"
+    >
+      ← Назад к каталогу
     </button>
+
 
     <div id="productDetail"></div>
 
@@ -572,14 +620,12 @@
 <script>
 
   /*
-   * ==========================================
+   * =====================================================
    * НАСТРОЙКА
-   * ==========================================
+   * =====================================================
    *
-   * Здесь указываем JSON с товарами.
-   *
-   * Если твой JSON называется products.json,
-   * оставляем так.
+   * Файл products.json должен лежать рядом
+   * с index.html.
    */
 
   const DATA_URL = "./products.json";
@@ -590,91 +636,122 @@
 
 
   /*
-   * ==========================================
-   * ЗАГРУЗКА ТОВАРОВ
-   * ==========================================
+   * =====================================================
+   * ЗАГРУЗКА JSON
+   * =====================================================
    */
 
   async function loadProducts() {
 
-    const container = document.getElementById("products");
+    const container =
+      document.getElementById("products");
 
     try {
 
-      const response = await fetch(DATA_URL + "?v=" + Date.now());
+      const response =
+        await fetch(
+          DATA_URL + "?v=" + Date.now()
+        );
 
       if (!response.ok) {
-        throw new Error("Не удалось загрузить products.json");
+        throw new Error(
+          "products.json не найден"
+        );
       }
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
-      /*
-       * Поддерживаем несколько вариантов JSON:
-       *
-       * [
-       *   {...}
-       * ]
-       *
-       * или
-       *
-       * {
-       *   products: [...]
-       * }
-       */
 
       if (Array.isArray(data)) {
+
         products = data;
-      } else if (Array.isArray(data.products)) {
+
+      } else if (
+        data &&
+        Array.isArray(data.products)
+      ) {
+
         products = data.products;
+
       } else {
+
         products = [];
+
       }
 
 
       /*
-       * Убираем мусорные позиции,
-       * например "Продукция Apple".
+       * Убираем мусорные позиции.
        */
 
-      products = products.filter(product => {
+      products =
+        products.filter(product => {
 
-        if (!product || !product.name) {
-          return false;
-        }
-
-        const name = product.name.toLowerCase();
-
-        const badWords = [
-          "продукция apple",
-          "apple brand zone",
-          "магазин",
-          "store77"
-        ];
-
-        return !badWords.some(word => name.includes(word));
-
-      });
+          if (
+            !product ||
+            !product.name
+          ) {
+            return false;
+          }
 
 
-      filteredProducts = [...products];
+          const name =
+            String(product.name)
+              .toLowerCase();
+
+
+          const badWords = [
+            "продукция apple",
+            "apple brand zone",
+            "store77 магазин",
+            "магазин оригинальной техники"
+          ];
+
+
+          return !badWords.some(
+            word => name.includes(word)
+          );
+
+        });
+
+
+      filteredProducts =
+        [...products];
+
 
       renderProducts();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.error(error);
 
       container.innerHTML = `
-        <div class="error" style="grid-column:1/-1">
+
+        <div
+          class="loading"
+          style="
+            color:#ff7070;
+            grid-column:1/-1;
+          "
+        >
+
           ❌ Не удалось загрузить каталог.
+
           <br><br>
-          Проверь, что файл <b>products.json</b>
-          лежит рядом с index.html.
+
+          Проверь файл
+          <b>products.json</b>.
+
         </div>
+
       `;
 
-      document.getElementById("counter").textContent = "Ошибка";
+      document.getElementById(
+        "counter"
+      ).textContent = "Ошибка";
 
     }
 
@@ -682,29 +759,32 @@
 
 
   /*
-   * ==========================================
-   * ФОРМАТ ЦЕНЫ
-   * ==========================================
+   * =====================================================
+   * ЦЕНА
+   * =====================================================
    */
 
   function formatPrice(price) {
 
-    if (price === null || price === undefined) {
+    if (
+      price === null ||
+      price === undefined
+    ) {
       return "Цена не указана";
     }
 
-    let value = String(price).trim();
 
-    if (!value || value === "—") {
+    const value =
+      String(price).trim();
+
+
+    if (
+      !value ||
+      value === "—"
+    ) {
       return "Цена не указана";
     }
 
-    /*
-     * Иногда парсер получает:
-     * 77780
-     * 77 Р
-     * 77 780 ₽
-     */
 
     return value;
 
@@ -712,173 +792,283 @@
 
 
   /*
-   * ==========================================
+   * =====================================================
+   * КАРТИНКА
+   * =====================================================
+   *
+   * Используем:
+   *
+   * image
+   * images[0]
+   * photo
+   * picture
+   *
+   * Никакого перехода на Store77.
+   */
+
+  function getImage(product) {
+
+    if (
+      product.image &&
+      typeof product.image === "string"
+    ) {
+      return product.image;
+    }
+
+
+    if (
+      Array.isArray(product.images) &&
+      product.images.length
+    ) {
+      return product.images[0];
+    }
+
+
+    if (
+      product.photo &&
+      typeof product.photo === "string"
+    ) {
+      return product.photo;
+    }
+
+
+    if (
+      product.picture &&
+      typeof product.picture === "string"
+    ) {
+      return product.picture;
+    }
+
+
+    return "";
+
+  }
+
+
+  /*
+   * =====================================================
    * КАРТОЧКИ
-   * ==========================================
+   * =====================================================
    */
 
   function renderProducts() {
 
-    const container = document.getElementById("products");
+    const container =
+      document.getElementById("products");
 
-    document.getElementById("counter").textContent =
+
+    document.getElementById(
+      "counter"
+    ).textContent =
       `${filteredProducts.length} товаров`;
 
 
     if (!filteredProducts.length) {
 
       container.innerHTML = `
-        <div class="loading" style="grid-column:1/-1">
+
+        <div
+          class="loading"
+          style="grid-column:1/-1"
+        >
           😔 Ничего не найдено
         </div>
+
       `;
 
       return;
+
     }
 
 
-    container.innerHTML = filteredProducts.map((product, index) => {
+    container.innerHTML =
+      filteredProducts
+        .map((product, index) => {
 
-      const image =
-        product.image ||
-        product.images?.[0] ||
-        "";
-
-
-      const memory =
-        product.memory ||
-        product.storage ||
-        "";
+          const image =
+            getImage(product);
 
 
-      const color =
-        product.color ||
-        "";
+          const memory =
+            product.memory ||
+            product.storage ||
+            "";
 
 
-      let info = [];
-
-      if (memory) {
-        info.push(memory);
-      }
-
-      if (color) {
-        info.push(color);
-      }
+          const color =
+            product.color ||
+            "";
 
 
-      return `
-
-        <article class="product-card">
-
-          <div class="product-image">
-
-            ${
-              image
-              ?
-              `<img
-                src="${escapeHtml(image)}"
-                alt="${escapeHtml(product.name)}"
-                loading="lazy"
-                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'>📱</div>'"
-              >`
-              :
-              `<div class="no-image">📱</div>`
-            }
-
-          </div>
+          const meta = [
+            memory,
+            color
+          ]
+            .filter(Boolean)
+            .join(" · ");
 
 
-          <div class="product-content">
+          return `
 
-            <div class="product-name">
-              ${escapeHtml(product.name)}
-            </div>
+            <article class="product">
+
+              <div class="product-image">
+
+                ${
+                  image
+                  ?
+
+                  `
+
+                  <img
+                    src="${escapeHtml(image)}"
+                    alt="${escapeHtml(product.name)}"
+                    loading="lazy"
+                    onerror="imageError(this)"
+                  >
+
+                  `
+
+                  :
+
+                  `
+
+                  <div class="image-placeholder">
+                    📱
+                  </div>
+
+                  `
+                }
+
+              </div>
 
 
-            <div class="product-info">
-              ${info.length ? escapeHtml(info.join(" · ")) : "Характеристики уточняются"}
-            </div>
+              <div class="product-body">
 
-
-            <div class="product-price">
-              ${escapeHtml(formatPrice(product.price))}
-            </div>
-
-
-            ${
-              product.available !== false
-              ?
-              `
-                <div class="availability">
-                  <span class="availability-dot"></span>
-                  В наличии
+                <div class="product-name">
+                  ${escapeHtml(product.name)}
                 </div>
-              `
-              :
-              `
-                <div class="availability" style="color:#ff7070">
-                  <span class="availability-dot" style="background:#ff7070"></span>
-                  Нет в наличии
+
+
+                <div class="product-meta">
+                  ${
+                    meta
+                    ?
+                    escapeHtml(meta)
+                    :
+                    "Характеристики уточняются"
+                  }
                 </div>
-              `
-            }
 
 
-            <button
-              class="details-btn"
-              onclick="openProduct(${index})"
-            >
-              Подробнее →
-            </button>
+                <div class="price">
+                  ${escapeHtml(
+                    formatPrice(product.price)
+                  )}
+                </div>
 
-          </div>
 
-        </article>
+                ${
+                  product.available !== false
 
-      `;
+                  ?
 
-    }).join("");
+                  `
+
+                  <div class="stock">
+
+                    <span class="stock-dot"></span>
+
+                    В наличии
+
+                  </div>
+
+                  `
+
+                  :
+
+                  `
+
+                  <div class="stock out">
+
+                    <span class="stock-dot"></span>
+
+                    Нет в наличии
+
+                  </div>
+
+                  `
+                }
+
+
+                <button
+                  class="details"
+                  onclick="openProduct(${index})"
+                >
+                  Подробнее →
+                </button>
+
+              </div>
+
+            </article>
+
+          `;
+
+        })
+        .join("");
 
   }
 
 
   /*
-   * ==========================================
+   * =====================================================
+   * ЕСЛИ КАРТИНКА НЕ ЗАГРУЗИЛАСЬ
+   * =====================================================
+   */
+
+  function imageError(img) {
+
+    img.style.display = "none";
+
+    const parent =
+      img.parentElement;
+
+
+    parent.innerHTML = `
+
+      <div class="image-placeholder">
+        📱
+      </div>
+
+    `;
+
+  }
+
+
+  /*
+   * =====================================================
    * ОТКРЫТЬ ТОВАР
-   * ==========================================
-   *
-   * ВАЖНО:
-   *
-   * Здесь НЕТ перехода на Store77.
-   *
-   * Мы просто открываем товар
-   * внутри нашего сайта.
+   * =====================================================
    */
 
   function openProduct(index) {
 
-    const product = filteredProducts[index];
+    const product =
+      filteredProducts[index];
+
 
     if (!product) {
       return;
     }
 
 
-    const catalogPage =
-      document.getElementById("catalogPage");
-
-    const productPage =
-      document.getElementById("productPage");
-
-    const detail =
-      document.getElementById("productDetail");
-
-
     const image =
-      product.image ||
-      product.images?.[0] ||
-      "";
+      getImage(product);
+
+
+    const brand =
+      product.brand ||
+      detectBrand(product.name);
 
 
     const memory =
@@ -892,16 +1082,6 @@
       "—";
 
 
-    const brand =
-      product.brand ||
-      detectBrand(product.name);
-
-
-    /*
-     * Дополнительные характеристики,
-     * если они есть в JSON.
-     */
-
     const specs = [];
 
 
@@ -913,72 +1093,110 @@
     }
 
 
-    if (memory && memory !== "—") {
+    if (memory !== "—") {
+
       specs.push([
         "Память",
         memory
       ]);
+
     }
 
 
-    if (color && color !== "—") {
+    if (color !== "—") {
+
       specs.push([
         "Цвет",
         color
       ]);
+
     }
 
 
-    if (product.available !== undefined) {
+    if (product.ram) {
 
       specs.push([
-        "Наличие",
-        product.available
-          ? "В наличии"
-          : "Нет в наличии"
+        "Оперативная память",
+        product.ram
       ]);
 
     }
 
 
-    /*
-     * Если парсер позже будет передавать
-     * дополнительные данные — они тоже покажутся.
-     */
-
-    if (product.ram) {
-      specs.push(["Оперативная память", product.ram]);
-    }
-
     if (product.screen) {
-      specs.push(["Экран", product.screen]);
+
+      specs.push([
+        "Экран",
+        product.screen
+      ]);
+
     }
+
 
     if (product.battery) {
-      specs.push(["Аккумулятор", product.battery]);
+
+      specs.push([
+        "Аккумулятор",
+        product.battery
+      ]);
+
     }
+
 
     if (product.camera) {
-      specs.push(["Камера", product.camera]);
+
+      specs.push([
+        "Камера",
+        product.camera
+      ]);
+
     }
 
 
-    detail.innerHTML = `
+    specs.push([
 
-      <div class="product-detail">
+      "Наличие",
 
-        <div class="detail-gallery">
+      product.available !== false
+        ? "В наличии"
+        : "Нет в наличии"
+
+    ]);
+
+
+    document.getElementById(
+      "productDetail"
+    ).innerHTML = `
+
+      <div class="detail">
+
+
+        <div class="detail-image">
 
           ${
             image
+
             ?
-            `<img
+
+            `
+
+            <img
               src="${escapeHtml(image)}"
               alt="${escapeHtml(product.name)}"
-              onerror="this.outerHTML='<div class=\\'no-image\\'>📱</div>'"
-            >`
+              onerror="detailImageError(this)"
+            >
+
+            `
+
             :
-            `<div class="no-image">📱</div>`
+
+            `
+
+            <div class="image-placeholder">
+              📱
+            </div>
+
+            `
           }
 
         </div>
@@ -986,43 +1204,70 @@
 
         <div class="detail-info">
 
-          <div class="detail-brand">
-            ${escapeHtml(brand || "Техника")}
+
+          <div class="brand">
+
+            ${escapeHtml(
+              brand || "TECH"
+            )}
+
           </div>
 
 
           <h1 class="detail-title">
-            ${escapeHtml(product.name)}
+
+            ${escapeHtml(
+              product.name
+            )}
+
           </h1>
 
 
           <div class="detail-price">
-            ${escapeHtml(formatPrice(product.price))}
+
+            ${escapeHtml(
+              formatPrice(product.price)
+            )}
+
           </div>
 
 
           ${
             product.available !== false
+
             ?
+
             `
-              <div class="detail-available">
-                <span>●</span>
-                В наличии
-              </div>
+
+            <div class="detail-stock">
+
+              🟢
+
+              В наличии
+
+            </div>
+
             `
+
             :
+
             `
-              <div
-                class="detail-available"
-                style="
-                  color:#ff7070;
-                  background:rgba(255,80,80,.08);
-                  border-color:rgba(255,80,80,.2);
-                "
-              >
-                <span>●</span>
-                Нет в наличии
-              </div>
+
+            <div
+              class="detail-stock"
+              style="
+                color:#ff6969;
+                background:rgba(255,80,80,.08);
+                border-color:rgba(255,80,80,.2);
+              "
+            >
+
+              🔴
+
+              Нет в наличии
+
+            </div>
+
             `
           }
 
@@ -1030,36 +1275,46 @@
           <div class="specs">
 
             ${
-              specs.map(spec => `
+              specs
+                .map(spec => `
 
-                <div class="spec">
+                  <div class="spec">
 
-                  <div class="spec-name">
-                    ${escapeHtml(spec[0])}
+                    <div class="spec-name">
+
+                      ${escapeHtml(
+                        spec[0]
+                      )}
+
+                    </div>
+
+
+                    <div class="spec-value">
+
+                      ${escapeHtml(
+                        String(spec[1])
+                      )}
+
+                    </div>
+
                   </div>
 
-                  <div class="spec-value">
-                    ${escapeHtml(String(spec[1]))}
-                  </div>
-
-                </div>
-
-              `).join("")
+                `)
+                .join("")
             }
 
           </div>
 
 
-          <div class="detail-actions">
+          <button
+            class="contact"
+            onclick="contactSeller()"
+          >
 
-            <button
-              class="contact-btn"
-              onclick="contactSeller()"
-            >
-              💬 Связаться
-            </button>
+            💬 Связаться с продавцом
 
-          </div>
+          </button>
+
 
         </div>
 
@@ -1068,22 +1323,33 @@
     `;
 
 
-    catalogPage.classList.add("hidden");
-    productPage.classList.add("active");
+    document
+      .getElementById(
+        "catalogPage"
+      )
+      .classList.add("hidden");
+
+
+    document
+      .getElementById(
+        "productPage"
+      )
+      .classList.add("active");
+
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
 
+
     /*
-     * Меняем URL внутри нашего сайта.
-     *
-     * Store77 здесь НЕ используется.
+     * ВАЖНО:
+     * URL Store77 здесь НИГДЕ не используется.
      */
 
     history.pushState(
-      { product: index },
+      {},
       "",
       "#product-" + index
     );
@@ -1092,19 +1358,45 @@
 
 
   /*
-   * ==========================================
+   * =====================================================
+   * ОШИБКА БОЛЬШОЙ КАРТИНКИ
+   * =====================================================
+   */
+
+  function detailImageError(img) {
+
+    img.style.display = "none";
+
+    img.parentElement.innerHTML = `
+
+      <div class="image-placeholder">
+        📱
+      </div>
+
+    `;
+
+  }
+
+
+  /*
+   * =====================================================
    * НАЗАД
-   * ==========================================
+   * =====================================================
    */
 
   function showCatalog() {
 
     document
-      .getElementById("catalogPage")
+      .getElementById(
+        "catalogPage"
+      )
       .classList.remove("hidden");
 
+
     document
-      .getElementById("productPage")
+      .getElementById(
+        "productPage"
+      )
       .classList.remove("active");
 
 
@@ -1124,106 +1416,123 @@
 
 
   /*
-   * ==========================================
+   * =====================================================
    * ПОИСК
-   * ==========================================
+   * =====================================================
    */
 
   document
-    .getElementById("searchInput")
-    .addEventListener("input", function () {
+    .getElementById(
+      "searchInput"
+    )
+    .addEventListener(
+      "input",
+      function () {
 
-      const query =
-        this.value
-          .trim()
-          .toLowerCase();
-
-
-      if (!query) {
-
-        filteredProducts = [...products];
-
-      } else {
-
-        filteredProducts =
-          products.filter(product => {
-
-            const text = [
-
-              product.name,
-              product.brand,
-              product.memory,
-              product.color,
-              product.storage
-
-            ]
-              .filter(Boolean)
-              .join(" ")
-              .toLowerCase();
+        const query =
+          this.value
+            .trim()
+            .toLowerCase();
 
 
-            return text.includes(query);
+        if (!query) {
 
-          });
+          filteredProducts =
+            [...products];
+
+        } else {
+
+          filteredProducts =
+            products.filter(product => {
+
+              const text = [
+
+                product.name,
+                product.brand,
+                product.memory,
+                product.storage,
+                product.color
+
+              ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
+
+
+              return text.includes(
+                query
+              );
+
+            });
+
+        }
+
+
+        renderProducts();
 
       }
-
-
-      renderProducts();
-
-    });
+    );
 
 
   /*
-   * ==========================================
+   * =====================================================
    * БРЕНД
-   * ==========================================
+   * =====================================================
    */
 
   function detectBrand(name) {
 
     const text =
-      String(name || "").toLowerCase();
+      String(name || "")
+        .toLowerCase();
 
 
-    if (text.includes("iphone") ||
-        text.includes("apple")) {
-
+    if (
+      text.includes("iphone") ||
+      text.includes("apple")
+    ) {
       return "Apple";
-
     }
+
 
     if (text.includes("samsung")) {
       return "Samsung";
     }
 
-    if (text.includes("xiaomi") ||
-        text.includes("redmi") ||
-        text.includes("poco")) {
 
+    if (
+      text.includes("xiaomi") ||
+      text.includes("redmi") ||
+      text.includes("poco")
+    ) {
       return "Xiaomi";
-
     }
+
 
     if (text.includes("honor")) {
       return "Honor";
     }
 
+
     if (text.includes("huawei")) {
       return "Huawei";
     }
+
 
     if (text.includes("pixel")) {
       return "Google";
     }
 
+
     if (text.includes("oneplus")) {
       return "OnePlus";
     }
 
+
     if (text.includes("nothing")) {
       return "Nothing";
     }
+
 
     return "";
 
@@ -1231,24 +1540,24 @@
 
 
   /*
-   * ==========================================
-   * КОНТАКТЫ
-   * ==========================================
+   * =====================================================
+   * КОНТАКТ
+   * =====================================================
    */
 
   function contactSeller() {
 
     alert(
-      "Связаться по товару можно через Telegram-бот «Чё По Технике»."
+      "Связь с продавцом скоро будет доступна."
     );
 
   }
 
 
   /*
-   * ==========================================
-   * БЕЗОПАСНЫЙ HTML
-   * ==========================================
+   * =====================================================
+   * ЗАЩИТА HTML
+   * =====================================================
    */
 
   function escapeHtml(value) {
@@ -1264,22 +1573,25 @@
 
 
   /*
-   * ==========================================
-   * КНОПКА НАЗАД ТЕЛЕФОНА
-   * ==========================================
+   * =====================================================
+   * НАЗАД В БРАУЗЕРЕ
+   * =====================================================
    */
 
-  window.addEventListener("popstate", function () {
+  window.addEventListener(
+    "popstate",
+    function () {
 
-    showCatalog();
+      showCatalog();
 
-  });
+    }
+  );
 
 
   /*
-   * ==========================================
+   * =====================================================
    * START
-   * ==========================================
+   * =====================================================
    */
 
   loadProducts();
