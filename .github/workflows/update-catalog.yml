@@ -2,52 +2,130 @@ name: Update D&V STORE catalog
 
 on:
   workflow_dispatch:
+
   schedule:
-    - cron: "0 * * * *"
+    # Каждый день в 04:00 UTC
+    - cron: "0 4 * * *"
 
 permissions:
   contents: write
 
 jobs:
   update-catalog:
+
     runs-on: ubuntu-latest
 
     steps:
+
+      # ==========================================
+      # 1. Забираем репозиторий
+      # ==========================================
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
+
+      # ==========================================
+      # 2. Устанавливаем Python
+      # ==========================================
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+
+      # ==========================================
+      # 3. Устанавливаем зависимости
+      # ==========================================
+
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          playwright install chromium
-          playwright install-deps chromium
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
 
-      - name: Run Store77 parser
+
+      # ==========================================
+      # 4. Запускаем scraper
+      # ==========================================
+
+      - name: Run AppleAvenue scraper
         run: |
-          python parser.py
+          python scraper.py
 
-      - name: Upload Store77 debug files
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: store77-debug
-          path: |
-            store77_debug.html
-            store77_links.json
-          if-no-files-found: warn
 
-      - name: Save updated catalog
+      # ==========================================
+      # 5. Проверяем результат
+      # ==========================================
+
+      - name: Show catalog statistics
         run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          file = Path("products.json")
+
+          if not file.exists():
+              print("ERROR: products.json не создан")
+              raise SystemExit(1)
+
+          products = json.loads(
+              file.read_text(
+                  encoding="utf-8"
+              )
+          )
+
+          print(
+              f"Товаров в каталоге: {len(products)}"
+          )
+
+          with_images = sum(
+              1
+              for p in products
+              if p.get("image")
+          )
+
+          with_prices = sum(
+              1
+              for p in products
+              if p.get("price")
+              and p.get("price") != "Цена уточняется"
+          )
+
+          print(
+              f"С фотографиями: {with_images}"
+          )
+
+          print(
+              f"С ценами: {with_prices}"
+          )
+          PY
+
+
+      # ==========================================
+      # 6. Сохраняем изменения в GitHub
+      # ==========================================
+
+      - name: Commit updated catalog
+        run: |
+
           git config user.name "D&V STORE Bot"
-          git config user.email "actions@github.com"
+
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add products.json
+          git add images/
 
-          git diff --cached --quiet || git commit -m "Update Store77 catalog"
+          if git diff --cached --quiet; then
 
-          git push
+            echo "Изменений нет."
+
+          else
+
+            git commit \
+              -m "🔄 Автообновление каталога D&V STORE"
+
+            git push
+
+          fi
