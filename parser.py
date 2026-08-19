@@ -1,7 +1,7 @@
 import asyncio
 import json
 import re
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
 
 from playwright.async_api import async_playwright
 
@@ -14,43 +14,176 @@ SEARCH_URL = (
 OUTPUT_FILE = "products.json"
 
 
-def clean_price(text):
+def clean_text(text):
+    if not text:
+        return ""
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def extract_price(text):
     """
-    Ищем цену в формате:
-    77 780 ₽
-    77780 руб.
+    Ищем цену товара.
+    Сначала ищем крупные суммы от 5 000 ₽,
+    чтобы не принять 690 ₽ за цену телефона.
     """
+
     if not text:
         return None
 
+    patterns = [
+        r"(\d[\d\s]{3,})\s*₽",
+        r"(\d[\d\s]{3,})\s*руб\.?",
+        r"(\d[\d\s]{3,})\s*р\."
+    ]
+
+    prices = []
+
+    for pattern in patterns:
+        matches = re.findall(
+            pattern,
+            text,
+            flags=re.IGNORECASE
+        )
+
+        for match in matches:
+
+            number = re.sub(r"\D", "", match)
+
+            if not number:
+                continue
+
+            value = int(number)
+
+            # Телефоны дешевле 5000 ₽ нам не нужны.
+            if value < 5000:
+                continue
+
+            # Отбрасываем подозрительно большие значения.
+            if value > 1000000:
+                continue
+
+            prices.append(value)
+
+    if not prices:
+        return None
+
+    # Берём минимальную найденную цену.
+    # Это защищает от старой/зачёркнутой цены.
+    value = min(prices)
+
+    return f"{value:,}".replace(",", " ") + " ₽"
+
+
+def extract_memory(text):
+    if not text:
+        return ""
+
     match = re.search(
-        r"(\d[\d\s]{2,})\s*(?:₽|руб\.?|р\.)",
+        r"\b(64|128|256|512|1024)\s*(?:GB|ГБ)\b",
         text,
         re.IGNORECASE
     )
 
     if not match:
-        return None
+        return ""
 
-    number = re.sub(r"\D", "", match.group(1))
-
-    if not number:
-        return None
-
-    return f"{int(number):,}".replace(",", " ") + " ₽"
+    return match.group(1) + " GB"
 
 
-def clean_text(text):
+def extract_color(text):
     if not text:
         return ""
 
-    return re.sub(r"\s+", " ", text).strip()
+    colors = [
+        "Black",
+        "White",
+        "Blue",
+        "Green",
+        "Purple",
+        "Red",
+        "Pink",
+        "Yellow",
+        "Silver",
+        "Gold",
+        "Gray",
+        "Grey",
+        "Natural",
+        "Desert",
+        "Lavender",
+        "Midnight",
+        "Starlight",
+        "Черный",
+        "Белый",
+        "Синий",
+        "Зеленый",
+        "Фиолетовый",
+        "Красный",
+        "Розовый",
+        "Желтый",
+        "Серебристый",
+        "Золотой"
+    ]
+
+    lower = text.lower()
+
+    for color in colors:
+        if color.lower() in lower:
+            return color
+
+    return ""
+
+
+def is_product_url(url):
+    """
+    Отбрасываем поисковые, категории и служебные страницы.
+    """
+
+    if not url:
+        return False
+
+    url_lower = url.lower()
+
+    if "store77.net" not in url_lower:
+        return False
+
+    blocked = [
+        "/search/",
+        "/catalog/",
+        "/category/",
+        "/compare/",
+        "/favorite/",
+        "/cart/",
+        "/contacts/",
+        "/about/"
+    ]
+
+    for item in blocked:
+        if item in url_lower:
+            return False
+
+    # Берём только страницы, похожие на товары.
+    keywords = [
+        "telefon_",
+        "iphone",
+        "smartfon_",
+        "apple_",
+        "samsung_",
+        "xiaomi_",
+        "google_",
+        "pixel_"
+    ]
+
+    return any(
+        keyword in url_lower
+        for keyword in keywords
+    )
 
 
 async def main():
 
-    print("🚀 Запуск парсера Store77")
-    print("🔎 Страница:", SEARCH_URL)
+    print("======================================")
+    print("🚀 D&V STORE — Store77 parser")
+    print("======================================")
 
     async with async_playwright() as p:
 
@@ -74,18 +207,25 @@ async def main():
             timeout=60000
         )
 
-        await page.wait_for_timeout(7000)
+        await page.wait_for_timeout(6000)
 
-        print("📦 Страница загружена")
+        # Прокручиваем страницу.
+        for _ in range(8):
 
-        # Немного прокручиваем страницу,
-        # чтобы динамический каталог успел загрузиться.
-        for _ in range(5):
-            await page.mouse.wheel(0, 1500)
-            await page.wait_for_timeout(1000)
+            await page.mouse.wheel(
+                0,
+                1800
+            )
 
-        # Собираем ссылки на товары.
-        links = await page.locator("a").evaluate_all(
+            await page.wait_for_timeout(
+                700
+            )
+
+        print("🔎 Ищем ссылки на товары...")
+
+        links = await page.locator(
+            "a[href]"
+        ).evaluate_all(
             """
             elements => elements.map(a => ({
                 href: a.href,
@@ -98,59 +238,39 @@ async def main():
 
         for item in links:
 
-            href = item.get("href") or ""
-            text = clean_text(item.get("text") or "")
+            href = item.get("href", "")
+            text = clean_text(
+                item.get("text", "")
+            )
 
-            if not href:
+            if not is_product_url(href):
                 continue
 
-            # Берём только ссылки Store77
-            # и отбрасываем служебные страницы.
-            if "store77.net" not in href:
-                continue
-
-            if "/search/" in href:
-                continue
-
-            if "/catalog/" in href:
-                continue
-
-            if "#" in href:
-                continue
-
-            # Нам нужны ссылки, в которых есть
-            # признаки товара.
-            if any(
-                word in href.lower()
-                for word in [
-                    "/apple_",
-                    "/iphone",
-                    "/telefon_",
-                    "/smartfon",
-                    "/samsung_",
-                    "/xiaomi_"
-                ]
-            ):
-                product_links[href] = text
+            product_links[href] = text
 
         print(
-            f"🔗 Найдено потенциальных товаров: "
+            f"🔗 Найдено ссылок: "
             f"{len(product_links)}"
         )
 
         products = []
 
-        # Пока ограничиваемся 50 товарами,
-        # чтобы первый тест не был слишком большим.
-        for index, (url, link_text) in enumerate(
-            list(product_links.items())[:50],
+        for index, (
+            url,
+            link_text
+        ) in enumerate(
+            product_links.items(),
             start=1
         ):
 
+            if index > 100:
+                break
+
             try:
 
+                print()
                 print(
-                    f"📱 [{index}] Открываем: {url}"
+                    f"📱 [{index}] {url}"
                 )
 
                 product_page = await browser.new_page(
@@ -167,67 +287,165 @@ async def main():
                     timeout=60000
                 )
 
-                await product_page.wait_for_timeout(2000)
+                await product_page.wait_for_timeout(
+                    1500
+                )
 
-                body_text = await product_page.locator(
-                    "body"
-                ).inner_text()
+                # Получаем текст страницы.
+                body_text = clean_text(
+                    await product_page.locator(
+                        "body"
+                    ).inner_text()
+                )
 
-                body_text = clean_text(body_text)
-
+                # Заголовок.
                 title = ""
 
-                # Пробуем получить нормальный title страницы.
-                page_title = await product_page.title()
+                for selector in [
+                    "h1",
+                    ".product-title",
+                    "[class*='product-title']"
+                ]:
 
-                if page_title:
-                    title = clean_text(page_title)
+                    locator = product_page.locator(
+                        selector
+                    ).first
+
+                    if await locator.count():
+
+                        value = clean_text(
+                            await locator.inner_text()
+                        )
+
+                        if value:
+                            title = value
+                            break
 
                 if not title:
-                    title = link_text
-
-                price = clean_price(body_text)
-
-                # Если цена не нашлась — товар пока пропускаем.
-                if not price:
-                    print(
-                        "⚠️ Цена не найдена — пропускаем"
+                    title = clean_text(
+                        link_text
                     )
+
+                # Не принимаем страницы категорий.
+                if not title:
                     await product_page.close()
                     continue
 
-                # Пытаемся определить наличие.
-                available = True
+                # Цена.
+                price = None
 
-                lower_text = body_text.lower()
+                # Сначала пытаемся найти цену в элементах,
+                # которые обычно используются для цены.
+                price_selectors = [
+                    ".price",
+                    ".product-price",
+                    "[class*='price']",
+                    "[class*='Price']"
+                ]
 
-                unavailable_words = [
+                for selector in price_selectors:
+
+                    elements = product_page.locator(
+                        selector
+                    )
+
+                    count = min(
+                        await elements.count(),
+                        20
+                    )
+
+                    for i in range(count):
+
+                        try:
+
+                            text = clean_text(
+                                await elements.nth(
+                                    i
+                                ).inner_text()
+                            )
+
+                            candidate = extract_price(
+                                text
+                            )
+
+                            if candidate:
+
+                                price = candidate
+                                break
+
+                        except Exception:
+                            pass
+
+                    if price:
+                        break
+
+                # Если специальный блок не найден,
+                # используем текст страницы.
+                if not price:
+
+                    price = extract_price(
+                        body_text
+                    )
+
+                if not price:
+
+                    print(
+                        "⚠️ Цена не найдена"
+                    )
+
+                    await product_page.close()
+                    continue
+
+                memory = extract_memory(
+                    body_text
+                )
+
+                color = extract_color(
+                    body_text
+                )
+
+                lower_body = body_text.lower()
+
+                unavailable = [
                     "нет в наличии",
                     "нет на складе",
                     "товар закончился",
                     "отсутствует"
                 ]
 
-                if any(
-                    word in lower_text
-                    for word in unavailable_words
-                ):
-                    available = False
+                available = not any(
+                    word in lower_body
+                    for word in unavailable
+                )
 
                 product = {
                     "name": title,
                     "price": price,
                     "brand": "Apple",
-                    "memory": "",
-                    "color": "",
+                    "memory": memory,
+                    "color": color,
                     "available": available,
                     "url": url
                 }
 
-                products.append(product)
+                products.append(
+                    product
+                )
 
                 print(
-                    f"✅ {title} — {price}"
+                    f"✅ {title}"
+                )
+
+                print(
+                    f"💰 {price}"
+                )
+
+                print(
+                    f"💾 {memory}"
+                )
+
+                print(
+                    f"🎨 {color}"
                 )
 
                 await product_page.close()
@@ -235,12 +453,24 @@ async def main():
             except Exception as error:
 
                 print(
-                    f"❌ Ошибка товара: {error}"
+                    f"❌ Ошибка: {error}"
                 )
 
         await browser.close()
 
-    # Сохраняем каталог.
+    # Убираем дубли по URL.
+    unique = {}
+
+    for product in products:
+
+        unique[
+            product["url"]
+        ] = product
+
+    products = list(
+        unique.values()
+    )
+
     with open(
         OUTPUT_FILE,
         "w",
@@ -255,15 +485,13 @@ async def main():
         )
 
     print()
-    print("=" * 50)
+    print("======================================")
     print(
-        f"🎉 Готово! Сохранено товаров: "
+        f"🎉 Товаров сохранено: "
         f"{len(products)}"
     )
-    print(
-        f"📄 Файл: {OUTPUT_FILE}"
-    )
-    print("=" * 50)
+    print("📄 products.json обновлён")
+    print("======================================")
 
 
 if __name__ == "__main__":
