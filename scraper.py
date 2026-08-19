@@ -8,10 +8,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# ============================================================
-# D&V STORE — APPLE AVENUE SCRAPER
-# ============================================================
-
 BASE_URL = "https://apple-avenue.ru"
 
 OUTPUT_FILE = Path("products.json")
@@ -21,24 +17,13 @@ HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/139.0.0.0 Safari/537.36"
+        "Chrome/139.0 Safari/537.36"
     ),
-    "Accept": (
-        "text/html,application/xhtml+xml,application/xml;"
-        "q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8"
-    ),
-    "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
     "Referer": BASE_URL + "/",
-    "Connection": "keep-alive",
 }
 
-session = requests.Session()
-session.headers.update(HEADERS)
-
-
-# ============================================================
-# КАТЕГОРИИ
-# ============================================================
 
 CATEGORY_URLS = {
     "Apple": [
@@ -49,46 +34,42 @@ CATEGORY_URLS = {
         "/catalog/apple_watch/",
         "/catalog/airpods/",
     ],
-
-    "Samsung": [
-        "/catalog/samsung/",
-    ],
-
-    "Xiaomi": [
-        "/catalog/xiaomi/",
-    ],
-
-    "Honor": [
-        "/catalog/honor/",
-    ],
-
-    "Google": [
-        "/catalog/google/",
-    ],
-
-    "OnePlus": [
-        "/catalog/oneplus/",
-    ],
-
-    "Huawei": [
-        "/catalog/huawei/",
-    ],
-
-    "Nothing": [
-        "/catalog/nothing/",
-    ],
+    "Samsung": ["/catalog/samsung/"],
+    "Xiaomi": ["/catalog/xiaomi/"],
+    "Honor": ["/catalog/honor/"],
+    "Google": ["/catalog/google/"],
+    "OnePlus": ["/catalog/oneplus/"],
+    "Huawei": ["/catalog/huawei/"],
+    "Nothing": ["/catalog/nothing/"],
 }
 
 
-# ============================================================
-# ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-# ============================================================
+session = requests.Session()
+session.headers.update(HEADERS)
+
+
+def prepare_images_folder():
+    """
+    Создаём images.
+    Если images случайно является файлом — удаляем его.
+    """
+
+    if IMAGES_DIR.exists() and not IMAGES_DIR.is_dir():
+        print("[WARNING] images существует как файл. Удаляем...")
+        IMAGES_DIR.unlink()
+
+    IMAGES_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
 
 def clean_text(text):
     if not text:
         return ""
 
-    return re.sub(r"\s+", " ", str(text)).strip()
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
 
 
 def make_id(name, url):
@@ -103,32 +84,8 @@ def make_id(name, url):
 
     value = re.sub(r"-+", "-", value)
 
-    return value.strip("-")[:150]
+    return value.strip("-")[:120]
 
-
-def get_soup(url):
-    try:
-        response = session.get(
-            url,
-            timeout=30,
-        )
-
-        response.raise_for_status()
-
-        return BeautifulSoup(
-            response.text,
-            "html.parser",
-        )
-
-    except Exception as error:
-        print(f"[ERROR] Не удалось открыть: {url}")
-        print(error)
-        return None
-
-
-# ============================================================
-# ЦЕНА
-# ============================================================
 
 def extract_price(text):
     if not text:
@@ -137,7 +94,6 @@ def extract_price(text):
     patterns = [
         r"(\d[\d\s]{2,})\s*(?:руб\.?|₽)",
         r"(\d[\d\s]{2,})\s*р\.",
-        r"(\d[\d\s]{2,})\s*руб",
     ]
 
     for pattern in patterns:
@@ -166,22 +122,11 @@ def extract_price(text):
     return ""
 
 
-# ============================================================
-# ПАМЯТЬ
-# ============================================================
-
 def detect_memory(text):
 
-    if not text:
-        return ""
-
     match = re.search(
-        r"\b("
-        r"32|64|128|256|512|1024|2048|"
-        r"3072|4096"
-        r")\s*"
-        r"(ГБ|GB|ТБ|TB)"
-        r"\b",
+        r"\b(32|64|128|256|512|1024|2048)\s*"
+        r"(ГБ|GB|ТБ|TB)\b",
         text,
         flags=re.IGNORECASE,
     )
@@ -198,14 +143,7 @@ def detect_memory(text):
     return f"{value} ГБ"
 
 
-# ============================================================
-# ЦВЕТ
-# ============================================================
-
 def detect_color(text):
-
-    if not text:
-        return ""
 
     colors = [
         "черный",
@@ -228,8 +166,7 @@ def detect_color(text):
         "серый",
         "красный",
         "бежевый",
-        "коричневый",
-        "натуральный",
+        "фиолетовый",
     ]
 
     lower = text.lower()
@@ -242,348 +179,210 @@ def detect_color(text):
     return ""
 
 
-# ============================================================
-# НАЗВАНИЕ
-# ============================================================
+def get_response(url):
 
-def get_product_name(soup):
+    try:
 
-    h1 = soup.find("h1")
-
-    if h1:
-        name = clean_text(
-            h1.get_text(
-                " ",
-                strip=True,
-            )
+        response = session.get(
+            url,
+            timeout=30,
+            allow_redirects=True,
         )
 
-        if name:
-            return name
+        response.raise_for_status()
 
-    meta = soup.find(
-        "meta",
-        property="og:title",
-    )
+        return response
 
-    if meta:
-        name = clean_text(
-            meta.get("content", "")
+    except Exception as error:
+
+        print(
+            "[ERROR]",
+            url,
+            error,
         )
 
-        if name:
-            return name
-
-    title = soup.find("title")
-
-    if title:
-        return clean_text(
-            title.get_text(
-                " ",
-                strip=True,
-            )
-        )
-
-    return ""
+        return None
 
 
-# ============================================================
-# ПОИСК КАРТИНКИ
-# ============================================================
+def get_soup(url):
 
-def normalize_image_url(page_url, image_url):
+    response = get_response(url)
 
-    if not image_url:
-        return ""
+    if response is None:
+        return None
 
-    image_url = str(image_url).strip()
-
-    if not image_url:
-        return ""
-
-    # Убираем пробелы
-    image_url = image_url.replace(" ", "%20")
-
-    # Если это //site.ru/image.jpg
-    if image_url.startswith("//"):
-        image_url = "https:" + image_url
-
-    # Относительная ссылка
-    image_url = urljoin(
-        page_url,
-        image_url,
+    return BeautifulSoup(
+        response.text,
+        "html.parser",
     )
 
-    # Убираем query
-    parsed = urlparse(image_url)
 
-    clean_url = (
-        f"{parsed.scheme}://"
-        f"{parsed.netloc}"
-        f"{parsed.path}"
-    )
-
-    return clean_url
-
-
-def extract_from_srcset(srcset):
-
-    if not srcset:
-        return ""
-
-    candidates = []
-
-    for item in srcset.split(","):
-
-        item = item.strip()
-
-        if not item:
-            continue
-
-        parts = item.split()
-
-        if not parts:
-            continue
-
-        url = parts[0]
-
-        width = 0
-
-        if len(parts) > 1:
-
-            match = re.search(
-                r"(\d+)",
-                parts[1],
-            )
-
-            if match:
-                width = int(
-                    match.group(1)
-                )
-
-        candidates.append(
-            (width, url)
-        )
-
-    if not candidates:
-        return ""
-
-    candidates.sort(
-        key=lambda x: x[0],
-        reverse=True,
-    )
-
-    return candidates[0][1]
-
-
-def get_image_url(product_url, soup):
+def collect_image_urls(product_url, soup):
 
     if soup is None:
-        return ""
+        return []
 
-    # --------------------------------------------------------
-    # 1. OG IMAGE
-    # --------------------------------------------------------
+    result = []
 
-    meta = soup.find(
+    def add_url(value):
+
+        if not value:
+            return
+
+        value = value.strip()
+
+        if value.startswith("data:"):
+            return
+
+        value = urljoin(
+            product_url,
+            value,
+        )
+
+        if value not in result:
+            result.append(value)
+
+    # OG IMAGE
+    for meta in soup.find_all(
         "meta",
         property="og:image",
-    )
+    ):
 
-    if meta:
-
-        image = (
+        add_url(
             meta.get("content")
-            or meta.get("value")
         )
 
-        image = normalize_image_url(
-            product_url,
-            image,
-        )
-
-        if image:
-            print(
-                "[IMAGE SOURCE] OG:",
-                image,
-            )
-
-            return image
-
-    # --------------------------------------------------------
-    # 2. twitter:image
-    # --------------------------------------------------------
-
-    meta = soup.find(
+    # Twitter image
+    for meta in soup.find_all(
         "meta",
-        attrs={
-            "name": "twitter:image"
-        },
-    )
+        attrs={"name": "twitter:image"},
+    ):
 
-    if meta:
-
-        image = meta.get("content")
-
-        image = normalize_image_url(
-            product_url,
-            image,
+        add_url(
+            meta.get("content")
         )
 
-        if image:
-            print(
-                "[IMAGE SOURCE] Twitter:",
-                image,
-            )
-
-            return image
-
-    # --------------------------------------------------------
-    # 3. IMG ТЕГИ
-    # --------------------------------------------------------
-
-    candidates = []
-
+    # IMG
     for img in soup.find_all("img"):
 
-        possible_attributes = [
+        attributes = [
+            "src",
             "data-src",
             "data-original",
             "data-lazy-src",
             "data-image",
-            "data-url",
-            "src",
+            "data-fancybox",
         ]
 
-        image = ""
-
-        for attribute in possible_attributes:
+        for attribute in attributes:
 
             value = img.get(attribute)
 
             if value:
-                image = value
-                break
+                add_url(value)
 
-        # srcset
-        if not image:
+    # srcset
+    for img in soup.find_all("img"):
 
-            srcset = img.get(
-                "srcset"
+        srcset = img.get("srcset")
+
+        if srcset:
+
+            for item in srcset.split(","):
+
+                value = item.strip().split(" ")[0]
+
+                add_url(value)
+
+    # LINK preload
+    for link in soup.find_all(
+        "link",
+        rel="preload",
+    ):
+
+        if link.get("as") == "image":
+
+            add_url(
+                link.get("href")
             )
 
-            image = extract_from_srcset(
-                srcset
-            )
+    # Оставляем только изображения
+    image_urls = []
 
-        if not image:
-            continue
+    for url in result:
 
-        image = normalize_image_url(
-            product_url,
-            image,
-        )
-
-        if not image:
-            continue
-
-        lower = image.lower()
-
-        # Не берем иконки и служебные изображения
-        bad_words = [
-            "logo",
-            "icon",
-            "favicon",
-            "sprite",
-            "banner",
-            "avatar",
-            "svg",
-        ]
+        lower = url.lower()
 
         if any(
-            word in lower
-            for word in bad_words
-        ):
-            continue
-
-        # Приоритет большим изображениям
-        score = 0
-
-        if any(
-            ext in lower
-            for ext in [
+            extension in lower
+            for extension in [
                 ".jpg",
                 ".jpeg",
                 ".png",
                 ".webp",
+                ".avif",
             ]
         ):
-            score += 10
 
-        if any(
-            word in lower
-            for word in [
-                "detail",
-                "product",
-                "catalog",
-                "upload",
-                "iblock",
-            ]
-        ):
-            score += 10
+            if url not in image_urls:
+                image_urls.append(url)
 
-        candidates.append(
-            (score, image)
-        )
+    return image_urls
 
-    if candidates:
-
-        candidates.sort(
-            key=lambda x: x[0],
-            reverse=True,
-        )
-
-        image = candidates[0][1]
-
-        print(
-            "[IMAGE SOURCE] IMG:",
-            image,
-        )
-
-        return image
-
-    return ""
-
-
-# ============================================================
-# СКАЧИВАНИЕ КАРТИНКИ
-# ============================================================
 
 def download_image(url, product_id):
 
     if not url:
         return ""
 
+    prepare_images_folder()
+
     try:
 
-        IMAGES_DIR.mkdir(
-            parents=True,
-            exist_ok=True,
+        response = session.get(
+            url,
+            timeout=30,
+            allow_redirects=True,
+            headers={
+                **HEADERS,
+                "Referer": BASE_URL + "/",
+            },
         )
 
-        parsed = urlparse(url)
+        response.raise_for_status()
 
-        extension = Path(
-            parsed.path
-        ).suffix.lower()
+        content_type = (
+            response.headers
+            .get(
+                "content-type",
+                "",
+            )
+            .lower()
+        )
 
-        if extension not in [
-            ".jpg",
-            ".jpeg",
-            ".png",
-            ".webp",
-            ".gif",
-        ]:
+        # Проверяем, действительно ли это картинка
+        if not content_type.startswith("image/"):
+
+            print(
+                "[SKIP IMAGE]",
+                url,
+                content_type,
+            )
+
+            return ""
+
+        extension = ".jpg"
+
+        if "png" in content_type:
+            extension = ".png"
+
+        elif "webp" in content_type:
+            extension = ".webp"
+
+        elif "avif" in content_type:
+            extension = ".avif"
+
+        elif "jpeg" in content_type:
             extension = ".jpg"
 
         filename = (
@@ -596,99 +395,54 @@ def download_image(url, product_id):
             / filename
         )
 
-        # Уже скачана
-        if destination.exists():
-
-            print(
-                "[IMAGE EXISTS]",
-                filename,
-            )
-
-            return f"images/{filename}"
-
-        headers = {
-            "User-Agent": HEADERS["User-Agent"],
-            "Referer": BASE_URL + "/",
-            "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
-        }
-
-        response = session.get(
-            url,
-            headers=headers,
-            timeout=30,
-        )
-
-        response.raise_for_status()
-
-        content = response.content
-
-        if len(content) < 1000:
-
-            print(
-                "[IMAGE ERROR] Слишком маленький файл:",
-                url,
-            )
-
-            return ""
-
-        content_type = (
-            response.headers
-            .get(
-                "content-type",
-                "",
-            )
-            .lower()
-        )
-
-        if (
-            "image" not in content_type
-            and extension == ".jpg"
-        ):
-
-            # Иногда сервер неправильно
-            # выставляет content-type.
-            # Проверяем сигнатуру файла.
-
-            if not (
-                content.startswith(b"\xff\xd8")
-                or content.startswith(b"\x89PNG")
-                or content.startswith(b"RIFF")
-            ):
-
-                print(
-                    "[IMAGE ERROR] Это не изображение:",
-                    url,
-                )
-
-                return ""
-
         destination.write_bytes(
-            content
+            response.content
         )
 
         print(
-            "[IMAGE DOWNLOADED]",
+            "[IMAGE OK]",
             filename,
-            f"({len(content)} bytes)",
         )
 
-        return f"images/{filename}"
+        return (
+            "images/"
+            + filename
+        )
 
     except Exception as error:
 
         print(
             "[IMAGE ERROR]",
             url,
+            error,
         )
-
-        print(error)
 
         return ""
 
 
-# ============================================================
-# ТОВАР
-# ============================================================
+def get_product_image(product_url, soup, product_id):
+
+    image_urls = collect_image_urls(
+        product_url,
+        soup,
+    )
+
+    print(
+        f"[IMAGES FOUND] {len(image_urls)}"
+    )
+
+    for image_url in image_urls:
+
+        local_image = download_image(
+            image_url,
+            product_id,
+        )
+
+        if local_image:
+            return local_image
+
+    return ""
+
 
 def parse_product(url, category):
 
@@ -703,12 +457,45 @@ def parse_product(url, category):
     if soup is None:
         return None
 
-    name = get_product_name(
-        soup
-    )
+    # -------------------------
+    # NAME
+    # -------------------------
+
+    name = ""
+
+    h1 = soup.find("h1")
+
+    if h1:
+
+        name = clean_text(
+            h1.get_text(
+                " ",
+                strip=True,
+            )
+        )
+
+    if not name:
+
+        meta = soup.find(
+            "meta",
+            property="og:title",
+        )
+
+        if meta:
+
+            name = clean_text(
+                meta.get(
+                    "content",
+                    "",
+                )
+            )
 
     if not name:
         return None
+
+    # -------------------------
+    # TEXT
+    # -------------------------
 
     page_text = clean_text(
         soup.get_text(
@@ -717,22 +504,56 @@ def parse_product(url, category):
         )
     )
 
-    # Цена
+    # -------------------------
+    # PRICE
+    # -------------------------
+
     price = extract_price(
         page_text
     )
 
     if not price:
+
+        # Попробуем meta
+        price_meta = soup.find(
+            "meta",
+            property="product:price:amount",
+        )
+
+        if price_meta:
+
+            value = price_meta.get(
+                "content",
+                "",
+            )
+
+            if value:
+
+                try:
+
+                    price = (
+                        f"{float(value):,.0f}"
+                        .replace(",", " ")
+                        + " ₽"
+                    )
+
+                except Exception:
+                    pass
+
+    if not price:
         price = "Цена уточняется"
 
-    # Наличие
+    # -------------------------
+    # AVAILABLE
+    # -------------------------
+
     lower_text = page_text.lower()
 
     unavailable_words = [
         "нет в наличии",
         "нет на складе",
         "под заказ",
-        "товар закончился",
+        "распродан",
     ]
 
     available = not any(
@@ -743,53 +564,75 @@ def parse_product(url, category):
     if "в наличии" in lower_text:
         available = True
 
-    # Память
+    # -------------------------
+    # MEMORY
+    # -------------------------
+
     memory = detect_memory(
         name + " " + page_text
     )
 
-    # Цвет
+    # -------------------------
+    # COLOR
+    # -------------------------
+
     color = detect_color(
         name
     )
 
     if not color:
+
         color = detect_color(
             page_text
         )
 
-    # Картинка
-    image_url = get_image_url(
-        url,
-        soup,
-    )
+    # -------------------------
+    # ID
+    # -------------------------
 
     product_id = make_id(
         name,
         url,
     )
 
-    local_image = ""
+    # -------------------------
+    # IMAGE
+    # -------------------------
 
-    if image_url:
+    image = get_product_image(
+        url,
+        soup,
+        product_id,
+    )
 
-        local_image = download_image(
-            image_url,
-            product_id,
-        )
+    # -------------------------
+    # PRODUCT
+    # -------------------------
 
     product = {
+
         "id": product_id,
+
         "name": name,
+
         "price": price,
+
         "brand": category,
+
         "category": category,
+
         "memory": memory,
+
         "color": color,
+
         "available": available,
-        "image": local_image,
+
+        "image": image,
+
         "source": "AppleAvenue",
+
         "source_url": url,
+
         "updated": time.strftime(
             "%Y-%m-%d"
         ),
@@ -800,16 +643,12 @@ def parse_product(url, category):
         name,
         "|",
         price,
-        "| IMAGE:",
-        bool(local_image),
+        "|",
+        image or "NO IMAGE",
     )
 
     return product
 
-
-# ============================================================
-# ПОЛУЧЕНИЕ ССЫЛОК
-# ============================================================
 
 def get_product_links(category_url):
 
@@ -818,7 +657,6 @@ def get_product_links(category_url):
         category_url,
     )
 
-    print()
     print(
         "[CATEGORY]",
         url,
@@ -831,7 +669,7 @@ def get_product_links(category_url):
 
     links = set()
 
-    base_netloc = urlparse(
+    base_domain = urlparse(
         BASE_URL
     ).netloc
 
@@ -851,7 +689,7 @@ def get_product_links(category_url):
             full_url
         )
 
-        if parsed.netloc != base_netloc:
+        if parsed.netloc != base_domain:
             continue
 
         path = parsed.path
@@ -862,67 +700,109 @@ def get_product_links(category_url):
         ]:
             continue
 
-        excluded = [
-            "/search/",
-            "/compare/",
-            "/favorite/",
-            "/cart/",
-            "/personal/",
-            "/login/",
-            "/register/",
-        ]
-
         if any(
-            item in path.lower()
-            for item in excluded
+            blocked in path.lower()
+            for blocked in [
+                "/search/",
+                "/compare/",
+                "/favorite/",
+                "/cart/",
+                "/personal/",
+                "/login/",
+                "/register/",
+            ]
         ):
             continue
 
-        # Исключаем саму категорию
         if (
             path.rstrip("/")
-            == category_url.rstrip("/")
+            ==
+            category_url.rstrip("/")
         ):
+            continue
+
+        # Ссылка должна вести внутрь каталога
+        if "/catalog/" not in path:
             continue
 
         links.add(
             full_url
         )
 
-    return sorted(
-        links
+    return sorted(links)
+
+
+def save_products(products):
+
+    OUTPUT_FILE.write_text(
+        json.dumps(
+            products,
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
     )
 
+    photos = sum(
+        1
+        for product in products
+        if product.get("image")
+    )
 
-# ============================================================
-# MAIN
-# ============================================================
+    prices = sum(
+        1
+        for product in products
+        if (
+            product.get("price")
+            and product.get("price")
+            != "Цена уточняется"
+        )
+    )
+
+    print()
+    print("=" * 60)
+    print(
+        f"Товаров в каталоге: {len(products)}"
+    )
+    print(
+        f"С фотографиями: {photos}"
+    )
+    print(
+        f"С ценами: {prices}"
+    )
+    print("=" * 60)
+
 
 def main():
 
-    print("=" * 70)
-    print("D&V STORE — APPLE AVENUE SCRAPER")
-    print("=" * 70)
-
-    IMAGES_DIR.mkdir(
-        parents=True,
-        exist_ok=True,
+    print("=" * 60)
+    print(
+        "D&V STORE — APPLE AVENUE SCRAPER"
     )
+    print("=" * 60)
+
+    # ВАЖНО:
+    # Исправляет FileExistsError
+    prepare_images_folder()
 
     all_products = []
 
     seen_urls = set()
 
-    for category, urls in CATEGORY_URLS.items():
+    for category, category_urls in CATEGORY_URLS.items():
 
         print()
         print(
-            "=" * 30,
-            category,
-            "=" * 30,
+            "=" * 40
+        )
+        print(
+            f"КАТЕГОРИЯ: {category}"
+        )
+        print(
+            "=" * 40
         )
 
-        for category_url in urls:
+        for category_url in category_urls:
 
             links = get_product_links(
                 category_url
@@ -942,22 +822,32 @@ def main():
                     product_url
                 )
 
-                product = parse_product(
-                    product_url,
-                    category,
-                )
+                try:
 
-                if product:
-                    all_products.append(
-                        product
+                    product = parse_product(
+                        product_url,
+                        category,
                     )
 
-                # Небольшая пауза
-                time.sleep(0.4)
+                    if product:
+                        all_products.append(
+                            product
+                        )
 
-    # ========================================================
-    # УДАЛЯЕМ ДУБЛИКАТЫ
-    # ========================================================
+                except Exception as error:
+
+                    print(
+                        "[PRODUCT ERROR]",
+                        product_url,
+                    )
+
+                    print(error)
+
+                time.sleep(0.5)
+
+    # -------------------------
+    # DEDUPLICATION
+    # -------------------------
 
     unique = {}
 
@@ -972,71 +862,13 @@ def main():
     )
 
     all_products.sort(
-        key=lambda item:
-        item["name"].lower()
+        key=lambda product:
+        product["name"].lower()
     )
 
-    # ========================================================
-    # СОХРАНЯЕМ
-    # ========================================================
-
-    OUTPUT_FILE.write_text(
-        json.dumps(
-            all_products,
-            ensure_ascii=False,
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-
-    # ========================================================
-    # СТАТИСТИКА
-    # ========================================================
-
-    total = len(
+    save_products(
         all_products
     )
-
-    with_images = sum(
-        1
-        for product in all_products
-        if product.get("image")
-    )
-
-    with_prices = sum(
-        1
-        for product in all_products
-        if product.get("price")
-        and product.get("price")
-        != "Цена уточняется"
-    )
-
-    print()
-    print("=" * 70)
-    print("ГОТОВО")
-    print("=" * 70)
-
-    print(
-        f"Товаров в каталоге: {total}"
-    )
-
-    print(
-        f"С фотографиями: {with_images}"
-    )
-
-    print(
-        f"С ценами: {with_prices}"
-    )
-
-    print(
-        f"Без фотографий: {total - with_images}"
-    )
-
-    print(
-        f"Без цен: {total - with_prices}"
-    )
-
-    print("=" * 70)
 
 
 if __name__ == "__main__":
