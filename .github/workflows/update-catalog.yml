@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
   schedule:
-    # Каждый день в 04:00 UTC
     - cron: "0 4 * * *"
 
 permissions:
@@ -17,48 +16,24 @@ jobs:
 
     steps:
 
-      # ==========================================
-      # 1. Забираем репозиторий
-      # ==========================================
-
       - name: Checkout repository
         uses: actions/checkout@v4
-
-
-      # ==========================================
-      # 2. Устанавливаем Python
-      # ==========================================
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-
-      # ==========================================
-      # 3. Устанавливаем зависимости
-      # ==========================================
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-
-      # ==========================================
-      # 4. Запускаем scraper
-      # ==========================================
-
       - name: Run AppleAvenue scraper
         run: |
           python scraper.py
 
-
-      # ==========================================
-      # 5. Проверяем результат
-      # ==========================================
-
-      - name: Show catalog statistics
+      - name: Check products.json
         run: |
           python - <<'PY'
           import json
@@ -71,41 +46,25 @@ jobs:
               raise SystemExit(1)
 
           products = json.loads(
-              file.read_text(
-                  encoding="utf-8"
-              )
+              file.read_text(encoding="utf-8")
           )
 
-          print(
-              f"Товаров в каталоге: {len(products)}"
-          )
+          print(f"Товаров в каталоге: {len(products)}")
 
           with_images = sum(
-              1
-              for p in products
+              1 for p in products
               if p.get("image")
           )
 
           with_prices = sum(
-              1
-              for p in products
+              1 for p in products
               if p.get("price")
               and p.get("price") != "Цена уточняется"
           )
 
-          print(
-              f"С фотографиями: {with_images}"
-          )
-
-          print(
-              f"С ценами: {with_prices}"
-          )
+          print(f"С фотографиями: {with_images}")
+          print(f"С ценами: {with_prices}")
           PY
-
-
-      # ==========================================
-      # 6. Сохраняем изменения в GitHub
-      # ==========================================
 
       - name: Commit updated catalog
         run: |
@@ -114,8 +73,7 @@ jobs:
 
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add products.json
-          git add images/
+          git add -A
 
           if git diff --cached --quiet; then
 
@@ -123,8 +81,7 @@ jobs:
 
           else
 
-            git commit \
-              -m "🔄 Автообновление каталога D&V STORE"
+            git commit -m "🔄 Автообновление каталога D&V STORE"
 
             git push
 
