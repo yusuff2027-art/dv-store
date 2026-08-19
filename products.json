@@ -1,0 +1,26 @@
+[
+  {
+    "name": "iPhone 17 256GB",
+    "price": "77 780 ₽",
+    "brand": "Apple",
+    "memory": "256 GB",
+    "color": "Black",
+    "available": true
+  },
+  {
+    "name": "iPhone 17 512GB",
+    "price": "—",
+    "brand": "Apple",
+    "memory": "512 GB",
+    "color": "Black",
+    "available": true
+  },
+  {
+    "name": "Samsung Galaxy",
+    "price": "—",
+    "brand": "Samsung",
+    "memory": "—",
+    "color": "—",
+    "available": true
+  }
+]
