@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>D&V STORE — магазин техники</title>
+<title>D&V STORE — техника и электроника</title>
 
 <style>
 * {
@@ -21,40 +21,39 @@ body {
 
 header {
     background: #111;
-    color: white;
-    padding: 18px 20px;
+    color: #fff;
+    padding: 16px 20px;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 3px 15px rgba(0,0,0,.15);
 }
 
 .header-inner {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 15px;
+    gap: 25px;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 900;
-    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .logo span {
-    color: #ff7a00;
+    color: #ff7900;
 }
 
 .search {
     flex: 1;
-    max-width: 500px;
 }
 
 .search input {
     width: 100%;
-    padding: 13px 18px;
+    padding: 14px 20px;
     border: none;
     border-radius: 30px;
     font-size: 15px;
@@ -62,21 +61,21 @@ header {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
-    padding: 20px;
+    padding: 22px 20px;
 }
 
 .hero {
     background: linear-gradient(135deg, #111, #292929);
-    color: white;
-    border-radius: 22px;
-    padding: 35px 25px;
+    color: #fff;
+    border-radius: 24px;
+    padding: 40px 28px;
     margin-bottom: 22px;
 }
 
 .hero h1 {
-    font-size: 38px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 
@@ -85,28 +84,42 @@ header {
     font-size: 16px;
 }
 
+.catalog-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.catalog-count {
+    color: #777;
+    font-size: 14px;
+}
+
 .categories {
     display: flex;
     gap: 10px;
     overflow-x: auto;
     padding-bottom: 15px;
-    margin-bottom: 10px;
 }
 
 .category {
     flex-shrink: 0;
-    background: white;
+    background: #fff;
     border: 1px solid #ddd;
-    border-radius: 25px;
+    border-radius: 30px;
     padding: 10px 17px;
     cursor: pointer;
+    font-size: 14px;
     transition: .2s;
 }
 
 .category:hover,
 .category.active {
     background: #111;
-    color: white;
+    color: #fff;
+    border-color: #111;
 }
 
 .products {
@@ -116,7 +129,7 @@ header {
 }
 
 .product {
-    background: white;
+    background: #fff;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 4px 18px rgba(0,0,0,.07);
@@ -125,16 +138,16 @@ header {
 
 .product:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+    box-shadow: 0 10px 25px rgba(0,0,0,.13);
 }
 
 .product-image {
-    height: 230px;
-    background: #f7f7f7;
+    height: 240px;
+    background: #fafafa;
+    padding: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px;
 }
 
 .product-image img {
@@ -148,19 +161,21 @@ header {
 }
 
 .product-name {
-    font-size: 17px;
-    font-weight: 700;
-    min-height: 44px;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.3;
+    min-height: 42px;
 }
 
 .product-meta {
     color: #777;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 8px;
+    min-height: 18px;
 }
 
 .price {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 900;
     margin-top: 12px;
 }
@@ -175,21 +190,31 @@ header {
     width: 100%;
     border: none;
     background: #111;
-    color: white;
+    color: #fff;
     padding: 13px;
     border-radius: 10px;
     margin-top: 14px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 14px;
+    transition: .2s;
 }
 
 .details:hover {
-    background: #ff7a00;
+    background: #ff7900;
 }
 
 .empty {
+    grid-column: 1 / -1;
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
+    color: #777;
+}
+
+.loader {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 70px 20px;
     color: #777;
 }
 
@@ -197,7 +222,7 @@ header {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.72);
     z-index: 1000;
     padding: 20px;
     overflow-y: auto;
@@ -211,35 +236,36 @@ header {
 
 .modal-box {
     width: 100%;
-    max-width: 850px;
-    background: white;
-    border-radius: 24px;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 25px;
     padding: 25px;
     position: relative;
 }
 
 .close {
     position: absolute;
-    right: 18px;
-    top: 15px;
-    font-size: 28px;
+    right: 20px;
+    top: 13px;
+    font-size: 32px;
     cursor: pointer;
+    z-index: 5;
 }
 
 .modal-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    gap: 30px;
 }
 
 .modal-image {
-    height: 400px;
-    background: #f6f6f6;
-    border-radius: 18px;
+    height: 430px;
+    background: #f7f7f7;
+    border-radius: 20px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 .modal-image img {
@@ -249,8 +275,9 @@ header {
 }
 
 .modal-title {
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 900;
+    padding-right: 30px;
     margin-bottom: 15px;
 }
 
@@ -261,12 +288,18 @@ header {
 }
 
 .modal-row {
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #eee;
 }
 
 .modal-label {
     color: #777;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.modal-value {
+    font-weight: 700;
 }
 
 footer {
@@ -288,6 +321,7 @@ footer {
     .header-inner {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
     }
 
     .logo {
@@ -308,15 +342,19 @@ footer {
     }
 
     .product-name {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .price {
         font-size: 18px;
     }
 
+    .hero {
+        padding: 30px 20px;
+    }
+
     .hero h1 {
-        font-size: 28px;
+        font-size: 29px;
     }
 
     .modal-content {
@@ -326,15 +364,25 @@ footer {
     .modal-image {
         height: 300px;
     }
+
+    .modal-title {
+        font-size: 24px;
+    }
 }
 
 @media (max-width: 430px) {
+
     .products {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .product-image {
-        height: 150px;
+        height: 145px;
+    }
+
+    .details {
+        padding: 11px 5px;
+        font-size: 12px;
     }
 }
 </style>
@@ -343,6 +391,7 @@ footer {
 <body>
 
 <header>
+
     <div class="header-inner">
 
         <div class="logo">
@@ -351,25 +400,30 @@ footer {
 
         <div class="search">
             <input
-                type="text"
                 id="search"
+                type="search"
                 placeholder="🔎 Найти товар..."
+                autocomplete="off"
             >
         </div>
 
     </div>
+
 </header>
 
 <main class="container">
 
     <section class="hero">
+
         <h1>D&V STORE</h1>
+
         <p>
             Техника и электроника по актуальным ценам
         </p>
+
     </section>
 
-    <div class="categories" id="categories">
+    <div class="categories">
 
         <button class="category active" data-category="all">
             Все товары
@@ -403,15 +457,42 @@ footer {
             Poco
         </button>
 
+        <button class="category" data-category="Honor">
+            Honor
+        </button>
+
+        <button class="category" data-category="Nothing">
+            Nothing
+        </button>
+
     </div>
 
-    <section class="products" id="products"></section>
+    <div class="catalog-info">
+
+        <div class="catalog-count" id="catalogCount">
+            Загрузка каталога...
+        </div>
+
+    </div>
+
+    <section class="products" id="products">
+
+        <div class="loader">
+            Загружаем каталог...
+        </div>
+
+    </section>
 
 </main>
 
 <footer>
+
     © 2026 D&V STORE
+
 </footer>
+
+
+<!-- MODAL -->
 
 <div class="modal" id="modal">
 
@@ -422,33 +503,77 @@ footer {
         <div class="modal-content">
 
             <div class="modal-image">
-                <img id="modalImage" src="" alt="">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt=""
+                >
+
             </div>
 
             <div>
 
-                <div class="modal-title" id="modalName"></div>
+                <div
+                    class="modal-title"
+                    id="modalName">
+                </div>
 
-                <div class="modal-price" id="modalPrice"></div>
-
-                <div class="modal-row">
-                    <div class="modal-label">Бренд</div>
-                    <div id="modalBrand"></div>
+                <div
+                    class="modal-price"
+                    id="modalPrice">
                 </div>
 
                 <div class="modal-row">
-                    <div class="modal-label">Память</div>
-                    <div id="modalMemory"></div>
+
+                    <div class="modal-label">
+                        Бренд
+                    </div>
+
+                    <div
+                        class="modal-value"
+                        id="modalBrand">
+                    </div>
+
                 </div>
 
                 <div class="modal-row">
-                    <div class="modal-label">Цвет</div>
-                    <div id="modalColor"></div>
+
+                    <div class="modal-label">
+                        Память
+                    </div>
+
+                    <div
+                        class="modal-value"
+                        id="modalMemory">
+                    </div>
+
                 </div>
 
                 <div class="modal-row">
-                    <div class="modal-label">Наличие</div>
-                    <div id="modalAvailable"></div>
+
+                    <div class="modal-label">
+                        Цвет
+                    </div>
+
+                    <div
+                        class="modal-value"
+                        id="modalColor">
+                    </div>
+
+                </div>
+
+                <div class="modal-row">
+
+                    <div class="modal-label">
+                        Наличие
+                    </div>
+
+                    <div
+                        class="modal-value"
+                        id="modalAvailable">
+                    </div>
+
                 </div>
 
             </div>
@@ -458,6 +583,7 @@ footer {
     </div>
 
 </div>
+
 
 <script>
 
@@ -471,23 +597,43 @@ const productsContainer =
 const searchInput =
     document.getElementById("search");
 
+const catalogCount =
+    document.getElementById("catalogCount");
 
-// ==============================
-// ЗАГРУЗКА КАТАЛОГА
-// ==============================
+const fallbackImage =
+    "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80";
+
+
+/* ============================
+   ЗАГРУЗКА
+============================ */
 
 async function loadProducts() {
 
     try {
 
         const response =
-            await fetch("products.json?t=" + Date.now());
+            await fetch(
+                "products.json?t=" +
+                Date.now()
+            );
 
         if (!response.ok) {
-            throw new Error("products.json не найден");
+            throw new Error(
+                "products.json не найден"
+            );
         }
 
-        products = await response.json();
+        const data =
+            await response.json();
+
+        if (!Array.isArray(data)) {
+            throw new Error(
+                "products.json должен содержать массив"
+            );
+        }
+
+        products = data;
 
         renderProducts();
 
@@ -495,21 +641,34 @@ async function loadProducts() {
 
         console.error(error);
 
+        catalogCount.textContent =
+            "Ошибка загрузки каталога";
+
         productsContainer.innerHTML = `
+
             <div class="empty">
-                <h2>Каталог пока загружается</h2>
+
+                <h2>
+                    Не удалось загрузить каталог
+                </h2>
+
                 <p>
-                    Проверь файл products.json
+                    Проверь, что файл
+                    <b>products.json</b>
+                    находится рядом с
+                    <b>index.html</b>.
                 </p>
+
             </div>
+
         `;
     }
 }
 
 
-// ==============================
-// ПОКАЗ ТОВАРОВ
-// ==============================
+/* ============================
+   КАРТОЧКИ
+============================ */
 
 function renderProducts() {
 
@@ -518,34 +677,75 @@ function renderProducts() {
         .toLowerCase()
         .trim();
 
-    let filtered = products.filter(product => {
+    const filtered =
+        products.filter(product => {
 
-        const name =
-            (product.name || "").toLowerCase();
+            const name =
+                String(
+                    product.name || ""
+                ).toLowerCase();
 
-        const brand =
-            (product.brand || "").toLowerCase();
+            const brand =
+                String(
+                    product.brand || ""
+                ).toLowerCase();
 
-        const matchesSearch =
-            name.includes(search) ||
-            brand.includes(search);
+            const memory =
+                String(
+                    product.memory || ""
+                ).toLowerCase();
 
-        const matchesCategory =
-            currentCategory === "all" ||
-            brand === currentCategory.toLowerCase();
+            const color =
+                String(
+                    product.color || ""
+                ).toLowerCase();
 
-        return matchesSearch && matchesCategory;
+            const category =
+                String(
+                    product.category ||
+                    product.brand ||
+                    ""
+                ).toLowerCase();
 
-    });
+            const matchesSearch =
+                name.includes(search) ||
+                brand.includes(search) ||
+                memory.includes(search) ||
+                color.includes(search);
+
+            const matchesCategory =
+                currentCategory === "all" ||
+                category ===
+                currentCategory.toLowerCase();
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+
+        });
+
+
+    catalogCount.textContent =
+        "Товаров: " + filtered.length;
 
 
     if (!filtered.length) {
 
         productsContainer.innerHTML = `
+
             <div class="empty">
-                <h2>Ничего не найдено</h2>
-                <p>Попробуй изменить запрос</p>
+
+                <h2>
+                    Ничего не найдено
+                </h2>
+
+                <p>
+                    Попробуй изменить запрос
+                </p>
+
             </div>
+
         `;
 
         return;
@@ -553,11 +753,22 @@ function renderProducts() {
 
 
     productsContainer.innerHTML =
-        filtered.map((product, index) => {
+        filtered.map(product => {
+
+            const index =
+                products.indexOf(product);
 
             const image =
                 product.image ||
-                "https://store77.net/bitrix/templates/v11/img/og-default.png";
+                fallbackImage;
+
+            const meta = [
+                product.memory,
+                product.color
+            ]
+            .filter(Boolean)
+            .join(" · ");
+
 
             return `
 
@@ -566,10 +777,10 @@ function renderProducts() {
                     <div class="product-image">
 
                         <img
-                            src="${image}"
-                            alt="${escapeHtml(product.name || "")}"
+                            src="${escapeAttr(image)}"
+                            alt="${escapeAttr(product.name || "Товар")}"
                             loading="lazy"
-                            onerror="this.src='https://store77.net/bitrix/templates/v11/img/og-default.png'"
+                            onerror="this.onerror=null;this.src='${fallbackImage}'"
                         >
 
                     </div>
@@ -577,32 +788,42 @@ function renderProducts() {
                     <div class="product-info">
 
                         <div class="product-name">
-                            ${escapeHtml(product.name || "Товар")}
+
+                            ${escapeHtml(
+                                product.name ||
+                                "Товар"
+                            )}
+
                         </div>
 
                         <div class="product-meta">
 
-                            ${product.memory || ""}
-
-                            ${product.color
-                                ? " · " + escapeHtml(product.color)
-                                : ""}
+                            ${escapeHtml(meta)}
 
                         </div>
 
                         <div class="price">
-                            ${escapeHtml(product.price || "Цена уточняется")}
+
+                            ${escapeHtml(
+                                product.price ||
+                                "Цена уточняется"
+                            )}
+
                         </div>
 
                         <div class="stock">
-                            ${product.available
+
+                            ${
+                                product.available
                                 ? "● В наличии"
-                                : "● Нет в наличии"}
+                                : "● Нет в наличии"
+                            }
+
                         </div>
 
                         <button
                             class="details"
-                            onclick="openProduct(${products.indexOf(product)})"
+                            onclick="openProduct(${index})"
                         >
                             Подробнее
                         </button>
@@ -617,72 +838,130 @@ function renderProducts() {
 }
 
 
-// ==============================
-// ОТКРЫТИЕ ТОВАРА
-// ==============================
+/* ============================
+   ТОВАР
+============================ */
 
 function openProduct(index) {
 
-    const product = products[index];
+    const product =
+        products[index];
 
     if (!product) return;
 
 
-    document.getElementById("modalImage").src =
-        product.image ||
-        "https://store77.net/bitrix/templates/v11/img/og-default.png";
+    const modalImage =
+        document.getElementById(
+            "modalImage"
+        );
 
-    document.getElementById("modalName").textContent =
+
+    modalImage.src =
+        product.image ||
+        fallbackImage;
+
+    modalImage.onerror =
+        function() {
+
+            this.onerror = null;
+
+            this.src =
+                fallbackImage;
+
+        };
+
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
         product.name || "Товар";
 
-    document.getElementById("modalPrice").textContent =
-        product.price || "Цена уточняется";
 
-    document.getElementById("modalBrand").textContent =
+    document.getElementById(
+        "modalPrice"
+    ).textContent =
+        product.price ||
+        "Цена уточняется";
+
+
+    document.getElementById(
+        "modalBrand"
+    ).textContent =
         product.brand || "—";
 
-    document.getElementById("modalMemory").textContent =
+
+    document.getElementById(
+        "modalMemory"
+    ).textContent =
         product.memory || "—";
 
-    document.getElementById("modalColor").textContent =
+
+    document.getElementById(
+        "modalColor"
+    ).textContent =
         product.color || "—";
 
-    document.getElementById("modalAvailable").textContent =
+
+    document.getElementById(
+        "modalAvailable"
+    ).textContent =
         product.available
-            ? "В наличии"
-            : "Нет в наличии";
+        ? "В наличии"
+        : "Нет в наличии";
 
 
-    document.getElementById("modal")
+    document
+        .getElementById("modal")
         .classList.add("active");
 }
 
 
-// ==============================
-// ЗАКРЫТИЕ
-// ==============================
-
 function closeModal() {
 
-    document.getElementById("modal")
+    document
+        .getElementById("modal")
         .classList.remove("active");
 
 }
 
 
-document.getElementById("modal")
-    .addEventListener("click", function(e) {
+/* Закрытие по фону */
 
-        if (e.target === this) {
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+                closeModal();
+            }
+
+        }
+    );
+
+
+/* ESC */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
             closeModal();
         }
 
-    });
+    }
+);
 
 
-// ==============================
-// ПОИСК
-// ==============================
+/* ============================
+   ПОИСК
+============================ */
 
 searchInput.addEventListener(
     "input",
@@ -690,52 +969,84 @@ searchInput.addEventListener(
 );
 
 
-// ==============================
-// КАТЕГОРИИ
-// ==============================
+/* ============================
+   КАТЕГОРИИ
+============================ */
 
-document.querySelectorAll(".category")
+document
+    .querySelectorAll(".category")
     .forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            function() {
 
-            document
-                .querySelectorAll(".category")
-                .forEach(btn =>
-                    btn.classList.remove("active")
+                document
+                    .querySelectorAll(
+                        ".category"
+                    )
+                    .forEach(btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                    );
+
+                this.classList.add(
+                    "active"
                 );
 
-            button.classList.add("active");
+                currentCategory =
+                    this.dataset.category;
 
-            currentCategory =
-                button.dataset.category;
+                renderProducts();
 
-            renderProducts();
-
-        });
+            }
+        );
 
     });
 
 
-// ==============================
-// ЗАЩИТА HTML
-// ==============================
+/* ============================
+   БЕЗОПАСНЫЙ HTML
+============================ */
 
-function escapeHtml(text) {
+function escapeHtml(value) {
 
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-// ==============================
-// START
-// ==============================
+function escapeAttr(value) {
+
+    return escapeHtml(value);
+
+}
+
+
+/* ============================
+   START
+============================ */
 
 loadProducts();
 
