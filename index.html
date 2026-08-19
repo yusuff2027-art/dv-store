@@ -1,1600 +1,743 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>D&V STORE</title>
-  <meta name="description" content="D&V STORE — каталог современной техники">
+<title>D&V STORE — магазин техники</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f7;
+    color: #111;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 18px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #ff7a00;
+}
+
+.search {
+    flex: 1;
+    max-width: 500px;
+}
+
+.search input {
+    width: 100%;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    outline: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #111, #292929);
+    color: white;
+    border-radius: 22px;
+    padding: 35px 25px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.category {
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px 17px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.category:hover,
+.category.active {
+    background: #111;
+    color: white;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.product {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,.07);
+    transition: .25s;
+}
+
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+}
+
+.product-image {
+    height: 230px;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    padding: 16px;
+}
+
+.product-name {
+    font-size: 17px;
+    font-weight: 700;
+    min-height: 44px;
+}
+
+.product-meta {
+    color: #777;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 900;
+    margin-top: 12px;
+}
+
+.stock {
+    color: #159447;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.details {
+    width: 100%;
+    border: none;
+    background: #111;
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 14px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.details:hover {
+    background: #ff7a00;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #777;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 850px;
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.modal-image {
+    height: 400px;
+    background: #f6f6f6;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.modal-title {
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.modal-price {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 20px 0;
+}
+
+.modal-row {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-label {
+    color: #777;
+}
+
+footer {
+    margin-top: 50px;
+    background: #111;
+    color: #aaa;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
     }
+}
 
-    :root {
-      --bg: #080a0d;
-      --card: #111419;
-      --card2: #161a20;
-      --border: #252b33;
-      --text: #ffffff;
-      --muted: #8d96a3;
-      --green: #00ff88;
-      --green-dark: #06130c;
-    }
+@media (max-width: 700px) {
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-      min-height: 100vh;
-    }
-
-    button,
-    input {
-      font-family: inherit;
-    }
-
-    button {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8, 10, 13, 0.88);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .header {
-      max-width: 1200px;
-      margin: auto;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+    .header-inner {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .logo {
-      font-size: 22px;
-      font-weight: 950;
-      letter-spacing: -1px;
+        text-align: center;
     }
-
-    .logo span {
-      color: var(--green);
-    }
-
-    .online {
-      color: var(--muted);
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .online-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 10px var(--green);
-    }
-
-    /* MAIN */
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 35px 20px 70px;
-    }
-
-    .hero {
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(36px, 7vw, 64px);
-      line-height: .95;
-      letter-spacing: -3px;
-      font-weight: 950;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 span {
-      color: var(--green);
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 650px;
-      line-height: 1.55;
-      font-size: 15px;
-    }
-
-    /* SEARCH */
-
-    .search {
-      position: relative;
-      margin: 25px 0 30px;
-    }
-
-    .search input {
-      width: 100%;
-      height: 54px;
-      padding: 0 18px 0 50px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: white;
-      border-radius: 15px;
-      outline: none;
-      font-size: 16px;
-      transition: .2s;
-    }
-
-    .search input:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(0,255,136,.08);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 17px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 20px;
-    }
-
-    /* TOP */
-
-    .catalog-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .catalog-header h2 {
-      font-size: 21px;
-      font-weight: 900;
-    }
-
-    .count {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* PRODUCTS */
 
     .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .product {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 19px;
-      overflow: hidden;
-      transition: .2s;
-    }
-
-    .product:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0,255,136,.35);
-      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .product-image {
-      width: 100%;
-      height: 230px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+        height: 180px;
     }
 
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 15px;
-      display: block;
-    }
-
-    .image-placeholder {
-      font-size: 55px;
-      opacity: .25;
-    }
-
-    .product-body {
-      padding: 15px;
+    .product-info {
+        padding: 12px;
     }
 
     .product-name {
-      font-size: 16px;
-      line-height: 1.3;
-      font-weight: 850;
-      min-height: 42px;
-      margin-bottom: 8px;
-    }
-
-    .product-meta {
-      color: var(--muted);
-      font-size: 13px;
-      min-height: 19px;
-      margin-bottom: 10px;
+        font-size: 15px;
     }
 
     .price {
-      font-size: 21px;
-      font-weight: 950;
-      margin-bottom: 8px;
-    }
-
-    .stock {
-      color: var(--green);
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .stock-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-    }
-
-    .stock.out {
-      color: #ff6969;
-    }
-
-    .stock.out .stock-dot {
-      background: #ff6969;
-    }
-
-    .details {
-      width: 100%;
-      border: none;
-      border-radius: 11px;
-      padding: 12px;
-      background: var(--green);
-      color: var(--green-dark);
-      font-size: 14px;
-      font-weight: 900;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .details:active {
-      transform: scale(.98);
-    }
-
-    /* LOADING */
-
-    .loading {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 70px 20px;
-      color: var(--muted);
-    }
-
-    .loader {
-      width: 38px;
-      height: 38px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      border: 3px solid #272c33;
-      border-top-color: var(--green);
-      animation: spin .8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* PRODUCT PAGE */
-
-    .product-page {
-      display: none;
-    }
-
-    .product-page.active {
-      display: block;
-    }
-
-    .catalog-page.hidden {
-      display: none;
-    }
-
-    .back {
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: white;
-      padding: 11px 16px;
-      border-radius: 11px;
-      cursor: pointer;
-      font-weight: 750;
-      margin-bottom: 25px;
-    }
-
-    .back:hover {
-      border-color: var(--green);
-    }
-
-    .detail {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-    }
-
-    .detail-image {
-      background: white;
-      border-radius: 23px;
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .detail-image img {
-      width: 100%;
-      height: 100%;
-      max-height: 650px;
-      object-fit: contain;
-      padding: 30px;
-    }
-
-    .detail-info {
-      padding-top: 10px;
-    }
-
-    .brand {
-      color: var(--green);
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-
-    .detail-title {
-      font-size: clamp(30px, 5vw, 50px);
-      line-height: 1;
-      letter-spacing: -2px;
-      font-weight: 950;
-      margin-bottom: 20px;
-    }
-
-    .detail-price {
-      font-size: 35px;
-      font-weight: 950;
-      margin-bottom: 20px;
-    }
-
-    .detail-stock {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 13px;
-      border-radius: 10px;
-      color: var(--green);
-      background: rgba(0,255,136,.08);
-      border: 1px solid rgba(0,255,136,.18);
-      font-size: 13px;
-      margin-bottom: 25px;
-    }
-
-    .specs {
-      border-top: 1px solid var(--border);
-    }
-
-    .spec {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .spec-name {
-      color: var(--muted);
-    }
-
-    .spec-value {
-      text-align: right;
-      font-weight: 800;
-    }
-
-    .contact {
-      width: 100%;
-      margin-top: 25px;
-      border: none;
-      border-radius: 13px;
-      background: var(--green);
-      color: var(--green-dark);
-      padding: 16px;
-      font-size: 15px;
-      font-weight: 950;
-      cursor: pointer;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 1000px) {
-      .products {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-
-      main {
-        padding: 25px 14px 60px;
-      }
-
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .product-image {
-        height: 175px;
-      }
-
-      .product-body {
-        padding: 12px;
-      }
-
-      .product-name {
-        font-size: 14px;
-      }
-
-      .price {
         font-size: 18px;
-      }
+    }
 
-      .detail {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .modal-content {
         grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .detail-image {
-        min-height: 350px;
-      }
-
-      .detail-title {
-        font-size: 32px;
-      }
-
-      .detail-price {
-        font-size: 29px;
-      }
     }
 
-    @media (max-width: 400px) {
-      .product-image {
+    .modal-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 430px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-image {
         height: 150px;
-      }
     }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
 <header>
+    <div class="header-inner">
 
-  <div class="header">
+        <div class="logo">
+            D&V <span>STORE</span>
+        </div>
 
-    <div class="logo">
-      D&V <span>STORE</span>
+        <div class="search">
+            <input
+                type="text"
+                id="search"
+                placeholder="🔎 Найти товар..."
+            >
+        </div>
+
     </div>
-
-    <div class="online">
-      <span class="online-dot"></span>
-      Онлайн
-    </div>
-
-  </div>
-
 </header>
 
+<main class="container">
 
-<main>
+    <section class="hero">
+        <h1>D&V STORE</h1>
+        <p>
+            Техника и электроника по актуальным ценам
+        </p>
+    </section>
 
-  <!-- КАТАЛОГ -->
+    <div class="categories" id="categories">
 
-  <section
-    id="catalogPage"
-    class="catalog-page"
-  >
+        <button class="category active" data-category="all">
+            Все товары
+        </button>
 
-    <div class="hero">
+        <button class="category" data-category="Apple">
+            🍎 Apple
+        </button>
 
-      <h1>
-        D&V <span>STORE</span>
-      </h1>
+        <button class="category" data-category="Samsung">
+            Samsung
+        </button>
 
-      <p>
-        Современная техника по выгодным ценам.
-        Выбирай товар и смотри подробную информацию
-        прямо на нашем сайте.
-      </p>
+        <button class="category" data-category="Xiaomi">
+            Xiaomi
+        </button>
 
-    </div>
+        <button class="category" data-category="Huawei">
+            Huawei
+        </button>
 
+        <button class="category" data-category="Google">
+            Google
+        </button>
 
-    <div class="search">
+        <button class="category" data-category="OnePlus">
+            OnePlus
+        </button>
 
-      <span class="search-icon">
-        🔎
-      </span>
-
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="Поиск телефона или техники..."
-        autocomplete="off"
-      >
-
-    </div>
-
-
-    <div class="catalog-header">
-
-      <h2>
-        🔥 Каталог
-      </h2>
-
-      <div
-        class="count"
-        id="counter"
-      >
-        Загрузка...
-      </div>
+        <button class="category" data-category="Poco">
+            Poco
+        </button>
 
     </div>
 
-
-    <div
-      class="products"
-      id="products"
-    >
-
-      <div class="loading">
-
-        <div class="loader"></div>
-
-        Загружаем товары...
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- СТРАНИЦА ТОВАРА -->
-
-  <section
-    id="productPage"
-    class="product-page"
-  >
-
-    <button
-      class="back"
-      onclick="showCatalog()"
-    >
-      ← Назад к каталогу
-    </button>
-
-
-    <div id="productDetail"></div>
-
-  </section>
+    <section class="products" id="products"></section>
 
 </main>
 
+<footer>
+    © 2026 D&V STORE
+</footer>
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <div class="close" onclick="closeModal()">×</div>
+
+        <div class="modal-content">
+
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
+            </div>
+
+            <div>
+
+                <div class="modal-title" id="modalName"></div>
+
+                <div class="modal-price" id="modalPrice"></div>
+
+                <div class="modal-row">
+                    <div class="modal-label">Бренд</div>
+                    <div id="modalBrand"></div>
+                </div>
+
+                <div class="modal-row">
+                    <div class="modal-label">Память</div>
+                    <div id="modalMemory"></div>
+                </div>
+
+                <div class="modal-row">
+                    <div class="modal-label">Цвет</div>
+                    <div id="modalColor"></div>
+                </div>
+
+                <div class="modal-row">
+                    <div class="modal-label">Наличие</div>
+                    <div id="modalAvailable"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script>
 
-  /*
-   * =====================================================
-   * НАСТРОЙКА
-   * =====================================================
-   *
-   * Файл products.json должен лежать рядом
-   * с index.html.
-   */
+let products = [];
 
-  const DATA_URL = "./products.json";
+let currentCategory = "all";
 
+const productsContainer =
+    document.getElementById("products");
 
-  let products = [];
-  let filteredProducts = [];
+const searchInput =
+    document.getElementById("search");
 
 
-  /*
-   * =====================================================
-   * ЗАГРУЗКА JSON
-   * =====================================================
-   */
+// ==============================
+// ЗАГРУЗКА КАТАЛОГА
+// ==============================
 
-  async function loadProducts() {
-
-    const container =
-      document.getElementById("products");
+async function loadProducts() {
 
     try {
 
-      const response =
-        await fetch(
-          DATA_URL + "?v=" + Date.now()
-        );
-
-      if (!response.ok) {
-        throw new Error(
-          "products.json не найден"
-        );
-      }
-
-      const data =
-        await response.json();
-
-
-      if (Array.isArray(data)) {
-
-        products = data;
-
-      } else if (
-        data &&
-        Array.isArray(data.products)
-      ) {
-
-        products = data.products;
-
-      } else {
-
-        products = [];
-
-      }
-
-
-      /*
-       * Убираем мусорные позиции.
-       */
-
-      products =
-        products.filter(product => {
-
-          if (
-            !product ||
-            !product.name
-          ) {
-            return false;
-          }
-
-
-          const name =
-            String(product.name)
-              .toLowerCase();
-
-
-          const badWords = [
-            "продукция apple",
-            "apple brand zone",
-            "store77 магазин",
-            "магазин оригинальной техники"
-          ];
-
-
-          return !badWords.some(
-            word => name.includes(word)
-          );
-
-        });
-
-
-      filteredProducts =
-        [...products];
-
-
-      renderProducts();
-
-    }
-
-    catch (error) {
-
-      console.error(error);
-
-      container.innerHTML = `
-
-        <div
-          class="loading"
-          style="
-            color:#ff7070;
-            grid-column:1/-1;
-          "
-        >
-
-          ❌ Не удалось загрузить каталог.
-
-          <br><br>
-
-          Проверь файл
-          <b>products.json</b>.
-
-        </div>
-
-      `;
-
-      document.getElementById(
-        "counter"
-      ).textContent = "Ошибка";
-
-    }
-
-  }
-
-
-  /*
-   * =====================================================
-   * ЦЕНА
-   * =====================================================
-   */
-
-  function formatPrice(price) {
-
-    if (
-      price === null ||
-      price === undefined
-    ) {
-      return "Цена не указана";
-    }
-
-
-    const value =
-      String(price).trim();
-
-
-    if (
-      !value ||
-      value === "—"
-    ) {
-      return "Цена не указана";
-    }
-
-
-    return value;
-
-  }
-
-
-  /*
-   * =====================================================
-   * КАРТИНКА
-   * =====================================================
-   *
-   * Используем:
-   *
-   * image
-   * images[0]
-   * photo
-   * picture
-   *
-   * Никакого перехода на Store77.
-   */
-
-  function getImage(product) {
-
-    if (
-      product.image &&
-      typeof product.image === "string"
-    ) {
-      return product.image;
-    }
-
-
-    if (
-      Array.isArray(product.images) &&
-      product.images.length
-    ) {
-      return product.images[0];
-    }
-
-
-    if (
-      product.photo &&
-      typeof product.photo === "string"
-    ) {
-      return product.photo;
-    }
-
-
-    if (
-      product.picture &&
-      typeof product.picture === "string"
-    ) {
-      return product.picture;
-    }
-
-
-    return "";
-
-  }
-
-
-  /*
-   * =====================================================
-   * КАРТОЧКИ
-   * =====================================================
-   */
-
-  function renderProducts() {
-
-    const container =
-      document.getElementById("products");
-
-
-    document.getElementById(
-      "counter"
-    ).textContent =
-      `${filteredProducts.length} товаров`;
-
-
-    if (!filteredProducts.length) {
-
-      container.innerHTML = `
-
-        <div
-          class="loading"
-          style="grid-column:1/-1"
-        >
-          😔 Ничего не найдено
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    container.innerHTML =
-      filteredProducts
-        .map((product, index) => {
-
-          const image =
-            getImage(product);
-
-
-          const memory =
-            product.memory ||
-            product.storage ||
-            "";
-
-
-          const color =
-            product.color ||
-            "";
-
-
-          const meta = [
-            memory,
-            color
-          ]
-            .filter(Boolean)
-            .join(" · ");
-
-
-          return `
-
-            <article class="product">
-
-              <div class="product-image">
-
-                ${
-                  image
-                  ?
-
-                  `
-
-                  <img
-                    src="${escapeHtml(image)}"
-                    alt="${escapeHtml(product.name)}"
-                    loading="lazy"
-                    onerror="imageError(this)"
-                  >
-
-                  `
-
-                  :
-
-                  `
-
-                  <div class="image-placeholder">
-                    📱
-                  </div>
-
-                  `
-                }
-
-              </div>
-
-
-              <div class="product-body">
-
-                <div class="product-name">
-                  ${escapeHtml(product.name)}
-                </div>
-
-
-                <div class="product-meta">
-                  ${
-                    meta
-                    ?
-                    escapeHtml(meta)
-                    :
-                    "Характеристики уточняются"
-                  }
-                </div>
-
-
-                <div class="price">
-                  ${escapeHtml(
-                    formatPrice(product.price)
-                  )}
-                </div>
-
-
-                ${
-                  product.available !== false
-
-                  ?
-
-                  `
-
-                  <div class="stock">
-
-                    <span class="stock-dot"></span>
-
-                    В наличии
-
-                  </div>
-
-                  `
-
-                  :
-
-                  `
-
-                  <div class="stock out">
-
-                    <span class="stock-dot"></span>
-
-                    Нет в наличии
-
-                  </div>
-
-                  `
-                }
-
-
-                <button
-                  class="details"
-                  onclick="openProduct(${index})"
-                >
-                  Подробнее →
-                </button>
-
-              </div>
-
-            </article>
-
-          `;
-
-        })
-        .join("");
-
-  }
-
-
-  /*
-   * =====================================================
-   * ЕСЛИ КАРТИНКА НЕ ЗАГРУЗИЛАСЬ
-   * =====================================================
-   */
-
-  function imageError(img) {
-
-    img.style.display = "none";
-
-    const parent =
-      img.parentElement;
-
-
-    parent.innerHTML = `
-
-      <div class="image-placeholder">
-        📱
-      </div>
-
-    `;
-
-  }
-
-
-  /*
-   * =====================================================
-   * ОТКРЫТЬ ТОВАР
-   * =====================================================
-   */
-
-  function openProduct(index) {
-
-    const product =
-      filteredProducts[index];
-
-
-    if (!product) {
-      return;
-    }
-
-
-    const image =
-      getImage(product);
-
-
-    const brand =
-      product.brand ||
-      detectBrand(product.name);
-
-
-    const memory =
-      product.memory ||
-      product.storage ||
-      "—";
-
-
-    const color =
-      product.color ||
-      "—";
-
-
-    const specs = [];
-
-
-    if (brand) {
-      specs.push([
-        "Бренд",
-        brand
-      ]);
-    }
-
-
-    if (memory !== "—") {
-
-      specs.push([
-        "Память",
-        memory
-      ]);
-
-    }
-
-
-    if (color !== "—") {
-
-      specs.push([
-        "Цвет",
-        color
-      ]);
-
-    }
-
-
-    if (product.ram) {
-
-      specs.push([
-        "Оперативная память",
-        product.ram
-      ]);
-
-    }
-
-
-    if (product.screen) {
-
-      specs.push([
-        "Экран",
-        product.screen
-      ]);
-
-    }
-
-
-    if (product.battery) {
-
-      specs.push([
-        "Аккумулятор",
-        product.battery
-      ]);
-
-    }
-
-
-    if (product.camera) {
-
-      specs.push([
-        "Камера",
-        product.camera
-      ]);
-
-    }
-
-
-    specs.push([
-
-      "Наличие",
-
-      product.available !== false
-        ? "В наличии"
-        : "Нет в наличии"
-
-    ]);
-
-
-    document.getElementById(
-      "productDetail"
-    ).innerHTML = `
-
-      <div class="detail">
-
-
-        <div class="detail-image">
-
-          ${
-            image
-
-            ?
-
-            `
-
-            <img
-              src="${escapeHtml(image)}"
-              alt="${escapeHtml(product.name)}"
-              onerror="detailImageError(this)"
-            >
-
-            `
-
-            :
-
-            `
-
-            <div class="image-placeholder">
-              📱
-            </div>
-
-            `
-          }
-
-        </div>
-
-
-        <div class="detail-info">
-
-
-          <div class="brand">
-
-            ${escapeHtml(
-              brand || "TECH"
-            )}
-
-          </div>
-
-
-          <h1 class="detail-title">
-
-            ${escapeHtml(
-              product.name
-            )}
-
-          </h1>
-
-
-          <div class="detail-price">
-
-            ${escapeHtml(
-              formatPrice(product.price)
-            )}
-
-          </div>
-
-
-          ${
-            product.available !== false
-
-            ?
-
-            `
-
-            <div class="detail-stock">
-
-              🟢
-
-              В наличии
-
-            </div>
-
-            `
-
-            :
-
-            `
-
-            <div
-              class="detail-stock"
-              style="
-                color:#ff6969;
-                background:rgba(255,80,80,.08);
-                border-color:rgba(255,80,80,.2);
-              "
-            >
-
-              🔴
-
-              Нет в наличии
-
-            </div>
-
-            `
-          }
-
-
-          <div class="specs">
-
-            ${
-              specs
-                .map(spec => `
-
-                  <div class="spec">
-
-                    <div class="spec-name">
-
-                      ${escapeHtml(
-                        spec[0]
-                      )}
-
-                    </div>
-
-
-                    <div class="spec-value">
-
-                      ${escapeHtml(
-                        String(spec[1])
-                      )}
-
-                    </div>
-
-                  </div>
-
-                `)
-                .join("")
-            }
-
-          </div>
-
-
-          <button
-            class="contact"
-            onclick="contactSeller()"
-          >
-
-            💬 Связаться с продавцом
-
-          </button>
-
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    document
-      .getElementById(
-        "catalogPage"
-      )
-      .classList.add("hidden");
-
-
-    document
-      .getElementById(
-        "productPage"
-      )
-      .classList.add("active");
-
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-
-    /*
-     * ВАЖНО:
-     * URL Store77 здесь НИГДЕ не используется.
-     */
-
-    history.pushState(
-      {},
-      "",
-      "#product-" + index
-    );
-
-  }
-
-
-  /*
-   * =====================================================
-   * ОШИБКА БОЛЬШОЙ КАРТИНКИ
-   * =====================================================
-   */
-
-  function detailImageError(img) {
-
-    img.style.display = "none";
-
-    img.parentElement.innerHTML = `
-
-      <div class="image-placeholder">
-        📱
-      </div>
-
-    `;
-
-  }
-
-
-  /*
-   * =====================================================
-   * НАЗАД
-   * =====================================================
-   */
-
-  function showCatalog() {
-
-    document
-      .getElementById(
-        "catalogPage"
-      )
-      .classList.remove("hidden");
-
-
-    document
-      .getElementById(
-        "productPage"
-      )
-      .classList.remove("active");
-
-
-    history.pushState(
-      {},
-      "",
-      window.location.pathname
-    );
-
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  }
-
-
-  /*
-   * =====================================================
-   * ПОИСК
-   * =====================================================
-   */
-
-  document
-    .getElementById(
-      "searchInput"
-    )
-    .addEventListener(
-      "input",
-      function () {
-
-        const query =
-          this.value
-            .trim()
-            .toLowerCase();
-
-
-        if (!query) {
-
-          filteredProducts =
-            [...products];
-
-        } else {
-
-          filteredProducts =
-            products.filter(product => {
-
-              const text = [
-
-                product.name,
-                product.brand,
-                product.memory,
-                product.storage,
-                product.color
-
-              ]
-                .filter(Boolean)
-                .join(" ")
-                .toLowerCase();
-
-
-              return text.includes(
-                query
-              );
-
-            });
-
+        const response =
+            await fetch("products.json?t=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("products.json не найден");
         }
 
+        products = await response.json();
 
         renderProducts();
 
-      }
-    );
+    } catch (error) {
+
+        console.error(error);
+
+        productsContainer.innerHTML = `
+            <div class="empty">
+                <h2>Каталог пока загружается</h2>
+                <p>
+                    Проверь файл products.json
+                </p>
+            </div>
+        `;
+    }
+}
 
 
-  /*
-   * =====================================================
-   * БРЕНД
-   * =====================================================
-   */
+// ==============================
+// ПОКАЗ ТОВАРОВ
+// ==============================
 
-  function detectBrand(name) {
+function renderProducts() {
 
-    const text =
-      String(name || "")
-        .toLowerCase();
+    const search =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    let filtered = products.filter(product => {
+
+        const name =
+            (product.name || "").toLowerCase();
+
+        const brand =
+            (product.brand || "").toLowerCase();
+
+        const matchesSearch =
+            name.includes(search) ||
+            brand.includes(search);
+
+        const matchesCategory =
+            currentCategory === "all" ||
+            brand === currentCategory.toLowerCase();
+
+        return matchesSearch && matchesCategory;
+
+    });
 
 
-    if (
-      text.includes("iphone") ||
-      text.includes("apple")
-    ) {
-      return "Apple";
+    if (!filtered.length) {
+
+        productsContainer.innerHTML = `
+            <div class="empty">
+                <h2>Ничего не найдено</h2>
+                <p>Попробуй изменить запрос</p>
+            </div>
+        `;
+
+        return;
     }
 
 
-    if (text.includes("samsung")) {
-      return "Samsung";
-    }
+    productsContainer.innerHTML =
+        filtered.map((product, index) => {
+
+            const image =
+                product.image ||
+                "https://store77.net/bitrix/templates/v11/img/og-default.png";
+
+            return `
+
+                <article class="product">
+
+                    <div class="product-image">
+
+                        <img
+                            src="${image}"
+                            alt="${escapeHtml(product.name || "")}"
+                            loading="lazy"
+                            onerror="this.src='https://store77.net/bitrix/templates/v11/img/og-default.png'"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            ${escapeHtml(product.name || "Товар")}
+                        </div>
+
+                        <div class="product-meta">
+
+                            ${product.memory || ""}
+
+                            ${product.color
+                                ? " · " + escapeHtml(product.color)
+                                : ""}
+
+                        </div>
+
+                        <div class="price">
+                            ${escapeHtml(product.price || "Цена уточняется")}
+                        </div>
+
+                        <div class="stock">
+                            ${product.available
+                                ? "● В наличии"
+                                : "● Нет в наличии"}
+                        </div>
+
+                        <button
+                            class="details"
+                            onclick="openProduct(${products.indexOf(product)})"
+                        >
+                            Подробнее
+                        </button>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
+}
 
 
-    if (
-      text.includes("xiaomi") ||
-      text.includes("redmi") ||
-      text.includes("poco")
-    ) {
-      return "Xiaomi";
-    }
+// ==============================
+// ОТКРЫТИЕ ТОВАРА
+// ==============================
+
+function openProduct(index) {
+
+    const product = products[index];
+
+    if (!product) return;
 
 
-    if (text.includes("honor")) {
-      return "Honor";
-    }
+    document.getElementById("modalImage").src =
+        product.image ||
+        "https://store77.net/bitrix/templates/v11/img/og-default.png";
+
+    document.getElementById("modalName").textContent =
+        product.name || "Товар";
+
+    document.getElementById("modalPrice").textContent =
+        product.price || "Цена уточняется";
+
+    document.getElementById("modalBrand").textContent =
+        product.brand || "—";
+
+    document.getElementById("modalMemory").textContent =
+        product.memory || "—";
+
+    document.getElementById("modalColor").textContent =
+        product.color || "—";
+
+    document.getElementById("modalAvailable").textContent =
+        product.available
+            ? "В наличии"
+            : "Нет в наличии";
 
 
-    if (text.includes("huawei")) {
-      return "Huawei";
-    }
+    document.getElementById("modal")
+        .classList.add("active");
+}
 
 
-    if (text.includes("pixel")) {
-      return "Google";
-    }
+// ==============================
+// ЗАКРЫТИЕ
+// ==============================
+
+function closeModal() {
+
+    document.getElementById("modal")
+        .classList.remove("active");
+
+}
 
 
-    if (text.includes("oneplus")) {
-      return "OnePlus";
-    }
+document.getElementById("modal")
+    .addEventListener("click", function(e) {
+
+        if (e.target === this) {
+            closeModal();
+        }
+
+    });
 
 
-    if (text.includes("nothing")) {
-      return "Nothing";
-    }
+// ==============================
+// ПОИСК
+// ==============================
+
+searchInput.addEventListener(
+    "input",
+    renderProducts
+);
 
 
-    return "";
+// ==============================
+// КАТЕГОРИИ
+// ==============================
 
-  }
+document.querySelectorAll(".category")
+    .forEach(button => {
 
+        button.addEventListener("click", () => {
 
-  /*
-   * =====================================================
-   * КОНТАКТ
-   * =====================================================
-   */
+            document
+                .querySelectorAll(".category")
+                .forEach(btn =>
+                    btn.classList.remove("active")
+                );
 
-  function contactSeller() {
+            button.classList.add("active");
 
-    alert(
-      "Связь с продавцом скоро будет доступна."
-    );
+            currentCategory =
+                button.dataset.category;
 
-  }
+            renderProducts();
 
+        });
 
-  /*
-   * =====================================================
-   * ЗАЩИТА HTML
-   * =====================================================
-   */
-
-  function escapeHtml(value) {
-
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-
-  }
+    });
 
 
-  /*
-   * =====================================================
-   * НАЗАД В БРАУЗЕРЕ
-   * =====================================================
-   */
+// ==============================
+// ЗАЩИТА HTML
+// ==============================
 
-  window.addEventListener(
-    "popstate",
-    function () {
+function escapeHtml(text) {
 
-      showCatalog();
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-    }
-  );
+}
 
 
-  /*
-   * =====================================================
-   * START
-   * =====================================================
-   */
+// ==============================
+// START
+// ==============================
 
-  loadProducts();
+loadProducts();
 
 </script>
 
