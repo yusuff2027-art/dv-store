@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>D&V STORE — Смартфоны в Москве</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #ffffff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5,5,5,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #222;
+}
+
+.nav {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #777;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.order-button {
+    background: white;
+    color: black;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.14),
+        transparent 70%
+    );
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.location {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 12vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -7px;
+    margin-bottom: 30px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #999;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 16px 25px;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-white {
+    background: white;
+    color: black;
+}
+
+.btn-dark {
+    background: #111;
+    border: 1px solid #333;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.small-title {
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-size: clamp(35px, 6vw, 60px);
+    letter-spacing: -3px;
+}
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.product {
+    background: linear-gradient(
+        145deg,
+        #151515,
+        #0b0b0b
+    );
+    border: 1px solid #242424;
+    border-radius: 24px;
+    padding: 25px;
+    transition: 0.25s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.phone-image {
+    height: 270px;
+    border-radius: 18px;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #333,
+            #111 60%
+        );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    margin-bottom: 22px;
+}
+
+.product h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.product p {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.product .btn {
+    width: 100%;
+    text-align: center;
+}
+
+/* SERVICES */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.service {
+    padding: 30px;
+    min-height: 250px;
+    border-radius: 24px;
+    border: 1px solid #242424;
+    background: #101010;
+}
+
+.service-icon {
+    font-size: 45px;
+    margin-bottom: 35px;
+}
+
+.service h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.service p {
+    color: #888;
+    line-height: 1.6;
+}
+
+/* ABOUT */
+
+.about {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 18px;
+}
+
+.about-card {
+    padding: 40px;
+    border-radius: 28px;
+    border: 1px solid #242424;
+    background: linear-gradient(
+        145deg,
+        #151515,
+        #0b0b0b
+    );
+}
+
+.about-card p {
+    margin-top: 20px;
+    color: #999;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.stats {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+}
+
+.stat {
+    border: 1px solid #242424;
+    padding: 18px;
+    border-radius: 16px;
+    background: #0b0b0b;
+}
+
+.stat strong {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.stat span {
+    color: #777;
+    font-size: 13px;
+}
+
+/* CONTACT */
+
+.contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.contact {
+    padding: 35px;
+    border-radius: 25px;
+    border: 1px solid #242424;
+    background: #101010;
+}
+
+.contact h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    color: #888;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #222;
+    padding: 30px 0;
+    color: #666;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .products,
+    .services {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about,
+    .contacts {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 550px) {
+
+    section {
+        padding: 70px 0;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .products,
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .phone-image {
+        height: 230px;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a href="#" class="logo">
+D&V <span>STORE</span>
+</a>
+
+<nav class="nav-links">
+
+<a href="#catalog">Каталог</a>
+<a href="#services">Услуги</a>
+<a href="#about">О нас</a>
+<a href="#contacts">Контакты</a>
+
+</nav>
+
+<a
+href="https://t.me/DV_STORE_ORDER"
+target="_blank"
+class="order-button"
+>
+Заказать
+</a>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<div class="location">
+📍 Москва · Профсоюзная 109 к2
+</div>
+
+<h1>
+D&V<br>
+STORE
+</h1>
+
+<p>
+Смартфоны и техника по выгодным ценам.
+Покупка, продажа, обмен, ремонт
+и аксессуары в одном месте.
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#catalog"
+class="btn btn-white"
+>
+Смотреть каталог
+</a>
+
+<a
+href="https://t.me/DV_STORE_ORDER"
+target="_blank"
+class="btn btn-dark"
+>
+Написать нам
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CATALOG -->
+
+<section id="catalog">
+
+<div class="container">
+
+<div class="section-title">
+
+<div class="small-title">
+Каталог
+</div>
+
+<h2>
+Популярные устройства
+</h2>
+
+</div>
+
+
+<div class="products">
+
+
+<div class="product">
+
+<div class="phone-image">
+📱
+</div>
+
+<h3>
+iPhone
+</h3>
+
+<p>
+Актуальные модели Apple
+</p>
+
+<div class="price">
+Смотреть каталог
+</div>
+
+<a
+href="https://t.me/DV_STORE_ORDER"
+target="_blank"
+class="btn btn-white"
+>
+Заказать
+</a>
+
+</div>
+
+
+
+<div class="product">
+
+<div class="phone-image">
+📱
+</div>
+
+<h3>
+Samsung
+</h3>
+
+<p>
+Galaxy и другие модели
+</p>
+
+<div class="price">
+Смотреть каталог
+</div>
+
+<a
+href="https://t.me/DV_STORE_ORDER"
+target="_blank"
+class="btn btn-white"
+>
+Заказать
+</a>
+
+</div>
+
+
+
+<div class="product">
+
+<div class="phone-image">
+📱
+</div>
+
+<h3>
+Android
+</h3>
+
+<p>
+Xiaomi, Google и другие
+</p>
+
+<div class="price">
+Смотреть каталог
+</div>
+
+<a
+href="https://t.me/DV_STORE_ORDER"
+target="_blank"
+class="btn btn-white"
+>
+Заказать
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<div class="small-title">
+D&V SERVICE
+</div>
+
+<h2>
+Больше, чем магазин
+</h2>
+
+</div>
+
+
+<div class="services">
+
+
+<div class="service">
+
+<div class="service-icon">
+🔄
+</div>
+
+<h3>
+Покупка и обмен
+</h3>
+
+<p>
+Купим ваш смартфон или предложим
+выгодный вариант обмена.
+</p>
+
+</div>
+
+
+
+<div class="service">
+
+<div class="service-icon">
+🛠️
+</div>
+
+<h3>
+Ремонт
+</h3>
+
+<p>
+Поможем с ремонтом и обслуживанием
+мобильной техники.
+</p>
+
+</div>
+
+
+
+<div class="service">
+
+<div class="service-icon">
+🎧
+</div>
+
+<h3>
+Аксессуары
+</h3>
+
+<p>
+Всё необходимое для защиты
+и комфортного использования смартфона.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="about">
+
+
+<div class="about-card">
+
+<div class="small-title">
+О магазине
+</div>
+
+<h2>
+D&V STORE
+</h2>
+
+<p>
+Магазин смартфонов в Москве.
+Помогаем подобрать технику под задачи
+и бюджет. Работаем с покупкой,
+продажей, обменом, ремонтом телефонов
+и аксессуарами.
+</p>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<strong>
+iPhone
+</strong>
+
+<span>
+и Android
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+Москва
+</strong>
+
+<span>
+Профсоюзная 109 к2
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+Telegram
+</strong>
+
+<span>
+Быстрый заказ
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+Online
+</strong>
+
+<span>
+Актуальный каталог
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="about-card">
+
+<div class="small-title">
+Telegram
+</div>
+
+<h2>
+Следи за новинками
+</h2>
+
+<p>
+Поступления, выгодные предложения
+и новости магазина публикуем
+в нашем Telegram-канале.
+</p>
+
+<br>
+
+<a
+href="https://t.me/D_VSTORE"
+target="_blank"
+class="btn btn-white"
+>
+Открыть канал
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CONTACTS -->
+
+<section id="contacts">
+
+<div class="container">
+
+<div class="section-title">
+
+<div class="small-title">
+Контакты
+</div>
+
+<h2>
+Заезжай к нам
+</h2>
+
+</div>
+
+
+<div class="contacts">
+
+
+<div class="contact">
+
+<h3>
+📍 D&V STORE
+</h3>
+
+<p>
+
+Москва,<br>
+Профсоюзная ул., 109, корп. 2
+
+</p>
+
+<a
+href="https://yandex.ru/maps/org/dv_store/179122901606"
+target="_blank"
+class="btn btn-white"
+>
+Открыть карту
+</a>
+
+</div>
+
+
+
+<div class="contact">
+
+<h3>
+📲 Заказ
+</h3>
+
+<p>
+
+Напиши нам в Telegram.
+Ответим по наличию,
+цене и условиям.
+
+</p>
+
+<a
+href="https://t.me/DV_STORE_ORDER"
+target="_blank"
+class="btn btn-white"
+>
+@DV_STORE_ORDER
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<div class="container footer">
+
+<div>
+© 2026 D&V STORE
+</div>
+
+<div>
+iPhone · Android · Ремонт · Аксессуары
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
