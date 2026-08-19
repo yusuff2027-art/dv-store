@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>D&V STORE — техника</title>
+<title>D&V STORE — магазин техники</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -21,236 +14,140 @@
 }
 
 body {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: #f5f5f7;
     color: #111;
 }
 
 header {
+    background: #111;
+    color: white;
+    padding: 18px 20px;
     position: sticky;
     top: 0;
     z-index: 100;
-
-    background: rgba(17,17,17,.96);
-
-    backdrop-filter: blur(15px);
-
-    color: white;
-
-    padding: 16px 20px;
 }
 
 .header-inner {
-    max-width: 1250px;
+    max-width: 1200px;
     margin: auto;
-
     display: flex;
     align-items: center;
-    gap: 25px;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .logo {
     font-size: 24px;
     font-weight: 900;
+    letter-spacing: 1px;
     white-space: nowrap;
 }
 
 .logo span {
-    color: #ff7900;
+    color: #ff7a00;
 }
 
 .search {
     flex: 1;
+    max-width: 500px;
 }
 
 .search input {
     width: 100%;
-
-    padding: 14px 20px;
-
+    padding: 13px 18px;
     border: none;
-    outline: none;
-
     border-radius: 30px;
-
-    font-size: 16px;
+    font-size: 15px;
+    outline: none;
 }
 
 .container {
-    max-width: 1250px;
-
+    max-width: 1200px;
     margin: auto;
-
-    padding: 25px 20px;
+    padding: 20px;
 }
 
 .hero {
-    background:
-        linear-gradient(
-            135deg,
-            #111,
-            #292929
-        );
-
+    background: linear-gradient(135deg, #111, #292929);
     color: white;
-
-    border-radius: 25px;
-
-    padding: 40px 30px;
-
-    margin-bottom: 25px;
+    border-radius: 22px;
+    padding: 35px 25px;
+    margin-bottom: 22px;
 }
 
 .hero h1 {
-    font-size: 42px;
-
+    font-size: 38px;
     margin-bottom: 10px;
 }
 
 .hero p {
-    color: #cfcfcf;
-
-    font-size: 17px;
-}
-
-.stats {
-    margin-top: 20px;
-
-    display: flex;
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-.stat {
-    background: rgba(255,255,255,.08);
-
-    border: 1px solid
-        rgba(255,255,255,.1);
-
-    border-radius: 12px;
-
-    padding: 10px 14px;
-
-    font-size: 14px;
+    color: #ccc;
+    font-size: 16px;
 }
 
 .categories {
     display: flex;
-
     gap: 10px;
-
     overflow-x: auto;
-
     padding-bottom: 15px;
-
-    scrollbar-width: none;
-}
-
-.categories::-webkit-scrollbar {
-    display: none;
+    margin-bottom: 10px;
 }
 
 .category {
     flex-shrink: 0;
-
-    border: 1px solid #ddd;
-
     background: white;
-
+    border: 1px solid #ddd;
     border-radius: 25px;
-
-    padding: 11px 18px;
-
+    padding: 10px 17px;
     cursor: pointer;
-
-    font-size: 14px;
-
     transition: .2s;
+    font-size: 14px;
 }
 
 .category:hover,
 .category.active {
     background: #111;
-
     color: white;
-
-    border-color: #111;
 }
 
 .products {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 18px;
 }
 
 .product {
     background: white;
-
-    border-radius: 20px;
-
+    border-radius: 18px;
     overflow: hidden;
-
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.07);
-
+    box-shadow: 0 4px 18px rgba(0,0,0,.07);
     transition: .25s;
 }
 
 .product:hover {
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,.12);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
 }
 
 .product-image {
-    height: 245px;
-
-    background: #fafafa;
-
-    padding: 18px;
-
+    height: 230px;
+    background: #f7f7f7;
     display: flex;
-
     align-items: center;
     justify-content: center;
-
+    padding: 15px;
     position: relative;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
-
-    transition: .2s;
 }
 
-.product:hover
-.product-image img {
-    transform: scale(1.04);
-}
-
-.no-image {
-    color: #aaa;
-
-    text-align: center;
-
-    font-size: 14px;
+.image-error {
+    font-size: 45px;
 }
 
 .product-info {
@@ -258,270 +155,158 @@ header {
 }
 
 .product-name {
-    font-size: 16px;
-
-    font-weight: 750;
-
-    line-height: 1.3;
-
-    min-height: 42px;
+    font-size: 17px;
+    font-weight: 700;
+    min-height: 44px;
 }
 
 .product-meta {
     color: #777;
-
-    font-size: 13px;
-
+    font-size: 14px;
     margin-top: 8px;
-
     min-height: 18px;
 }
 
 .price {
     font-size: 22px;
-
     font-weight: 900;
-
-    margin-top: 13px;
+    margin-top: 12px;
 }
 
 .stock {
-    margin-top: 6px;
-
-    font-size: 13px;
-
     color: #159447;
-}
-
-.out {
-    color: #d33;
+    font-size: 13px;
+    margin-top: 6px;
 }
 
 .details {
     width: 100%;
-
     border: none;
-
     background: #111;
-
     color: white;
-
     padding: 13px;
-
-    border-radius: 11px;
-
+    border-radius: 10px;
     margin-top: 14px;
-
     cursor: pointer;
-
     font-weight: 700;
-
-    font-size: 14px;
-
-    transition: .2s;
 }
 
 .details:hover {
-    background: #ff7900;
+    background: #ff7a00;
 }
 
 .empty {
-    grid-column: 1 / -1;
-
     text-align: center;
-
-    padding: 70px 20px;
-
+    padding: 60px 20px;
     color: #777;
+    grid-column: 1 / -1;
 }
 
-.loader {
-    grid-column: 1 / -1;
-
+.loading {
     text-align: center;
-
-    padding: 70px;
-
+    padding: 60px;
     color: #777;
+    grid-column: 1 / -1;
 }
 
 .modal {
     display: none;
-
     position: fixed;
-
     inset: 0;
-
+    background: rgba(0,0,0,.7);
     z-index: 1000;
-
-    background:
-        rgba(0,0,0,.75);
-
     padding: 20px;
-
     overflow-y: auto;
 }
 
 .modal.active {
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 }
 
 .modal-box {
     width: 100%;
-
-    max-width: 900px;
-
+    max-width: 850px;
     background: white;
-
-    border-radius: 25px;
-
+    border-radius: 24px;
     padding: 25px;
-
     position: relative;
-
-    max-height: 95vh;
-
-    overflow-y: auto;
 }
 
 .close {
     position: absolute;
-
-    right: 20px;
-    top: 12px;
-
-    width: 38px;
-    height: 38px;
-
-    border-radius: 50%;
-
-    background: #eee;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
+    right: 18px;
+    top: 15px;
     font-size: 28px;
-
     cursor: pointer;
-
     z-index: 5;
 }
 
 .modal-content {
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
 }
 
 .modal-image {
-    height: 450px;
-
-    background: #f7f7f7;
-
-    border-radius: 20px;
-
+    height: 400px;
+    background: #f6f6f6;
+    border-radius: 18px;
     display: flex;
-
     align-items: center;
     justify-content: center;
-
-    padding: 25px;
+    padding: 20px;
 }
 
 .modal-image img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
 }
 
 .modal-title {
     font-size: 30px;
-
     font-weight: 900;
-
-    line-height: 1.15;
-
-    padding-right: 40px;
+    margin-bottom: 15px;
 }
 
 .modal-price {
-    font-size: 31px;
-
+    font-size: 30px;
     font-weight: 900;
-
     margin: 20px 0;
 }
 
 .modal-row {
-    padding: 13px 0;
-
-    border-bottom:
-        1px solid #eee;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
 }
 
 .modal-label {
-    color: #888;
-
+    color: #777;
     font-size: 13px;
-
     margin-bottom: 3px;
 }
 
-.modal-value {
-    font-weight: 600;
-}
-
-.source-note {
-    margin-top: 20px;
-
-    padding: 12px;
-
-    background: #f5f5f7;
-
-    border-radius: 10px;
-
-    color: #777;
-
-    font-size: 12px;
-}
-
 footer {
-    margin-top: 60px;
-
+    margin-top: 50px;
     background: #111;
-
-    color: #999;
-
-    text-align: center;
-
+    color: #aaa;
     padding: 30px 20px;
+    text-align: center;
 }
 
-@media (max-width: 1050px) {
-
+@media (max-width: 1000px) {
     .products {
-        grid-template-columns:
-            repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
-
 }
 
-@media (max-width: 750px) {
+@media (max-width: 700px) {
 
     .header-inner {
         flex-direction: column;
-
-        gap: 12px;
+        align-items: stretch;
     }
 
     .logo {
@@ -529,14 +314,12 @@ footer {
     }
 
     .products {
-        grid-template-columns:
-            repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
 
     .product-image {
-        height: 190px;
+        height: 180px;
     }
 
     .product-info {
@@ -544,19 +327,15 @@ footer {
     }
 
     .product-name {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .price {
         font-size: 18px;
     }
 
-    .hero {
-        padding: 30px 20px;
-    }
-
     .hero h1 {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     .modal-content {
@@ -566,42 +345,27 @@ footer {
     .modal-image {
         height: 300px;
     }
-
-    .modal-title {
-        font-size: 25px;
-    }
-
 }
 
 @media (max-width: 430px) {
 
-    .container {
-        padding:
-            15px 10px;
-    }
-
     .products {
-        gap: 9px;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .product-image {
-        height: 155px;
-
-        padding: 10px;
+        height: 150px;
     }
 
-    .product-info {
-        padding: 10px;
+    .product-name {
+        font-size: 14px;
     }
 
-    .details {
-        padding: 11px 5px;
+    .price {
+        font-size: 17px;
     }
-
 }
-
 </style>
-
 </head>
 
 <body>
@@ -615,13 +379,11 @@ footer {
         </div>
 
         <div class="search">
-
             <input
-                id="search"
                 type="text"
-                placeholder="🔎 Найти iPhone, Samsung, Xiaomi..."
+                id="search"
+                placeholder="🔎 Найти товар..."
             >
-
         </div>
 
     </div>
@@ -636,89 +398,51 @@ footer {
         <h1>D&V STORE</h1>
 
         <p>
-            Техника и электроника
+            Техника и электроника по актуальным ценам
         </p>
-
-        <div class="stats">
-
-            <div class="stat">
-                📦 <span id="productCount">0</span> товаров
-            </div>
-
-            <div class="stat">
-                🔄 Каталог обновляется
-            </div>
-
-        </div>
 
     </section>
 
 
-    <div
-        class="categories"
-        id="categories"
-    >
+    <div class="categories">
 
-        <button
-            class="category active"
-            data-category="all"
-        >
-            Все
+        <button class="category active" data-category="all">
+            Все товары
         </button>
 
-        <button
-            class="category"
-            data-category="Apple"
-        >
+        <button class="category" data-category="Apple">
             🍎 Apple
         </button>
 
-        <button
-            class="category"
-            data-category="Samsung"
-        >
+        <button class="category" data-category="Samsung">
             Samsung
         </button>
 
-        <button
-            class="category"
-            data-category="Xiaomi"
-        >
+        <button class="category" data-category="Xiaomi">
             Xiaomi
         </button>
 
-        <button
-            class="category"
-            data-category="Honor"
-        >
-            Honor
-        </button>
-
-        <button
-            class="category"
-            data-category="Google"
-        >
-            Google
-        </button>
-
-        <button
-            class="category"
-            data-category="OnePlus"
-        >
-            OnePlus
-        </button>
-
-        <button
-            class="category"
-            data-category="Huawei"
-        >
+        <button class="category" data-category="Huawei">
             Huawei
         </button>
 
-        <button
-            class="category"
-            data-category="Nothing"
-        >
+        <button class="category" data-category="Honor">
+            Honor
+        </button>
+
+        <button class="category" data-category="Google">
+            Google
+        </button>
+
+        <button class="category" data-category="OnePlus">
+            OnePlus
+        </button>
+
+        <button class="category" data-category="Poco">
+            Poco
+        </button>
+
+        <button class="category" data-category="Nothing">
             Nothing
         </button>
 
@@ -730,7 +454,7 @@ footer {
         id="products"
     >
 
-        <div class="loader">
+        <div class="loading">
             Загружаем каталог...
         </div>
 
@@ -746,8 +470,6 @@ footer {
 </footer>
 
 
-<!-- MODAL -->
-
 <div
     class="modal"
     id="modal"
@@ -757,7 +479,7 @@ footer {
 
         <div
             class="close"
-            id="closeModal"
+            onclick="closeModal()"
         >
             ×
         </div>
@@ -794,10 +516,9 @@ footer {
                         Бренд
                     </div>
 
-                    <div
-                        class="modal-value"
-                        id="modalBrand"
-                    ></div>
+                    <div id="modalBrand">
+                        —
+                    </div>
 
                 </div>
 
@@ -808,10 +529,9 @@ footer {
                         Память
                     </div>
 
-                    <div
-                        class="modal-value"
-                        id="modalMemory"
-                    ></div>
+                    <div id="modalMemory">
+                        —
+                    </div>
 
                 </div>
 
@@ -822,10 +542,9 @@ footer {
                         Цвет
                     </div>
 
-                    <div
-                        class="modal-value"
-                        id="modalColor"
-                    ></div>
+                    <div id="modalColor">
+                        —
+                    </div>
 
                 </div>
 
@@ -836,18 +555,9 @@ footer {
                         Наличие
                     </div>
 
-                    <div
-                        class="modal-value"
-                        id="modalAvailable"
-                    ></div>
-
-                </div>
-
-
-                <div class="source-note">
-
-                    Цена и наличие обновляются
-                    автоматически.
+                    <div id="modalAvailable">
+                        —
+                    </div>
 
                 </div>
 
@@ -868,84 +578,135 @@ let currentCategory = "all";
 
 
 const productsContainer =
-    document.getElementById(
-        "products"
-    );
+    document.getElementById("products");
 
 const searchInput =
-    document.getElementById(
-        "search"
-    );
-
-const modal =
-    document.getElementById(
-        "modal"
-    );
+    document.getElementById("search");
 
 
-function escapeHtml(value) {
 
-    return String(value ?? "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+/*
+==================================================
+ПРАВИЛЬНЫЙ ПУТЬ К КАРТИНКЕ НА GITHUB PAGES
+==================================================
+*/
+
+function getImageUrl(image) {
+
+    if (!image) {
+        return "";
+    }
+
+    image = String(image).trim();
+
+    if (!image) {
+        return "";
+    }
+
+
+    /*
+    Если scraper сохранил полный URL
+    */
+
+    if (
+        image.startsWith("http://") ||
+        image.startsWith("https://") ||
+        image.startsWith("data:")
+    ) {
+
+        return image;
+
+    }
+
+
+    /*
+    Убираем лишние ./ и /
+    */
+
+    image = image
+        .replace(/^\.\/+/, "")
+        .replace(/^\/+/, "");
+
+
+    /*
+    GitHub Pages нашего сайта
+    */
+
+    return "/dv-store/" + image;
 
 }
 
+
+
+/*
+==================================================
+ЗАЩИТА HTML
+==================================================
+*/
+
+function escapeHtml(text) {
+
+    return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/*
+==================================================
+ЗАГРУЗКА PRODUCTS.JSON
+==================================================
+*/
 
 async function loadProducts() {
 
     try {
 
-        const response =
-            await fetch(
-                "products.json?t="
-                + Date.now()
-            );
+        const response = await fetch(
+            "./products.json?t=" + Date.now()
+        );
+
 
         if (!response.ok) {
+
             throw new Error(
-                "products.json не найден"
+                "Не удалось загрузить products.json"
             );
+
         }
 
-        products =
-            await response.json();
 
-        document.getElementById(
-            "productCount"
-        ).textContent =
-            products.length;
+        products = await response.json();
+
+
+        console.log(
+            "D&V STORE: товаров:",
+            products.length
+        );
+
 
         renderProducts();
 
+
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Ошибка каталога:",
+            error
+        );
+
 
         productsContainer.innerHTML = `
 
             <div class="empty">
 
                 <h2>
-                    Не удалось загрузить каталог
+                    Ошибка загрузки каталога
                 </h2>
 
                 <p>
@@ -961,6 +722,13 @@ async function loadProducts() {
 }
 
 
+
+/*
+==================================================
+ОТОБРАЖЕНИЕ ТОВАРОВ
+==================================================
+*/
+
 function renderProducts() {
 
     const search =
@@ -973,45 +741,42 @@ function renderProducts() {
         products.filter(product => {
 
             const name =
-                String(
-                    product.name || ""
-                ).toLowerCase();
+                String(product.name || "")
+                    .toLowerCase();
+
 
             const brand =
-                String(
-                    product.brand || ""
-                ).toLowerCase();
+                String(product.brand || "")
+                    .toLowerCase();
+
 
             const category =
                 String(
-                    product.category || ""
+                    product.category ||
+                    product.brand ||
+                    ""
                 ).toLowerCase();
 
 
             const matchesSearch =
-                !search
-                ||
-                name.includes(search)
-                ||
-                brand.includes(search)
-                ||
-                category.includes(search);
+                !search ||
+                name.includes(search) ||
+                brand.includes(search);
 
 
             const matchesCategory =
-                currentCategory === "all"
-                ||
+                currentCategory === "all" ||
                 category ===
                 currentCategory.toLowerCase();
 
 
             return (
-                matchesSearch
-                &&
+                matchesSearch &&
                 matchesCategory
             );
 
         });
+
 
 
     if (!filtered.length) {
@@ -1037,142 +802,167 @@ function renderProducts() {
     }
 
 
+
     productsContainer.innerHTML =
-        filtered.map(
-            product => {
 
-                const image =
-                    product.image || "";
+        filtered.map(product => {
 
-
-                const imageHTML =
-                    image
-
-                    ?
-
-                    `
-                    <img
-                        src="${escapeHtml(image)}"
-                        alt="${escapeHtml(product.name)}"
-                        loading="lazy"
-                        onerror="
-                            this.style.display='none';
-                            this.parentElement.innerHTML='<div class=&quot;no-image&quot;>Фото пока нет</div>';
-                        "
-                    >
-                    `
-
-                    :
-
-                    `
-                    <div class="no-image">
-                        Фото пока нет
-                    </div>
-                    `;
+            const index =
+                products.indexOf(product);
 
 
-                const meta =
-                    [
-                        product.memory,
-                        product.color
-                    ]
-                    .filter(Boolean)
-                    .map(escapeHtml)
-                    .join(" · ");
+            const image =
+                getImageUrl(
+                    product.image
+                );
 
 
-                const stock =
-                    product.available
+            return `
 
-                    ?
-
-                    `
-                    <div class="stock">
-                        ● В наличии
-                    </div>
-                    `
-
-                    :
-
-                    `
-                    <div class="stock out">
-                        ● Нет в наличии
-                    </div>
-                    `;
+                <article class="product">
 
 
-                return `
+                    <div class="product-image">
 
-                    <article class="product">
+                        ${
+                            image
 
-                        <div class="product-image">
+                            ?
 
-                            ${imageHTML}
+                            `
 
-                        </div>
+                            <img
+                                src="${escapeHtml(image)}"
+                                alt="${escapeHtml(product.name || "Товар")}"
+                                loading="lazy"
 
-
-                        <div class="product-info">
-
-                            <div class="product-name">
-
-                                ${escapeHtml(
-                                    product.name
-                                    ||
-                                    "Товар"
-                                )}
-
-                            </div>
-
-
-                            <div class="product-meta">
-
-                                ${meta}
-
-                            </div>
-
-
-                            <div class="price">
-
-                                ${escapeHtml(
-                                    product.price
-                                    ||
-                                    "Цена уточняется"
-                                )}
-
-                            </div>
-
-
-                            ${stock}
-
-
-                            <button
-                                class="details"
-                                onclick="openProduct('${escapeHtml(product.id)}')"
+                                onerror="
+                                    this.style.display='none';
+                                    this.parentElement.classList.add('image-error');
+                                "
                             >
-                                Подробнее
-                            </button>
+
+                            `
+
+                            :
+
+                            `
+
+                            <div
+                                style="
+                                    font-size:50px;
+                                    color:#aaa;
+                                "
+                            >
+                                📱
+                            </div>
+
+                            `
+                        }
+
+                    </div>
+
+
+
+                    <div class="product-info">
+
+
+                        <div class="product-name">
+
+                            ${escapeHtml(
+                                product.name ||
+                                "Товар"
+                            )}
 
                         </div>
 
-                    </article>
 
-                `;
 
-            }
-        ).join("");
+                        <div class="product-meta">
+
+                            ${escapeHtml(
+                                product.memory ||
+                                ""
+                            )}
+
+                            ${
+                                product.color
+
+                                ?
+
+                                " · " +
+                                escapeHtml(
+                                    product.color
+                                )
+
+                                :
+
+                                ""
+                            }
+
+                        </div>
+
+
+
+                        <div class="price">
+
+                            ${escapeHtml(
+                                product.price ||
+                                "Цена уточняется"
+                            )}
+
+                        </div>
+
+
+
+                        <div class="stock">
+
+                            ${
+                                product.available
+
+                                ?
+
+                                "● В наличии"
+
+                                :
+
+                                "● Нет в наличии"
+                            }
+
+                        </div>
+
+
+
+                        <button
+                            class="details"
+                            onclick="openProduct(${index})"
+                        >
+                            Подробнее
+                        </button>
+
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
 
 }
 
 
-function openProduct(id) {
+
+/*
+==================================================
+ОТКРЫТЬ ТОВАР
+==================================================
+*/
+
+function openProduct(index) {
 
     const product =
-        products.find(
-            item =>
-                String(item.id)
-                === String(id)
-        );
+        products[index];
 
 
     if (!product) {
@@ -1180,119 +970,137 @@ function openProduct(id) {
     }
 
 
-    document.getElementById(
-        "modalImage"
-    ).src =
-        product.image || "";
+    const image =
+        getImageUrl(
+            product.image
+        );
+
+
+    const modalImage =
+        document.getElementById(
+            "modalImage"
+        );
+
+
+    modalImage.style.display =
+        image ? "block" : "none";
+
+
+    if (image) {
+
+        modalImage.src = image;
+
+    }
 
 
     document.getElementById(
         "modalName"
     ).textContent =
-        product.name
-        ||
+        product.name ||
         "Товар";
 
 
     document.getElementById(
         "modalPrice"
     ).textContent =
-        product.price
-        ||
+        product.price ||
         "Цена уточняется";
 
 
     document.getElementById(
         "modalBrand"
     ).textContent =
-        product.brand
-        ||
+        product.brand ||
         "—";
 
 
     document.getElementById(
         "modalMemory"
     ).textContent =
-        product.memory
-        ||
+        product.memory ||
         "—";
 
 
     document.getElementById(
         "modalColor"
     ).textContent =
-        product.color
-        ||
+        product.color ||
         "—";
 
 
     document.getElementById(
         "modalAvailable"
     ).textContent =
+
         product.available
+
         ?
+
         "В наличии"
+
         :
+
         "Нет в наличии";
 
 
-    modal.classList.add(
+    document.getElementById(
+        "modal"
+    ).classList.add(
         "active"
     );
 
-    document.body.style.overflow =
-        "hidden";
-
 }
 
+
+
+/*
+==================================================
+ЗАКРЫТЬ
+==================================================
+*/
 
 function closeModal() {
 
-    modal.classList.remove(
+    document.getElementById(
+        "modal"
+    ).classList.remove(
         "active"
     );
-
-    document.body.style.overflow =
-        "";
 
 }
 
 
-document.getElementById(
-    "closeModal"
-).addEventListener(
-    "click",
-    closeModal
-);
 
+/*
+==================================================
+КЛИК ПО ФОНУ
+==================================================
+*/
 
-modal.addEventListener(
-    "click",
-    event => {
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(event) {
 
-        if (
-            event.target === modal
-        ) {
-            closeModal();
+            if (
+                event.target === this
+            ) {
+
+                closeModal();
+
+            }
+
         }
-
-    }
-);
+    );
 
 
-document.addEventListener(
-    "keydown",
-    event => {
 
-        if (
-            event.key === "Escape"
-        ) {
-            closeModal();
-        }
-
-    }
-);
-
+/*
+==================================================
+ПОИСК
+==================================================
+*/
 
 searchInput.addEventListener(
     "input",
@@ -1300,10 +1108,15 @@ searchInput.addEventListener(
 );
 
 
+
+/*
+==================================================
+КАТЕГОРИИ
+==================================================
+*/
+
 document
-    .querySelectorAll(
-        ".category"
-    )
+    .querySelectorAll(".category")
     .forEach(button => {
 
         button.addEventListener(
@@ -1314,12 +1127,13 @@ document
                     .querySelectorAll(
                         ".category"
                     )
-                    .forEach(
-                        btn =>
-                            btn.classList.remove(
-                                "active"
-                            )
-                    );
+                    .forEach(btn => {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    });
 
 
                 button.classList.add(
@@ -1339,10 +1153,16 @@ document
     });
 
 
+
+/*
+==================================================
+START
+==================================================
+*/
+
 loadProducts();
 
 </script>
 
 </body>
-
 </html>
