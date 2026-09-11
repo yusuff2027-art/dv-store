@@ -7,7 +7,9 @@ from html import unescape
 from urllib.parse import urljoin
 
 BASE_URL = "https://apple-avenue.ru"
-CATEGORY_URL = "https://apple-avenue.ru/catalog/iphone_17_pro_max/"
+
+# ОБЩИЙ КАТАЛОГ IPHONE
+CATEGORY_URL = "https://apple-avenue.ru/catalog/iphone/"
 
 HEADERS = {
     "User-Agent": (
@@ -54,7 +56,6 @@ def clean_text(value):
 
     value = unescape(value)
 
-    # HTML
     value = re.sub(
         r"<[^>]+>",
         " ",
@@ -76,7 +77,6 @@ def clean_text(value):
         flags=re.I
     )
 
-    # Разделители
     value = re.sub(
         r"={2,}",
         " ",
@@ -95,7 +95,6 @@ def clean_text(value):
         value
     )
 
-    # Известный мусор
     value = re.sub(
         r"/память/SIM\)?",
         " ",
@@ -129,14 +128,15 @@ def clean_text(value):
 
 
 # =========================================================
-# ССЫЛКИ
+# ССЫЛКИ ТОВАРОВ
 # =========================================================
 
 def get_product_links(html):
 
+    # Берём любые страницы товаров внутри /catalog/iphone/
     pattern = (
         r'href=["\']'
-        r'([^"\']*/catalog/iphone_17_pro_max/[^"\']+)'
+        r'([^"\']*/catalog/iphone/[^"\']+)'
         r'["\']'
     )
 
@@ -155,10 +155,26 @@ def get_product_links(html):
         if "?" in link:
             continue
 
+        if "#" in link:
+            continue
+
         if not link.endswith("/"):
             link += "/"
 
-        if link == "/catalog/iphone_17_pro_max/":
+        # Не добавляем сам каталог
+        if link == "/catalog/iphone/":
+            continue
+
+        # Не берём служебные ссылки
+        if any(
+            x in link.lower()
+            for x in [
+                "/filter/",
+                "/compare/",
+                "/search/",
+                "/favorites/"
+            ]
+        ):
             continue
 
         full_url = urljoin(
@@ -210,7 +226,6 @@ def get_product_image(
         img = unescape(img)
 
         if img.startswith("/"):
-
             img = urljoin(
                 BASE_URL,
                 img
@@ -239,13 +254,9 @@ def get_product_image(
     for img in candidates:
 
         if img not in unique:
-
-            unique.append(
-                img
-            )
+            unique.append(img)
 
     if not unique:
-
         return ""
 
     image_url = unique[0]
@@ -257,11 +268,9 @@ def get_product_image(
     extension = ".jpg"
 
     if ".png" in image_url.lower():
-
         extension = ".png"
 
     elif ".webp" in image_url.lower():
-
         extension = ".webp"
 
     local_path = (
@@ -333,9 +342,7 @@ def get_memory(
     name
 ):
 
-    # Сначала ищем в названии.
-    # Для iPhone это очень надёжно.
-
+    # Сначала название
     match = re.search(
         r"(\d+)\s*(?:GB|Gb|gb|ГБ|гб)",
         name,
@@ -349,9 +356,7 @@ def get_memory(
             + " ГБ"
         )
 
-
-    # Потом смотрим характеристики.
-
+    # Потом характеристики
     patterns = [
 
         r"Встроенная память\s*:?\s*([^<]{1,80})",
@@ -400,8 +405,6 @@ def get_color(
     name
 ):
 
-    # Для iPhone сначала смотрим название.
-
     known_colors = [
 
         "Cosmic Orange",
@@ -434,17 +437,14 @@ def get_color(
 
     ]
 
-
+    # Сначала название
     for color in known_colors:
 
         if color.lower() in name.lower():
 
             return color
 
-
-    # Если цвета нет в названии,
-    # пытаемся найти характеристику.
-
+    # Потом характеристики
     patterns = [
 
         r"Цвет\s*:?\s*([^<]{1,80})",
@@ -452,7 +452,6 @@ def get_color(
         r"Color\s*:?\s*([^<]{1,80})"
 
     ]
-
 
     for pattern in patterns:
 
@@ -474,12 +473,11 @@ def get_color(
 
                     return color
 
-
     return ""
 
 
 # =========================================================
-# SIM
+# SIM / ESIM
 # =========================================================
 
 def get_sim_type(
@@ -487,23 +485,19 @@ def get_sim_type(
     name
 ):
 
-    # Ищем именно характеристики,
-    # а не название товара.
-
     patterns = [
 
-        r"Тип SIM[-\s]*карты\s*:?\s*([^<]{1,100})",
+        r"Тип SIM[-\s]*карты\s*:?\s*([^<]{1,150})",
 
-        r"Тип SIM\s*:?\s*([^<]{1,100})",
+        r"Тип SIM\s*:?\s*([^<]{1,150})",
 
-        r"SIM[-\s]*карта\s*:?\s*([^<]{1,100})",
+        r"SIM[-\s]*карта\s*:?\s*([^<]{1,150})",
 
-        r"Поддержка SIM\s*:?\s*([^<]{1,100})",
+        r"Поддержка SIM\s*:?\s*([^<]{1,150})",
 
-        r"SIM\s*:?\s*([^<]{1,100})"
+        r"SIM\s*:?\s*([^<]{1,150})"
 
     ]
-
 
     for pattern in patterns:
 
@@ -524,40 +518,55 @@ def get_sim_type(
 
             lower = value.lower()
 
-            has_esim = (
-                "esim" in lower
-                or "e-sim" in lower
-                or "e sim" in lower
+            # Нормализуем варианты eSIM
+            normalized = lower.replace(
+                "e-sim",
+                "esim"
+            ).replace(
+                "e sim",
+                "esim"
             )
 
+            has_esim = "esim" in normalized
+
+            # Убираем слово esim,
+            # чтобы оно не считалось обычной SIM
+            without_esim = re.sub(
+                r"e\s*-?\s*sim",
+                "",
+                normalized,
+                flags=re.I
+            )
+
+            # Ищем физическую SIM
             has_physical_sim = bool(
                 re.search(
                     r"\bnano[\s-]*sim\b"
+                    r"|\bphysical[\s-]*sim\b"
                     r"|\bdual[\s-]*sim\b"
-                    r"|\bsim[\s]*\+[\s]*sim\b"
-                    r"|\bphysical[\s]*sim\b",
-                    lower
+                    r"|\bsim\s*\+\s*sim\b"
+                    r"|\bsim\b",
+                    without_esim,
+                    re.I
                 )
             )
 
-
-            if (
-                has_esim
-                and has_physical_sim
-            ):
+            # Главное:
+            # если есть и физическая SIM,
+            # и eSIM
+            if has_esim and has_physical_sim:
 
                 return "SIM + eSIM"
 
-
+            # Только eSIM
             if has_esim:
 
                 return "eSIM"
 
-
+            # Только физическая SIM
             if has_physical_sim:
 
                 return "SIM"
-
 
     return ""
 
@@ -576,7 +585,6 @@ def get_stock(html):
 
         return "В наличии"
 
-
     if re.search(
         r"Нет в наличии",
         html,
@@ -585,7 +593,6 @@ def get_stock(html):
 
         return "Нет в наличии"
 
-
     if re.search(
         r"Под заказ",
         html,
@@ -593,7 +600,6 @@ def get_stock(html):
     ):
 
         return "Под заказ"
-
 
     return "Уточняйте наличие"
 
@@ -648,7 +654,6 @@ def get_old_price(html):
     )
 
     if not match:
-
         return ""
 
     return clean_text(
@@ -670,7 +675,6 @@ def get_product_code(html):
     )
 
     if match:
-
         return match.group(1)
 
     return ""
@@ -686,7 +690,6 @@ def parse_product(url):
         url
     )
 
-
     # -----------------------------
     # НАЗВАНИЕ
     # -----------------------------
@@ -696,7 +699,6 @@ def parse_product(url):
         html,
         re.I | re.S
     )
-
 
     if title:
 
@@ -714,7 +716,6 @@ def parse_product(url):
     else:
 
         name = "Товар Apple"
-
 
     # -----------------------------
     # ДАННЫЕ
@@ -756,13 +757,11 @@ def parse_product(url):
         name
     )
 
-
     # -----------------------------
     # ОПИСАНИЕ
     # -----------------------------
 
     description_parts = []
-
 
     if memory:
 
@@ -770,13 +769,11 @@ def parse_product(url):
             memory
         )
 
-
     if color:
 
         description_parts.append(
             color
         )
-
 
     if sim_type:
 
@@ -784,11 +781,9 @@ def parse_product(url):
             sim_type
         )
 
-
     description = " • ".join(
         description_parts
     )
-
 
     return {
 
@@ -829,23 +824,19 @@ print(
     "================================"
 )
 
-
 try:
 
     print(
-        "\n🌐 Загружаем каталог Apple Avenue..."
+        "\n🌐 Загружаем общий каталог iPhone..."
     )
-
 
     category_html = get_html(
         CATEGORY_URL
     )
 
-
     print(
         "✅ Каталог загружен"
     )
-
 
     print(
         "Размер:",
@@ -853,17 +844,14 @@ try:
         "символов"
     )
 
-
     product_links = get_product_links(
         category_html
     )
-
 
     print(
         "\n📦 Найдено товаров:",
         len(product_links)
     )
-
 
     if not product_links:
 
@@ -871,9 +859,7 @@ try:
             "Товары не найдены"
         )
 
-
     products = []
-
 
     for index, url in enumerate(
         product_links,
@@ -885,18 +871,15 @@ try:
             "Загружаем товар..."
         )
 
-
         try:
 
             product = parse_product(
                 url
             )
 
-
             products.append(
                 product
             )
-
 
             print(
                 "✅",
@@ -925,7 +908,6 @@ try:
                 else "Нет"
             )
 
-
         except Exception as error:
 
             print(
@@ -933,9 +915,7 @@ try:
                 error
             )
 
-
         time.sleep(1)
-
 
     if not products:
 
@@ -943,7 +923,6 @@ try:
             "Не удалось получить товары. "
             "products.json не изменён."
         )
-
 
     # =====================================================
     # СОХРАНЯЕМ
@@ -962,7 +941,6 @@ try:
             indent=2
         )
 
-
     print(
         "\n================================"
     )
@@ -975,23 +953,19 @@ try:
         "================================"
     )
 
-
     print(
         "Товаров сохранено:",
         len(products)
     )
 
-
     print(
         "Файл: products.json"
     )
-
 
     print(
         "Фото:",
         IMAGE_DIR
     )
-
 
 except Exception as error:
 
