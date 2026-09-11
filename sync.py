@@ -12,78 +12,25 @@ req = urllib.request.Request(
 with urllib.request.urlopen(req, timeout=30) as response:
     html = response.read().decode("utf-8", errors="ignore")
 
-text = unescape(re.sub(r"<[^>]+>", " ", html))
-text = re.sub(r"\s+", " ", text)
+# Ищем именно цену 110 950
+for target in ["110 950", "110950", "110\u00a0950"]:
 
-print("================================")
-print("📱 НАЗВАНИЕ")
-print("================================")
+    pos = html.find(target)
 
-title = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
+    if pos != -1:
 
-if title:
-    name = re.sub(r"\s+", " ", unescape(title.group(1))).strip()
-    name = re.sub(r"\s+купить.*$", "", name, flags=re.I)
-    print(name)
+        print("================================")
+        print("🎯 НАШЛИ ЦЕНУ:", target)
+        print("================================")
 
-print("\n================================")
-print("💰 ЦЕНЫ")
-print("================================")
+        start = max(0, pos - 1500)
+        end = min(len(html), pos + 1500)
 
-prices = re.findall(
-    r"\b\d{1,3}(?:[\s\u00a0]\d{3})+\s*(?:руб\.?|₽)",
-    text,
-    re.I
-)
+        fragment = html[start:end]
 
-for price in dict.fromkeys(prices):
-    print(price)
+        print(unescape(fragment))
 
-print("\n================================")
-print("📦 ХАРАКТЕРИСТИКИ")
-print("================================")
+        break
 
-patterns = [
-    ("Наличие", r"(В наличии|Нет в наличии|Под заказ)"),
-    ("Память", r"Встроенная память\s*:?\s*([^<]{1,50}?)(?=\s*(?:Цвет|Тип|SIM|$))"),
-    ("Цвет", r"Цвет\s*:?\s*([^<]{1,50}?)(?=\s*(?:Встроенная|Тип|SIM|$))"),
-    ("Код товара", r"Код товара\s*:?\s*([A-Za-z0-9_-]+)"),
-]
-
-for label, pattern in patterns:
-    match = re.search(pattern, text, re.I)
-
-    if match:
-        value = re.sub(r"\s+", " ", match.group(1)).strip()
-        print(f"{label}: {value}")
-    else:
-        print(f"{label}: не найдено")
-
-print("\n================================")
-print("🖼 ГЛАВНАЯ КАРТИНКА")
-print("================================")
-
-images = re.findall(
-    r'(?:src|data-src)=["\']([^"\']+)["\']',
-    html,
-    re.I
-)
-
-unique_images = []
-
-for image in images:
-    if image.startswith("/"):
-        image = "https://apple-avenue.ru" + image
-
-    if image.startswith("https://apple-avenue.ru/upload/"):
-        if image not in unique_images:
-            unique_images.append(image)
-
-if unique_images:
-    print(unique_images[0])
 else:
-    print("Картинка не найдена")
-
-print("\n================================")
-print("✅ ТЕСТ ЗАКОНЧЕН")
-print("================================")
+    print("❌ Цена 110 950 не найдена в исходном HTML")
