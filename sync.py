@@ -4,17 +4,16 @@ import time
 import os
 import urllib.request
 from html import unescape
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 BASE_URL = "https://apple-avenue.ru"
-
-# ОБЩИЙ КАТАЛОГ IPHONE
 CATEGORY_URL = "https://apple-avenue.ru/catalog/iphone/"
 
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 Chrome/120 Safari/537.36"
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120 Safari/537.36"
     )
 }
 
@@ -24,7 +23,7 @@ os.makedirs(IMAGE_DIR, exist_ok=True)
 
 
 # =========================================================
-# ЗАГРУЗКА
+# ЗАГРУЗКА HTML
 # =========================================================
 
 def get_html(url):
@@ -62,7 +61,7 @@ def clean_text(value):
         value
     )
 
-    # CSS / JS мусор
+    # CSS-мусор
     value = re.sub(
         r"#(?:[0-9a-fA-F]{3,8});?",
         " ",
@@ -128,52 +127,33 @@ def clean_text(value):
 
 
 # =========================================================
-# ССЫЛКИ ТОВАРОВ
+# ССЫЛКИ НА ТОВАРЫ
 # =========================================================
 
 def get_product_links(html):
 
-    # Берём любые страницы товаров внутри /catalog/iphone/
-    pattern = (
-        r'href=["\']'
-        r'([^"\']*/catalog/iphone/[^"\']+)'
-        r'["\']'
-    )
+    # -----------------------------------------------------
+    # Вариант 1:
+    # Ищем ссылки на catalog в HTML
+    # -----------------------------------------------------
 
-    links = re.findall(
-        pattern,
+    raw_links = re.findall(
+        r'href\s*=\s*["\']([^"\']+)["\']',
         html,
         re.I
     )
 
     result = []
 
-    for link in links:
+    for link in raw_links:
 
-        link = unescape(link)
+        link = unescape(link).strip()
 
-        if "?" in link:
+        if not link:
             continue
 
-        if "#" in link:
-            continue
-
-        if not link.endswith("/"):
-            link += "/"
-
-        # Не добавляем сам каталог
-        if link == "/catalog/iphone/":
-            continue
-
-        # Не берём служебные ссылки
-        if any(
-            x in link.lower()
-            for x in [
-                "/filter/",
-                "/compare/",
-                "/search/",
-                "/favorites/"
-            ]
+        if link.startswith(
+            ("#", "javascript:", "mailto:", "tel:")
         ):
             continue
 
@@ -181,6 +161,123 @@ def get_product_links(html):
             BASE_URL,
             link
         )
+
+        parsed = urlparse(
+            full_url
+        )
+
+        # Только apple-avenue.ru
+        if parsed.netloc.lower() != "apple-avenue.ru":
+            continue
+
+        path = parsed.path.rstrip("/")
+
+        if not path:
+            continue
+
+        path_lower = path.lower()
+
+        # Только каталог
+        if not path_lower.startswith(
+            "/catalog/"
+        ):
+            continue
+
+        # Не берём фильтры и служебные страницы
+        bad_parts = [
+            "/filter/",
+            "/compare/",
+            "/search/",
+            "/favorites/",
+            "/basket/",
+            "/order/",
+            "/ajax/"
+        ]
+
+        if any(
+            bad in path_lower
+            for bad in bad_parts
+        ):
+            continue
+
+        # Сам каталог iPhone не является товаром
+        if path_lower == "/catalog/iphone":
+            continue
+
+        # Категории моделей тоже не нужны.
+        # Их определяем по URL.
+        category_names = [
+            "iphone",
+            "iphone_17",
+            "iphone_17_pro",
+            "iphone_17_pro_max",
+            "iphone_17_air",
+            "iphone_16",
+            "iphone_16_pro",
+            "iphone_16_pro_max",
+            "iphone_16_plus",
+            "iphone_16e",
+            "iphone_15",
+            "iphone_15_pro",
+            "iphone_15_pro_max",
+            "iphone_15_plus",
+            "iphone_14",
+            "iphone_14_pro",
+            "iphone_14_pro_max",
+            "iphone_13",
+            "iphone_13_pro",
+            "iphone_13_pro_max",
+            "iphone_12",
+            "iphone_12_pro",
+            "iphone_12_pro_max",
+            "iphone_11",
+            "iphone_11_pro",
+            "iphone_11_pro_max"
+        ]
+
+        last_part = path_lower.split("/")[-1]
+
+        if last_part in category_names:
+            continue
+
+        # Ссылки с одинаковым URL не дублируем
+        if full_url not in result:
+
+            result.append(
+                full_url
+            )
+
+    # -----------------------------------------------------
+    # Вариант 2:
+    # Иногда сайт содержит ссылки в data-href
+    # -----------------------------------------------------
+
+    data_links = re.findall(
+        r'(?:data-href|data-url|data-link)\s*=\s*["\']([^"\']+)["\']',
+        html,
+        re.I
+    )
+
+    for link in data_links:
+
+        link = unescape(link).strip()
+
+        full_url = urljoin(
+            BASE_URL,
+            link
+        )
+
+        parsed = urlparse(
+            full_url
+        )
+
+        if parsed.netloc.lower() != "apple-avenue.ru":
+            continue
+
+        if not parsed.path.lower().startswith(
+            "/catalog/"
+        ):
+            continue
 
         if full_url not in result:
 
@@ -192,7 +289,7 @@ def get_product_links(html):
 
 
 # =========================================================
-# ФОТО
+# ИМЯ ФАЙЛА
 # =========================================================
 
 def safe_filename(name):
@@ -203,10 +300,19 @@ def safe_filename(name):
         name
     )
 
-    return name.strip(
+    name = name.strip(
         "-"
     ).lower()
 
+    if not name:
+        name = "product"
+
+    return name[:180]
+
+
+# =========================================================
+# ФОТО
+# =========================================================
 
 def get_product_image(
     html,
@@ -214,7 +320,7 @@ def get_product_image(
 ):
 
     images = re.findall(
-        r'(?:src|data-src)=["\']([^"\']+)["\']',
+        r'(?:src|data-src|data-lazy-src)=["\']([^"\']+)["\']',
         html,
         re.I
     )
@@ -223,43 +329,61 @@ def get_product_image(
 
     for img in images:
 
-        img = unescape(img)
+        img = unescape(
+            img
+        ).strip()
 
-        if img.startswith("/"):
-            img = urljoin(
-                BASE_URL,
-                img
-            )
-
-        if not img.startswith(
-            BASE_URL + "/upload/"
-        ):
+        if not img:
             continue
 
-        if "/upload/iblock/" not in img:
+        img = urljoin(
+            BASE_URL,
+            img
+        )
+
+        if "/upload/" not in img:
             continue
 
-        if re.search(
+        if not re.search(
             r"\.(jpg|jpeg|png|webp)(?:\?|$)",
             img,
             re.I
         ):
+            continue
+
+        if img not in candidates:
 
             candidates.append(
                 img
             )
 
-    unique = []
+    if not candidates:
 
-    for img in candidates:
+        # Пробуем og:image
+        match = re.search(
+            r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+            html,
+            re.I
+        )
 
-        if img not in unique:
-            unique.append(img)
+        if match:
 
-    if not unique:
+            img = urljoin(
+                BASE_URL,
+                unescape(
+                    match.group(1)
+                )
+            )
+
+            candidates.append(
+                img
+            )
+
+    if not candidates:
+
         return ""
 
-    image_url = unique[0]
+    image_url = candidates[0]
 
     filename = safe_filename(
         product_name
@@ -268,9 +392,11 @@ def get_product_image(
     extension = ".jpg"
 
     if ".png" in image_url.lower():
+
         extension = ".png"
 
     elif ".webp" in image_url.lower():
+
         extension = ".webp"
 
     local_path = (
@@ -278,10 +404,7 @@ def get_product_image(
     )
 
     print(
-        "🖼 Скачиваем фото:"
-    )
-
-    print(
+        "🖼 Фото:",
         image_url
     )
 
@@ -297,9 +420,9 @@ def get_product_image(
             timeout=30
         ) as response:
 
-            image_data = response.read()
+            data = response.read()
 
-        if len(image_data) < 1000:
+        if len(data) < 1000:
 
             print(
                 "⚠️ Фото слишком маленькое"
@@ -313,12 +436,11 @@ def get_product_image(
         ) as file:
 
             file.write(
-                image_data
+                data
             )
 
         print(
-            "✅ Фото сохранено:",
-            local_path
+            "✅ Фото сохранено"
         )
 
         return local_path
@@ -359,39 +481,40 @@ def get_memory(
     # Потом характеристики
     patterns = [
 
-        r"Встроенная память\s*:?\s*([^<]{1,80})",
+        r"Встроенная память\s*:?\s*([^<]{1,100})",
 
-        r"Память\s*:?\s*([^<]{1,80})"
+        r"Память\s*:?\s*([^<]{1,100})",
+
+        r"Объем памяти\s*:?\s*([^<]{1,100})"
 
     ]
 
     for pattern in patterns:
 
-        match = re.search(
+        matches = re.findall(
             pattern,
             html,
             re.I | re.S
         )
 
-        if not match:
-            continue
+        for value in matches:
 
-        value = clean_text(
-            match.group(1)
-        )
-
-        memory_match = re.search(
-            r"(\d+)\s*(?:GB|Gb|gb|ГБ|гб)",
-            value,
-            re.I
-        )
-
-        if memory_match:
-
-            return (
-                memory_match.group(1)
-                + " ГБ"
+            value = clean_text(
+                value
             )
+
+            memory_match = re.search(
+                r"(\d+)\s*(?:GB|Gb|gb|ГБ|гб)",
+                value,
+                re.I
+            )
+
+            if memory_match:
+
+                return (
+                    memory_match.group(1)
+                    + " ГБ"
+                )
 
     return ""
 
@@ -447,9 +570,9 @@ def get_color(
     # Потом характеристики
     patterns = [
 
-        r"Цвет\s*:?\s*([^<]{1,80})",
+        r"Цвет\s*:?\s*([^<]{1,100})",
 
-        r"Color\s*:?\s*([^<]{1,80})"
+        r"Color\s*:?\s*([^<]{1,100})"
 
     ]
 
@@ -495,7 +618,9 @@ def get_sim_type(
 
         r"Поддержка SIM\s*:?\s*([^<]{1,150})",
 
-        r"SIM\s*:?\s*([^<]{1,150})"
+        r"SIM\s*:?\s*([^<]{1,150})",
+
+        r"SIM[-\s]*карты\s*:?\s*([^<]{1,150})"
 
     ]
 
@@ -518,19 +643,25 @@ def get_sim_type(
 
             lower = value.lower()
 
-            # Нормализуем варианты eSIM
-            normalized = lower.replace(
-                "e-sim",
-                "esim"
-            ).replace(
-                "e sim",
-                "esim"
+            normalized = (
+                lower
+                .replace(
+                    "e-sim",
+                    "esim"
+                )
+                .replace(
+                    "e sim",
+                    "esim"
+                )
             )
 
-            has_esim = "esim" in normalized
+            has_esim = (
+                "esim" in normalized
+            )
 
-            # Убираем слово esim,
-            # чтобы оно не считалось обычной SIM
+            # Временно убираем eSIM,
+            # чтобы слово SIM внутри eSIM
+            # не считалось физической SIM
             without_esim = re.sub(
                 r"e\s*-?\s*sim",
                 "",
@@ -538,7 +669,6 @@ def get_sim_type(
                 flags=re.I
             )
 
-            # Ищем физическую SIM
             has_physical_sim = bool(
                 re.search(
                     r"\bnano[\s-]*sim\b"
@@ -551,10 +681,11 @@ def get_sim_type(
                 )
             )
 
-            # Главное:
-            # если есть и физическая SIM,
-            # и eSIM
-            if has_esim and has_physical_sim:
+            # SIM + eSIM
+            if (
+                has_esim
+                and has_physical_sim
+            ):
 
                 return "SIM + eSIM"
 
@@ -563,7 +694,7 @@ def get_sim_type(
 
                 return "eSIM"
 
-            # Только физическая SIM
+            # Только SIM
             if has_physical_sim:
 
                 return "SIM"
@@ -610,6 +741,7 @@ def get_stock(html):
 
 def get_price(html):
 
+    # Основной способ
     match = re.search(
         r'id=["\']base-price["\']'
         r'[^>]*value=["\']([^"\']+)["\']',
@@ -617,27 +749,64 @@ def get_price(html):
         re.I
     )
 
-    if not match:
+    if match:
 
-        return "Цена по запросу"
+        value = match.group(1)
 
-    value = match.group(1)
+        try:
 
-    try:
+            number = int(
+                float(value)
+            )
 
-        number = int(
-            float(value)
+            return (
+                f"{number:,}"
+                .replace(",", " ")
+                + " ₽"
+            )
+
+        except:
+            pass
+
+    # Запасной вариант
+    patterns = [
+
+        r'"price"\s*:\s*"?(\d+(?:\.\d+)?)',
+
+        r'"PRICE"\s*:\s*"?(\d+(?:\.\d+)?)',
+
+        r'data-price=["\'](\d+(?:\.\d+)?)["\']'
+
+    ]
+
+    for pattern in patterns:
+
+        match = re.search(
+            pattern,
+            html,
+            re.I
         )
 
-        return (
-            f"{number:,}"
-            .replace(",", " ")
-            + " ₽"
-        )
+        if match:
 
-    except:
+            try:
 
-        return value
+                number = int(
+                    float(
+                        match.group(1)
+                    )
+                )
+
+                return (
+                    f"{number:,}"
+                    .replace(",", " ")
+                    + " ₽"
+                )
+
+            except:
+                pass
+
+    return "Цена по запросу"
 
 
 # =========================================================
@@ -654,6 +823,7 @@ def get_old_price(html):
     )
 
     if not match:
+
         return ""
 
     return clean_text(
@@ -667,17 +837,64 @@ def get_old_price(html):
 
 def get_product_code(html):
 
-    match = re.search(
-        r"Код товара\s*:?\s*"
-        r"([A-Za-z0-9_-]+)",
-        html,
-        re.I
-    )
+    patterns = [
 
-    if match:
-        return match.group(1)
+        r"Код товара\s*:?\s*([A-Za-z0-9_-]+)",
+
+        r"Артикул\s*:?\s*([A-Za-z0-9_-]+)",
+
+        r'"CODE"\s*:\s*"([^"]+)"'
+
+    ]
+
+    for pattern in patterns:
+
+        match = re.search(
+            pattern,
+            html,
+            re.I
+        )
+
+        if match:
+
+            return match.group(1)
 
     return ""
+
+
+# =========================================================
+# ПРОВЕРКА ЧТО ЭТО ТОВАР
+# =========================================================
+
+def looks_like_product(
+    html,
+    url
+):
+
+    lower = html.lower()
+
+    # Должна присутствовать цена
+    has_price = bool(
+        re.search(
+            r"base-price|price-old|₽|руб",
+            lower,
+            re.I
+        )
+    )
+
+    # И хотя бы одна характеристика
+    has_characteristic = bool(
+        re.search(
+            r"память|gb|гб|sim|esim|цвет|color",
+            lower,
+            re.I
+        )
+    )
+
+    return (
+        has_price
+        and has_characteristic
+    )
 
 
 # =========================================================
@@ -690,9 +907,20 @@ def parse_product(url):
         url
     )
 
-    # -----------------------------
+    if not looks_like_product(
+        html,
+        url
+    ):
+
+        print(
+            "⏭ Не похоже на карточку товара"
+        )
+
+        return None
+
+    # -----------------------------------------------------
     # НАЗВАНИЕ
-    # -----------------------------
+    # -----------------------------------------------------
 
     title = re.search(
         r"<title>(.*?)</title>",
@@ -715,11 +943,26 @@ def parse_product(url):
 
     else:
 
-        name = "Товар Apple"
+        # Пробуем h1
+        h1 = re.search(
+            r"<h1[^>]*>(.*?)</h1>",
+            html,
+            re.I | re.S
+        )
 
-    # -----------------------------
+        if h1:
+
+            name = clean_text(
+                h1.group(1)
+            )
+
+        else:
+
+            name = "Товар Apple"
+
+    # -----------------------------------------------------
     # ДАННЫЕ
-    # -----------------------------
+    # -----------------------------------------------------
 
     price = get_price(
         html
@@ -757,9 +1000,9 @@ def parse_product(url):
         name
     )
 
-    # -----------------------------
+    # -----------------------------------------------------
     # ОПИСАНИЕ
-    # -----------------------------
+    # -----------------------------------------------------
 
     description_parts = []
 
@@ -844,12 +1087,16 @@ try:
         "символов"
     )
 
+    # -----------------------------------------------------
+    # ССЫЛКИ
+    # -----------------------------------------------------
+
     product_links = get_product_links(
         category_html
     )
 
     print(
-        "\n📦 Найдено товаров:",
+        "\n📦 Найдено ссылок:",
         len(product_links)
     )
 
@@ -861,14 +1108,21 @@ try:
 
     products = []
 
+    # -----------------------------------------------------
+    # ОБРАБОТКА
+    # -----------------------------------------------------
+
     for index, url in enumerate(
         product_links,
         start=1
     ):
 
         print(
-            f"\n[{index}/{len(product_links)}] "
-            "Загружаем товар..."
+            f"\n[{index}/{len(product_links)}]"
+        )
+
+        print(
+            url
         )
 
         try:
@@ -876,6 +1130,10 @@ try:
             product = parse_product(
                 url
             )
+
+            if not product:
+
+                continue
 
             products.append(
                 product
@@ -911,22 +1169,26 @@ try:
         except Exception as error:
 
             print(
-                "❌ Ошибка:",
+                "❌ Ошибка товара:",
                 error
             )
 
         time.sleep(1)
 
+    # -----------------------------------------------------
+    # ПРОВЕРКА
+    # -----------------------------------------------------
+
     if not products:
 
         raise Exception(
-            "Не удалось получить товары. "
-            "products.json не изменён."
+            "Не удалось получить ни одного товара. "
+            "products.json НЕ изменён."
         )
 
-    # =====================================================
-    # СОХРАНЯЕМ
-    # =====================================================
+    # -----------------------------------------------------
+    # СОХРАНЕНИЕ
+    # -----------------------------------------------------
 
     with open(
         "products.json",
@@ -963,7 +1225,7 @@ try:
     )
 
     print(
-        "Фото:",
+        "Папка фото:",
         IMAGE_DIR
     )
 
