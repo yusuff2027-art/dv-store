@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="D&V STORE — смартфоны и техника по выгодным ценам">
+  <title>D&V STORE</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #090909;
+      color: #fff;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9,9,9,.96);
+      border-bottom: 1px solid #242424;
+      padding: 16px 20px;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ff6a00;
+    }
+
+    .telegram {
+      text-decoration: none;
+      color: white;
+      background: #ff6a00;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 65px 20px 45px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 8vw, 72px);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #ff6a00;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 18px;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn-main {
+      background: #ff6a00;
+      color: white;
+    }
+
+    .btn-dark {
+      background: #171717;
+      color: white;
+      border: 1px solid #303030;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .catalog {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+    }
+
+    .section-title span {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product {
+      background: #121212;
+      border: 1px solid #242424;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      border-color: #ff6a00;
+    }
+
+    .product-image {
+      height: 240px;
+      background: #1b1b1b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 9px;
+    }
+
+    .product-desc {
+      color: #888;
+      font-size: 13px;
+      line-height: 1.4;
+      min-height: 38px;
+    }
+
+    .price {
+      margin-top: 18px;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ff6a00;
+    }
+
+    .order {
+      display: block;
+      margin-top: 14px;
+      width: 100%;
+      padding: 12px;
+      text-align: center;
+      background: #ff6a00;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .info {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 20px;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #151515, #0e0e0e);
+      border: 1px solid #292929;
+      border-radius: 22px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .info-box h2 {
+      margin-bottom: 12px;
+    }
+
+    .info-box p {
+      color: #999;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 60px;
+      border-top: 1px solid #222;
+      padding: 30px 20px;
+      text-align: center;
+      color: #777;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      header {
+        padding: 13px 15px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .telegram {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .products {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .product {
+        border-radius: 15px;
+      }
+
+      .product-image {
+        height: 170px;
+      }
+
+      .product-info {
+        padding: 13px;
+      }
+
+      .product-name {
+        font-size: 15px;
+      }
+
+      .price {
+        font-size: 18px;
+      }
+
+      .order {
+        font-size: 13px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">D&V <span>STORE</span></div>
+
+    <a class="telegram" href="https://t.me/D_VSTORE" target="_blank">
+      Telegram
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Техника.<br><span>Выгодно.</span> Просто.</h1>
+
+  <p>
+    Смартфоны и техника по выгодным ценам.
+    Поможем подобрать устройство и ответим на любые вопросы.
+  </p>
+
+  <div class="buttons">
+    <a class="btn btn-main" href="#catalog">Смотреть товары</a>
+
+    <a class="btn btn-dark" href="tel:+79933617829">
+      Позвонить
+    </a>
+  </div>
+</section>
+
+<section class="catalog" id="catalog">
+
+  <div class="section-title">
+    <h2>Каталог</h2>
+    <span>Обновление цен скоро</span>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="product-image">
+        Фото товара
+      </div>
+
+      <div class="product-info">
+        <div class="product-name">iPhone</div>
+
+        <div class="product-desc">
+          Модель и характеристики появятся здесь автоматически.
+        </div>
+
+        <div class="price">
+          Цена
+        </div>
+
+        <a class="order"
+           href="https://t.me/D_VSTORE"
+           target="_blank">
+          Узнать цену
+        </a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        Фото товара
+      </div>
+
+      <div class="product-info">
+        <div class="product-name">Samsung</div>
+
+        <div class="product-desc">
+          Смартфоны Samsung по выгодным ценам.
+        </div>
+
+        <div class="price">
+          Цена
+        </div>
+
+        <a class="order"
+           href="https://t.me/D_VSTORE"
+           target="_blank">
+          Узнать цену
+        </a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        Фото товара
+      </div>
+
+      <div class="product-info">
+        <div class="product-name">Xiaomi</div>
+
+        <div class="product-desc">
+          Смартфоны Xiaomi и Redmi.
+        </div>
+
+        <div class="price">
+          Цена
+        </div>
+
+        <a class="order"
+           href="https://t.me/D_VSTORE"
+           target="_blank">
+          Узнать цену
+        </a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        Фото товара
+      </div>
+
+      <div class="product-info">
+        <div class="product-name">Другие устройства</div>
+
+        <div class="product-desc">
+          Новинки и техника в наличии.
+        </div>
+
+        <div class="price">
+          Цена
+        </div>
+
+        <a class="order"
+           href="https://t.me/D_VSTORE"
+           target="_blank">
+          Узнать цену
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="info">
+  <div class="info-box">
+    <h2>Нужна помощь с выбором?</h2>
+
+    <p>
+      Напишите нам в Telegram или позвоните.
+      Подскажем модель, комплектацию и актуальную цену.
+    </p>
+
+    <div class="buttons">
+      <a class="btn btn-main"
+         href="https://t.me/D_VSTORE"
+         target="_blank">
+        Написать в Telegram
+      </a>
+
+      <a class="btn btn-dark"
+         href="tel:+79933617829">
+        +7 993 361 7829
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>D&V STORE</strong><br><br>
+  Telegram: @D_VSTORE<br>
+  Телефон: +7 993 361 7829<br><br>
+  © 2026 D&V STORE
+</footer>
+
+</body>
+</html>
