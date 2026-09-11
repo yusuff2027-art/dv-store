@@ -1,25 +1,27 @@
 import json
-import re
-from urllib.request import Request, urlopen
+import urllib.request
 
-URL = "https://li-phone.ru/catalog/smartfony/honor-600-pro"
+SOURCE_URL = "https://apple-avenue.ru/catalog/iphone_17_pro_max/"
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)"
-}
-
-request = Request(URL, headers=headers)
+req = urllib.request.Request(
+    SOURCE_URL,
+    headers={
+        "User-Agent": "Mozilla/5.0"
+    }
+)
 
 try:
-    html = urlopen(request, timeout=20).read().decode("utf-8", errors="ignore")
+    with urllib.request.urlopen(req, timeout=30) as response:
+        html = response.read().decode("utf-8", errors="ignore")
 
-    print("Страница получена")
-    print("Размер:", len(html), "символов")
+    print("✅ Apple Avenue доступен")
+    print("Размер страницы:", len(html), "символов")
 
-    # Ищем цену
-    prices = re.findall(r'(\d[\d\s]{2,})\s*₽', html)
+    # Пока только сохраняем полученную страницу для анализа
+    with open("apple_test.html", "w", encoding="utf-8") as f:
+        f.write(html)
 
-    print("Найденные цены:", prices[:10])
+    print("✅ Страница сохранена в apple_test.html")
 
 except Exception as e:
-    print("Ошибка:", e)
+    print("❌ Ошибка:", e)
