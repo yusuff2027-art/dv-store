@@ -1,464 +1,812 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>D&V STORE — техника выгодно</title>
 
 <style>
+
 :root {
-    --gold: #d4af37;
-    --gold-light: #f5d76e;
-    --gold-dark: #9c7c19;
-    --black: #050505;
-    --card: #0d0d0d;
-    --border: rgba(212,175,55,.28);
-    --text: #f5f5f5;
-    --muted: #999;
+
+    --gold:#d4af37;
+    --gold-light:#f5d76e;
+    --black:#050505;
+    --card:#0d0d0d;
+    --border:rgba(212,175,55,.28);
+    --text:#f5f5f5;
+    --muted:#999;
+
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
 
 body {
-    margin: 0;
+
+    margin:0;
+
     background:
-        radial-gradient(circle at top, rgba(212,175,55,.10), transparent 35%),
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.10),
+            transparent 35%
+        ),
         var(--black);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+
+    color:var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
 }
+
 
 /* HEADER */
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(5,5,5,.94);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:
+        rgba(5,5,5,.94);
+
+    backdrop-filter:
+        blur(15px);
+
+    border-bottom:
+        1px solid var(--border);
+
 }
 
 .header-inner {
-    max-width: 1200px;
-    margin: auto;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:16px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: var(--gold-light);
+
+    font-size:25px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    color:var(--gold-light);
+
 }
 
 .logo span {
-    color: white;
+    color:white;
 }
 
 .telegram {
-    text-decoration: none;
-    color: #050505;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold));
-    padding: 11px 17px;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 14px;
+
+    text-decoration:none;
+
+    color:#050505;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    padding:11px 17px;
+
+    border-radius:10px;
+
+    font-weight:800;
+
+    font-size:14px;
+
 }
+
 
 /* HERO */
 
 .hero {
-    max-width: 1200px;
-    margin: auto;
-    padding: 65px 20px 35px;
-    text-align: center;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:65px 20px 35px;
+
+    text-align:center;
+
 }
 
 .hero h1 {
-    margin: 0;
-    font-size: clamp(38px, 8vw, 72px);
-    line-height: 1;
-    color: white;
+
+    margin:0;
+
+    font-size:
+        clamp(
+            38px,
+            8vw,
+            72px
+        );
+
+    line-height:1;
+
+    color:white;
+
 }
 
 .hero h1 span {
-    color: var(--gold-light);
-    text-shadow: 0 0 30px rgba(212,175,55,.3);
+
+    color:var(--gold-light);
+
+    text-shadow:
+        0 0 30px
+        rgba(212,175,55,.3);
+
 }
 
 .hero p {
-    color: #aaa;
-    font-size: 17px;
-    margin: 20px auto 0;
-    max-width: 600px;
+
+    color:#aaa;
+
+    font-size:17px;
+
+    margin:20px auto 0;
+
+    max-width:600px;
+
 }
 
-/* SEARCH */
+
+/* CONTROLS */
 
 .controls {
-    max-width: 1200px;
-    margin: auto;
-    padding: 10px 20px 25px;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:
+        10px 20px 25px;
+
 }
 
 .search {
-    width: 100%;
-    background: #0b0b0b;
-    border: 1px solid var(--border);
-    color: white;
-    padding: 16px 18px;
-    border-radius: 13px;
-    outline: none;
-    font-size: 16px;
+
+    width:100%;
+
+    background:#0b0b0b;
+
+    border:
+        1px solid var(--border);
+
+    color:white;
+
+    padding:16px 18px;
+
+    border-radius:13px;
+
+    outline:none;
+
+    font-size:16px;
+
 }
 
 .search:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 20px rgba(212,175,55,.12);
+
+    border-color:var(--gold);
+
+    box-shadow:
+        0 0 20px
+        rgba(212,175,55,.12);
+
 }
 
 .filters {
-    display: flex;
-    gap: 9px;
-    overflow-x: auto;
-    padding: 14px 0 4px;
+
+    display:flex;
+
+    gap:9px;
+
+    overflow-x:auto;
+
+    padding:
+        14px 0 4px;
+
 }
 
 .filters::-webkit-scrollbar {
-    display: none;
+    display:none;
 }
 
 .filter {
-    flex: 0 0 auto;
-    border: 1px solid var(--border);
-    background: #090909;
-    color: #bbb;
-    padding: 10px 16px;
-    border-radius: 30px;
-    cursor: pointer;
+
+    flex:0 0 auto;
+
+    border:
+        1px solid var(--border);
+
+    background:#090909;
+
+    color:#bbb;
+
+    padding:
+        10px 16px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
 }
 
 .filter.active,
 .filter:hover {
-    background: linear-gradient(135deg, var(--gold-light), var(--gold));
-    color: #050505;
-    border-color: var(--gold);
-    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    color:#050505;
+
+    border-color:var(--gold);
+
+    font-weight:800;
+
 }
+
 
 /* PRODUCTS */
 
 .products {
-    max-width: 1200px;
-    margin: auto;
-    padding: 10px 20px 60px;
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:
+        10px 20px 60px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+
 }
 
 .card {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(145deg, #111, #070707);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    transition: .25s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #070707
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:18px;
+
+    transition:.25s ease;
+
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: var(--gold);
-    box-shadow: 0 15px 45px rgba(212,175,55,.12);
+
+    transform:
+        translateY(-5px);
+
+    border-color:var(--gold);
+
+    box-shadow:
+        0 15px 45px
+        rgba(212,175,55,.12);
+
 }
 
 .card-image {
-    height: 260px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    height:260px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
     background:
-        radial-gradient(circle, rgba(212,175,55,.08), transparent 65%);
-    padding: 15px;
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.08),
+            transparent 65%
+        );
+
+    padding:15px;
+
 }
 
 .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: .3s;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    transition:.3s;
+
 }
 
-.card:hover .card-image img {
-    transform: scale(1.05);
+.card:hover
+.card-image img {
+
+    transform:
+        scale(1.05);
+
 }
 
 .card-body {
-    padding: 17px;
+
+    padding:17px;
+
 }
 
 .badge {
-    display: inline-block;
-    background: rgba(212,175,55,.12);
-    border: 1px solid rgba(212,175,55,.3);
-    color: var(--gold-light);
-    border-radius: 6px;
-    padding: 5px 8px;
-    font-size: 11px;
-    font-weight: 800;
-    margin-bottom: 10px;
+
+    display:inline-block;
+
+    background:
+        rgba(212,175,55,.12);
+
+    border:
+        1px solid
+        rgba(212,175,55,.3);
+
+    color:var(--gold-light);
+
+    border-radius:6px;
+
+    padding:
+        5px 8px;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+
 }
 
 .stock {
-    color: #78d89a;
-    font-size: 12px;
-    margin-bottom: 9px;
+
+    color:#78d89a;
+
+    font-size:12px;
+
+    margin-bottom:9px;
+
 }
 
 .card h3 {
-    margin: 0 0 9px;
-    font-size: 17px;
-    line-height: 1.3;
+
+    margin:
+        0 0 9px;
+
+    font-size:17px;
+
+    line-height:1.3;
+
 }
 
 .description {
-    color: #888;
-    font-size: 13px;
-    min-height: 18px;
-    margin-bottom: 15px;
+
+    color:#999;
+
+    font-size:13px;
+
+    min-height:18px;
+
+    margin-bottom:15px;
+
 }
 
 .price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
 }
 
 .price {
-    color: var(--gold-light);
-    font-size: 22px;
-    font-weight: 900;
+
+    color:var(--gold-light);
+
+    font-size:22px;
+
+    font-weight:900;
+
 }
 
 .old-price {
-    color: #666;
-    font-size: 13px;
-    text-decoration: line-through;
-    margin-top: 3px;
+
+    color:#666;
+
+    font-size:13px;
+
+    text-decoration:
+        line-through;
+
+    margin-top:3px;
+
 }
 
 .discount {
-    color: #78d89a;
-    font-size: 11px;
-    font-weight: bold;
+
+    color:#78d89a;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+
 }
 
 .order-btn {
-    width: 100%;
-    margin-top: 15px;
-    padding: 13px;
-    border: 0;
-    border-radius: 11px;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold));
-    color: #050505;
-    font-size: 15px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: .2s;
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:13px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    color:#050505;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.2s;
+
 }
 
 .order-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 25px rgba(212,175,55,.25);
+
+    transform:
+        scale(1.02);
+
+    box-shadow:
+        0 0 25px
+        rgba(212,175,55,.25);
+
 }
+
 
 /* MODAL */
 
 .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.82);
-    backdrop-filter: blur(10px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-    z-index: 999;
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(0,0,0,.82);
+
+    backdrop-filter:
+        blur(10px);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:18px;
+
+    z-index:999;
+
 }
 
 .modal.show {
-    display: flex;
+    display:flex;
 }
 
 .modal-box {
-    width: 100%;
-    max-width: 520px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: linear-gradient(145deg, #111, #050505);
-    border: 1px solid var(--gold);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 60px rgba(212,175,55,.16);
+
+    width:100%;
+
+    max-width:520px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #050505
+        );
+
+    border:
+        1px solid var(--gold);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:
+        0 0 60px
+        rgba(212,175,55,.16);
+
 }
 
 .close {
-    float: right;
-    background: #171717;
-    color: white;
-    border: 1px solid #333;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
+
+    float:right;
+
+    background:#171717;
+
+    color:white;
+
+    border:
+        1px solid #333;
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:18px;
+
 }
 
 .modal-image {
-    height: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
+
+    height:320px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:15px;
+
 }
 
 .modal-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
 }
 
 .modal h2 {
-    color: white;
-    margin: 10px 0;
+
+    color:white;
+
+    margin:10px 0;
+
 }
 
 .modal-price {
-    color: var(--gold-light);
-    font-size: 30px;
-    font-weight: 900;
-    margin: 15px 0;
+
+    color:var(--gold-light);
+
+    font-size:30px;
+
+    font-weight:900;
+
+    margin:15px 0;
+
 }
 
 .modal-info {
-    color: #aaa;
-    line-height: 1.7;
+
+    color:#aaa;
+
+    line-height:1.7;
+
 }
+
 
 /* FOOTER */
 
 footer {
-    border-top: 1px solid var(--border);
-    text-align: center;
-    padding: 35px 20px;
-    color: #777;
+
+    border-top:
+        1px solid var(--border);
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#777;
+
 }
 
 footer strong {
-    color: var(--gold-light);
+
+    color:var(--gold-light);
+
 }
+
 
 /* MOBILE */
 
-@media (max-width: 900px) {
+@media(max-width:900px) {
+
     .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:12px;
+
     }
 
     .card-image {
-        height: 210px;
+        height:210px;
     }
+
 }
 
-@media (max-width: 560px) {
+@media(max-width:560px) {
 
     .header-inner {
-        padding: 13px 14px;
+        padding:13px 14px;
     }
 
     .logo {
-        font-size: 20px;
+        font-size:20px;
     }
 
     .telegram {
-        padding: 9px 12px;
-        font-size: 12px;
+        padding:9px 12px;
+        font-size:12px;
     }
 
     .hero {
-        padding: 48px 18px 25px;
+        padding:48px 18px 25px;
     }
 
     .hero p {
-        font-size: 14px;
+        font-size:14px;
     }
 
     .products {
-        padding: 8px 12px 45px;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+
+        padding:
+            8px 12px 45px;
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:10px;
+
     }
 
     .card {
-        border-radius: 14px;
+        border-radius:14px;
     }
 
     .card-image {
-        height: 175px;
-        padding: 8px;
+
+        height:175px;
+
+        padding:8px;
+
     }
 
     .card-body {
-        padding: 12px;
+        padding:12px;
     }
 
     .card h3 {
-        font-size: 14px;
+        font-size:14px;
     }
 
     .description {
-        font-size: 11px;
+        font-size:11px;
     }
 
     .price {
-        font-size: 17px;
+        font-size:17px;
     }
 
     .old-price {
-        font-size: 11px;
+        font-size:11px;
     }
 
     .order-btn {
-        padding: 11px 5px;
-        font-size: 13px;
+
+        padding:11px 5px;
+
+        font-size:13px;
+
     }
 
     .modal-image {
-        height: 260px;
+        height:260px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
+
     <div class="header-inner">
-        <div class="logo">D<span>&</span>V STORE</div>
+
+        <div class="logo">
+            D<span>&</span>V STORE
+        </div>
 
         <a
             class="telegram"
@@ -467,17 +815,26 @@ footer strong {
         >
             Telegram
         </a>
+
     </div>
+
 </header>
 
+
 <section class="hero">
-    <h1>Техника.<br><span>Выгодно.</span></h1>
+
+    <h1>
+        Техника.<br>
+        <span>Выгодно.</span>
+    </h1>
 
     <p>
         Смартфоны и техника по актуальным ценам.
-        Проверяем наличие и обновляем каталог автоматически.
+        Каталог обновляется автоматически.
     </p>
+
 </section>
+
 
 <section class="controls">
 
@@ -489,61 +846,116 @@ footer strong {
     >
 
     <div class="filters">
-        <button class="filter active" data-brand="all">
+
+        <button
+            class="filter active"
+            data-brand="all"
+        >
             Все
         </button>
 
-        <button class="filter" data-brand="Apple">
+        <button
+            class="filter"
+            data-brand="Apple"
+        >
             Apple
         </button>
 
-        <button class="filter" data-brand="Samsung">
+        <button
+            class="filter"
+            data-brand="Samsung"
+        >
             Samsung
         </button>
 
-        <button class="filter" data-brand="Xiaomi">
+        <button
+            class="filter"
+            data-brand="Xiaomi"
+        >
             Xiaomi
         </button>
 
-        <button class="filter" data-brand="Honor">
+        <button
+            class="filter"
+            data-brand="Honor"
+        >
             Honor
         </button>
 
-        <button class="filter" data-brand="Google">
+        <button
+            class="filter"
+            data-brand="Google"
+        >
             Google
         </button>
+
     </div>
 
 </section>
 
-<main id="products" class="products"></main>
 
-<div id="modal" class="modal">
+<main
+    id="products"
+    class="products"
+></main>
+
+
+<div
+    id="modal"
+    class="modal"
+>
 
     <div class="modal-box">
 
-        <button class="close" onclick="closeModal()">
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
             ×
         </button>
 
         <div class="modal-image">
-            <img id="modalImage" src="" alt="">
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
         </div>
 
-        <div id="modalBrand" class="badge"></div>
+        <div
+            id="modalBrand"
+            class="badge"
+        ></div>
 
-        <h2 id="modalTitle"></h2>
+        <h2
+            id="modalTitle"
+        ></h2>
 
-        <div id="modalDescription" class="modal-info"></div>
+        <div
+            id="modalDescription"
+            class="modal-info"
+        ></div>
 
-        <div id="modalStock" class="stock"></div>
+        <div
+            id="modalStock"
+            class="stock"
+        ></div>
 
-        <div id="modalPrice" class="modal-price"></div>
+        <div
+            id="modalPrice"
+            class="modal-price"
+        ></div>
 
         <a
             id="modalOrder"
             class="order-btn"
-            style="display:block;text-align:center;text-decoration:none;"
+            style="
+                display:block;
+                text-align:center;
+                text-decoration:none;
+            "
             target="_blank"
         >
             Заказать в Telegram
@@ -553,117 +965,271 @@ footer strong {
 
 </div>
 
+
 <footer>
+
     <strong>D&V STORE</strong>
+
     <br><br>
+
     +7 993 361 7829
+
     <br>
+
     <a
         href="https://t.me/D_VSTORE"
         target="_blank"
-        style="color:#d4af37;text-decoration:none;"
+        style="
+            color:#d4af37;
+            text-decoration:none;
+        "
     >
         @D_VSTORE
     </a>
+
 </footer>
+
 
 <script>
 
 let products = [];
+
 let currentBrand = "all";
 
 const productsContainer =
-    document.getElementById("products");
+    document.getElementById(
+        "products"
+    );
 
 const searchInput =
-    document.getElementById("search");
+    document.getElementById(
+        "search"
+    );
 
 
-/* LOAD PRODUCTS */
+/* =====================================================
+   IMAGE PATH
+   ===================================================== */
+
+function getImagePath(image) {
+
+    if (!image) {
+        return "";
+    }
+
+    image = String(image)
+        .trim();
+
+    if (!image) {
+        return "";
+    }
+
+    // Внешняя картинка
+    if (
+        image.startsWith("http://") ||
+        image.startsWith("https://")
+    ) {
+
+        return image;
+
+    }
+
+    // Убираем начальный /
+    image =
+        image.replace(
+            /^\/+/,
+            ""
+        );
+
+    // GitHub Pages:
+    // берём путь относительно index.html
+
+    return new URL(
+        image,
+        window.location.href
+    ).href;
+
+}
+
+
+/* =====================================================
+   LOAD
+   ===================================================== */
 
 async function loadProducts() {
 
     try {
 
-        const response = await fetch(
-            "products.json?time=" + Date.now()
-        );
+        const response =
+            await fetch(
+                "products.json?time=" +
+                Date.now()
+            );
 
-        products = await response.json();
+        if (!response.ok) {
+
+            throw new Error(
+                "products.json HTTP " +
+                response.status
+            );
+
+        }
+
+        products =
+            await response.json();
+
+        if (!Array.isArray(products)) {
+
+            throw new Error(
+                "products.json имеет неправильный формат"
+            );
+
+        }
 
         renderProducts();
 
     } catch (error) {
 
         productsContainer.innerHTML = `
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:60px 20px;
-                color:#aaa;
-            ">
+
+            <div
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:60px 20px;
+                    color:#aaa;
+                "
+            >
+
                 Не удалось загрузить каталог.
+
             </div>
+
         `;
 
-        console.error(error);
+        console.error(
+            error
+        );
+
     }
+
 }
 
 
-/* PRICE */
+/* =====================================================
+   PRICE
+   ===================================================== */
 
 function getPriceNumber(price) {
 
-    if (!price) return 0;
+    if (
+        price === null ||
+        price === undefined
+    ) {
+
+        return 0;
+
+    }
 
     return parseInt(
-        String(price).replace(/[^\d]/g, "")
+        String(price)
+            .replace(
+                /[^\d]/g,
+                ""
+            )
     ) || 0;
+
 }
 
 
-/* DISCOUNT */
+function formatPrice(price) {
+
+    const number =
+        getPriceNumber(
+            price
+        );
+
+    if (!number) {
+
+        return "Цена по запросу";
+
+    }
+
+    return (
+        number
+            .toLocaleString("ru-RU")
+        + " ₽"
+    );
+
+}
+
+
+/* =====================================================
+   DISCOUNT
+   ===================================================== */
 
 function getDiscount(product) {
 
     const current =
-        getPriceNumber(product.price);
+        getPriceNumber(
+            product.price
+        );
 
     const old =
-        getPriceNumber(product.old_price);
+        getPriceNumber(
+            product.old_price
+        );
 
-    if (!old || old <= current) {
+    if (
+        !old ||
+        old <= current
+    ) {
+
         return "";
+
     }
 
     const discount =
         Math.round(
-            ((old - current) / old) * 100
+            (
+                (old - current)
+                / old
+            ) * 100
         );
 
     return `-${discount}%`;
+
 }
 
 
-/* TELEGRAM */
+/* =====================================================
+   TELEGRAM
+   ===================================================== */
 
 function getTelegramLink(product) {
 
     const text =
-        `Здравствуйте! Хочу заказать:\n\n` +
-        `${product.name}\n` +
-        `Цена: ${product.price}\n\n` +
-        `D&V STORE`;
+        "Здравствуйте! Хочу заказать:\n\n" +
+        product.name +
+        "\nЦена: " +
+        formatPrice(
+            product.price
+        ) +
+        "\n\nD&V STORE";
 
     return (
         "https://t.me/D_VSTORE?text=" +
-        encodeURIComponent(text)
+        encodeURIComponent(
+            text
+        )
     );
+
 }
 
 
-/* RENDER */
+/* =====================================================
+   RENDER
+   ===================================================== */
 
 function renderProducts() {
 
@@ -673,273 +1239,524 @@ function renderProducts() {
             .trim();
 
     const filtered =
-        products.filter(product => {
+        products.filter(
+            product => {
 
-            const matchesBrand =
-                currentBrand === "all" ||
-                product.brand === currentBrand;
+                const matchesBrand =
+                    currentBrand === "all" ||
+                    product.brand ===
+                    currentBrand;
 
-            const text =
-                (
-                    product.name +
+                const text =
+                    (
+                        product.name ||
+                        ""
+                    ) +
                     " " +
-                    product.description +
+                    (
+                        product.description ||
+                        ""
+                    ) +
                     " " +
-                    product.brand
-                ).toLowerCase();
+                    (
+                        product.brand ||
+                        ""
+                    );
 
-            const matchesSearch =
-                text.includes(search);
+                const matchesSearch =
+                    text
+                        .toLowerCase()
+                        .includes(
+                            search
+                        );
 
-            return matchesBrand &&
-                   matchesSearch;
-        });
+                return (
+                    matchesBrand &&
+                    matchesSearch
+                );
+
+            }
+        );
 
 
     if (!filtered.length) {
 
         productsContainer.innerHTML = `
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:70px 20px;
-                color:#888;
-            ">
-                <div style="font-size:40px;">🔎</div>
+
+            <div
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:70px 20px;
+                    color:#888;
+                "
+            >
+
+                <div
+                    style="font-size:40px;"
+                >
+                    🔎
+                </div>
+
                 <br>
+
                 Ничего не найдено
+
             </div>
+
         `;
 
         return;
+
     }
 
 
     productsContainer.innerHTML =
-        filtered.map((product, index) => {
+        filtered
+            .map(
+                product => {
 
-            const discount =
-                getDiscount(product);
+                    const image =
+                        getImagePath(
+                            product.image
+                        );
 
-            const image =
-                product.image
-                    ? product.image
-                    : "";
+                    const discount =
+                        getDiscount(
+                            product
+                        );
 
-
-            return `
-                <article class="card">
-
-                    <div class="card-image">
-
-                        ${
-                            image
-                            ?
-                            `<img
-                                src="${image}"
-                                alt="${escapeHtml(product.name)}"
-                                loading="lazy"
-                            >`
-                            :
-                            `<div style="color:#777">
-                                Фото скоро появится
-                            </div>`
-                        }
-
-                    </div>
+                    const index =
+                        products.indexOf(
+                            product
+                        );
 
 
-                    <div class="card-body">
+                    return `
 
-                        ${
-                            product.brand
-                            ?
-                            `<div class="badge">
-                                ${escapeHtml(product.brand)}
-                            </div>`
-                            :
-                            ""
-                        }
+                        <article
+                            class="card"
+                        >
 
-
-                        <div class="stock">
-                            ● ${escapeHtml(product.stock || "Уточняйте наличие")}
-                        </div>
-
-
-                        <h3>
-                            ${escapeHtml(product.name)}
-                        </h3>
-
-
-                        <div class="description">
-                            ${escapeHtml(product.description || "")}
-                        </div>
-
-
-                        ${
-                            discount
-                            ?
-                            `<div class="discount">
-                                ${discount} выгода
-                            </div>`
-                            :
-                            ""
-                        }
-
-
-                        <div class="price-row">
-
-                            <div>
-
-                                <div class="price">
-                                    ${escapeHtml(product.price)}
-                                </div>
+                            <div
+                                class="card-image"
+                            >
 
                                 ${
-                                    product.old_price
+                                    image
+
                                     ?
-                                    `<div class="old-price">
-                                        ${escapeHtml(product.old_price)}
-                                    </div>`
+
+                                    `
+                                    <img
+                                        src="${escapeHtml(image)}"
+                                        alt="${escapeHtml(product.name || "")}"
+                                        loading="lazy"
+                                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;color:#777;text-align:center&quot;>Фото не загрузилось</div>';"
+                                    >
+                                    `
+
                                     :
-                                    ""
+
+                                    `
+                                    <div
+                                        style="
+                                            color:#777;
+                                            text-align:center;
+                                        "
+                                    >
+                                        Фото скоро появится
+                                    </div>
+                                    `
                                 }
 
                             </div>
 
-                        </div>
+
+                            <div
+                                class="card-body"
+                            >
+
+                                ${
+                                    product.brand
+
+                                    ?
+
+                                    `
+                                    <div
+                                        class="badge"
+                                    >
+                                        ${escapeHtml(
+                                            product.brand
+                                        )}
+                                    </div>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
 
 
-                        <button
-                            class="order-btn"
-                            onclick="openProduct(${indexOfProduct(product)})"
-                        >
-                            🛒 Заказать
-                        </button>
+                                <div
+                                    class="stock"
+                                >
 
-                    </div>
+                                    ● ${
+                                        escapeHtml(
+                                            product.stock ||
+                                            "Уточняйте наличие"
+                                        )
+                                    }
 
-                </article>
-            `;
+                                </div>
 
-        }).join("");
+
+                                <h3>
+
+                                    ${
+                                        escapeHtml(
+                                            product.name ||
+                                            "Товар"
+                                        )
+                                    }
+
+                                </h3>
+
+
+                                <div
+                                    class="description"
+                                >
+
+                                    ${
+                                        escapeHtml(
+                                            product.description ||
+                                            ""
+                                        )
+                                    }
+
+                                </div>
+
+
+                                ${
+                                    discount
+
+                                    ?
+
+                                    `
+                                    <div
+                                        class="discount"
+                                    >
+                                        ${discount}
+                                        выгода
+                                    </div>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+
+                                <div
+                                    class="price-row"
+                                >
+
+                                    <div>
+
+                                        <div
+                                            class="price"
+                                        >
+                                            ${
+                                                formatPrice(
+                                                    product.price
+                                                )
+                                            }
+                                        </div>
+
+
+                                        ${
+                                            getPriceNumber(
+                                                product.old_price
+                                            )
+
+                                            ?
+
+                                            `
+                                            <div
+                                                class="old-price"
+                                            >
+                                                ${
+                                                    formatPrice(
+                                                        product.old_price
+                                                    )
+                                                }
+                                            </div>
+                                            `
+
+                                            :
+
+                                            ""
+                                        }
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    class="order-btn"
+                                    onclick="openProduct(${index})"
+                                >
+                                    🛒 Заказать
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }
+            )
+            .join("");
+
 }
 
 
-/* FIND PRODUCT INDEX */
-
-function indexOfProduct(product) {
-
-    return products.indexOf(product);
-}
-
-
-/* OPEN MODAL */
+/* =====================================================
+   MODAL
+   ===================================================== */
 
 function openProduct(index) {
 
     const product =
         products[index];
 
-    if (!product) return;
+    if (!product) {
+        return;
+    }
 
 
-    document.getElementById("modalImage").src =
-        product.image || "";
-
-    document.getElementById("modalBrand").textContent =
-        product.brand || "Товар";
-
-    document.getElementById("modalTitle").textContent =
-        product.name || "";
-
-    document.getElementById("modalDescription").textContent =
-        product.description || "";
-
-    document.getElementById("modalStock").textContent =
-        "● " + (product.stock || "Уточняйте наличие");
-
-    document.getElementById("modalPrice").textContent =
-        product.price || "Цена по запросу";
-
-    document.getElementById("modalOrder").href =
-        getTelegramLink(product);
+    const image =
+        getImagePath(
+            product.image
+        );
 
 
-    document.getElementById("modal")
-        .classList.add("show");
+    document
+        .getElementById(
+            "modalImage"
+        )
+        .src =
+            image;
+
+
+    document
+        .getElementById(
+            "modalBrand"
+        )
+        .textContent =
+            product.brand ||
+            "Товар";
+
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+            product.name ||
+            "";
+
+
+    document
+        .getElementById(
+            "modalDescription"
+        )
+        .textContent =
+            product.description ||
+            "";
+
+
+    document
+        .getElementById(
+            "modalStock"
+        )
+        .textContent =
+            "● " +
+            (
+                product.stock ||
+                "Уточняйте наличие"
+            );
+
+
+    document
+        .getElementById(
+            "modalPrice"
+        )
+        .textContent =
+            formatPrice(
+                product.price
+            );
+
+
+    document
+        .getElementById(
+            "modalOrder"
+        )
+        .href =
+            getTelegramLink(
+                product
+            );
+
+
+    document
+        .getElementById(
+            "modal"
+        )
+        .classList
+        .add(
+            "show"
+        );
+
 }
 
 
-/* CLOSE */
+/* =====================================================
+   CLOSE
+   ===================================================== */
 
 function closeModal() {
 
-    document.getElementById("modal")
-        .classList.remove("show");
+    document
+        .getElementById(
+            "modal"
+        )
+        .classList
+        .remove(
+            "show"
+        );
+
 }
 
 
 document
-    .getElementById("modal")
-    .addEventListener("click", function(event) {
+    .getElementById(
+        "modal"
+    )
+    .addEventListener(
+        "click",
+        function(event) {
 
-        if (event.target === this) {
-            closeModal();
+            if (
+                event.target ===
+                this
+            ) {
+
+                closeModal();
+
+            }
+
         }
+    );
 
-    });
 
-
-/* FILTERS */
+/* =====================================================
+   FILTERS
+   ===================================================== */
 
 document
-    .querySelectorAll(".filter")
-    .forEach(button => {
+    .querySelectorAll(
+        ".filter"
+    )
+    .forEach(
+        button => {
 
-        button.addEventListener("click", () => {
+            button.addEventListener(
+                "click",
+                () => {
 
-            document
-                .querySelectorAll(".filter")
-                .forEach(btn =>
-                    btn.classList.remove("active")
-                );
-
-            button.classList.add("active");
-
-            currentBrand =
-                button.dataset.brand;
-
-            renderProducts();
-
-        });
-
-    });
-
-
-/* SEARCH */
-
-searchInput.addEventListener(
-    "input",
-    renderProducts
-);
+                    document
+                        .querySelectorAll(
+                            ".filter"
+                        )
+                        .forEach(
+                            btn =>
+                                btn.classList
+                                .remove(
+                                    "active"
+                                )
+                        );
 
 
-/* ESCAPE */
+                    button
+                        .classList
+                        .add(
+                            "active"
+                        );
+
+
+                    currentBrand =
+                        button.dataset.brand;
+
+
+                    renderProducts();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+searchInput
+    .addEventListener(
+        "input",
+        renderProducts
+    );
+
+
+/* =====================================================
+   ESCAPE
+   ===================================================== */
 
 function escapeHtml(value) {
 
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    return String(
+        value
+    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
 }
 
 
-/* START */
+/* =====================================================
+   START
+   ===================================================== */
 
 loadProducts();
 
