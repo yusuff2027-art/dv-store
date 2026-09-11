@@ -4,344 +4,452 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>D&V STORE — смартфоны и техника</title>
+<title>D&V STORE — техника выгодно</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+:root {
+    --gold: #d4af37;
+    --gold-light: #f5d76e;
+    --gold-dark: #9c7c19;
+    --black: #050505;
+    --card: #0d0d0d;
+    --border: rgba(212,175,55,.28);
+    --text: #f5f5f5;
+    --muted: #999;
 }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#080808;
-  color:#fff;
+* {
+    box-sizing: border-box;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(8,8,8,.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #222;
+html {
+    scroll-behavior: smooth;
 }
 
-.header{
-  max-width:1200px;
-  margin:auto;
-  padding:15px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top, rgba(212,175,55,.10), transparent 35%),
+        var(--black);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.logo{
-  font-size:24px;
-  font-weight:900;
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5,5,5,.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
 }
 
-.logo span{
-  color:#ff6a00;
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.telegram{
-  background:#ff6a00;
-  color:white;
-  text-decoration:none;
-  padding:11px 16px;
-  border-radius:12px;
-  font-weight:700;
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--gold-light);
 }
 
-.hero{
-  max-width:1200px;
-  margin:auto;
-  padding:65px 20px 40px;
+.logo span {
+    color: white;
 }
 
-.hero h1{
-  font-size:clamp(42px,8vw,78px);
-  line-height:.95;
-  letter-spacing:-3px;
+.telegram {
+    text-decoration: none;
+    color: #050505;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    padding: 11px 17px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 14px;
 }
 
-.hero h1 span{
-  color:#ff6a00;
+/* HERO */
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 65px 20px 35px;
+    text-align: center;
 }
 
-.hero p{
-  color:#888;
-  max-width:600px;
-  margin-top:20px;
-  font-size:17px;
-  line-height:1.5;
+.hero h1 {
+    margin: 0;
+    font-size: clamp(38px, 8vw, 72px);
+    line-height: 1;
+    color: white;
 }
 
-.search{
-  max-width:1200px;
-  margin:auto;
-  padding:10px 20px 25px;
+.hero h1 span {
+    color: var(--gold-light);
+    text-shadow: 0 0 30px rgba(212,175,55,.3);
 }
 
-.search input{
-  width:100%;
-  background:#141414;
-  border:1px solid #292929;
-  color:white;
-  padding:17px 20px;
-  border-radius:15px;
-  outline:none;
-  font-size:16px;
+.hero p {
+    color: #aaa;
+    font-size: 17px;
+    margin: 20px auto 0;
+    max-width: 600px;
 }
 
-.search input:focus{
-  border-color:#ff6a00;
+/* SEARCH */
+
+.controls {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 20px 25px;
 }
 
-.categories{
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px 30px;
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
+.search {
+    width: 100%;
+    background: #0b0b0b;
+    border: 1px solid var(--border);
+    color: white;
+    padding: 16px 18px;
+    border-radius: 13px;
+    outline: none;
+    font-size: 16px;
 }
 
-.category{
-  white-space:nowrap;
-  background:#151515;
-  border:1px solid #292929;
-  color:#ddd;
-  padding:11px 17px;
-  border-radius:12px;
-  cursor:pointer;
+.search:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212,175,55,.12);
 }
 
-.category.active,
-.category:hover{
-  background:#ff6a00;
-  border-color:#ff6a00;
-  color:white;
+.filters {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding: 14px 0 4px;
 }
 
-.catalog{
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px 60px;
+.filters::-webkit-scrollbar {
+    display: none;
 }
 
-.catalog-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
+.filter {
+    flex: 0 0 auto;
+    border: 1px solid var(--border);
+    background: #090909;
+    color: #bbb;
+    padding: 10px 16px;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
-.catalog-title h2{
-  font-size:28px;
+.filter.active,
+.filter:hover {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: #050505;
+    border-color: var(--gold);
+    font-weight: 800;
 }
 
-.catalog-title span{
-  color:#666;
-  font-size:13px;
+/* PRODUCTS */
+
+.products {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 20px 60px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
 }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+.card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #111, #070707);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    transition: .25s ease;
 }
 
-.product{
-  background:#111;
-  border:1px solid #252525;
-  border-radius:20px;
-  overflow:hidden;
-  transition:.25s;
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 45px rgba(212,175,55,.12);
 }
 
-.product:hover{
-  transform:translateY(-5px);
-  border-color:#ff6a00;
+.card-image {
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle, rgba(212,175,55,.08), transparent 65%);
+    padding: 15px;
 }
 
-.product-image{
-  height:260px;
-  background:#171717;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: .3s;
 }
 
-.product-image img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+.card:hover .card-image img {
+    transform: scale(1.05);
 }
 
-.no-image{
-  color:#555;
+.card-body {
+    padding: 17px;
 }
 
-.product-info{
-  padding:17px;
+.badge {
+    display: inline-block;
+    background: rgba(212,175,55,.12);
+    border: 1px solid rgba(212,175,55,.3);
+    color: var(--gold-light);
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 10px;
 }
 
-.product-name{
-  font-size:18px;
-  font-weight:800;
+.stock {
+    color: #78d89a;
+    font-size: 12px;
+    margin-bottom: 9px;
 }
 
-.product-description{
-  color:#777;
-  font-size:13px;
-  margin-top:7px;
-  line-height:1.4;
-  min-height:36px;
+.card h3 {
+    margin: 0 0 9px;
+    font-size: 17px;
+    line-height: 1.3;
 }
 
-.product-price{
-  font-size:22px;
-  font-weight:900;
-  color:#ff6a00;
-  margin-top:16px;
+.description {
+    color: #888;
+    font-size: 13px;
+    min-height: 18px;
+    margin-bottom: 15px;
 }
 
-.stock{
-  color:#48c774;
-  font-size:12px;
-  margin-top:7px;
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.order{
-  display:block;
-  text-align:center;
-  margin-top:14px;
-  padding:12px;
-  background:#ff6a00;
-  border-radius:11px;
-  color:white;
-  text-decoration:none;
-  font-weight:800;
+.price {
+    color: var(--gold-light);
+    font-size: 22px;
+    font-weight: 900;
 }
 
-.about{
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px 60px;
+.old-price {
+    color: #666;
+    font-size: 13px;
+    text-decoration: line-through;
+    margin-top: 3px;
 }
 
-.about-box{
-  background:#111;
-  border:1px solid #252525;
-  border-radius:22px;
-  padding:30px;
-  text-align:center;
+.discount {
+    color: #78d89a;
+    font-size: 11px;
+    font-weight: bold;
 }
 
-.about-box h2{
-  margin-bottom:12px;
+.order-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: #050505;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .2s;
 }
 
-.about-box p{
-  color:#888;
-  line-height:1.6;
+.order-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(212,175,55,.25);
 }
 
-.buttons{
-  margin-top:22px;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.82);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    z-index: 999;
 }
 
-.button{
-  padding:13px 19px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:700;
+.modal.show {
+    display: flex;
 }
 
-.button-orange{
-  background:#ff6a00;
-  color:white;
+.modal-box {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(145deg, #111, #050505);
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 60px rgba(212,175,55,.16);
 }
 
-.button-dark{
-  background:#191919;
-  color:white;
-  border:1px solid #303030;
+.close {
+    float: right;
+    background: #171717;
+    color: white;
+    border: 1px solid #333;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-footer{
-  border-top:1px solid #222;
-  text-align:center;
-  padding:30px 20px;
-  color:#666;
-  line-height:1.7;
+.modal-image {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
-footer strong{
-  color:white;
+.modal-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.empty{
-  grid-column:1/-1;
-  text-align:center;
-  padding:60px 20px;
-  color:#666;
+.modal h2 {
+    color: white;
+    margin: 10px 0;
 }
 
-@media(max-width:950px){
-  .products{
-    grid-template-columns:repeat(3,1fr);
-  }
+.modal-price {
+    color: var(--gold-light);
+    font-size: 30px;
+    font-weight: 900;
+    margin: 15px 0;
 }
 
-@media(max-width:700px){
-  .products{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-
-  .product-image{
-    height:190px;
-  }
-
-  .product-info{
-    padding:13px;
-  }
-
-  .product-name{
-    font-size:15px;
-  }
-
-  .product-price{
-    font-size:19px;
-  }
-
-  .order{
-    font-size:13px;
-  }
-
-  .hero{
-    padding-top:45px;
-  }
+.modal-info {
+    color: #aaa;
+    line-height: 1.7;
 }
 
-@media(max-width:430px){
-  .logo{
-    font-size:20px;
-  }
+/* FOOTER */
 
-  .telegram{
-    font-size:12px;
-    padding:9px 11px;
-  }
+footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 35px 20px;
+    color: #777;
+}
+
+footer strong {
+    color: var(--gold-light);
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card-image {
+        height: 210px;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .header-inner {
+        padding: 13px 14px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .telegram {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 48px 18px 25px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .products {
+        padding: 8px 12px 45px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .card {
+        border-radius: 14px;
+    }
+
+    .card-image {
+        height: 175px;
+        padding: 8px;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .card h3 {
+        font-size: 14px;
+    }
+
+    .description {
+        font-size: 11px;
+    }
+
+    .price {
+        font-size: 17px;
+    }
+
+    .old-price {
+        font-size: 11px;
+    }
+
+    .order-btn {
+        padding: 11px 5px;
+        font-size: 13px;
+    }
+
+    .modal-image {
+        height: 260px;
+    }
 }
 </style>
 </head>
@@ -349,283 +457,489 @@ footer strong{
 <body>
 
 <header>
-  <div class="header">
-    <div class="logo">
-      D&V <span>STORE</span>
-    </div>
+    <div class="header-inner">
+        <div class="logo">D<span>&</span>V STORE</div>
 
-    <a class="telegram"
-       href="https://t.me/D_VSTORE"
-       target="_blank">
-       Telegram
-    </a>
-  </div>
+        <a
+            class="telegram"
+            href="https://t.me/D_VSTORE"
+            target="_blank"
+        >
+            Telegram
+        </a>
+    </div>
 </header>
 
 <section class="hero">
-  <h1>
-    Техника.<br>
-    <span>Выгодно.</span>
-  </h1>
-
-  <p>
-    Смартфоны и техника по выгодным ценам.
-    Выбирайте устройство и оформляйте заказ через Telegram.
-  </p>
-</section>
-
-<section class="search">
-  <input
-    id="search"
-    type="text"
-    placeholder="🔍 Поиск смартфона..."
-    oninput="renderProducts()"
-  >
-</section>
-
-<section class="categories">
-
-  <button class="category active"
-          onclick="setCategory('Все',this)">
-    Все
-  </button>
-
-  <button class="category"
-          onclick="setCategory('Apple',this)">
-    Apple
-  </button>
-
-  <button class="category"
-          onclick="setCategory('Samsung',this)">
-    Samsung
-  </button>
-
-  <button class="category"
-          onclick="setCategory('Xiaomi',this)">
-    Xiaomi
-  </button>
-
-  <button class="category"
-          onclick="setCategory('Honor',this)">
-    Honor
-  </button>
-
-  <button class="category"
-          onclick="setCategory('Google',this)">
-    Google
-  </button>
-
-</section>
-
-<section class="catalog">
-
-  <div class="catalog-title">
-    <h2>Каталог</h2>
-    <span id="count"></span>
-  </div>
-
-  <div
-    class="products"
-    id="products">
-  </div>
-
-</section>
-
-<section class="about">
-
-  <div class="about-box">
-
-    <h2>Не нашли нужную модель?</h2>
+    <h1>Техника.<br><span>Выгодно.</span></h1>
 
     <p>
-      Напишите нам. Мы проверим наличие и актуальную цену
-      нужного смартфона.
+        Смартфоны и техника по актуальным ценам.
+        Проверяем наличие и обновляем каталог автоматически.
     </p>
+</section>
 
-    <div class="buttons">
+<section class="controls">
 
-      <a
-        class="button button-orange"
-        href="https://t.me/D_VSTORE"
-        target="_blank">
-        Написать в Telegram
-      </a>
+    <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="🔎  Найти iPhone, Samsung, Xiaomi..."
+    >
 
-      <a
-        class="button button-dark"
-        href="tel:+79933617829">
-        +7 993 361 7829
-      </a>
+    <div class="filters">
+        <button class="filter active" data-brand="all">
+            Все
+        </button>
+
+        <button class="filter" data-brand="Apple">
+            Apple
+        </button>
+
+        <button class="filter" data-brand="Samsung">
+            Samsung
+        </button>
+
+        <button class="filter" data-brand="Xiaomi">
+            Xiaomi
+        </button>
+
+        <button class="filter" data-brand="Honor">
+            Honor
+        </button>
+
+        <button class="filter" data-brand="Google">
+            Google
+        </button>
+    </div>
+
+</section>
+
+<main id="products" class="products"></main>
+
+<div id="modal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeModal()">
+            ×
+        </button>
+
+        <div class="modal-image">
+            <img id="modalImage" src="" alt="">
+        </div>
+
+        <div id="modalBrand" class="badge"></div>
+
+        <h2 id="modalTitle"></h2>
+
+        <div id="modalDescription" class="modal-info"></div>
+
+        <div id="modalStock" class="stock"></div>
+
+        <div id="modalPrice" class="modal-price"></div>
+
+        <a
+            id="modalOrder"
+            class="order-btn"
+            style="display:block;text-align:center;text-decoration:none;"
+            target="_blank"
+        >
+            Заказать в Telegram
+        </a>
 
     </div>
 
-  </div>
-
-</section>
+</div>
 
 <footer>
-
-  <strong>D&V STORE</strong>
-
-  <br>
-
-  Telegram: @D_VSTORE
-
-  <br>
-
-  +7 993 361 7829
-
-  <br><br>
-
-  © 2026 D&V STORE
-
+    <strong>D&V STORE</strong>
+    <br><br>
+    +7 993 361 7829
+    <br>
+    <a
+        href="https://t.me/D_VSTORE"
+        target="_blank"
+        style="color:#d4af37;text-decoration:none;"
+    >
+        @D_VSTORE
+    </a>
 </footer>
 
 <script>
 
 let products = [];
+let currentBrand = "all";
 
-let currentCategory = "Все";
-
-async function loadProducts(){
-
-  try{
-
-    const response =
-      await fetch("products.json?time=" + Date.now());
-
-    products = await response.json();
-
-    renderProducts();
-
-  }catch(error){
-
-    document.getElementById("products").innerHTML = `
-      <div class="empty">
-        Каталог пока загружается...
-      </div>
-    `;
-
-  }
-
-}
-
-function setCategory(category,button){
-
-  currentCategory = category;
-
-  document
-    .querySelectorAll(".category")
-    .forEach(item =>
-      item.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-  renderProducts();
-
-}
-
-function renderProducts(){
-
-  const container =
+const productsContainer =
     document.getElementById("products");
 
-  const search =
-    document
-      .getElementById("search")
-      .value
-      .toLowerCase();
+const searchInput =
+    document.getElementById("search");
 
-  let filtered = products.filter(product => {
 
-    const name =
-      (product.name || "").toLowerCase();
+/* LOAD PRODUCTS */
 
-    const brand =
-      (product.brand || "").toLowerCase();
+async function loadProducts() {
 
-    const matchesSearch =
-      name.includes(search) ||
-      brand.includes(search);
+    try {
 
-    const matchesCategory =
-      currentCategory === "Все" ||
-      brand === currentCategory.toLowerCase();
+        const response = await fetch(
+            "products.json?time=" + Date.now()
+        );
 
-    return matchesSearch && matchesCategory;
+        products = await response.json();
 
-  });
+        renderProducts();
 
-  document.getElementById("count").textContent =
-    filtered.length + " товаров";
+    } catch (error) {
 
-  if(filtered.length === 0){
+        productsContainer.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:60px 20px;
+                color:#aaa;
+            ">
+                Не удалось загрузить каталог.
+            </div>
+        `;
 
-    container.innerHTML = `
-      <div class="empty">
-        Товаров пока нет
-      </div>
-    `;
-
-    return;
-
-  }
-
-  container.innerHTML =
-    filtered.map(product => `
-
-      <article class="product">
-
-        <div class="product-image">
-
-          ${
-            product.image
-            ?
-            `<img
-              src="${product.image}"
-              alt="${product.name}"
-              loading="lazy">`
-            :
-            `<div class="no-image">
-              Фото скоро появится
-            </div>`
-          }
-
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">
-            ${product.name || ""}
-          </div>
-
-          <div class="product-description">
-            ${product.description || ""}
-          </div>
-
-          <div class="product-price">
-            ${product.price || "Цена по запросу"}
-          </div>
-
-          <div class="stock">
-            ● ${product.stock || "Уточняйте наличие"}
-          </div>
-
-          <a
-            class="order"
-            href="https://t.me/D_VSTORE"
-            target="_blank">
-            Заказать
-          </a>
-
-        </div>
-
-      </article>
-
-    `).join("");
-
+        console.error(error);
+    }
 }
+
+
+/* PRICE */
+
+function getPriceNumber(price) {
+
+    if (!price) return 0;
+
+    return parseInt(
+        String(price).replace(/[^\d]/g, "")
+    ) || 0;
+}
+
+
+/* DISCOUNT */
+
+function getDiscount(product) {
+
+    const current =
+        getPriceNumber(product.price);
+
+    const old =
+        getPriceNumber(product.old_price);
+
+    if (!old || old <= current) {
+        return "";
+    }
+
+    const discount =
+        Math.round(
+            ((old - current) / old) * 100
+        );
+
+    return `-${discount}%`;
+}
+
+
+/* TELEGRAM */
+
+function getTelegramLink(product) {
+
+    const text =
+        `Здравствуйте! Хочу заказать:\n\n` +
+        `${product.name}\n` +
+        `Цена: ${product.price}\n\n` +
+        `D&V STORE`;
+
+    return (
+        "https://t.me/D_VSTORE?text=" +
+        encodeURIComponent(text)
+    );
+}
+
+
+/* RENDER */
+
+function renderProducts() {
+
+    const search =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+    const filtered =
+        products.filter(product => {
+
+            const matchesBrand =
+                currentBrand === "all" ||
+                product.brand === currentBrand;
+
+            const text =
+                (
+                    product.name +
+                    " " +
+                    product.description +
+                    " " +
+                    product.brand
+                ).toLowerCase();
+
+            const matchesSearch =
+                text.includes(search);
+
+            return matchesBrand &&
+                   matchesSearch;
+        });
+
+
+    if (!filtered.length) {
+
+        productsContainer.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:70px 20px;
+                color:#888;
+            ">
+                <div style="font-size:40px;">🔎</div>
+                <br>
+                Ничего не найдено
+            </div>
+        `;
+
+        return;
+    }
+
+
+    productsContainer.innerHTML =
+        filtered.map((product, index) => {
+
+            const discount =
+                getDiscount(product);
+
+            const image =
+                product.image
+                    ? product.image
+                    : "";
+
+
+            return `
+                <article class="card">
+
+                    <div class="card-image">
+
+                        ${
+                            image
+                            ?
+                            `<img
+                                src="${image}"
+                                alt="${escapeHtml(product.name)}"
+                                loading="lazy"
+                            >`
+                            :
+                            `<div style="color:#777">
+                                Фото скоро появится
+                            </div>`
+                        }
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        ${
+                            product.brand
+                            ?
+                            `<div class="badge">
+                                ${escapeHtml(product.brand)}
+                            </div>`
+                            :
+                            ""
+                        }
+
+
+                        <div class="stock">
+                            ● ${escapeHtml(product.stock || "Уточняйте наличие")}
+                        </div>
+
+
+                        <h3>
+                            ${escapeHtml(product.name)}
+                        </h3>
+
+
+                        <div class="description">
+                            ${escapeHtml(product.description || "")}
+                        </div>
+
+
+                        ${
+                            discount
+                            ?
+                            `<div class="discount">
+                                ${discount} выгода
+                            </div>`
+                            :
+                            ""
+                        }
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ${escapeHtml(product.price)}
+                                </div>
+
+                                ${
+                                    product.old_price
+                                    ?
+                                    `<div class="old-price">
+                                        ${escapeHtml(product.old_price)}
+                                    </div>`
+                                    :
+                                    ""
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="order-btn"
+                            onclick="openProduct(${indexOfProduct(product)})"
+                        >
+                            🛒 Заказать
+                        </button>
+
+                    </div>
+
+                </article>
+            `;
+
+        }).join("");
+}
+
+
+/* FIND PRODUCT INDEX */
+
+function indexOfProduct(product) {
+
+    return products.indexOf(product);
+}
+
+
+/* OPEN MODAL */
+
+function openProduct(index) {
+
+    const product =
+        products[index];
+
+    if (!product) return;
+
+
+    document.getElementById("modalImage").src =
+        product.image || "";
+
+    document.getElementById("modalBrand").textContent =
+        product.brand || "Товар";
+
+    document.getElementById("modalTitle").textContent =
+        product.name || "";
+
+    document.getElementById("modalDescription").textContent =
+        product.description || "";
+
+    document.getElementById("modalStock").textContent =
+        "● " + (product.stock || "Уточняйте наличие");
+
+    document.getElementById("modalPrice").textContent =
+        product.price || "Цена по запросу";
+
+    document.getElementById("modalOrder").href =
+        getTelegramLink(product);
+
+
+    document.getElementById("modal")
+        .classList.add("show");
+}
+
+
+/* CLOSE */
+
+function closeModal() {
+
+    document.getElementById("modal")
+        .classList.remove("show");
+}
+
+
+document
+    .getElementById("modal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeModal();
+        }
+
+    });
+
+
+/* FILTERS */
+
+document
+    .querySelectorAll(".filter")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            document
+                .querySelectorAll(".filter")
+                .forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+            button.classList.add("active");
+
+            currentBrand =
+                button.dataset.brand;
+
+            renderProducts();
+
+        });
+
+    });
+
+
+/* SEARCH */
+
+searchInput.addEventListener(
+    "input",
+    renderProducts
+);
+
+
+/* ESCAPE */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* START */
 
 loadProducts();
 
