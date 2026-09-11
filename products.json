@@ -1,34 +1,178 @@
 [
   {
-    "name": "Honor 600 Pro",
-    "brand": "Honor",
-    "description": "12/256 ГБ, цвет: Black",
-    "price": "61 980 ₽",
-    "stock": "В наличии",
-    "image": "https://yandex.ru/images/touch/search?text=Honor+600+Pro+черный&img_url=https%3A%2F%2Fwww.presse-citron.net%2Fapp%2Fuploads%2F2026%2F06%2FHonor-600-Pro-noir.jpeg&rpt=simage"
-  },
-  {
-    "name": "iPhone 15 Pro",
+    "name": "Apple iPhone 17 Pro Max 256Gb (Cosmic Orange) (eSim)",
     "brand": "Apple",
-    "description": "256 ГБ",
-    "price": "Цена по запросу",
-    "stock": "Уточняйте наличие",
-    "image": "https://placehold.co/600x800/111111/ff6a00?text=iPhone+15+Pro"
+    "description": "256 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "110 950 ₽",
+    "old_price": "115 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_cosmic_orange_esim/",
+    "product_code": ""
   },
   {
-    "name": "Samsung Galaxy S25",
-    "brand": "Samsung",
-    "description": "Память и цвет уточняйте",
-    "price": "Цена по запросу",
-    "stock": "Уточняйте наличие",
-    "image": "https://placehold.co/600x800/111111/ff6a00?text=Samsung+S25"
+    "name": "Apple iPhone 17 Pro Max 256Gb (Deep Blue) (eSim)",
+    "brand": "Apple",
+    "description": "256 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "112 550 ₽",
+    "old_price": "117 550 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_deep_blue_esim/",
+    "product_code": ""
   },
   {
-    "name": "Xiaomi 15",
-    "brand": "Xiaomi",
-    "description": "Память и цвет уточняйте",
-    "price": "Цена по запросу",
-    "stock": "Уточняйте наличие",
-    "image": "https://placehold.co/600x800/111111/ff6a00?text=Xiaomi+15"
+    "name": "Apple iPhone 17 Pro Max 256Gb (Silver) (eSim)",
+    "brand": "Apple",
+    "description": "256 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "112 950 ₽",
+    "old_price": "117 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_silver_esim/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 256Gb (Silver)",
+    "brand": "Apple",
+    "description": "256 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "119 950 ₽",
+    "old_price": "124 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_silver/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 256Gb (Deep Blue)",
+    "brand": "Apple",
+    "description": "256 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "115 950 ₽",
+    "old_price": "120 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_deep_blue/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 256Gb (Cosmic Orange)",
+    "brand": "Apple",
+    "description": "256 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "116 950 ₽",
+    "old_price": "121 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_cosmic_orange/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 512Gb (Cosmic Orange)",
+    "brand": "Apple",
+    "description": "512 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "133 950 ₽",
+    "old_price": "141 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_512gb_cosmic_orange/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 512Gb (Silver) (eSim)",
+    "brand": "Apple",
+    "description": "512 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "128 950 ₽",
+    "old_price": "136 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_512gb_silver_esim/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 512Gb (Silver)",
+    "brand": "Apple",
+    "description": "512 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "144 950 ₽",
+    "old_price": "152 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_512gb_silver/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 512Gb (Deep Blue)",
+    "brand": "Apple",
+    "description": "512 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "134 550 ₽",
+    "old_price": "142 550 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_512gb_deep_blue/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 512Gb (Cosmic Orange) (eSim)",
+    "brand": "Apple",
+    "description": "512 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "127 550 ₽",
+    "old_price": "135 550 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_512gb_cosmic_orange_esim/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 1Tb (Silver) (eSim)",
+    "brand": "Apple",
+    "description": "1024 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "147 550 ₽",
+    "old_price": "157 550 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_1tb_silver_esim/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 2Tb (Cosmic Orange)",
+    "brand": "Apple",
+    "description": "2048 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "180 950 ₽",
+    "old_price": "190 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_2tb_cosmic_orange/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 1Tb (Silver)",
+    "brand": "Apple",
+    "description": "1024 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "173 950 ₽",
+    "old_price": "183 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_1tb_silver/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 512Gb (Deep Blue) (eSim)",
+    "brand": "Apple",
+    "description": "512 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "129 950 ₽",
+    "old_price": "137 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_512gb_deep_blue_esim/",
+    "product_code": ""
+  },
+  {
+    "name": "Apple iPhone 17 Pro Max 1Tb (Deep Blue) (eSim)",
+    "brand": "Apple",
+    "description": "1024 ГБ, цвет: /память/SIM) + плашки ===============",
+    "price": "144 950 ₽",
+    "old_price": "154 950 руб.",
+    "stock": "В наличии",
+    "image": "https://apple-avenue.ru/upload/nextype.alpha/105/qsc2ptwrd8a76c6l1kjyeqrolb45dbp2.png",
+    "url": "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_1tb_deep_blue_esim/",
+    "product_code": ""
   }
 ]
