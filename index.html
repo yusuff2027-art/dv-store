@@ -1,815 +1,823 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<title>D&V STORE — смартфоны и ремонт</title>
 
-<title>D&V STORE — техника выгодно</title>
+<meta name="description" content="D&V STORE — смартфоны Apple, Samsung, Xiaomi, Honor, Google и других брендов. Продажа смартфонов и ремонт в Москве.">
 
 <style>
 
-:root {
-
-    --gold:#d4af37;
-    --gold-light:#f5d76e;
-    --black:#050505;
-    --card:#0d0d0d;
-    --border:rgba(212,175,55,.28);
-    --text:#f5f5f5;
-    --muted:#999;
-
-}
-
 * {
-    box-sizing:border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-
-    margin:0;
-
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(212,175,55,.10),
-            transparent 35%
-        ),
-        var(--black);
-
-    color:var(--text);
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #fff;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-/* HEADER */
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header {
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
-    background:
-        rgba(5,5,5,.94);
-
-    backdrop-filter:
-        blur(15px);
-
-    border-bottom:
-        1px solid var(--border);
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8,8,8,.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212,175,55,.2);
 }
 
 .header-inner {
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:16px 20px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
+    max-width: 1250px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .logo {
-
-    font-size:25px;
-
-    font-weight:900;
-
-    letter-spacing:2px;
-
-    color:var(--gold-light);
-
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #d4af37;
 }
 
-.logo span {
-    color:white;
+.nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
 }
 
-.telegram {
-
-    text-decoration:none;
-
-    color:#050505;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    padding:11px 17px;
-
-    border-radius:10px;
-
-    font-weight:800;
-
-    font-size:14px;
-
+.nav a {
+    color: #ddd;
+    font-size: 14px;
+    transition: .2s;
 }
 
+.nav a:hover {
+    color: #d4af37;
+}
 
-/* HERO */
+.telegram-btn {
+    background: #d4af37;
+    color: #000;
+    padding: 10px 17px;
+    border-radius: 9px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+
+.telegram-btn:hover {
+    opacity: .85;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(212,175,55,.16), transparent 35%),
+        #080808;
+}
 
-    max-width:1200px;
+.hero-content {
+    max-width: 850px;
+}
 
-    margin:auto;
-
-    padding:65px 20px 35px;
-
-    text-align:center;
-
+.hero-label {
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 18px;
 }
 
 .hero h1 {
-
-    margin:0;
-
-    font-size:
-        clamp(
-            38px,
-            8vw,
-            72px
-        );
-
-    line-height:1;
-
-    color:white;
-
+    font-size: clamp(42px, 8vw, 82px);
+    line-height: .95;
+    font-weight: 900;
+    letter-spacing: -3px;
 }
 
 .hero h1 span {
-
-    color:var(--gold-light);
-
-    text-shadow:
-        0 0 30px
-        rgba(212,175,55,.3);
-
+    color: #d4af37;
 }
 
 .hero p {
-
-    color:#aaa;
-
-    font-size:17px;
-
-    margin:20px auto 0;
-
-    max-width:600px;
-
+    margin: 25px auto;
+    max-width: 650px;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
-
-/* CONTROLS */
-
-.controls {
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:
-        10px 20px 25px;
-
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.search {
-
-    width:100%;
-
-    background:#0b0b0b;
-
-    border:
-        1px solid var(--border);
-
-    color:white;
-
-    padding:16px 18px;
-
-    border-radius:13px;
-
-    outline:none;
-
-    font-size:16px;
-
+.hero-button {
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: 800;
+    border: 1px solid #d4af37;
+    background: #d4af37;
+    color: #000;
 }
 
-.search:focus {
-
-    border-color:var(--gold);
-
-    box-shadow:
-        0 0 20px
-        rgba(212,175,55,.12);
-
+.hero-button.secondary {
+    background: transparent;
+    color: #fff;
 }
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.section-title h2 span {
+    color: #d4af37;
+}
+
+.section-title p {
+    color: #888;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 17px 20px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-box input:focus {
+    border-color: #d4af37;
+}
+
+/* =========================
+   FILTERS
+========================= */
 
 .filters {
-
-    display:flex;
-
-    gap:9px;
-
-    overflow-x:auto;
-
-    padding:
-        14px 0 4px;
-
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
 }
 
-.filters::-webkit-scrollbar {
-    display:none;
+.filter-btn {
+    background: #111;
+    color: #ddd;
+    border: 1px solid #292929;
+    padding: 10px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
 }
 
-.filter {
-
-    flex:0 0 auto;
-
-    border:
-        1px solid var(--border);
-
-    background:#090909;
-
-    color:#bbb;
-
-    padding:
-        10px 16px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
+.filter-btn:hover,
+.filter-btn.active {
+    background: #d4af37;
+    color: #000;
+    border-color: #d4af37;
 }
 
-.filter.active,
-.filter:hover {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    color:#050505;
-
-    border-color:var(--gold);
-
-    font-weight:800;
-
-}
-
-
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products {
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:
-        10px 20px 60px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:18px;
-
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-.card {
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #111,
-            #070707
-        );
-
-    border:
-        1px solid var(--border);
-
-    border-radius:18px;
-
-    transition:.25s ease;
-
+.product-card {
+    background: #111;
+    border: 1px solid #202020;
+    border-radius: 17px;
+    overflow: hidden;
+    transition: .25s;
 }
 
-.card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:var(--gold);
-
-    box-shadow:
-        0 15px 45px
-        rgba(212,175,55,.12);
-
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212,175,55,.6);
+    box-shadow: 0 15px 50px rgba(0,0,0,.45);
 }
 
-.card-image {
-
-    height:260px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(212,175,55,.08),
-            transparent 65%
-        );
-
-    padding:15px;
-
+.product-image {
+    height: 280px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
-.card-image img {
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    transition:.3s;
-
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.card:hover
-.card-image img {
-
-    transform:
-        scale(1.05);
-
+.product-info {
+    padding: 18px;
 }
 
-.card-body {
-
-    padding:17px;
-
+.product-brand {
+    color: #d4af37;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
-.badge {
-
-    display:inline-block;
-
-    background:
-        rgba(212,175,55,.12);
-
-    border:
-        1px solid
-        rgba(212,175,55,.3);
-
-    color:var(--gold-light);
-
-    border-radius:6px;
-
-    padding:
-        5px 8px;
-
-    font-size:11px;
-
-    font-weight:800;
-
-    margin-bottom:10px;
-
+.product-name {
+    font-size: 17px;
+    font-weight: 800;
+    margin: 8px 0;
+    min-height: 43px;
 }
 
-.stock {
-
-    color:#78d89a;
-
-    font-size:12px;
-
-    margin-bottom:9px;
-
-}
-
-.card h3 {
-
-    margin:
-        0 0 9px;
-
-    font-size:17px;
-
-    line-height:1.3;
-
-}
-
-.description {
-
-    color:#999;
-
-    font-size:13px;
-
-    min-height:18px;
-
-    margin-bottom:15px;
-
+.product-description {
+    color: #888;
+    font-size: 13px;
+    min-height: 20px;
 }
 
 .price-row {
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .price {
-
-    color:var(--gold-light);
-
-    font-size:22px;
-
-    font-weight:900;
-
+    color: #d4af37;
+    font-size: 21px;
+    font-weight: 900;
 }
 
 .old-price {
-
-    color:#666;
-
-    font-size:13px;
-
-    text-decoration:
-        line-through;
-
-    margin-top:3px;
-
+    display: block;
+    color: #666;
+    font-size: 12px;
+    text-decoration: line-through;
 }
 
-.discount {
-
-    color:#78d89a;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    margin-bottom:5px;
-
+.buy-btn {
+    border: none;
+    background: #d4af37;
+    color: #000;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
 }
 
-.order-btn {
+.buy-btn:hover {
+    opacity: .85;
+}
 
-    width:100%;
+.stock {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #6fd36f;
+}
 
-    margin-top:15px;
+/* =========================
+   ABOUT
+========================= */
 
-    padding:13px;
+.about {
+    background: #0d0d0d;
+    border-top: 1px solid #181818;
+    border-bottom: 1px solid #181818;
+}
 
-    border:0;
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
 
-    border-radius:11px;
+.about-text h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
 
+.about-text h2 span {
+    color: #d4af37;
+}
+
+.about-text p {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-list {
+    margin-top: 25px;
+    display: grid;
+    gap: 12px;
+}
+
+.about-item {
+    padding: 15px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 10px;
+}
+
+.about-item strong {
+    color: #d4af37;
+}
+
+/* =========================
+   REPAIR
+========================= */
+
+.repair {
     background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
-
-    color:#050505;
-
-    font-size:15px;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-    transition:.2s;
-
+        radial-gradient(circle at 50% 50%, rgba(212,175,55,.08), transparent 40%),
+        #080808;
 }
 
-.order-btn:hover {
-
-    transform:
-        scale(1.02);
-
-    box-shadow:
-        0 0 25px
-        rgba(212,175,55,.25);
-
+.repair-box {
+    border: 1px solid rgba(212,175,55,.3);
+    border-radius: 20px;
+    padding: 45px;
+    background: #0d0d0d;
+    text-align: center;
 }
 
+.repair-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
 
-/* MODAL */
+.repair-box h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.repair-box h2 span {
+    color: #d4af37;
+}
+
+.repair-box p {
+    max-width: 750px;
+    margin: auto;
+    color: #aaa;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.repair-list {
+    max-width: 800px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.repair-item {
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+    border: 1px solid #222;
+    color: #ddd;
+}
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews {
+    background: #0d0d0d;
+}
+
+.reviews-box {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    padding: 45px 25px;
+    border: 1px solid #222;
+    border-radius: 20px;
+    background: #111;
+}
+
+.stars {
+    color: #d4af37;
+    font-size: 32px;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.reviews-box h2 {
+    margin-bottom: 12px;
+}
+
+.reviews-box p {
+    color: #999;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.review-btn {
+    display: inline-block;
+    background: #d4af37;
+    color: #000;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+/* =========================
+   CONTACTS
+========================= */
+
+.contacts {
+    background: #080808;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.contact-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+}
+
+.contact-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.contact-card h3 {
+    margin-bottom: 8px;
+}
+
+.contact-card p {
+    color: #999;
+    line-height: 1.5;
+}
+
+.contact-card a {
+    color: #d4af37;
+    font-weight: 800;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid #222;
+    background: #050505;
+}
+
+.footer-inner {
+    max-width: 1250px;
+    margin: auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    color: #d4af37;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.footer-text {
+    color: #666;
+    font-size: 13px;
+}
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-        rgba(0,0,0,.82);
-
-    backdrop-filter:
-        blur(10px);
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:18px;
-
-    z-index:999;
-
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.modal.show {
-    display:flex;
+.modal.active {
+    display: flex;
 }
 
 .modal-box {
-
-    width:100%;
-
-    max-width:520px;
-
-    max-height:90vh;
-
-    overflow-y:auto;
-
-    background:
-        linear-gradient(
-            145deg,
-            #111,
-            #050505
-        );
-
-    border:
-        1px solid var(--gold);
-
-    border-radius:20px;
-
-    padding:20px;
-
-    box-shadow:
-        0 0 60px
-        rgba(212,175,55,.16);
-
+    width: 100%;
+    max-width: 500px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 18px;
+    padding: 30px;
+    position: relative;
 }
 
-.close {
-
-    float:right;
-
-    background:#171717;
-
-    color:white;
-
-    border:
-        1px solid #333;
-
-    width:36px;
-
-    height:36px;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-}
-
-.modal-image {
-
-    height:320px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin-bottom:15px;
-
-}
-
-.modal-image img {
-
-    max-width:100%;
-
-    max-height:100%;
-
-    object-fit:contain;
-
+.modal-close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 28px;
+    color: #aaa;
+    cursor: pointer;
 }
 
 .modal h2 {
+    padding-right: 30px;
+    margin-bottom: 10px;
+}
 
-    color:white;
-
-    margin:10px 0;
-
+.modal p {
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .modal-price {
-
-    color:var(--gold-light);
-
-    font-size:30px;
-
-    font-weight:900;
-
-    margin:15px 0;
-
+    color: #d4af37;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 20px;
 }
 
-.modal-info {
-
-    color:#aaa;
-
-    line-height:1.7;
-
+.modal-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    background: #d4af37;
+    color: #000;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 900;
 }
 
+/* =========================
+   LOADING
+========================= */
 
-/* FOOTER */
-
-footer {
-
-    border-top:
-        1px solid var(--border);
-
-    text-align:center;
-
-    padding:35px 20px;
-
-    color:#777;
-
+.loading {
+    text-align: center;
+    color: #777;
+    padding: 50px;
 }
 
-footer strong {
-
-    color:var(--gold-light);
-
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 50px;
+    grid-column: 1 / -1;
 }
 
+/* =========================
+   MOBILE
+========================= */
 
-/* MOBILE */
-
-@media(max-width:900px) {
+@media (max-width: 1000px) {
 
     .products {
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-        gap:12px;
-
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .card-image {
-        height:210px;
+    .about-grid {
+        grid-template-columns: 1fr;
     }
 
 }
 
-@media(max-width:560px) {
+@media (max-width: 750px) {
+
+    .nav {
+        display: none;
+    }
 
     .header-inner {
-        padding:13px 14px;
+        padding: 13px 15px;
     }
 
     .logo {
-        font-size:20px;
-    }
-
-    .telegram {
-        padding:9px 12px;
-        font-size:12px;
+        font-size: 21px;
     }
 
     .hero {
-        padding:48px 18px 25px;
+        min-height: 500px;
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
     }
 
     .hero p {
-        font-size:14px;
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 55px 15px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
     }
 
     .products {
-
-        padding:
-            8px 12px 45px;
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-        gap:10px;
-
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
-    .card {
-        border-radius:14px;
+    .product-image {
+        height: 210px;
     }
 
-    .card-image {
-
-        height:175px;
-
-        padding:8px;
-
+    .product-info {
+        padding: 13px;
     }
 
-    .card-body {
-        padding:12px;
-    }
-
-    .card h3 {
-        font-size:14px;
-    }
-
-    .description {
-        font-size:11px;
+    .product-name {
+        font-size: 14px;
     }
 
     .price {
-        font-size:17px;
+        font-size: 17px;
     }
 
-    .old-price {
-        font-size:11px;
+    .buy-btn {
+        padding: 8px 10px;
+        font-size: 12px;
     }
 
-    .order-btn {
-
-        padding:11px 5px;
-
-        font-size:13px;
-
+    .repair-box {
+        padding: 30px 18px;
     }
 
-    .modal-image {
-        height:260px;
+    .repair-box h2 {
+        font-size: 30px;
+    }
+
+    .repair-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-description {
+        font-size: 11px;
+    }
+
+    .price-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .buy-btn {
+        width: 100%;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
     <div class="header-inner">
 
-        <div class="logo">
-            D<span>&</span>V STORE
-        </div>
+        <a href="#" class="logo">
+            D&V STORE
+        </a>
+
+        <nav class="nav">
+
+            <a href="#catalog">
+                Каталог
+            </a>
+
+            <a href="#about">
+                О нас
+            </a>
+
+            <a href="#repair">
+                Ремонт
+            </a>
+
+            <a href="#reviews">
+                Отзывы
+            </a>
+
+            <a href="#contacts">
+                Контакты
+            </a>
+
+        </nav>
 
         <a
-            class="telegram"
+            class="telegram-btn"
             href="https://t.me/D_VSTORE"
             target="_blank"
         >
@@ -821,173 +829,565 @@ footer strong {
 </header>
 
 
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
 
-    <h1>
-        Техника.<br>
-        <span>Выгодно.</span>
-    </h1>
+    <div class="hero-content">
 
-    <p>
-        Смартфоны и техника по актуальным ценам.
-        Каталог обновляется автоматически.
-    </p>
+        <div class="hero-label">
+            D&V STORE • МОСКВА
+        </div>
+
+        <h1>
+            ТЕХНОЛОГИИ.<br>
+            <span>БЕЗ ЛИШНЕГО.</span>
+        </h1>
+
+        <p>
+            Смартфоны Apple, Samsung, Xiaomi, Honor,
+            Google и других брендов.
+            Продажа и ремонт смартфонов в Москве.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#catalog"
+                class="hero-button"
+            >
+                Смотреть каталог
+            </a>
+
+            <a
+                href="#repair"
+                class="hero-button secondary"
+            >
+                Ремонт смартфонов
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<section class="controls">
+<!-- =========================
+     CATALOG
+========================= -->
 
-    <input
-        id="search"
-        class="search"
-        type="text"
-        placeholder="🔎  Найти iPhone, Samsung, Xiaomi..."
+<section
+    class="catalog"
+    id="catalog"
+>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Каталог <span>D&V STORE</span>
+        </h2>
+
+        <p>
+            Актуальные цены и наличие обновляются автоматически
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Поиск смартфона..."
+        >
+
+    </div>
+
+
+    <div
+        class="filters"
+        id="filters"
     >
 
-    <div class="filters">
-
         <button
-            class="filter active"
+            class="filter-btn active"
             data-brand="all"
         >
             Все
         </button>
 
         <button
-            class="filter"
+            class="filter-btn"
             data-brand="Apple"
         >
             Apple
         </button>
 
         <button
-            class="filter"
+            class="filter-btn"
             data-brand="Samsung"
         >
             Samsung
         </button>
 
         <button
-            class="filter"
+            class="filter-btn"
             data-brand="Xiaomi"
         >
             Xiaomi
         </button>
 
         <button
-            class="filter"
+            class="filter-btn"
             data-brand="Honor"
         >
             Honor
         </button>
 
         <button
-            class="filter"
+            class="filter-btn"
             data-brand="Google"
         >
             Google
         </button>
 
+        <button
+            class="filter-btn"
+            data-brand="OnePlus"
+        >
+            OnePlus
+        </button>
+
+        <button
+            class="filter-btn"
+            data-brand="Huawei"
+        >
+            Huawei
+        </button>
+
+        <button
+            class="filter-btn"
+            data-brand="Nothing"
+        >
+            Nothing
+        </button>
+
+        <button
+            class="filter-btn"
+            data-brand="Realme"
+        >
+            Realme
+        </button>
+
     </div>
+
+
+    <div
+        class="products"
+        id="products"
+    >
+
+        <div class="loading">
+            Загружаем каталог...
+        </div>
+
+    </div>
+
+</div>
 
 </section>
 
 
-<main
-    id="products"
-    class="products"
-></main>
+<!-- =========================
+     ABOUT
+========================= -->
 
-
-<div
-    id="modal"
-    class="modal"
+<section
+    class="about"
+    id="about"
 >
 
-    <div class="modal-box">
+<div class="container">
 
-        <button
-            class="close"
-            onclick="closeModal()"
-        >
-            ×
-        </button>
+    <div class="about-grid">
 
-        <div class="modal-image">
+        <div class="about-text">
 
-            <img
-                id="modalImage"
-                src=""
-                alt=""
-            >
+            <h2>
+                Почему <span>D&V STORE?</span>
+            </h2>
+
+            <p>
+                D&V STORE — магазин современной техники,
+                где можно подобрать смартфон под свои задачи
+                и бюджет.
+            </p>
+
+            <p>
+                Мы стараемся держать актуальные цены,
+                регулярно обновляем ассортимент и помогаем
+                подобрать подходящее устройство.
+            </p>
+
+            <div class="about-list">
+
+                <div class="about-item">
+                    <strong>01.</strong>
+                    Актуальный каталог
+                </div>
+
+                <div class="about-item">
+                    <strong>02.</strong>
+                    Apple и Android
+                </div>
+
+                <div class="about-item">
+                    <strong>03.</strong>
+                    Помощь с выбором
+                </div>
+
+                <div class="about-item">
+                    <strong>04.</strong>
+                    Ремонт смартфонов
+                </div>
+
+            </div>
 
         </div>
 
-        <div
-            id="modalBrand"
-            class="badge"
-        ></div>
 
-        <h2
-            id="modalTitle"
-        ></h2>
+        <div>
 
-        <div
-            id="modalDescription"
-            class="modal-info"
-        ></div>
+            <div class="repair-box">
 
-        <div
-            id="modalStock"
-            class="stock"
-        ></div>
+                <div class="repair-icon">
+                    📱
+                </div>
 
-        <div
-            id="modalPrice"
-            class="modal-price"
-        ></div>
+                <h2>
+                    D&V <span>STORE</span>
+                </h2>
+
+                <p>
+                    Смартфон, ремонт и помощь
+                    в одном месте.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     REPAIR
+========================= -->
+
+<section
+    class="repair"
+    id="repair"
+>
+
+<div class="container">
+
+    <div class="repair-box">
+
+        <div class="repair-icon">
+            🔧
+        </div>
+
+        <h2>
+            Ремонт <span>смартфонов</span>
+        </h2>
+
+        <p>
+            Разбился экран? Телефон не заряжается?
+            Быстро садится аккумулятор? Не работает камера,
+            динамик или Face ID?
+            Приносите устройство в D&V STORE.
+        </p>
+
+        <p style="margin-top:15px;">
+            Проведём диагностику, расскажем причину
+            неисправности и предложим оптимальный
+            вариант ремонта.
+        </p>
+
+
+        <div class="repair-list">
+
+            <div class="repair-item">
+                📱 Замена экрана
+            </div>
+
+            <div class="repair-item">
+                🔋 Замена аккумулятора
+            </div>
+
+            <div class="repair-item">
+                🔌 Ремонт разъёма зарядки
+            </div>
+
+            <div class="repair-item">
+                📷 Ремонт камеры
+            </div>
+
+            <div class="repair-item">
+                🔊 Ремонт динамика
+            </div>
+
+            <div class="repair-item">
+                ⚙️ Диагностика неисправностей
+            </div>
+
+        </div>
+
 
         <a
-            id="modalOrder"
-            class="order-btn"
-            style="
-                display:block;
-                text-align:center;
-                text-decoration:none;
-            "
+            href="https://t.me/D_VSTORE"
             target="_blank"
+            class="hero-button"
         >
-            Заказать в Telegram
+            Записаться на ремонт
         </a>
 
     </div>
 
 </div>
 
+</section>
+
+
+<!-- =========================
+     REVIEWS
+========================= -->
+
+<section
+    class="reviews"
+    id="reviews"
+>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Отзывы о <span>D&V STORE</span>
+        </h2>
+
+        <p>
+            Нам важно ваше мнение
+        </p>
+
+    </div>
+
+
+    <div class="reviews-box">
+
+        <div class="stars">
+            ★★★★★
+        </div>
+
+        <h2>
+            Реальные отзывы клиентов
+        </h2>
+
+        <p>
+            Посмотрите отзывы покупателей
+            и клиентов D&V STORE на Яндекс Картах.
+        </p>
+
+        <a
+            href="https://yandex.ru/maps/org/dv_store/179122901606?si=mjgm0kypxfxr88nz7yr3d2u12w"
+            target="_blank"
+            class="review-btn"
+        >
+            Читать отзывы на Яндекс Картах
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTS
+========================= -->
+
+<section
+    class="contacts"
+    id="contacts"
+>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            <span>Контакты</span>
+        </h2>
+
+        <p>
+            Будем рады помочь
+        </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                📍
+            </div>
+
+            <h3>
+                Адрес
+            </h3>
+
+            <p>
+                Профсоюзная ул., 109,
+                корп. 2, Москва
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                📞
+            </div>
+
+            <h3>
+                Телефон
+            </h3>
+
+            <p>
+                <a href="tel:+79933617829">
+                    +7 993 361 7829
+                </a>
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                ✈️
+            </div>
+
+            <h3>
+                Telegram
+            </h3>
+
+            <p>
+                <a
+                    href="https://t.me/D_VSTORE"
+                    target="_blank"
+                >
+                    @D_VSTORE
+                </a>
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <strong>D&V STORE</strong>
+<div class="footer-inner">
 
-    <br><br>
+    <div>
 
-    +7 993 361 7829
+        <div class="footer-logo">
+            D&V STORE
+        </div>
 
-    <br>
+        <div class="footer-text">
+            Смартфоны • Ремонт • Техника
+        </div>
 
-    <a
-        href="https://t.me/D_VSTORE"
-        target="_blank"
-        style="
-            color:#d4af37;
-            text-decoration:none;
-        "
-    >
-        @D_VSTORE
-    </a>
+    </div>
+
+    <div class="footer-text">
+        © 2026 D&V STORE
+    </div>
+
+</div>
 
 </footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="productModal"
+>
+
+    <div class="modal-box">
+
+        <div
+            class="modal-close"
+            id="modalClose"
+        >
+            ×
+        </div>
+
+        <h2 id="modalName">
+            Товар
+        </h2>
+
+        <p id="modalDescription">
+        </p>
+
+        <div
+            class="modal-price"
+            id="modalPrice"
+        >
+        </div>
+
+        <a
+            id="modalTelegram"
+            href="https://t.me/D_VSTORE"
+            target="_blank"
+            class="modal-btn"
+        >
+            Написать в Telegram
+        </a>
+
+    </div>
+
+</div>
 
 
 <script>
@@ -996,65 +1396,32 @@ let products = [];
 
 let currentBrand = "all";
 
+
 const productsContainer =
-    document.getElementById(
-        "products"
-    );
+    document.getElementById("products");
 
 const searchInput =
-    document.getElementById(
-        "search"
-    );
+    document.getElementById("searchInput");
+
+const modal =
+    document.getElementById("productModal");
+
+const modalName =
+    document.getElementById("modalName");
+
+const modalDescription =
+    document.getElementById("modalDescription");
+
+const modalPrice =
+    document.getElementById("modalPrice");
+
+const modalClose =
+    document.getElementById("modalClose");
 
 
-/* =====================================================
-   IMAGE PATH
-   ===================================================== */
-
-function getImagePath(image) {
-
-    if (!image) {
-        return "";
-    }
-
-    image = String(image)
-        .trim();
-
-    if (!image) {
-        return "";
-    }
-
-    // Внешняя картинка
-    if (
-        image.startsWith("http://") ||
-        image.startsWith("https://")
-    ) {
-
-        return image;
-
-    }
-
-    // Убираем начальный /
-    image =
-        image.replace(
-            /^\/+/,
-            ""
-        );
-
-    // GitHub Pages:
-    // берём путь относительно index.html
-
-    return new URL(
-        image,
-        window.location.href
-    ).href;
-
-}
-
-
-/* =====================================================
-   LOAD
-   ===================================================== */
+/* =========================
+   ЗАГРУЗКА ТОВАРОВ
+========================= */
 
 async function loadProducts() {
 
@@ -1067,243 +1434,75 @@ async function loadProducts() {
             );
 
         if (!response.ok) {
-
             throw new Error(
-                "products.json HTTP " +
-                response.status
+                "Ошибка загрузки products.json"
             );
-
         }
 
         products =
             await response.json();
 
-        if (!Array.isArray(products)) {
-
-            throw new Error(
-                "products.json имеет неправильный формат"
-            );
-
-        }
-
         renderProducts();
 
     } catch (error) {
 
+        console.error(error);
+
         productsContainer.innerHTML = `
-
-            <div
-                style="
-                    grid-column:1/-1;
-                    text-align:center;
-                    padding:60px 20px;
-                    color:#aaa;
-                "
-            >
-
+            <div class="empty">
                 Не удалось загрузить каталог.
-
             </div>
-
         `;
 
-        console.error(
-            error
-        );
-
     }
 
 }
 
 
-/* =====================================================
-   PRICE
-   ===================================================== */
-
-function getPriceNumber(price) {
-
-    if (
-        price === null ||
-        price === undefined
-    ) {
-
-        return 0;
-
-    }
-
-    return parseInt(
-        String(price)
-            .replace(
-                /[^\d]/g,
-                ""
-            )
-    ) || 0;
-
-}
-
-
-function formatPrice(price) {
-
-    const number =
-        getPriceNumber(
-            price
-        );
-
-    if (!number) {
-
-        return "Цена по запросу";
-
-    }
-
-    return (
-        number
-            .toLocaleString("ru-RU")
-        + " ₽"
-    );
-
-}
-
-
-/* =====================================================
-   DISCOUNT
-   ===================================================== */
-
-function getDiscount(product) {
-
-    const current =
-        getPriceNumber(
-            product.price
-        );
-
-    const old =
-        getPriceNumber(
-            product.old_price
-        );
-
-    if (
-        !old ||
-        old <= current
-    ) {
-
-        return "";
-
-    }
-
-    const discount =
-        Math.round(
-            (
-                (old - current)
-                / old
-            ) * 100
-        );
-
-    return `-${discount}%`;
-
-}
-
-
-/* =====================================================
-   TELEGRAM
-   ===================================================== */
-
-function getTelegramLink(product) {
-
-    const text =
-        "Здравствуйте! Хочу заказать:\n\n" +
-        product.name +
-        "\nЦена: " +
-        formatPrice(
-            product.price
-        ) +
-        "\n\nD&V STORE";
-
-    return (
-        "https://t.me/D_VSTORE?text=" +
-        encodeURIComponent(
-            text
-        )
-    );
-
-}
-
-
-/* =====================================================
-   RENDER
-   ===================================================== */
+/* =========================
+   РЕНДЕР
+========================= */
 
 function renderProducts() {
 
     const search =
         searchInput.value
-            .toLowerCase()
-            .trim();
+            .trim()
+            .toLowerCase();
+
 
     const filtered =
-        products.filter(
-            product => {
+        products.filter(product => {
 
-                const matchesBrand =
-                    currentBrand === "all" ||
-                    product.brand ===
-                    currentBrand;
+            const brandMatch =
+                currentBrand === "all" ||
+                product.brand === currentBrand;
 
-                const text =
-                    (
-                        product.name ||
-                        ""
-                    ) +
+            const searchText =
+                (
+                    product.name +
                     " " +
-                    (
-                        product.description ||
-                        ""
-                    ) +
+                    product.brand +
                     " " +
-                    (
-                        product.brand ||
-                        ""
-                    );
+                    product.description
+                ).toLowerCase();
 
-                const matchesSearch =
-                    text
-                        .toLowerCase()
-                        .includes(
-                            search
-                        );
+            const searchMatch =
+                !search ||
+                searchText.includes(search);
 
-                return (
-                    matchesBrand &&
-                    matchesSearch
-                );
+            return brandMatch &&
+                   searchMatch;
 
-            }
-        );
+        });
 
 
     if (!filtered.length) {
 
         productsContainer.innerHTML = `
-
-            <div
-                style="
-                    grid-column:1/-1;
-                    text-align:center;
-                    padding:70px 20px;
-                    color:#888;
-                "
-            >
-
-                <div
-                    style="font-size:40px;"
-                >
-                    🔎
-                </div>
-
-                <br>
-
-                Ничего не найдено
-
+            <div class="empty">
+                Ничего не найдено.
             </div>
-
         `;
 
         return;
@@ -1312,451 +1511,250 @@ function renderProducts() {
 
 
     productsContainer.innerHTML =
-        filtered
-            .map(
-                product => {
+        filtered.map(
+            (product, index) => {
 
-                    const image =
-                        getImagePath(
-                            product.image
-                        );
+                const price =
+                    Number(product.price || 0)
+                    .toLocaleString("ru-RU");
 
-                    const discount =
-                        getDiscount(
-                            product
-                        );
-
-                    const index =
-                        products.indexOf(
-                            product
-                        );
+                const oldPrice =
+                    Number(product.old_price || 0)
+                    .toLocaleString("ru-RU");
 
 
-                    return `
+                return `
 
-                        <article
-                            class="card"
+                <article
+                    class="product-card"
+                >
+
+                    <div class="product-image">
+
+                        <img
+                            src="${escapeHtml(product.image || "")}"
+                            alt="${escapeHtml(product.name || "Товар")}"
+                            loading="lazy"
+                            onerror="this.style.display='none'"
                         >
 
-                            <div
-                                class="card-image"
-                            >
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div class="product-brand">
+                            ${escapeHtml(product.brand || "")}
+                        </div>
+
+                        <div class="product-name">
+                            ${escapeHtml(product.name || "")}
+                        </div>
+
+                        <div class="product-description">
+                            ${escapeHtml(product.description || "")}
+                        </div>
+
+
+                        <div class="price-row">
+
+                            <div>
+
+                                <div class="price">
+                                    ${price} ₽
+                                </div>
 
                                 ${
-                                    image
-
+                                    product.old_price > product.price
                                     ?
-
-                                    `
-                                    <img
-                                        src="${escapeHtml(image)}"
-                                        alt="${escapeHtml(product.name || "")}"
-                                        loading="lazy"
-                                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;color:#777;text-align:center&quot;>Фото не загрузилось</div>';"
-                                    >
-                                    `
-
+                                    `<span class="old-price">
+                                        ${oldPrice} ₽
+                                    </span>`
                                     :
-
-                                    `
-                                    <div
-                                        style="
-                                            color:#777;
-                                            text-align:center;
-                                        "
-                                    >
-                                        Фото скоро появится
-                                    </div>
-                                    `
+                                    ""
                                 }
 
                             </div>
 
 
-                            <div
-                                class="card-body"
+                            <button
+                                class="buy-btn"
+                                onclick="openProduct(${index}, '${encodeURIComponent(product.url || "")}')"
                             >
+                                Подробнее
+                            </button>
 
-                                ${
-                                    product.brand
-
-                                    ?
-
-                                    `
-                                    <div
-                                        class="badge"
-                                    >
-                                        ${escapeHtml(
-                                            product.brand
-                                        )}
-                                    </div>
-                                    `
-
-                                    :
-
-                                    ""
-                                }
+                        </div>
 
 
-                                <div
-                                    class="stock"
-                                >
+                        <div class="stock">
+                            ● ${escapeHtml(product.stock || "В наличии")}
+                        </div>
 
-                                    ● ${
-                                        escapeHtml(
-                                            product.stock ||
-                                            "Уточняйте наличие"
-                                        )
-                                    }
+                    </div>
 
-                                </div>
+                </article>
 
+                `;
 
-                                <h3>
-
-                                    ${
-                                        escapeHtml(
-                                            product.name ||
-                                            "Товар"
-                                        )
-                                    }
-
-                                </h3>
-
-
-                                <div
-                                    class="description"
-                                >
-
-                                    ${
-                                        escapeHtml(
-                                            product.description ||
-                                            ""
-                                        )
-                                    }
-
-                                </div>
-
-
-                                ${
-                                    discount
-
-                                    ?
-
-                                    `
-                                    <div
-                                        class="discount"
-                                    >
-                                        ${discount}
-                                        выгода
-                                    </div>
-                                    `
-
-                                    :
-
-                                    ""
-                                }
-
-
-                                <div
-                                    class="price-row"
-                                >
-
-                                    <div>
-
-                                        <div
-                                            class="price"
-                                        >
-                                            ${
-                                                formatPrice(
-                                                    product.price
-                                                )
-                                            }
-                                        </div>
-
-
-                                        ${
-                                            getPriceNumber(
-                                                product.old_price
-                                            )
-
-                                            ?
-
-                                            `
-                                            <div
-                                                class="old-price"
-                                            >
-                                                ${
-                                                    formatPrice(
-                                                        product.old_price
-                                                    )
-                                                }
-                                            </div>
-                                            `
-
-                                            :
-
-                                            ""
-                                        }
-
-                                    </div>
-
-                                </div>
-
-
-                                <button
-                                    class="order-btn"
-                                    onclick="openProduct(${index})"
-                                >
-                                    🛒 Заказать
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                    `;
-
-                }
-            )
-            .join("");
+            }
+        ).join("");
 
 }
 
 
-/* =====================================================
-   MODAL
-   ===================================================== */
+/* =========================
+   ОТКРЫТИЕ ТОВАРА
+========================= */
 
-function openProduct(index) {
+function openProduct(index, encodedUrl) {
+
+    const url =
+        decodeURIComponent(encodedUrl);
 
     const product =
-        products[index];
+        products.find(
+            item => item.url === url
+        );
 
     if (!product) {
         return;
     }
 
+    modalName.textContent =
+        product.name || "Товар";
 
-    const image =
-        getImagePath(
-            product.image
-        );
+    modalDescription.textContent =
+        product.description ||
+        "Актуальная информация о товаре уточняется.";
 
-
-    document
-        .getElementById(
-            "modalImage"
-        )
-        .src =
-            image;
+    modalPrice.textContent =
+        Number(product.price || 0)
+            .toLocaleString("ru-RU") +
+        " ₽";
 
 
-    document
-        .getElementById(
-            "modalBrand"
-        )
-        .textContent =
-            product.brand ||
-            "Товар";
+    const message =
+        "Здравствуйте! Интересует " +
+        product.name +
+        " за " +
+        Number(product.price || 0)
+            .toLocaleString("ru-RU") +
+        " ₽";
 
 
     document
-        .getElementById(
-            "modalTitle"
-        )
-        .textContent =
-            product.name ||
-            "";
-
-
-    document
-        .getElementById(
-            "modalDescription"
-        )
-        .textContent =
-            product.description ||
-            "";
-
-
-    document
-        .getElementById(
-            "modalStock"
-        )
-        .textContent =
-            "● " +
-            (
-                product.stock ||
-                "Уточняйте наличие"
-            );
-
-
-    document
-        .getElementById(
-            "modalPrice"
-        )
-        .textContent =
-            formatPrice(
-                product.price
-            );
-
-
-    document
-        .getElementById(
-            "modalOrder"
-        )
+        .getElementById("modalTelegram")
         .href =
-            getTelegramLink(
-                product
+        "https://t.me/D_VSTORE?text=" +
+        encodeURIComponent(message);
+
+
+    modal.classList.add("active");
+
+}
+
+
+/* =========================
+   ЗАКРЫТИЕ MODAL
+========================= */
+
+modalClose.onclick =
+    function() {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    };
+
+
+modal.onclick =
+    function(event) {
+
+        if (
+            event.target === modal
+        ) {
+
+            modal.classList.remove(
+                "active"
             );
 
+        }
 
-    document
-        .getElementById(
-            "modal"
-        )
-        .classList
-        .add(
-            "show"
-        );
-
-}
+    };
 
 
-/* =====================================================
-   CLOSE
-   ===================================================== */
-
-function closeModal() {
-
-    document
-        .getElementById(
-            "modal"
-        )
-        .classList
-        .remove(
-            "show"
-        );
-
-}
-
+/* =========================
+   ФИЛЬТРЫ
+========================= */
 
 document
-    .getElementById(
-        "modal"
-    )
-    .addEventListener(
-        "click",
-        function(event) {
+    .querySelectorAll(".filter-btn")
+    .forEach(button => {
 
-            if (
-                event.target ===
-                this
-            ) {
+        button.addEventListener(
+            "click",
+            function() {
 
-                closeModal();
+                document
+                    .querySelectorAll(
+                        ".filter-btn"
+                    )
+                    .forEach(btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                    );
+
+                this.classList.add(
+                    "active"
+                );
+
+                currentBrand =
+                    this.dataset.brand;
+
+                renderProducts();
 
             }
+        );
 
-        }
-    );
-
-
-/* =====================================================
-   FILTERS
-   ===================================================== */
-
-document
-    .querySelectorAll(
-        ".filter"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    document
-                        .querySelectorAll(
-                            ".filter"
-                        )
-                        .forEach(
-                            btn =>
-                                btn.classList
-                                .remove(
-                                    "active"
-                                )
-                        );
+    });
 
 
-                    button
-                        .classList
-                        .add(
-                            "active"
-                        );
+/* =========================
+   ПОИСК
+========================= */
+
+searchInput.addEventListener(
+    "input",
+    function() {
+
+        renderProducts();
+
+    }
+);
 
 
-                    currentBrand =
-                        button.dataset.brand;
-
-
-                    renderProducts();
-
-                }
-            );
-
-        }
-    );
-
-
-/* =====================================================
-   SEARCH
-   ===================================================== */
-
-searchInput
-    .addEventListener(
-        "input",
-        renderProducts
-    );
-
-
-/* =====================================================
-   ESCAPE
-   ===================================================== */
+/* =========================
+   ЗАЩИТА HTML
+========================= */
 
 function escapeHtml(value) {
 
-    return String(
-        value
-    )
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
-/* =====================================================
+/* =========================
    START
-   ===================================================== */
+========================= */
 
 loadProducts();
 
