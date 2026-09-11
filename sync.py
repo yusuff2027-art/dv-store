@@ -18,26 +18,78 @@ IMAGE_DIR = "images"
 os.makedirs(IMAGE_DIR, exist_ok=True)
 
 
+# =========================================
+# ЗАГРУЗКА СТРАНИЦЫ
+# =========================================
+
 def get_html(url):
-    req = urllib.request.Request(url, headers=HEADERS)
 
-    with urllib.request.urlopen(req, timeout=30) as response:
-        return response.read().decode("utf-8", errors="ignore")
+    req = urllib.request.Request(
+        url,
+        headers=HEADERS
+    )
 
+    with urllib.request.urlopen(
+        req,
+        timeout=30
+    ) as response:
+
+        return response.read().decode(
+            "utf-8",
+            errors="ignore"
+        )
+
+
+# =========================================
+# ОЧИСТКА ТЕКСТА
+# =========================================
 
 def clean_text(value):
+
     value = unescape(value)
 
-    value = re.sub(r"<[^>]+>", " ", value)
-
     value = re.sub(
-        r"={2,}|-{3,}|_{3,}",
+        r"<[^>]+>",
+        " ",
+        value
+    )
+
+    # Убираем мусорные разделители
+    value = re.sub(
+        r"={2,}",
         " ",
         value
     )
 
     value = re.sub(
+        r"_{2,}",
+        " ",
+        value
+    )
+
+    value = re.sub(
+        r"-{3,}",
+        " ",
+        value
+    )
+
+    # Убираем конкретный мусор
+    value = re.sub(
         r"/память/SIM\)?",
+        " ",
+        value,
+        flags=re.I
+    )
+
+    value = re.sub(
+        r"\+\s*плашки",
+        " ",
+        value,
+        flags=re.I
+    )
+
+    value = re.sub(
+        r"\bплашки\b",
         " ",
         value,
         flags=re.I
@@ -49,12 +101,22 @@ def clean_text(value):
         value
     )
 
-    return value.strip()
+    return value.strip(
+        " -,:;|/()"
+    )
 
+
+# =========================================
+# ССЫЛКИ НА ТОВАРЫ
+# =========================================
 
 def get_product_links(html):
 
-    pattern = r'href=["\']([^"\']*/catalog/iphone_17_pro_max/[^"\']+)["\']'
+    pattern = (
+        r'href=["\']'
+        r'([^"\']*/catalog/iphone_17_pro_max/[^"\']+)'
+        r'["\']'
+    )
 
     links = re.findall(
         pattern,
@@ -88,6 +150,10 @@ def get_product_links(html):
     return result
 
 
+# =========================================
+# ПОЛУЧЕНИЕ ЗНАЧЕНИЯ
+# =========================================
+
 def get_value(html, pattern):
 
     match = re.search(
@@ -97,12 +163,17 @@ def get_value(html, pattern):
     )
 
     if match:
+
         return clean_text(
             match.group(1)
         )
 
     return ""
 
+
+# =========================================
+# ИМЯ ФАЙЛА
+# =========================================
 
 def safe_filename(name):
 
@@ -112,10 +183,19 @@ def safe_filename(name):
         name
     )
 
-    return name.strip("-").lower()
+    return name.strip(
+        "-"
+    ).lower()
 
 
-def get_product_image(html, product_name):
+# =========================================
+# СКАЧИВАНИЕ ФОТО
+# =========================================
+
+def get_product_image(
+    html,
+    product_name
+):
 
     images = re.findall(
         r'(?:src|data-src)=["\']([^"\']+)["\']',
@@ -148,7 +228,10 @@ def get_product_image(html, product_name):
             img,
             re.I
         ):
-            candidates.append(img)
+
+            candidates.append(
+                img
+            )
 
     unique = []
 
@@ -178,8 +261,13 @@ def get_product_image(html, product_name):
         f"{IMAGE_DIR}/{filename}{extension}"
     )
 
-    print("🖼 Скачиваем фото:")
-    print(image_url)
+    print(
+        "🖼 Скачиваем фото:"
+    )
+
+    print(
+        image_url
+    )
 
     try:
 
@@ -227,19 +315,20 @@ def get_product_image(html, product_name):
         return ""
 
 
-# -----------------------------------------
-# ХАРАКТЕРИСТИКИ
-# -----------------------------------------
+# =========================================
+# ПАМЯТЬ
+# =========================================
 
-def get_memory(html, name):
+def get_memory(
+    html,
+    name
+):
 
     patterns = [
 
-        r"Встроенная память\s*:?\s*([^<]{1,50})",
+        r"Встроенная память\s*:?\s*([^<]{1,80})",
 
-        r"Память\s*:?\s*([^<]{1,50})",
-
-        r"(\d+\s*(?:GB|Gb|гб|ГБ))"
+        r"Память\s*:?\s*([^<]{1,80})"
 
     ]
 
@@ -265,8 +354,11 @@ def get_memory(html, name):
                     + " ГБ"
                 )
 
+    # Если характеристика не найдена,
+    # берём память из названия
+
     match = re.search(
-        r"(\d+)\s*(?:GB|Gb|гб|ГБ)",
+        r"(\d+)\s*(GB|Gb|гб|ГБ)",
         name,
         re.I
     )
@@ -281,13 +373,20 @@ def get_memory(html, name):
     return ""
 
 
-def get_color(html, name):
+# =========================================
+# ЦВЕТ
+# =========================================
+
+def get_color(
+    html,
+    name
+):
 
     patterns = [
 
-        r"Цвет\s*:?\s*([^<]{1,50})",
+        r"Цвет\s*:?\s*([^<]{1,80})",
 
-        r"Color\s*:?\s*([^<]{1,50})"
+        r"Color\s*:?\s*([^<]{1,80})"
 
     ]
 
@@ -304,39 +403,39 @@ def get_color(html, name):
                 value
             )
 
-            value = re.sub(
-                r"[/\\]+",
-                " ",
-                value
-            )
+            # Убираем мусор после цвета
 
-            value = re.sub(
-                r"\b(?:память|memory|sim)\b.*",
-                "",
+            value = re.split(
+                r"\b(?:память|memory|sim|eSIM|SIM)\b",
                 value,
                 flags=re.I
-            )
+            )[0]
 
             value = value.strip(
-                " -,:;|()"
+                " -,:;|/()"
             )
 
             if value:
+
                 return value
 
-    # Иногда цвет есть прямо в названии
+
+    # Если цвет указан в названии
 
     known_colors = [
+
         "Cosmic Orange",
         "Deep Blue",
         "Silver",
         "Black",
         "White",
         "Gold",
+
         "Natural Titanium",
         "Blue Titanium",
         "Black Titanium",
         "White Titanium"
+
     ]
 
     for color in known_colors:
@@ -348,38 +447,105 @@ def get_color(html, name):
     return ""
 
 
-def get_sim(html, name):
+# =========================================
+# SIM / ESIM
+# =========================================
 
-    text = (
-        html + " " + name
-    ).lower()
+def get_sim_type(
+    html,
+    name
+):
 
-    if "esim" in text:
+    # Сначала смотрим только на
+    # характеристику страницы.
 
-        return "eSIM"
+    patterns = [
 
-    if "e-sim" in text:
+        r"Тип SIM[-\s]*карты\s*:?\s*([^<]{1,100})",
 
-        return "eSIM"
+        r"Тип SIM\s*:?\s*([^<]{1,100})",
 
-    if "nano sim" in text:
+        r"SIM[-\s]*карта\s*:?\s*([^<]{1,100})",
 
-        return "SIM"
+        r"SIM\s*:?\s*([^<]{1,100})",
 
-    if "sim" in text:
+        r"Поддержка SIM\s*:?\s*([^<]{1,100})"
 
-        return "SIM"
+    ]
+
+    for pattern in patterns:
+
+        value = get_value(
+            html,
+            pattern
+        )
+
+        if not value:
+            continue
+
+        value_lower = value.lower()
+
+        has_esim = (
+            "esim" in value_lower
+            or "e-sim" in value_lower
+            or "e sim" in value_lower
+        )
+
+        has_sim = bool(
+            re.search(
+                r"\bnano\s*sim\b|\bdual\s*sim\b|\bsim\s*\+\s*sim\b",
+                value_lower
+            )
+        )
+
+        if has_sim and has_esim:
+
+            return "SIM + eSIM"
+
+        if has_esim:
+
+            return "eSIM"
+
+        if has_sim:
+
+            return "SIM"
+
+
+    # ВАЖНО:
+    #
+    # Здесь специально НЕ смотрим на название товара.
+    #
+    # Потому что название:
+    # "(eSim)" может означать конкретную
+    # модификацию, но не гарантирует,
+    # что на странице характеристика
+    # заполнена так же.
+
 
     return ""
 
 
-# -----------------------------------------
+# =========================================
+# КОД ТОВАРА
+# =========================================
+
+def get_product_code(html):
+
+    return get_value(
+        html,
+        r"Код товара\s*:?\s*([A-Za-z0-9_-]+)"
+    )
+
+
+# =========================================
 # ТОВАР
-# -----------------------------------------
+# =========================================
 
 def parse_product(url):
 
-    html = get_html(url)
+    html = get_html(
+        url
+    )
 
 
     # НАЗВАНИЕ
@@ -489,17 +655,16 @@ def parse_product(url):
         name
     )
 
-    sim = get_sim(
+    sim_type = get_sim_type(
         html,
         name
     )
 
 
-    # КОД ТОВАРА
+    # КОД
 
-    product_code = get_value(
-        html,
-        r"Код товара\s*:?\s*([A-Za-z0-9_-]+)"
+    product_code = get_product_code(
+        html
     )
 
 
@@ -515,22 +680,25 @@ def parse_product(url):
 
     description_parts = []
 
+
     if memory:
 
         description_parts.append(
             memory
         )
 
+
     if color:
 
         description_parts.append(
-            f"цвет: {color}"
+            color
         )
 
-    if sim:
+
+    if sim_type:
 
         description_parts.append(
-            sim
+            sim_type
         )
 
 
@@ -562,9 +730,9 @@ def parse_product(url):
     }
 
 
-# -----------------------------------------
+# =========================================
 # ЗАПУСК
-# -----------------------------------------
+# =========================================
 
 print(
     "================================"
