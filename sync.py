@@ -1,7 +1,10 @@
+import json
 import re
 import urllib.request
+from html import unescape
 
 SOURCE_URL = "https://apple-avenue.ru/catalog/iphone_17_pro_max/"
+OUTPUT_FILE = "products.json"
 
 headers = {
     "User-Agent": (
@@ -19,28 +22,67 @@ try:
     with urllib.request.urlopen(request, timeout=30) as response:
         html = response.read().decode("utf-8", errors="ignore")
 
-    print("✅ Страница Apple Avenue получена")
-    print("Размер страницы:", len(html))
+    print("✅ Apple Avenue получен")
+    print("Размер:", len(html))
+
+    # Убираем лишний HTML
+    text = re.sub(r"<script.*?</script>", " ", html, flags=re.S | re.I)
+    text = re.sub(r"<style.*?</style>", " ", text, flags=re.S | re.I)
+    text = re.sub(r"<[^>]+>", " ", text)
+
+    text = unescape(text)
+    text = re.sub(r"\s+", " ", text)
 
     # Ищем цены
-    prices = re.findall(r'[\d\s]+(?:₽|руб)', html)
-
-    print("\n💰 Найденные цены:")
-    for price in prices[:30]:
-        print(price.strip())
-
-    # Ищем названия iPhone
-    products = re.findall(
-        r'(iPhone\s+17\s+Pro\s+Max[^<"]*)',
-        html,
-        flags=re.IGNORECASE
+    prices = re.findall(
+        r"\d[\d\s]*(?:₽|руб\.?)",
+        text,
+        flags=re.I
     )
 
-    print("\n📱 Найденные товары:")
-    for product in products[:30]:
-        print(product.strip())
+    # Ищем модели
+    names = re.findall(
+        r"iPhone\s+17\s+Pro\s+Max[^|]{0,100}",
+        text,
+        flags=re.I
+    )
 
-    print("\n✅ Тест завершён")
+    products = []
+
+    used = set()
+
+    for name in names:
+        name = re.sub(r"\s+", " ", name).strip()
+
+        if len(name) < 10:
+            continue
+
+        if name in used:
+            continue
+
+        used.add(name)
+
+        products.append({
+            "name": name,
+            "brand": "Apple",
+            "description": "iPhone 17 Pro Max",
+            "price": "Цена уточняется",
+            "stock": "Уточняйте наличие",
+            "image": ""
+        })
+
+    # Если названия не нашли — не затираем существующий каталог
+    if not products:
+        print("⚠️ Товары не найдены.")
+        print("❌ products.json НЕ изменён.")
+        raise SystemExit(0)
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(products, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ Загружено товаров: {len(products)}")
+    print("✅ products.json обновлён")
 
 except Exception as e:
     print("❌ Ошибка:", e)
+    raise
