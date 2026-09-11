@@ -1,10 +1,12 @@
-name: Test LI-PHONE
+name: D&V STORE Sync
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
 
 jobs:
-  test:
+  sync:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,5 +18,5 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Запустить проверку
+      - name: Запустить проверку Apple Avenue
         run: python sync.py
