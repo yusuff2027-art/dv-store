@@ -1,470 +1,635 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="D&V STORE — смартфоны и техника по выгодным ценам">
-  <title>D&V STORE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<title>D&V STORE — смартфоны и техника</title>
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #090909;
-      color: #fff;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(9,9,9,.96);
-      border-bottom: 1px solid #242424;
-      padding: 16px 20px;
-    }
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#080808;
+  color:#fff;
+}
 
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(8,8,8,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #222;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
+.header{
+  max-width:1200px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    .logo span {
-      color: #ff6a00;
-    }
+.logo{
+  font-size:24px;
+  font-weight:900;
+}
 
-    .telegram {
-      text-decoration: none;
-      color: white;
-      background: #ff6a00;
-      padding: 10px 15px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-    }
+.logo span{
+  color:#ff6a00;
+}
 
-    .hero {
-      max-width: 1200px;
-      margin: auto;
-      padding: 65px 20px 45px;
-      text-align: center;
-    }
+.telegram{
+  background:#ff6a00;
+  color:white;
+  text-decoration:none;
+  padding:11px 16px;
+  border-radius:12px;
+  font-weight:700;
+}
 
-    .hero h1 {
-      font-size: clamp(38px, 8vw, 72px);
-      line-height: 1;
-      margin-bottom: 20px;
-    }
+.hero{
+  max-width:1200px;
+  margin:auto;
+  padding:65px 20px 40px;
+}
 
-    .hero h1 span {
-      color: #ff6a00;
-    }
+.hero h1{
+  font-size:clamp(42px,8vw,78px);
+  line-height:.95;
+  letter-spacing:-3px;
+}
 
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.5;
-    }
+.hero h1 span{
+  color:#ff6a00;
+}
 
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+.hero p{
+  color:#888;
+  max-width:600px;
+  margin-top:20px;
+  font-size:17px;
+  line-height:1.5;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 800;
-      transition: .2s;
-    }
+.search{
+  max-width:1200px;
+  margin:auto;
+  padding:10px 20px 25px;
+}
 
-    .btn-main {
-      background: #ff6a00;
-      color: white;
-    }
+.search input{
+  width:100%;
+  background:#141414;
+  border:1px solid #292929;
+  color:white;
+  padding:17px 20px;
+  border-radius:15px;
+  outline:none;
+  font-size:16px;
+}
 
-    .btn-dark {
-      background: #171717;
-      color: white;
-      border: 1px solid #303030;
-    }
+.search input:focus{
+  border-color:#ff6a00;
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+.categories{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px 30px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+}
 
-    .catalog {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
+.category{
+  white-space:nowrap;
+  background:#151515;
+  border:1px solid #292929;
+  color:#ddd;
+  padding:11px 17px;
+  border-radius:12px;
+  cursor:pointer;
+}
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 22px;
-    }
+.category.active,
+.category:hover{
+  background:#ff6a00;
+  border-color:#ff6a00;
+  color:white;
+}
 
-    .section-title h2 {
-      font-size: 28px;
-    }
+.catalog{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px 60px;
+}
 
-    .section-title span {
-      color: #888;
-      font-size: 14px;
-    }
+.catalog-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
+.catalog-title h2{
+  font-size:28px;
+}
 
-    .product {
-      background: #121212;
-      border: 1px solid #242424;
-      border-radius: 20px;
-      overflow: hidden;
-      transition: .25s;
-    }
+.catalog-title span{
+  color:#666;
+  font-size:13px;
+}
 
-    .product:hover {
-      transform: translateY(-5px);
-      border-color: #ff6a00;
-    }
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
 
-    .product-image {
-      height: 240px;
-      background: #1b1b1b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 14px;
-    }
+.product{
+  background:#111;
+  border:1px solid #252525;
+  border-radius:20px;
+  overflow:hidden;
+  transition:.25s;
+}
 
-    .product-info {
-      padding: 18px;
-    }
+.product:hover{
+  transform:translateY(-5px);
+  border-color:#ff6a00;
+}
 
-    .product-name {
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 9px;
-    }
+.product-image{
+  height:260px;
+  background:#171717;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
 
-    .product-desc {
-      color: #888;
-      font-size: 13px;
-      line-height: 1.4;
-      min-height: 38px;
-    }
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
 
-    .price {
-      margin-top: 18px;
-      font-size: 22px;
-      font-weight: 900;
-      color: #ff6a00;
-    }
+.no-image{
+  color:#555;
+}
 
-    .order {
-      display: block;
-      margin-top: 14px;
-      width: 100%;
-      padding: 12px;
-      text-align: center;
-      background: #ff6a00;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 800;
-    }
+.product-info{
+  padding:17px;
+}
 
-    .info {
-      max-width: 1200px;
-      margin: 60px auto 0;
-      padding: 20px;
-    }
+.product-name{
+  font-size:18px;
+  font-weight:800;
+}
 
-    .info-box {
-      background: linear-gradient(135deg, #151515, #0e0e0e);
-      border: 1px solid #292929;
-      border-radius: 22px;
-      padding: 30px;
-      text-align: center;
-    }
+.product-description{
+  color:#777;
+  font-size:13px;
+  margin-top:7px;
+  line-height:1.4;
+  min-height:36px;
+}
 
-    .info-box h2 {
-      margin-bottom: 12px;
-    }
+.product-price{
+  font-size:22px;
+  font-weight:900;
+  color:#ff6a00;
+  margin-top:16px;
+}
 
-    .info-box p {
-      color: #999;
-      line-height: 1.6;
-    }
+.stock{
+  color:#48c774;
+  font-size:12px;
+  margin-top:7px;
+}
 
-    footer {
-      margin-top: 60px;
-      border-top: 1px solid #222;
-      padding: 30px 20px;
-      text-align: center;
-      color: #777;
-    }
+.order{
+  display:block;
+  text-align:center;
+  margin-top:14px;
+  padding:12px;
+  background:#ff6a00;
+  border-radius:11px;
+  color:white;
+  text-decoration:none;
+  font-weight:800;
+}
 
-    footer strong {
-      color: white;
-    }
+.about{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px 60px;
+}
 
-    @media (max-width: 900px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+.about-box{
+  background:#111;
+  border:1px solid #252525;
+  border-radius:22px;
+  padding:30px;
+  text-align:center;
+}
 
-    @media (max-width: 550px) {
-      header {
-        padding: 13px 15px;
-      }
+.about-box h2{
+  margin-bottom:12px;
+}
 
-      .logo {
-        font-size: 21px;
-      }
+.about-box p{
+  color:#888;
+  line-height:1.6;
+}
 
-      .telegram {
-        padding: 9px 11px;
-        font-size: 12px;
-      }
+.buttons{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
 
-      .hero {
-        padding-top: 48px;
-      }
+.button{
+  padding:13px 19px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+}
 
-      .hero p {
-        font-size: 15px;
-      }
+.button-orange{
+  background:#ff6a00;
+  color:white;
+}
 
-      .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
+.button-dark{
+  background:#191919;
+  color:white;
+  border:1px solid #303030;
+}
 
-      .product {
-        border-radius: 15px;
-      }
+footer{
+  border-top:1px solid #222;
+  text-align:center;
+  padding:30px 20px;
+  color:#666;
+  line-height:1.7;
+}
 
-      .product-image {
-        height: 170px;
-      }
+footer strong{
+  color:white;
+}
 
-      .product-info {
-        padding: 13px;
-      }
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:60px 20px;
+  color:#666;
+}
 
-      .product-name {
-        font-size: 15px;
-      }
+@media(max-width:950px){
+  .products{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
 
-      .price {
-        font-size: 18px;
-      }
+@media(max-width:700px){
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
 
-      .order {
-        font-size: 13px;
-        padding: 10px;
-      }
-    }
-  </style>
+  .product-image{
+    height:190px;
+  }
+
+  .product-info{
+    padding:13px;
+  }
+
+  .product-name{
+    font-size:15px;
+  }
+
+  .product-price{
+    font-size:19px;
+  }
+
+  .order{
+    font-size:13px;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+}
+
+@media(max-width:430px){
+  .logo{
+    font-size:20px;
+  }
+
+  .telegram{
+    font-size:12px;
+    padding:9px 11px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo">D&V <span>STORE</span></div>
+  <div class="header">
+    <div class="logo">
+      D&V <span>STORE</span>
+    </div>
 
-    <a class="telegram" href="https://t.me/D_VSTORE" target="_blank">
-      Telegram
+    <a class="telegram"
+       href="https://t.me/D_VSTORE"
+       target="_blank">
+       Telegram
     </a>
   </div>
 </header>
 
 <section class="hero">
-  <h1>Техника.<br><span>Выгодно.</span> Просто.</h1>
+  <h1>
+    Техника.<br>
+    <span>Выгодно.</span>
+  </h1>
 
   <p>
     Смартфоны и техника по выгодным ценам.
-    Поможем подобрать устройство и ответим на любые вопросы.
+    Выбирайте устройство и оформляйте заказ через Telegram.
   </p>
-
-  <div class="buttons">
-    <a class="btn btn-main" href="#catalog">Смотреть товары</a>
-
-    <a class="btn btn-dark" href="tel:+79933617829">
-      Позвонить
-    </a>
-  </div>
 </section>
 
-<section class="catalog" id="catalog">
+<section class="search">
+  <input
+    id="search"
+    type="text"
+    placeholder="🔍 Поиск смартфона..."
+    oninput="renderProducts()"
+  >
+</section>
 
-  <div class="section-title">
+<section class="categories">
+
+  <button class="category active"
+          onclick="setCategory('Все',this)">
+    Все
+  </button>
+
+  <button class="category"
+          onclick="setCategory('Apple',this)">
+    Apple
+  </button>
+
+  <button class="category"
+          onclick="setCategory('Samsung',this)">
+    Samsung
+  </button>
+
+  <button class="category"
+          onclick="setCategory('Xiaomi',this)">
+    Xiaomi
+  </button>
+
+  <button class="category"
+          onclick="setCategory('Honor',this)">
+    Honor
+  </button>
+
+  <button class="category"
+          onclick="setCategory('Google',this)">
+    Google
+  </button>
+
+</section>
+
+<section class="catalog">
+
+  <div class="catalog-title">
     <h2>Каталог</h2>
-    <span>Обновление цен скоро</span>
+    <span id="count"></span>
   </div>
 
-  <div class="products">
-
-    <div class="product">
-      <div class="product-image">
-        Фото товара
-      </div>
-
-      <div class="product-info">
-        <div class="product-name">iPhone</div>
-
-        <div class="product-desc">
-          Модель и характеристики появятся здесь автоматически.
-        </div>
-
-        <div class="price">
-          Цена
-        </div>
-
-        <a class="order"
-           href="https://t.me/D_VSTORE"
-           target="_blank">
-          Узнать цену
-        </a>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-image">
-        Фото товара
-      </div>
-
-      <div class="product-info">
-        <div class="product-name">Samsung</div>
-
-        <div class="product-desc">
-          Смартфоны Samsung по выгодным ценам.
-        </div>
-
-        <div class="price">
-          Цена
-        </div>
-
-        <a class="order"
-           href="https://t.me/D_VSTORE"
-           target="_blank">
-          Узнать цену
-        </a>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-image">
-        Фото товара
-      </div>
-
-      <div class="product-info">
-        <div class="product-name">Xiaomi</div>
-
-        <div class="product-desc">
-          Смартфоны Xiaomi и Redmi.
-        </div>
-
-        <div class="price">
-          Цена
-        </div>
-
-        <a class="order"
-           href="https://t.me/D_VSTORE"
-           target="_blank">
-          Узнать цену
-        </a>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-image">
-        Фото товара
-      </div>
-
-      <div class="product-info">
-        <div class="product-name">Другие устройства</div>
-
-        <div class="product-desc">
-          Новинки и техника в наличии.
-        </div>
-
-        <div class="price">
-          Цена
-        </div>
-
-        <a class="order"
-           href="https://t.me/D_VSTORE"
-           target="_blank">
-          Узнать цену
-        </a>
-      </div>
-    </div>
-
+  <div
+    class="products"
+    id="products">
   </div>
+
 </section>
 
-<section class="info">
-  <div class="info-box">
-    <h2>Нужна помощь с выбором?</h2>
+<section class="about">
+
+  <div class="about-box">
+
+    <h2>Не нашли нужную модель?</h2>
 
     <p>
-      Напишите нам в Telegram или позвоните.
-      Подскажем модель, комплектацию и актуальную цену.
+      Напишите нам. Мы проверим наличие и актуальную цену
+      нужного смартфона.
     </p>
 
     <div class="buttons">
-      <a class="btn btn-main"
-         href="https://t.me/D_VSTORE"
-         target="_blank">
+
+      <a
+        class="button button-orange"
+        href="https://t.me/D_VSTORE"
+        target="_blank">
         Написать в Telegram
       </a>
 
-      <a class="btn btn-dark"
-         href="tel:+79933617829">
+      <a
+        class="button button-dark"
+        href="tel:+79933617829">
         +7 993 361 7829
       </a>
+
     </div>
+
   </div>
+
 </section>
 
 <footer>
-  <strong>D&V STORE</strong><br><br>
-  Telegram: @D_VSTORE<br>
-  Телефон: +7 993 361 7829<br><br>
+
+  <strong>D&V STORE</strong>
+
+  <br>
+
+  Telegram: @D_VSTORE
+
+  <br>
+
+  +7 993 361 7829
+
+  <br><br>
+
   © 2026 D&V STORE
+
 </footer>
+
+<script>
+
+let products = [];
+
+let currentCategory = "Все";
+
+async function loadProducts(){
+
+  try{
+
+    const response =
+      await fetch("products.json?time=" + Date.now());
+
+    products = await response.json();
+
+    renderProducts();
+
+  }catch(error){
+
+    document.getElementById("products").innerHTML = `
+      <div class="empty">
+        Каталог пока загружается...
+      </div>
+    `;
+
+  }
+
+}
+
+function setCategory(category,button){
+
+  currentCategory = category;
+
+  document
+    .querySelectorAll(".category")
+    .forEach(item =>
+      item.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  renderProducts();
+
+}
+
+function renderProducts(){
+
+  const container =
+    document.getElementById("products");
+
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase();
+
+  let filtered = products.filter(product => {
+
+    const name =
+      (product.name || "").toLowerCase();
+
+    const brand =
+      (product.brand || "").toLowerCase();
+
+    const matchesSearch =
+      name.includes(search) ||
+      brand.includes(search);
+
+    const matchesCategory =
+      currentCategory === "Все" ||
+      brand === currentCategory.toLowerCase();
+
+    return matchesSearch && matchesCategory;
+
+  });
+
+  document.getElementById("count").textContent =
+    filtered.length + " товаров";
+
+  if(filtered.length === 0){
+
+    container.innerHTML = `
+      <div class="empty">
+        Товаров пока нет
+      </div>
+    `;
+
+    return;
+
+  }
+
+  container.innerHTML =
+    filtered.map(product => `
+
+      <article class="product">
+
+        <div class="product-image">
+
+          ${
+            product.image
+            ?
+            `<img
+              src="${product.image}"
+              alt="${product.name}"
+              loading="lazy">`
+            :
+            `<div class="no-image">
+              Фото скоро появится
+            </div>`
+          }
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            ${product.name || ""}
+          </div>
+
+          <div class="product-description">
+            ${product.description || ""}
+          </div>
+
+          <div class="product-price">
+            ${product.price || "Цена по запросу"}
+          </div>
+
+          <div class="stock">
+            ● ${product.stock || "Уточняйте наличие"}
+          </div>
+
+          <a
+            class="order"
+            href="https://t.me/D_VSTORE"
+            target="_blank">
+            Заказать
+          </a>
+
+        </div>
+
+      </article>
+
+    `).join("");
+
+}
+
+loadProducts();
+
+</script>
 
 </body>
 </html>
