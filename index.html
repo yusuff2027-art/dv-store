@@ -40,7 +40,9 @@
             font: inherit;
         }
 
-        /* HEADER */
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             position: sticky;
@@ -101,7 +103,9 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
         }
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             min-height: 600px;
@@ -110,8 +114,13 @@
             justify-content: center;
             text-align: center;
             padding: 70px 20px;
+
             background:
-                radial-gradient(circle at 50% 30%, rgba(212,175,55,0.12), transparent 35%),
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(212,175,55,0.12),
+                    transparent 35%
+                ),
                 #050505;
         }
 
@@ -182,7 +191,9 @@
             transform: translateY(-2px);
         }
 
-        /* GENERAL */
+        /* =========================
+           GENERAL
+        ========================= */
 
         .section {
             max-width: 1250px;
@@ -207,7 +218,9 @@
             margin: 0 auto 40px;
         }
 
-        /* CATALOG */
+        /* =========================
+           CATALOG
+        ========================= */
 
         .catalog-tools {
             display: grid;
@@ -355,7 +368,9 @@
             grid-column: 1 / -1;
         }
 
-        /* ABOUT */
+        /* =========================
+           ABOUT
+        ========================= */
 
         .about-box {
             background: linear-gradient(145deg, #0d0d0d, #080808);
@@ -377,11 +392,17 @@
             font-weight: 800;
         }
 
-        /* REPAIR */
+        /* =========================
+           REPAIR
+        ========================= */
 
         .repair {
             background:
-                radial-gradient(circle at 50% 50%, rgba(212,175,55,0.08), transparent 35%),
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(212,175,55,0.08),
+                    transparent 35%
+                ),
                 #050505;
         }
 
@@ -414,7 +435,9 @@
             margin-top: 35px;
         }
 
-        /* REVIEWS */
+        /* =========================
+           REVIEWS
+        ========================= */
 
         .reviews-box {
             text-align: center;
@@ -446,7 +469,9 @@
             font-weight: 900;
         }
 
-        /* CONTACTS */
+        /* =========================
+           CONTACTS
+        ========================= */
 
         .contacts-grid {
             display: grid;
@@ -479,7 +504,9 @@
             color: #d4af37;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             border-top: 1px solid #1c1c1c;
@@ -492,7 +519,9 @@
             color: #d4af37;
         }
 
-        /* MODAL */
+        /* =========================
+           MODAL
+        ========================= */
 
         .modal {
             position: fixed;
@@ -560,15 +589,20 @@
             font-weight: 900;
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 1050px) {
+
             .products {
                 grid-template-columns: repeat(3, 1fr);
             }
+
         }
 
         @media (max-width: 800px) {
+
             .nav {
                 display: none;
             }
@@ -589,9 +623,11 @@
             .hero {
                 min-height: 520px;
             }
+
         }
 
         @media (max-width: 520px) {
+
             .header-inner {
                 padding: 13px 14px;
             }
@@ -655,40 +691,76 @@
             .about-box {
                 padding: 25px 18px;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
     <div class="header-inner">
 
-        <a href="#" class="logo">
+        <a
+            href="#"
+            class="logo"
+        >
             D&V STORE
         </a>
 
+
         <nav class="nav">
-            <a href="#catalog">Каталог</a>
-            <a href="#about">О нас</a>
-            <a href="#repair">Ремонт</a>
-            <a href="#reviews">Отзывы</a>
-            <a href="#contacts">Контакты</a>
+
+            <a href="#catalog">
+                Каталог
+            </a>
+
+            <a href="#about">
+                О нас
+            </a>
+
+            <a href="#repair">
+                Ремонт
+            </a>
+
+            <a href="#reviews">
+                Отзывы
+            </a>
+
+            <a href="#contacts">
+                Контакты
+            </a>
+
         </nav>
+
+
+        <!-- ВСЕ КОММЕРЧЕСКИЕ ОБРАЩЕНИЯ -->
 
         <a
             class="telegram-btn"
-            href="https://t.me/D_VSTORE"
+            href="https://t.me/DV_STORE_ORDER"
             target="_blank"
         >
             Telegram
         </a>
 
     </div>
+
 </header>
 
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -698,15 +770,18 @@
             МОСКВА • D&V STORE
         </div>
 
+
         <h1>
             D&V <span>STORE</span>
         </h1>
 
+
         <p>
-            Смартфоны Apple, Samsung, Xiaomi, Honor, Google,
-            OnePlus и другие. Покупка смартфонов и ремонт
-            в Москве.
+            Смартфоны Apple, Samsung, Xiaomi, Honor,
+            Google, OnePlus и другие.
+            Покупка смартфонов и ремонт в Москве.
         </p>
+
 
         <div class="hero-buttons">
 
@@ -716,6 +791,7 @@
             >
                 Смотреть каталог
             </a>
+
 
             <a
                 href="#repair"
@@ -731,7 +807,10 @@
 </section>
 
 
-<!-- CATALOG -->
+
+<!-- =========================
+     CATALOG
+========================= -->
 
 <section
     class="section"
@@ -742,10 +821,12 @@
         Наш <span>каталог</span>
     </h2>
 
+
     <p class="section-subtitle">
-        Актуальные модели смартфонов. Каталог автоматически
-        обновляется.
+        Актуальные модели смартфонов.
+        Каталог автоматически обновляется.
     </p>
+
 
     <div class="catalog-tools">
 
@@ -756,10 +837,12 @@
             placeholder="Поиск модели..."
         >
 
+
         <select
             id="brandFilter"
             class="brand-filter"
         >
+
             <option value="all">
                 Все бренды
             </option>
@@ -819,7 +902,10 @@
 </section>
 
 
-<!-- ABOUT -->
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section
     class="section"
@@ -830,29 +916,41 @@
         О <span>D&V STORE</span>
     </h2>
 
+
     <p class="section-subtitle">
         Магазин смартфонов и сервис в Москве
     </p>
 
+
     <div class="about-box">
 
         <p>
+
             <span class="about-highlight">
                 D&V STORE
             </span>
+
             — место, где можно подобрать смартфон,
             оформить заказ и обратиться за ремонтом.
+
         </p>
 
-        <p>
-            Мы работаем с популярными брендами смартфонов
-            и стараемся держать актуальные цены и наличие
-            в каталоге.
-        </p>
 
         <p>
-            Если вы не нашли нужную модель — напишите нам
-            в Telegram, и мы постараемся помочь.
+
+            Мы работаем с популярными брендами
+            смартфонов и стараемся держать актуальные
+            цены и наличие в каталоге.
+
+        </p>
+
+
+        <p>
+
+            Если вы не нашли нужную модель —
+            напишите нам в Telegram,
+            и мы постараемся помочь.
+
         </p>
 
     </div>
@@ -860,7 +958,10 @@
 </section>
 
 
-<!-- REPAIR -->
+
+<!-- =========================
+     REPAIR
+========================= -->
 
 <section
     class="section repair"
@@ -871,67 +972,111 @@
         Ремонт <span>смартфонов</span>
     </h2>
 
+
     <p class="section-subtitle">
-        Поможем восстановить смартфон и вернуть его
-        в рабочее состояние.
+
+        Поможем восстановить смартфон
+        и вернуть его в рабочее состояние.
+
     </p>
+
 
     <div class="repair-grid">
 
-        <div class="repair-card">
-            <h3>Замена экрана</h3>
-            <p>
-                Разбит дисплей, появились полосы или
-                не работает сенсор.
-            </p>
-        </div>
 
         <div class="repair-card">
-            <h3>Замена аккумулятора</h3>
+
+            <h3>
+                Замена экрана
+            </h3>
+
+            <p>
+                Разбит дисплей, появились полосы
+                или не работает сенсор.
+            </p>
+
+        </div>
+
+
+        <div class="repair-card">
+
+            <h3>
+                Замена аккумулятора
+            </h3>
+
             <p>
                 Быстро садится батарея или смартфон
                 выключается на холоде.
             </p>
+
         </div>
 
+
         <div class="repair-card">
-            <h3>Разъём зарядки</h3>
+
+            <h3>
+                Разъём зарядки
+            </h3>
+
             <p>
                 Телефон плохо заряжается или перестал
                 видеть кабель.
             </p>
+
         </div>
 
+
         <div class="repair-card">
-            <h3>Ремонт камеры</h3>
+
+            <h3>
+                Ремонт камеры
+            </h3>
+
             <p>
                 Камера не запускается, появились проблемы
                 с фокусировкой или изображением.
             </p>
+
         </div>
 
+
         <div class="repair-card">
-            <h3>Динамик</h3>
+
+            <h3>
+                Динамик
+            </h3>
+
             <p>
                 Пропал звук, появились хрипы или
                 собеседника плохо слышно.
             </p>
+
         </div>
 
+
         <div class="repair-card">
-            <h3>Диагностика</h3>
+
+            <h3>
+                Диагностика
+            </h3>
+
             <p>
-                Определим причину неисправности и
-                расскажем о вариантах ремонта.
+                Определим причину неисправности
+                и расскажем о вариантах ремонта.
             </p>
+
         </div>
+
 
     </div>
 
+
     <div class="repair-cta">
 
+        <!-- РЕМОНТ ТОЖЕ ИДЁТ В @DV_STORE_ORDER -->
+
         <a
-            href="https://t.me/D_VSTORE"
+            href="https://t.me/DV_STORE_ORDER"
             target="_blank"
             class="primary-btn"
         >
@@ -943,7 +1088,10 @@
 </section>
 
 
-<!-- REVIEWS -->
+
+<!-- =========================
+     REVIEWS
+========================= -->
 
 <section
     class="section"
@@ -954,17 +1102,22 @@
         Отзывы <span>клиентов</span>
     </h2>
 
+
     <div class="reviews-box">
 
         <div class="stars">
             ★★★★★
         </div>
 
+
         <p>
+
             Хотите посмотреть реальные отзывы клиентов?
             Все отзывы доступны на нашей странице
             в Яндекс Картах.
+
         </p>
+
 
         <a
             href="https://yandex.ru/maps/org/dv_store/179122901606?si=mjgm0kypxfxr88nz7yr3d2u12w"
@@ -979,7 +1132,10 @@
 </section>
 
 
-<!-- CONTACTS -->
+
+<!-- =========================
+     CONTACTS
+========================= -->
 
 <section
     class="section"
@@ -990,11 +1146,19 @@
         <span>Контакты</span>
     </h2>
 
+
     <p class="section-subtitle">
-        Будем рады помочь с выбором смартфона или ремонтом.
+
+        Будем рады помочь с выбором
+        смартфона или ремонтом.
+
     </p>
 
+
     <div class="contacts-grid">
+
+
+        <!-- ADDRESS -->
 
         <div class="contact-card">
 
@@ -1007,11 +1171,14 @@
             </h3>
 
             <p>
-                Профсоюзная ул., 109, корп. 2, Москва
+                Профсоюзная ул., 109,
+                корп. 2, Москва
             </p>
 
         </div>
 
+
+        <!-- PHONE -->
 
         <div class="contact-card">
 
@@ -1024,13 +1191,17 @@
             </h3>
 
             <p>
+
                 <a href="tel:+79933617829">
                     +7 993 361 7829
                 </a>
+
             </p>
 
         </div>
 
+
+        <!-- TELEGRAM -->
 
         <div class="contact-card">
 
@@ -1043,26 +1214,34 @@
             </h3>
 
             <p>
+
                 <a
-                    href="https://t.me/D_VSTORE"
+                    href="https://t.me/DV_STORE_ORDER"
                     target="_blank"
                 >
-                    @D_VSTORE
+                    @DV_STORE_ORDER
                 </a>
+
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <strong>D&V STORE</strong>
+    <strong>
+        D&V STORE
+    </strong>
 
     <br>
 
@@ -1075,7 +1254,10 @@
 </footer>
 
 
-<!-- MODAL -->
+
+<!-- =========================
+     ORDER MODAL
+========================= -->
 
 <div
     id="modal"
@@ -1084,6 +1266,7 @@
 
     <div class="modal-content">
 
+
         <button
             id="modalClose"
             class="modal-close"
@@ -1091,19 +1274,25 @@
             ×
         </button>
 
+
         <h2>
             Заказать товар
         </h2>
+
 
         <div
             id="modalProduct"
             class="modal-product"
         ></div>
 
+
         <div
             id="modalPrice"
             class="modal-price"
         ></div>
+
+
+        <!-- ЗАКАЗЫ ИДУТ В @DV_STORE_ORDER -->
 
         <a
             id="modalTelegram"
@@ -1114,41 +1303,58 @@
             Заказать в Telegram
         </a>
 
+
     </div>
 
 </div>
 
 
+
 <script>
 
+/* =========================
+   ПЕРЕМЕННЫЕ
+========================= */
+
 let allProducts = [];
+
 
 const productsContainer =
     document.getElementById("products");
 
+
 const searchInput =
     document.getElementById("search");
+
 
 const brandFilter =
     document.getElementById("brandFilter");
 
+
 const modal =
     document.getElementById("modal");
+
 
 const modalClose =
     document.getElementById("modalClose");
 
+
 const modalProduct =
     document.getElementById("modalProduct");
 
+
 const modalPrice =
     document.getElementById("modalPrice");
+
 
 const modalTelegram =
     document.getElementById("modalTelegram");
 
 
-/* ЗАГРУЗКА КАТАЛОГА */
+
+/* =========================
+   ЗАГРУЗКА КАТАЛОГА
+========================= */
 
 async function loadProducts() {
 
@@ -1156,29 +1362,44 @@ async function loadProducts() {
 
         const response =
             await fetch(
-                "products.json?time=" + Date.now()
+                "products.json?time=" +
+                Date.now()
             );
 
+
         if (!response.ok) {
+
             throw new Error(
                 "Ошибка загрузки products.json"
             );
+
         }
+
 
         allProducts =
             await response.json();
 
+
         renderProducts();
+
 
     } catch (error) {
 
         console.error(error);
 
+
         productsContainer.innerHTML = `
+
             <div class="empty">
+
                 Не удалось загрузить каталог.
+
+                <br>
+
                 Попробуйте обновить страницу.
+
             </div>
+
         `;
 
     }
@@ -1186,7 +1407,10 @@ async function loadProducts() {
 }
 
 
-/* РЕНДЕР */
+
+/* =========================
+   ОТОБРАЖЕНИЕ ТОВАРОВ
+========================= */
 
 function renderProducts() {
 
@@ -1195,6 +1419,7 @@ function renderProducts() {
             .toLowerCase()
             .trim();
 
+
     const brand =
         brandFilter.value;
 
@@ -1202,23 +1427,28 @@ function renderProducts() {
     const filtered =
         allProducts.filter(product => {
 
+
             const name =
                 String(
                     product.name || ""
                 ).toLowerCase();
+
 
             const productBrand =
                 String(
                     product.brand || ""
                 );
 
+
             const matchesSearch =
                 !search ||
                 name.includes(search);
 
+
             const matchesBrand =
                 brand === "all" ||
                 productBrand === brand;
+
 
             return (
                 matchesSearch &&
@@ -1228,28 +1458,43 @@ function renderProducts() {
         });
 
 
+
     if (!filtered.length) {
 
         productsContainer.innerHTML = `
+
             <div class="empty">
+
                 Ничего не найдено.
+
             </div>
+
         `;
 
         return;
+
     }
+
 
 
     productsContainer.innerHTML =
         filtered.map(product => {
 
+
             const price =
-                Number(product.price || 0)
-                    .toLocaleString("ru-RU");
+                Number(
+                    product.price || 0
+                ).toLocaleString(
+                    "ru-RU"
+                );
+
 
             const oldPrice =
-                Number(product.old_price || 0)
-                    .toLocaleString("ru-RU");
+                Number(
+                    product.old_price || 0
+                ).toLocaleString(
+                    "ru-RU"
+                );
 
 
             const stock =
@@ -1257,21 +1502,33 @@ function renderProducts() {
                     product.stock || ""
                 );
 
+
             const isOut =
-                stock.toLowerCase()
+                stock
+                    .toLowerCase()
                     .includes("нет");
+
 
 
             return `
 
                 <div class="product-card">
 
+
                     <div class="product-image">
 
                         <img
-                            src="${escapeHtml(product.image || "")}"
-                            alt="${escapeHtml(product.name || "Товар")}"
+                            src="${escapeHtml(
+                                product.image || ""
+                            )}"
+
+                            alt="${escapeHtml(
+                                product.name ||
+                                "Товар"
+                            )}"
+
                             loading="lazy"
+
                             onerror="
                                 this.style.display='none';
                             "
@@ -1280,51 +1537,103 @@ function renderProducts() {
                     </div>
 
 
+
                     <div class="product-info">
 
+
                         <div class="product-brand">
-                            ${escapeHtml(product.brand || "")}
+
+                            ${escapeHtml(
+                                product.brand || ""
+                            )}
+
                         </div>
+
+
 
                         <div class="product-name">
-                            ${escapeHtml(product.name || "")}
+
+                            ${escapeHtml(
+                                product.name || ""
+                            )}
+
                         </div>
+
+
 
                         <div class="product-description">
-                            ${escapeHtml(product.description || "")}
+
+                            ${escapeHtml(
+                                product.description || ""
+                            )}
+
                         </div>
 
+
+
                         <div class="product-price">
+
                             ${price} ₽
+
                         </div>
+
+
 
                         ${
                             product.old_price &&
-                            Number(product.old_price) > Number(product.price)
+                            Number(
+                                product.old_price
+                            ) >
+                            Number(
+                                product.price
+                            )
+
                             ?
+
                             `
-                            <div class="product-old-price">
+
+                            <div
+                                class="product-old-price"
+                            >
+
                                 ${oldPrice} ₽
+
                             </div>
+
                             `
+
                             :
+
                             ""
                         }
 
+
+
                         <div
-                            class="stock ${isOut ? "out" : ""}"
+                            class="stock ${
+                                isOut ? "out" : ""
+                            }"
                         >
-                            ${escapeHtml(stock)}
+
+                            ${escapeHtml(
+                                stock
+                            )}
+
                         </div>
+
+
 
                         <button
                             class="buy-btn"
-                            onclick="openProductModal(${JSON.stringify(
+                            onclick='openProductModal(${JSON.stringify(
                                 product
-                            ).replace(/"/g, '&quot;')})"
+                            )})'
                         >
+
                             Заказать
+
                         </button>
+
 
                     </div>
 
@@ -1337,80 +1646,130 @@ function renderProducts() {
 }
 
 
-/* ОТКРЫТЬ ТОВАР */
+
+/* =========================
+   ОКНО ЗАКАЗА
+========================= */
 
 function openProductModal(product) {
 
+
     modalProduct.textContent =
-        product.name || "Товар";
+        product.name ||
+        "Товар";
 
 
     modalPrice.textContent =
-        Number(product.price || 0)
-            .toLocaleString("ru-RU") +
+        Number(
+            product.price || 0
+        ).toLocaleString(
+            "ru-RU"
+        ) +
         " ₽";
+
 
 
     const message =
-        "Здравствуйте! Хочу заказать: " +
-        (product.name || "товар") +
+
+        "Здравствуйте! " +
+        "Хочу заказать: " +
+
+        (product.name ||
+        "товар") +
+
         " за " +
-        Number(product.price || 0)
-            .toLocaleString("ru-RU") +
+
+        Number(
+            product.price || 0
+        ).toLocaleString(
+            "ru-RU"
+        ) +
+
         " ₽";
 
 
+
     /*
-        ВАЖНО:
-        ЗАКАЗЫ ИДУТ СЮДА:
-        @DV_STORE_ORDER
+       ЗАКАЗ УХОДИТ
+       В @DV_STORE_ORDER
     */
 
     modalTelegram.href =
+
         "https://t.me/DV_STORE_ORDER?text=" +
-        encodeURIComponent(message);
+
+        encodeURIComponent(
+            message
+        );
 
 
-    modal.classList.add("active");
+
+    modal.classList.add(
+        "active"
+    );
 
 }
 
 
-/* ЗАКРЫТИЕ */
+
+/* =========================
+   ЗАКРЫТИЕ МОДАЛКИ
+========================= */
 
 modalClose.addEventListener(
     "click",
     () => {
-        modal.classList.remove("active");
+
+        modal.classList.remove(
+            "active"
+        );
+
     }
 );
+
 
 
 modal.addEventListener(
     "click",
     event => {
 
-        if (event.target === modal) {
-            modal.classList.remove("active");
+        if (
+            event.target === modal
+        ) {
+
+            modal.classList.remove(
+                "active"
+            );
+
         }
 
     }
 );
+
 
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if (event.key === "Escape") {
-            modal.classList.remove("active");
+        if (
+            event.key === "Escape"
+        ) {
+
+            modal.classList.remove(
+                "active"
+            );
+
         }
 
     }
 );
 
 
-/* ПОИСК */
+
+/* =========================
+   ПОИСК
+========================= */
 
 searchInput.addEventListener(
     "input",
@@ -1418,7 +1777,10 @@ searchInput.addEventListener(
 );
 
 
-/* ФИЛЬТР */
+
+/* =========================
+   ФИЛЬТР
+========================= */
 
 brandFilter.addEventListener(
     "change",
@@ -1426,21 +1788,47 @@ brandFilter.addEventListener(
 );
 
 
-/* ЗАЩИТА HTML */
+
+/* =========================
+   ЗАЩИТА HTML
+========================= */
 
 function escapeHtml(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-/* СТАРТ */
+
+/* =========================
+   ЗАПУСК
+========================= */
 
 loadProducts();
 
