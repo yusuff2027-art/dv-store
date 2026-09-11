@@ -27,8 +27,28 @@ def get_html(url):
 
 def clean_text(value):
     value = unescape(value)
+
     value = re.sub(r"<[^>]+>", " ", value)
-    value = re.sub(r"\s+", " ", value)
+
+    value = re.sub(
+        r"={2,}|-{3,}|_{3,}",
+        " ",
+        value
+    )
+
+    value = re.sub(
+        r"/память/SIM\)?",
+        " ",
+        value,
+        flags=re.I
+    )
+
+    value = re.sub(
+        r"\s+",
+        " ",
+        value
+    )
+
     return value.strip()
 
 
@@ -36,7 +56,11 @@ def get_product_links(html):
 
     pattern = r'href=["\']([^"\']*/catalog/iphone_17_pro_max/[^"\']+)["\']'
 
-    links = re.findall(pattern, html, re.I)
+    links = re.findall(
+        pattern,
+        html,
+        re.I
+    )
 
     result = []
 
@@ -53,7 +77,10 @@ def get_product_links(html):
         if link == "/catalog/iphone_17_pro_max/":
             continue
 
-        full_url = urljoin(BASE_URL, link)
+        full_url = urljoin(
+            BASE_URL,
+            link
+        )
 
         if full_url not in result:
             result.append(full_url)
@@ -70,7 +97,9 @@ def get_value(html, pattern):
     )
 
     if match:
-        return clean_text(match.group(1))
+        return clean_text(
+            match.group(1)
+        )
 
     return ""
 
@@ -101,16 +130,19 @@ def get_product_image(html, product_name):
         img = unescape(img)
 
         if img.startswith("/"):
-            img = urljoin(BASE_URL, img)
+            img = urljoin(
+                BASE_URL,
+                img
+            )
 
-        if not img.startswith(BASE_URL + "/upload/"):
+        if not img.startswith(
+            BASE_URL + "/upload/"
+        ):
             continue
 
-        # Не берём служебные/логотипные изображения
         if "/upload/iblock/" not in img:
             continue
 
-        # Предпочитаем реальные фотографии
         if re.search(
             r"\.(jpg|jpeg|png|webp)(?:\?|$)",
             img,
@@ -118,30 +150,33 @@ def get_product_image(html, product_name):
         ):
             candidates.append(img)
 
-    # Убираем дубли
     unique = []
 
     for img in candidates:
+
         if img not in unique:
             unique.append(img)
 
     if not unique:
         return ""
 
-    # Берём первую нормальную фотографию товара
     image_url = unique[0]
 
-    filename = safe_filename(product_name)
+    filename = safe_filename(
+        product_name
+    )
 
-    # Расширение
     extension = ".jpg"
 
     if ".png" in image_url.lower():
         extension = ".png"
+
     elif ".webp" in image_url.lower():
         extension = ".webp"
 
-    local_path = f"{IMAGE_DIR}/{filename}{extension}"
+    local_path = (
+        f"{IMAGE_DIR}/{filename}{extension}"
+    )
 
     print("🖼 Скачиваем фото:")
     print(image_url)
@@ -153,32 +188,199 @@ def get_product_image(html, product_name):
             headers=HEADERS
         )
 
-        with urllib.request.urlopen(req, timeout=30) as response:
+        with urllib.request.urlopen(
+            req,
+            timeout=30
+        ) as response:
 
             image_data = response.read()
 
-        # Проверяем, что это действительно изображение
         if len(image_data) < 1000:
-            print("⚠️ Файл слишком маленький")
+
+            print(
+                "⚠️ Файл слишком маленький"
+            )
+
             return ""
 
-        with open(local_path, "wb") as f:
+        with open(
+            local_path,
+            "wb"
+        ) as f:
+
             f.write(image_data)
 
-        print("✅ Фото сохранено:", local_path)
+        print(
+            "✅ Фото сохранено:",
+            local_path
+        )
 
         return local_path
 
     except Exception as e:
 
-        print("❌ Ошибка загрузки фото:", e)
+        print(
+            "❌ Ошибка загрузки фото:",
+            e
+        )
 
         return ""
 
 
+# -----------------------------------------
+# ХАРАКТЕРИСТИКИ
+# -----------------------------------------
+
+def get_memory(html, name):
+
+    patterns = [
+
+        r"Встроенная память\s*:?\s*([^<]{1,50})",
+
+        r"Память\s*:?\s*([^<]{1,50})",
+
+        r"(\d+\s*(?:GB|Gb|гб|ГБ))"
+
+    ]
+
+    for pattern in patterns:
+
+        value = get_value(
+            html,
+            pattern
+        )
+
+        if value:
+
+            match = re.search(
+                r"(\d+)\s*(GB|Gb|гб|ГБ)",
+                value,
+                re.I
+            )
+
+            if match:
+
+                return (
+                    match.group(1)
+                    + " ГБ"
+                )
+
+    match = re.search(
+        r"(\d+)\s*(?:GB|Gb|гб|ГБ)",
+        name,
+        re.I
+    )
+
+    if match:
+
+        return (
+            match.group(1)
+            + " ГБ"
+        )
+
+    return ""
+
+
+def get_color(html, name):
+
+    patterns = [
+
+        r"Цвет\s*:?\s*([^<]{1,50})",
+
+        r"Color\s*:?\s*([^<]{1,50})"
+
+    ]
+
+    for pattern in patterns:
+
+        value = get_value(
+            html,
+            pattern
+        )
+
+        if value:
+
+            value = clean_text(
+                value
+            )
+
+            value = re.sub(
+                r"[/\\]+",
+                " ",
+                value
+            )
+
+            value = re.sub(
+                r"\b(?:память|memory|sim)\b.*",
+                "",
+                value,
+                flags=re.I
+            )
+
+            value = value.strip(
+                " -,:;|()"
+            )
+
+            if value:
+                return value
+
+    # Иногда цвет есть прямо в названии
+
+    known_colors = [
+        "Cosmic Orange",
+        "Deep Blue",
+        "Silver",
+        "Black",
+        "White",
+        "Gold",
+        "Natural Titanium",
+        "Blue Titanium",
+        "Black Titanium",
+        "White Titanium"
+    ]
+
+    for color in known_colors:
+
+        if color.lower() in name.lower():
+
+            return color
+
+    return ""
+
+
+def get_sim(html, name):
+
+    text = (
+        html + " " + name
+    ).lower()
+
+    if "esim" in text:
+
+        return "eSIM"
+
+    if "e-sim" in text:
+
+        return "eSIM"
+
+    if "nano sim" in text:
+
+        return "SIM"
+
+    if "sim" in text:
+
+        return "SIM"
+
+    return ""
+
+
+# -----------------------------------------
+# ТОВАР
+# -----------------------------------------
+
 def parse_product(url):
 
     html = get_html(url)
+
 
     # НАЗВАНИЕ
 
@@ -190,7 +392,9 @@ def parse_product(url):
 
     if title:
 
-        name = clean_text(title.group(1))
+        name = clean_text(
+            title.group(1)
+        )
 
         name = re.sub(
             r"\s+купить.*$",
@@ -203,6 +407,7 @@ def parse_product(url):
 
         name = "Товар Apple"
 
+
     # ЦЕНА
 
     base_price = get_value(
@@ -214,7 +419,9 @@ def parse_product(url):
 
         try:
 
-            price_number = int(float(base_price))
+            price_number = int(
+                float(base_price)
+            )
 
             price = (
                 f"{price_number:,}"
@@ -230,6 +437,7 @@ def parse_product(url):
 
         price = "Цена по запросу"
 
+
     # СТАРАЯ ЦЕНА
 
     old_price = get_value(
@@ -237,17 +445,30 @@ def parse_product(url):
         r'class=["\'][^"\']*price-old[^"\']*["\'][^>]*>(.*?)</'
     )
 
+
     # НАЛИЧИЕ
 
-    if re.search(r"В наличии", html, re.I):
+    if re.search(
+        r"В наличии",
+        html,
+        re.I
+    ):
 
         stock = "В наличии"
 
-    elif re.search(r"Нет в наличии", html, re.I):
+    elif re.search(
+        r"Нет в наличии",
+        html,
+        re.I
+    ):
 
         stock = "Нет в наличии"
 
-    elif re.search(r"Под заказ", html, re.I):
+    elif re.search(
+        r"Под заказ",
+        html,
+        re.I
+    ):
 
         stock = "Под заказ"
 
@@ -255,19 +476,24 @@ def parse_product(url):
 
         stock = "Уточняйте наличие"
 
-    # ПАМЯТЬ
 
-    memory = get_value(
+    # ХАРАКТЕРИСТИКИ
+
+    memory = get_memory(
         html,
-        r"Встроенная память\s*:?\s*([^<]{1,50})"
+        name
     )
 
-    # ЦВЕТ
-
-    color = get_value(
+    color = get_color(
         html,
-        r"Цвет\s*:?\s*([^<]{1,50})"
+        name
     )
+
+    sim = get_sim(
+        html,
+        name
+    )
+
 
     # КОД ТОВАРА
 
@@ -276,6 +502,7 @@ def parse_product(url):
         r"Код товара\s*:?\s*([A-Za-z0-9_-]+)"
     )
 
+
     # ФОТО
 
     image = get_product_image(
@@ -283,62 +510,106 @@ def parse_product(url):
         name
     )
 
+
     # ОПИСАНИЕ
 
     description_parts = []
 
     if memory:
-        description_parts.append(memory)
+
+        description_parts.append(
+            memory
+        )
 
     if color:
+
         description_parts.append(
             f"цвет: {color}"
         )
 
-    description = ", ".join(
+    if sim:
+
+        description_parts.append(
+            sim
+        )
+
+
+    description = " • ".join(
         description_parts
     )
 
+
     return {
+
         "name": name,
+
         "brand": "Apple",
+
         "description": description,
+
         "price": price,
+
         "old_price": old_price,
+
         "stock": stock,
+
         "image": image,
+
         "url": url,
+
         "product_code": product_code
+
     }
 
 
-print("================================")
-print("🚀 D&V STORE — СИНХРОНИЗАЦИЯ")
-print("================================")
+# -----------------------------------------
+# ЗАПУСК
+# -----------------------------------------
+
+print(
+    "================================"
+)
+
+print(
+    "🚀 D&V STORE — СИНХРОНИЗАЦИЯ"
+)
+
+print(
+    "================================"
+)
+
 
 try:
 
-    print("\n🌐 Загружаем каталог Apple Avenue...")
+    print(
+        "\n🌐 Загружаем каталог Apple Avenue..."
+    )
 
     category_html = get_html(
         CATEGORY_URL
     )
 
-    print("✅ Каталог загружен")
+    print(
+        "✅ Каталог загружен"
+    )
+
     print(
         "Размер:",
         len(category_html),
         "символов"
     )
 
+
     product_links = get_product_links(
         category_html
     )
+
 
     print(
         "\n📦 Найдено товаров:",
         len(product_links)
     )
+
 
     if not product_links:
 
@@ -346,7 +617,9 @@ try:
             "Товары не найдены"
         )
 
+
     products = []
+
 
     for index, url in enumerate(
         product_links,
@@ -358,11 +631,17 @@ try:
             "Загружаем товар..."
         )
 
+
         try:
 
-            product = parse_product(url)
+            product = parse_product(
+                url
+            )
 
-            products.append(product)
+            products.append(
+                product
+            )
+
 
             print(
                 "✅",
@@ -380,11 +659,17 @@ try:
             )
 
             print(
+                "📋",
+                product["description"]
+            )
+
+            print(
                 "🖼",
                 "Есть"
                 if product["image"]
                 else "Нет"
             )
+
 
         except Exception as e:
 
@@ -393,7 +678,9 @@ try:
                 e
             )
 
+
         time.sleep(1)
+
 
     if not products:
 
@@ -401,6 +688,7 @@ try:
             "Не удалось получить товары. "
             "products.json не изменён."
         )
+
 
     with open(
         "products.json",
@@ -415,9 +703,18 @@ try:
             indent=2
         )
 
-    print("\n================================")
-    print("🎉 СИНХРОНИЗАЦИЯ ЗАВЕРШЕНА")
-    print("================================")
+
+    print(
+        "\n================================"
+    )
+
+    print(
+        "🎉 СИНХРОНИЗАЦИЯ ЗАВЕРШЕНА"
+    )
+
+    print(
+        "================================"
+    )
 
     print(
         "Товаров сохранено:",
@@ -433,11 +730,20 @@ try:
         IMAGE_DIR
     )
 
+
 except Exception as e:
 
-    print("\n================================")
-    print("❌ СИНХРОНИЗАЦИЯ ОСТАНОВЛЕНА")
-    print("================================")
+    print(
+        "\n================================"
+    )
+
+    print(
+        "❌ СИНХРОНИЗАЦИЯ ОСТАНОВЛЕНА"
+    )
+
+    print(
+        "================================"
+    )
 
     print(e)
 
