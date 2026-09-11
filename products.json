@@ -6,5 +6,29 @@
     "price": "61 980 ₽",
     "stock": "В наличии",
     "image": "https://placehold.co/600x800/111111/ff6a00?text=Honor+600+Pro"
+  },
+  {
+    "name": "iPhone 15 Pro",
+    "brand": "Apple",
+    "description": "256 ГБ",
+    "price": "Цена по запросу",
+    "stock": "Уточняйте наличие",
+    "image": "https://placehold.co/600x800/111111/ff6a00?text=iPhone+15+Pro"
+  },
+  {
+    "name": "Samsung Galaxy S25",
+    "brand": "Samsung",
+    "description": "Память и цвет уточняйте",
+    "price": "Цена по запросу",
+    "stock": "Уточняйте наличие",
+    "image": "https://placehold.co/600x800/111111/ff6a00?text=Samsung+S25"
+  },
+  {
+    "name": "Xiaomi 15",
+    "brand": "Xiaomi",
+    "description": "Память и цвет уточняйте",
+    "price": "Цена по запросу",
+    "stock": "Уточняйте наличие",
+    "image": "https://placehold.co/600x800/111111/ff6a00?text=Xiaomi+15"
   }
 ]
