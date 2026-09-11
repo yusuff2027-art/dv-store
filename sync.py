@@ -1,7 +1,8 @@
 import re
 import urllib.request
+from html import unescape
 
-URL = "https://apple-avenue.ru/catalog/iphone_17_pro_max/"
+URL = "https://apple-avenue.ru/catalog/iphone_17_pro_max/apple_iphone_17_pro_max_256gb_cosmic_orange_esim/"
 
 req = urllib.request.Request(
     URL,
@@ -11,30 +12,21 @@ req = urllib.request.Request(
 with urllib.request.urlopen(req, timeout=30) as response:
     html = response.read().decode("utf-8", errors="ignore")
 
-print("Размер:", len(html))
+print("Размер страницы:", len(html))
 
-# Ищем ссылки на товары
-links = re.findall(
-    r'href=["\']([^"\']*iphone[^"\']*)["\']',
+# Название из title
+title = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
+
+if title:
+    name = re.sub(r"\s+", " ", unescape(title.group(1))).strip()
+    print("\n📱 TITLE:")
+    print(name)
+
+# Все цены на странице
+prices = re.findall(
+    r"\d[\d\s]*(?:₽|руб\.?)",
     html,
     re.I
-)
-
-print("\n🔗 ССЫЛКИ НА ТОВАРЫ:")
-
-unique_links = []
-
-for link in links:
-    if link not in unique_links:
-        unique_links.append(link)
-
-for link in unique_links[:50]:
-    print(link)
-
-# Ищем цены
-prices = re.findall(
-    r'\d[\d\s]{2,}\s*₽',
-    html
 )
 
 print("\n💰 ЦЕНЫ:")
@@ -42,12 +34,33 @@ print("\n💰 ЦЕНЫ:")
 unique_prices = []
 
 for price in prices:
-    price = price.strip()
+    price = re.sub(r"\s+", " ", price).strip()
 
     if price not in unique_prices:
         unique_prices.append(price)
 
-for price in unique_prices[:50]:
+for price in unique_prices[:20]:
     print(price)
 
-print("\n✅ Тест завершён")
+# Картинки
+images = re.findall(
+    r'(?:"|\')([^"\']+\.(?:jpg|jpeg|png|webp))(?:"|\')',
+    html,
+    re.I
+)
+
+print("\n🖼 КАРТИНКИ:")
+
+unique_images = []
+
+for image in images:
+    if image not in unique_images:
+        unique_images.append(image)
+
+for image in unique_images[:20]:
+    if image.startswith("/"):
+        image = "https://apple-avenue.ru" + image
+
+    print(image)
+
+print("\n✅ Карточка проверена")
