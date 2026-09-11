@@ -1,28 +1,46 @@
-import urllib.request
 import re
+import urllib.request
 
 URL = "https://apple-avenue.ru/catalog/iphone_17_pro_max/"
 
 req = urllib.request.Request(
     URL,
-    headers={"User-Agent": "Mozilla/5.0"}
+    headers={
+        "User-Agent": "Mozilla/5.0"
+    }
 )
 
 with urllib.request.urlopen(req, timeout=30) as response:
     html = response.read().decode("utf-8", errors="ignore")
 
-print("РАЗМЕР:", len(html))
+print("Размер страницы:", len(html))
 
-# Показываем фрагменты вокруг iPhone 17 Pro Max
-matches = list(re.finditer("iPhone 17 Pro Max", html, re.I))
+patterns = [
+    r'https?://[^"\']+\.(?:jpg|jpeg|png|webp)',
+    r'(?:"|\')([^"\']+)\.(?:jpg|jpeg|png|webp)(?:"|\')',
+    r'\d[\d\s]{2,}\s*₽',
+    r'iPhone\s+17\s+Pro\s+Max[^<]{0,150}'
+]
 
-print("НАЙДЕНО УПОМИНАНИЙ:", len(matches))
+for pattern in patterns:
+    print("\n" + "=" * 70)
+    print("ШАБЛОН:", pattern)
+    print("=" * 70)
 
-for i, match in enumerate(matches[:3]):
-    start = max(0, match.start() - 1000)
-    end = min(len(html), match.end() + 2000)
+    matches = re.findall(pattern, html, re.I)
 
-    print("\n" + "=" * 80)
-    print("ТОВАР", i + 1)
-    print("=" * 80)
-    print(html[start:end])
+    unique = []
+
+    for item in matches:
+        if isinstance(item, tuple):
+            item = item[0]
+
+        item = item.strip()
+
+        if item and item not in unique:
+            unique.append(item)
+
+    for item in unique[:50]:
+        print(item)
+
+print("\n✅ Тест завершён")
