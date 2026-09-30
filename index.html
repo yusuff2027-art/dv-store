@@ -1026,8 +1026,9 @@ footer strong {
     </h2>
 
     <p class="section-subtitle">
-        Выберите модель, память, состояние аккумулятора
-        и наличие коробки — сайт покажет ориентировочную цену.
+        Выберите модель, память, состояние аккумулятора,
+        SIM/eSIM и наличие коробки — сайт покажет
+        ориентировочную цену.
     </p>
 
     <div class="tradein-box">
@@ -1154,6 +1155,7 @@ footer strong {
 
             </div>
 
+
             <div class="tradein-field">
 
                 <label for="tradeMemory">
@@ -1169,6 +1171,7 @@ footer strong {
                 </select>
 
             </div>
+
 
             <div class="tradein-field">
 
@@ -1193,6 +1196,32 @@ footer strong {
                 </select>
 
             </div>
+
+
+            <div class="tradein-field">
+
+                <label for="tradeSim">
+                    SIM / eSIM
+                </label>
+
+                <select id="tradeSim">
+
+                    <option value="">
+                        Выберите вариант
+                    </option>
+
+                    <option value="sim_esim">
+                        Обычная SIM + eSIM
+                    </option>
+
+                    <option value="esim_only">
+                        Только eSIM
+                    </option>
+
+                </select>
+
+            </div>
+
 
             <div class="tradein-field">
 
@@ -1220,12 +1249,14 @@ footer strong {
 
         </div>
 
+
         <button
             id="tradeCalculate"
             class="tradein-button"
         >
             📱 Оценить мой телефон
         </button>
+
 
         <div
             id="tradeResult"
@@ -1236,15 +1267,18 @@ footer strong {
                 ОРИЕНТИРОВОЧНАЯ ЦЕНА
             </div>
 
+
             <div
                 id="tradePrice"
                 class="tradein-price"
             ></div>
 
+
             <div
                 id="tradeDetails"
                 class="tradein-details"
             ></div>
+
 
             <div class="tradein-warning">
 
@@ -1264,6 +1298,7 @@ footer strong {
                 </strong>
 
             </div>
+
 
             <a
                 id="tradeTelegram"
@@ -1355,6 +1390,7 @@ footer strong {
         </select>
 
     </div>
+
 
     <div
         id="products"
@@ -1727,6 +1763,7 @@ footer strong {
 
 </div>
 
+
 <script>
 
 /* =========================
@@ -1773,6 +1810,9 @@ const tradeMemory =
 const tradeBattery =
     document.getElementById("tradeBattery");
 
+const tradeSim =
+    document.getElementById("tradeSim");
+
 const tradeBox =
     document.getElementById("tradeBox");
 
@@ -1795,7 +1835,7 @@ const tradeTelegram =
 /* =========================
    ЦЕНЫ TRADE-IN
    ПРИМЕРНО НА 7 000 ₽ НИЖЕ
-   ТВОЕГО ПРАЙСА
+   ИСХОДНОГО ПРАЙСА
 ========================= */
 
 const tradePrices = {
@@ -2663,6 +2703,7 @@ tradeCalculate.addEventListener(
     calculateTradeIn
 );
 
+
 function calculateTradeIn() {
 
     const model =
@@ -2674,25 +2715,32 @@ function calculateTradeIn() {
     const battery =
         tradeBattery.value;
 
+    const sim =
+        tradeSim.value;
+
     const box =
         tradeBox.value;
+
 
     if (
         !model ||
         !memory ||
         !battery ||
+        !sim ||
         !box
     ) {
 
         alert(
-            "Пожалуйста, выберите модель, память, состояние АКБ и наличие коробки."
+            "Пожалуйста, выберите модель, память, состояние АКБ, SIM/eSIM и наличие коробки."
         );
 
         return;
     }
 
+
     const data =
         tradePrices[model];
+
 
     if (
         !data ||
@@ -2706,13 +2754,53 @@ function calculateTradeIn() {
         return;
     }
 
+
     const memoryData =
         data.memories[memory];
 
-    const priceRange =
+
+    /*
+        БАЗОВАЯ ЦЕНА
+        SIM + eSIM:
+        уже примерно -7 000 ₽
+        от исходного прайса
+    */
+
+    let priceRange =
         battery === "85plus"
             ? [...memoryData.good]
             : [...memoryData.low];
+
+
+    /*
+        ТОЛЬКО eSIM:
+        ещё минус 3–5 тыс. ₽.
+
+        Таким образом относительно
+        исходного прайса получается
+        примерно -10 000…12 000 ₽.
+    */
+
+    if (
+        sim === "esim_only"
+    ) {
+
+        priceRange = [
+
+            Math.max(
+                0,
+                priceRange[0] - 5000
+            ),
+
+            Math.max(
+                0,
+                priceRange[1] - 3000
+            )
+
+        ];
+
+    }
+
 
     const formattedMin =
         priceRange[0].toLocaleString(
@@ -2724,15 +2812,28 @@ function calculateTradeIn() {
             "ru-RU"
         );
 
+
     const batteryText =
         battery === "85plus"
             ? "АКБ 85%+"
             : "АКБ ниже 85%";
 
+
+    const simText =
+        sim === "sim_esim"
+            ? "SIM + eSIM"
+            : "только eSIM";
+
+
     const boxText =
         box === "yes"
             ? "коробка есть"
             : "без коробки";
+
+
+    /*
+        ПОКАЗЫВАЕМ ЦЕНУ
+    */
 
     if (
         priceRange[0] ===
@@ -2749,8 +2850,18 @@ function calculateTradeIn() {
 
     }
 
+
+    /*
+        ИНФОРМАЦИЯ ПОД ЦЕНОЙ
+    */
+
     tradeDetails.textContent =
-        `${data.name} • ${formatMemory(memory)} • ${batteryText} • ${boxText}`;
+        `${data.name} • ${formatMemory(memory)} • ${batteryText} • ${simText} • ${boxText}`;
+
+
+    /*
+        ЦЕНА ДЛЯ TELEGRAM
+    */
 
     const telegramPrice =
         priceRange[0] ===
@@ -2759,6 +2870,11 @@ function calculateTradeIn() {
             ? `${formattedMin} ₽`
 
             : `${formattedMin}–${formattedMax} ₽`;
+
+
+    /*
+        СООБЩЕНИЕ В TELEGRAM
+    */
 
     const telegramMessage =
 
@@ -2776,6 +2892,10 @@ function calculateTradeIn() {
         batteryText +
         "\n" +
 
+        "SIM/eSIM: " +
+        simText +
+        "\n" +
+
         "Коробка: " +
         boxText +
         "\n\n" +
@@ -2787,15 +2907,18 @@ function calculateTradeIn() {
 
         "Готов отправить фото телефона для точной оценки.";
 
+
     tradeTelegram.href =
         "https://t.me/DV_STORE_ORDER?text=" +
         encodeURIComponent(
             telegramMessage
         );
 
+
     tradeResult.classList.add(
         "active"
     );
+
 
     tradeResult.scrollIntoView({
         behavior: "smooth",
@@ -2836,6 +2959,7 @@ modalClose.addEventListener(
 
     }
 );
+
 
 modal.addEventListener(
     "click",
@@ -2924,6 +3048,7 @@ const creditClose =
         "creditClose"
     );
 
+
 window.addEventListener(
     "load",
     () => {
@@ -2942,6 +3067,7 @@ window.addEventListener(
     }
 );
 
+
 creditClose.addEventListener(
     "click",
     () => {
@@ -2952,6 +3078,7 @@ creditClose.addEventListener(
 
     }
 );
+
 
 creditModal.addEventListener(
     "click",
