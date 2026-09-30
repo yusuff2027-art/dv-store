@@ -9,6 +9,8 @@
 <meta name="description"
 content="D&V STORE — смартфоны Apple, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, покупка в трейд-ин и ремонт в Москве.">
 
+<meta name="yandex-verification" content="081c2f2c8bb7b95b" />
+
 <style>
 *{
     box-sizing:border-box;
@@ -1719,13 +1721,6 @@ const tradeTelegram =
 
 /* =========================================================
    ОСНОВНОЙ ПРАЙС TRADE-IN
-
-   Эти значения — твой исходный ориентир.
-
-   Если память есть в прайсе — используем её напрямую.
-
-   Если памяти нет — ниже JS автоматически
-   рассчитывает её от ближайшего известного объёма.
 ========================================================= */
 
 const tradePrices = {
@@ -1942,10 +1937,6 @@ const tradePrices = {
 
 /* =========================================================
    ВСЕ ОБЪЁМЫ
-
-   Пользователь просил, чтобы у каждой модели были
-   все варианты:
-   128 / 256 / 512 / 1 TB / 2 TB
 ========================================================= */
 
 const ALL_MEMORIES = [
@@ -1958,13 +1949,7 @@ const ALL_MEMORIES = [
 
 
 /* =========================================================
-   КОЭФФИЦИЕНТЫ ДЛЯ РАСЧЁТА НЕДОСТАЮЩЕЙ ПАМЯТИ
-
-   База = 256 GB.
-
-   Это НЕ меняет реальные цены из прайса.
-   Формула применяется только если конкретной
-   памяти нет в твоём прайсе.
+   КОЭФФИЦИЕНТЫ
 ========================================================= */
 
 const MEMORY_ADJUSTMENTS = {
@@ -1988,11 +1973,6 @@ const MEMORY_ADJUSTMENTS = {
 
 function getMemoryData(modelData, targetMemory){
 
-    /*
-        Если цена уже есть в нашем прайсе —
-        возвращаем её без изменений.
-    */
-
     if(
         modelData.memories[targetMemory]
     ){
@@ -2004,10 +1984,6 @@ function getMemoryData(modelData, targetMemory){
 
     }
 
-
-    /*
-        Ищем ближайший известный объём.
-    */
 
     const knownMemories =
         Object.keys(modelData.memories)
@@ -2060,11 +2036,6 @@ function getMemoryData(modelData, targetMemory){
             nearestKey
         ];
 
-
-    /*
-        Насколько надо изменить цену
-        от ближайшего известного объёма.
-    */
 
     const targetAdjustment =
         MEMORY_ADJUSTMENTS[
@@ -2270,11 +2241,6 @@ function calculateTradeIn(){
     }
 
 
-    /*
-        Получаем реальную или
-        рассчитанную цену памяти.
-    */
-
     const memoryResult =
         getMemoryData(
             modelData,
@@ -2301,25 +2267,18 @@ function calculateTradeIn(){
     /*
         SIM + eSIM
 
-        Наши цены уже рассчитаны
-        примерно на 7 000 ₽ ниже
-        исходного прайса.
-    */
+        Базовые цены уже примерно на 7 000 ₽
+        ниже исходного ориентира.
 
+        Дополнительно снимаем 5 000 ₽
+        с обеих границ.
 
-    /*
-        Только eSIM
-
-        Дополнительно:
-        -5 000 ₽ с минимальной цены
-        -3 000 ₽ с максимальной цены.
-
-        В итоге получается примерно
-        на 10–12 тыс. ниже исходной цены.
+        Итог: примерно на 12 000 ₽ ниже
+        исходного ориентира.
     */
 
     if(
-        sim === "esim_only"
+        sim === "sim_esim"
     ){
 
         priceRange = [
@@ -2331,7 +2290,7 @@ function calculateTradeIn(){
 
             Math.max(
                 0,
-                priceRange[1] - 3000
+                priceRange[1] - 5000
             )
 
         ];
@@ -2340,8 +2299,40 @@ function calculateTradeIn(){
 
 
     /*
-        Если вдруг после расчёта
-        минимум оказался выше максимума,
+        Только eSIM
+
+        Дополнительно снимаем:
+        8 000 ₽ с минимальной цены
+        11 000 ₽ с максимальной цены.
+
+        Вместе с уже заложенными примерно
+        7 000 ₽ получается около
+        15 000–18 000 ₽ ниже исходного ориентира.
+    */
+
+    if(
+        sim === "esim_only"
+    ){
+
+        priceRange = [
+
+            Math.max(
+                0,
+                priceRange[0] - 8000
+            ),
+
+            Math.max(
+                0,
+                priceRange[1] - 11000
+            )
+
+        ];
+
+    }
+
+
+    /*
+        Если минимум выше максимума,
         меняем местами.
     */
 
@@ -2392,10 +2383,6 @@ function calculateTradeIn(){
             : "без коробки";
 
 
-    /*
-        Показываем цену.
-    */
-
     if(
         priceRange[0] ===
         priceRange[1]
@@ -2415,11 +2402,6 @@ function calculateTradeIn(){
 
     }
 
-
-    /*
-        Дополнительная пометка,
-        если цена была рассчитана нами.
-    */
 
     const estimatedText =
         memoryResult.estimated
@@ -2442,10 +2424,6 @@ function calculateTradeIn(){
         estimatedText;
 
 
-    /*
-        Цена для Telegram.
-    */
-
     const telegramPrice =
         priceRange[0] ===
         priceRange[1]
@@ -2458,10 +2436,6 @@ function calculateTradeIn(){
               formattedMax +
               " ₽";
 
-
-    /*
-        Сообщение Telegram.
-    */
 
     const telegramMessage =
 
