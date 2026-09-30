@@ -34,7 +34,6 @@
 
 <meta name="theme-color" content="#050505">
 
-
 <!-- Open Graph -->
 
 <meta
@@ -67,7 +66,6 @@
     content="ru_RU"
 >
 
-
 <!-- Schema.org -->
 
 <script type="application/ld+json">
@@ -90,8 +88,8 @@
 }
 </script>
 
-
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -114,11 +112,15 @@ a{
     text-decoration:none;
 }
 
-button,input,select{
+button,
+input,
+select{
     font:inherit;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     position:sticky;
@@ -179,7 +181,9 @@ header{
     box-shadow:0 8px 25px rgba(212,175,55,.25);
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:600px;
@@ -267,7 +271,9 @@ header{
     transform:translateY(-2px);
 }
 
-/* INSTALLMENT */
+/* =========================================================
+   INSTALLMENT
+========================================================= */
 
 .installment-banner{
     max-width:1000px;
@@ -301,7 +307,9 @@ header{
     font-weight:800;
 }
 
-/* GENERAL */
+/* =========================================================
+   GENERAL
+========================================================= */
 
 .section{
     max-width:1250px;
@@ -326,7 +334,9 @@ header{
     margin:0 auto 40px;
 }
 
-/* TRADE IN */
+/* =========================================================
+   TRADE IN
+========================================================= */
 
 .tradein-section{
     background:
@@ -461,7 +471,9 @@ header{
     font-weight:900;
 }
 
-/* CATALOG */
+/* =========================================================
+   CATALOG
+========================================================= */
 
 .catalog-tools{
     display:grid;
@@ -601,7 +613,9 @@ header{
     grid-column:1/-1;
 }
 
-/* ABOUT */
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about-box{
     background:
@@ -628,7 +642,120 @@ header{
     font-weight:800;
 }
 
-/* REPAIR */
+/* ABOUT TELEGRAM BUTTON */
+
+.about-contact{
+    margin-top:28px;
+}
+
+.about-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 24px;
+    border-radius:12px;
+    background:#d4af37;
+    color:#050505;
+    font-weight:900;
+    transition:.25s;
+}
+
+.about-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(212,175,55,.2);
+}
+
+/* ABOUT GALLERY */
+
+.about-gallery{
+    max-width:1100px;
+    margin:35px auto 0;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.about-photo{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    background:#0c0c0c;
+    border:1px solid #202020;
+    aspect-ratio:4/3;
+    cursor:pointer;
+}
+
+.about-photo-wide{
+    grid-column:span 3;
+    aspect-ratio:16/7;
+}
+
+.about-photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .5s ease;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.about-photo:hover img{
+    transform:scale(1.05);
+}
+
+/* ABOUT LIGHTBOX */
+
+.about-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.96);
+    backdrop-filter:blur(10px);
+}
+
+.about-lightbox.active{
+    display:flex;
+}
+
+.about-lightbox img{
+    max-width:95%;
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:14px;
+    box-shadow:0 20px 80px rgba(0,0,0,.7);
+}
+
+.about-lightbox-close{
+    position:absolute;
+    top:20px;
+    right:25px;
+    width:48px;
+    height:48px;
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:50%;
+    background:#d4af37;
+    color:#050505;
+    font-size:32px;
+    line-height:42px;
+    cursor:pointer;
+    z-index:2;
+    transition:.25s;
+}
+
+.about-lightbox-close:hover{
+    transform:scale(1.08);
+}
+
+/* =========================================================
+   REPAIR
+========================================================= */
 
 .repair{
     background:
@@ -668,7 +795,9 @@ header{
     margin-top:35px;
 }
 
-/* REVIEWS */
+/* =========================================================
+   REVIEWS
+========================================================= */
 
 .reviews-box{
     text-align:center;
@@ -700,7 +829,9 @@ header{
     font-weight:900;
 }
 
-/* CONTACTS */
+/* =========================================================
+   CONTACTS
+========================================================= */
 
 .contacts-grid{
     display:grid;
@@ -733,7 +864,9 @@ header{
     color:#d4af37;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     border-top:1px solid #1c1c1c;
@@ -746,7 +879,9 @@ footer strong{
     color:#d4af37;
 }
 
-/* MODALS */
+/* =========================================================
+   MODALS
+========================================================= */
 
 .modal{
     position:fixed;
@@ -836,7 +971,9 @@ footer strong{
     margin:10px 0 20px;
 }
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:1050px){
 
@@ -871,6 +1008,16 @@ footer strong{
 
     .hero{
         min-height:520px;
+    }
+
+    .about-gallery{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .about-photo-wide{
+        grid-column:span 2;
+        aspect-ratio:16/9;
     }
 
 }
@@ -941,6 +1088,41 @@ footer strong{
         padding:25px 18px;
     }
 
+    .about-button{
+        width:100%;
+        box-sizing:border-box;
+        text-align:center;
+    }
+
+    .about-gallery{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .about-photo,
+    .about-photo-wide{
+        grid-column:span 1;
+        aspect-ratio:4/3;
+    }
+
+    .about-lightbox{
+        padding:10px;
+    }
+
+    .about-lightbox img{
+        max-width:100%;
+        max-height:82vh;
+    }
+
+    .about-lightbox-close{
+        top:12px;
+        right:12px;
+        width:43px;
+        height:43px;
+        font-size:28px;
+        line-height:38px;
+    }
+
     .tradein-box{
         padding:22px 16px;
     }
@@ -950,6 +1132,7 @@ footer strong{
     }
 
 }
+
 </style>
 </head>
 
@@ -1004,6 +1187,9 @@ footer strong{
 
 </header>
 
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
@@ -1070,8 +1256,9 @@ footer strong{
 
 </section>
 
-
-<!-- TRADE-IN -->
+<!-- =========================================================
+     TRADE-IN
+========================================================= -->
 
 <section
     class="section tradein-section"
@@ -1213,7 +1400,6 @@ footer strong{
 
             </div>
 
-
             <div class="tradein-field">
 
                 <label for="tradeMemory">
@@ -1229,7 +1415,6 @@ footer strong{
                 </select>
 
             </div>
-
 
             <div class="tradein-field">
 
@@ -1255,7 +1440,6 @@ footer strong{
 
             </div>
 
-
             <div class="tradein-field">
 
                 <label for="tradeSim">
@@ -1279,7 +1463,6 @@ footer strong{
                 </select>
 
             </div>
-
 
             <div class="tradein-field">
 
@@ -1307,14 +1490,12 @@ footer strong{
 
         </div>
 
-
         <button
             id="tradeCalculate"
             class="tradein-button"
         >
             📱 Оценить мой телефон
         </button>
-
 
         <div
             id="tradeResult"
@@ -1370,8 +1551,9 @@ footer strong{
 
 </section>
 
-
-<!-- CATALOG -->
+<!-- =========================================================
+     CATALOG
+========================================================= -->
 
 <section
     class="section"
@@ -1420,7 +1602,6 @@ footer strong{
 
     </div>
 
-
     <div
         id="products"
         class="products"
@@ -1434,8 +1615,9 @@ footer strong{
 
 </section>
 
-
-<!-- ABOUT -->
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
 <section
     class="section"
@@ -1447,8 +1629,8 @@ footer strong{
     </h2>
 
     <p class="section-subtitle">
-        Магазин смартфонов, Trade-in и сервис
-        в Москве
+        Магазин техники в Москве, которому важны
+        качество, честность и доверие клиентов
     </p>
 
     <div class="about-box">
@@ -1459,34 +1641,172 @@ footer strong{
                 D&V STORE
             </span>
 
-            — магазин смартфонов в Москве, где можно
-            подобрать iPhone, Samsung, Xiaomi, Honor
-            и другие популярные модели.
+            — магазин современной техники в Москве.
+            Мы помогаем подобрать смартфон под задачи
+            и бюджет клиента.
 
         </p>
 
         <p>
 
-            У нас можно купить смартфон, воспользоваться
-            Trade-in, получить предварительную оценку
-            своего устройства и обратиться за ремонтом.
+            В каталоге представлены популярные модели
+            Apple, Samsung, Xiaomi, Honor и других
+            известных брендов.
 
         </p>
 
         <p>
 
-            Если вы не нашли нужную модель в каталоге —
-            напишите нам в Telegram, и мы постараемся
-            помочь с подбором устройства.
+            У нас можно приобрести смартфон,
+            воспользоваться
+            <span class="about-highlight">
+                Trade-in
+            </span>,
+            получить предварительную оценку устройства
+            и обратиться за ремонтом.
 
         </p>
+
+        <p>
+
+            Для нас важно не просто продать устройство,
+            а помочь подобрать подходящую модель
+            и сделать покупку максимально удобной.
+
+        </p>
+
+        <p>
+
+            Не нашли нужную модель в каталоге?
+            Напишите нам в Telegram — поможем подобрать
+            устройство и уточним актуальное наличие.
+
+        </p>
+
+        <div class="about-contact">
+
+            <a
+                href="https://t.me/DV_STORE_ORDER"
+                target="_blank"
+                rel="noopener"
+                class="about-button"
+            >
+                💬 Написать нам в Telegram
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ФОТО D&V STORE
+    ====================================================== -->
+
+    <div class="about-gallery">
+
+        <div class="about-photo">
+
+            <img
+                src="images/IMG_7506.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="about-photo">
+
+            <img
+                src="images/IMG_7507.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="about-photo">
+
+            <img
+                src="images/IMG_7509.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="about-photo">
+
+            <img
+                src="images/IMG_7505.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="about-photo">
+
+            <img
+                src="images/IMG_7504.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="about-photo">
+
+            <img
+                src="images/IMG_7508.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="about-photo about-photo-wide">
+
+            <img
+                src="images/IMG_7502.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
+
+        </div>
 
     </div>
 
 </section>
 
+<!-- =========================================================
+     ABOUT LIGHTBOX
+========================================================= -->
 
-<!-- REPAIR -->
+<div
+    class="about-lightbox"
+    id="aboutLightbox"
+>
+
+    <button
+        class="about-lightbox-close"
+        id="aboutLightboxClose"
+        aria-label="Закрыть"
+    >
+        ×
+    </button>
+
+    <img
+        id="aboutLightboxImage"
+        src=""
+        alt="D&V STORE"
+    >
+
+</div>
+
+<!-- =========================================================
+     REPAIR
+========================================================= -->
 
 <section
     class="section repair"
@@ -1602,8 +1922,9 @@ footer strong{
 
 </section>
 
-
-<!-- REVIEWS -->
+<!-- =========================================================
+     REVIEWS
+========================================================= -->
 
 <section
     class="section"
@@ -1641,8 +1962,9 @@ footer strong{
 
 </section>
 
-
-<!-- CONTACTS -->
+<!-- =========================================================
+     CONTACTS
+========================================================= -->
 
 <section
     class="section"
@@ -1679,7 +2001,6 @@ footer strong{
 
         </div>
 
-
         <div class="contact-card">
 
             <div class="contact-icon">
@@ -1699,7 +2020,6 @@ footer strong{
             </p>
 
         </div>
-
 
         <div class="contact-card">
 
@@ -1729,6 +2049,9 @@ footer strong{
 
 </section>
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -1746,8 +2069,9 @@ footer strong{
 
 </footer>
 
-
-<!-- ORDER MODAL -->
+<!-- =========================================================
+     ORDER MODAL
+========================================================= -->
 
 <div
     id="modal"
@@ -1791,8 +2115,9 @@ footer strong{
 
 </div>
 
-
-<!-- CREDIT MODAL -->
+<!-- =========================================================
+     CREDIT MODAL
+========================================================= -->
 
 <div
     id="creditModal"
@@ -1836,7 +2161,6 @@ footer strong{
 
 </div>
 
-
 <script>
 
 /* =========================================================
@@ -1868,7 +2192,6 @@ const modalPrice =
 
 const modalTelegram =
     document.getElementById("modalTelegram");
-
 
 /* =========================================================
    TRADE-IN
@@ -1903,7 +2226,6 @@ const tradeDetails =
 
 const tradeTelegram =
     document.getElementById("tradeTelegram");
-
 
 /* =========================================================
    ОСНОВНОЙ ПРАЙС TRADE-IN
@@ -2120,7 +2442,6 @@ const tradePrices = {
 
 };
 
-
 /* =========================================================
    ВСЕ ОБЪЁМЫ
 ========================================================= */
@@ -2132,7 +2453,6 @@ const ALL_MEMORIES = [
     "1024",
     "2048"
 ];
-
 
 /* =========================================================
    КОЭФФИЦИЕНТЫ
@@ -2147,7 +2467,6 @@ const MEMORY_ADJUSTMENTS = {
     "2048": 30000
 
 };
-
 
 /* =========================================================
    ПОЛУЧЕНИЕ ЦЕНЫ ДЛЯ ЛЮБОЙ ПАМЯТИ
@@ -2248,7 +2567,6 @@ function getMemoryData(modelData,targetMemory){
 
 }
 
-
 /* =========================================================
    ФОРМАТ ПАМЯТИ
 ========================================================= */
@@ -2266,7 +2584,6 @@ function formatMemory(memory){
     return memory+" ГБ";
 
 }
-
 
 /* =========================================================
    ПОКАЗЫВАЕМ ВСЕ ВАРИАНТЫ ПАМЯТИ
@@ -2319,7 +2636,6 @@ tradeModel.addEventListener(
     updateMemoryOptions
 );
 
-
 /* =========================================================
    TRADE-IN РАСЧЁТ
 ========================================================= */
@@ -2328,7 +2644,6 @@ tradeCalculate.addEventListener(
     "click",
     calculateTradeIn
 );
-
 
 function calculateTradeIn(){
 
@@ -2384,7 +2699,6 @@ function calculateTradeIn(){
             ? [...memoryData.good]
             : [...memoryData.low];
 
-
     /*
         SIM + eSIM
 
@@ -2393,9 +2707,6 @@ function calculateTradeIn(){
 
         Дополнительно снимаем 5 000 ₽
         с обеих границ.
-
-        Итог: примерно на 12 000 ₽ ниже
-        исходного ориентира.
     */
 
     if(sim==="sim_esim"){
@@ -2416,17 +2727,8 @@ function calculateTradeIn(){
 
     }
 
-
     /*
         Только eSIM
-
-        Дополнительно снимаем:
-        8 000 ₽ с минимальной цены
-        11 000 ₽ с максимальной цены.
-
-        Вместе с уже заложенными примерно
-        7 000 ₽ получается около
-        15 000–18 000 ₽ ниже исходного ориентира.
     */
 
     if(sim==="esim_only"){
@@ -2446,7 +2748,6 @@ function calculateTradeIn(){
         ];
 
     }
-
 
     if(priceRange[0]>priceRange[1]){
 
@@ -2475,7 +2776,6 @@ function calculateTradeIn(){
             ? "коробка есть"
             : "без коробки";
 
-
     if(priceRange[0]===priceRange[1]){
 
         tradePrice.textContent =
@@ -2487,7 +2787,6 @@ function calculateTradeIn(){
             formattedMin+"–"+formattedMax+" ₽";
 
     }
-
 
     const estimatedText =
         memoryResult.estimated
@@ -2506,12 +2805,10 @@ function calculateTradeIn(){
         boxText+
         estimatedText;
 
-
     const telegramPrice =
         priceRange[0]===priceRange[1]
             ? formattedMin+" ₽"
             : formattedMin+"–"+formattedMax+" ₽";
-
 
     const telegramMessage =
 
@@ -2544,18 +2841,15 @@ function calculateTradeIn(){
 
         "Готов отправить фото телефона для точной оценки.";
 
-
     tradeTelegram.href =
         "https://t.me/DV_STORE_ORDER?text="+
         encodeURIComponent(
             telegramMessage
         );
 
-
     tradeResult.classList.add(
         "active"
     );
-
 
     tradeResult.scrollIntoView({
         behavior:"smooth",
@@ -2563,7 +2857,6 @@ function calculateTradeIn(){
     });
 
 }
-
 
 /* =========================================================
    ЗАГРУЗКА КАТАЛОГА
@@ -2613,7 +2906,6 @@ async function loadProducts(){
 
 }
 
-
 /* =========================================================
    ОТОБРАЖЕНИЕ ТОВАРОВ
 ========================================================= */
@@ -2659,7 +2951,6 @@ function renderProducts(){
             }
         );
 
-
     if(!filtered.length){
 
         productsContainer.innerHTML = `
@@ -2673,7 +2964,6 @@ function renderProducts(){
         return;
 
     }
-
 
     productsContainer.innerHTML =
         filtered.map(
@@ -2700,7 +2990,6 @@ function renderProducts(){
                     stock
                     .toLowerCase()
                     .includes("нет");
-
 
                 return `
 
@@ -2794,7 +3083,6 @@ function renderProducts(){
 
 }
 
-
 /* =========================================================
    МОДАЛКА ТОВАРА
 ========================================================= */
@@ -2811,7 +3099,6 @@ function openProductModal(product){
         .toLocaleString("ru-RU")+
         " ₽";
 
-
     const message =
         "Здравствуйте! "+
         "Хочу заказать: "+
@@ -2825,16 +3112,13 @@ function openProductModal(product){
         .toLocaleString("ru-RU")+
         " ₽";
 
-
     modalTelegram.href =
         "https://t.me/DV_STORE_ORDER?text="+
         encodeURIComponent(message);
 
-
     modal.classList.add("active");
 
 }
-
 
 /* =========================================================
    ЗАКРЫТИЕ МОДАЛКИ
@@ -2846,7 +3130,6 @@ modalClose.addEventListener(
         modal.classList.remove("active");
     }
 );
-
 
 modal.addEventListener(
     "click",
@@ -2861,7 +3144,6 @@ modal.addEventListener(
     }
 );
 
-
 /* =========================================================
    ПОИСК
 ========================================================= */
@@ -2871,7 +3153,6 @@ searchInput.addEventListener(
     renderProducts
 );
 
-
 /* =========================================================
    ФИЛЬТР БРЕНДА
 ========================================================= */
@@ -2880,7 +3161,6 @@ brandFilter.addEventListener(
     "change",
     renderProducts
 );
-
 
 /* =========================================================
    ЗАЩИТА HTML
@@ -2898,7 +3178,6 @@ function escapeHtml(value){
 
 }
 
-
 /* =========================================================
    РАССРОЧКА
 ========================================================= */
@@ -2912,7 +3191,6 @@ const creditClose =
     document.getElementById(
         "creditClose"
     );
-
 
 window.addEventListener(
     "load",
@@ -2932,7 +3210,6 @@ window.addEventListener(
     }
 );
 
-
 creditClose.addEventListener(
     "click",
     ()=>{
@@ -2943,7 +3220,6 @@ creditClose.addEventListener(
 
     }
 );
-
 
 creditModal.addEventListener(
     "click",
@@ -2960,6 +3236,90 @@ creditModal.addEventListener(
     }
 );
 
+/* =========================================================
+   ABOUT PHOTO LIGHTBOX
+========================================================= */
+
+const aboutLightbox =
+    document.getElementById(
+        "aboutLightbox"
+    );
+
+const aboutLightboxImage =
+    document.getElementById(
+        "aboutLightboxImage"
+    );
+
+const aboutLightboxClose =
+    document.getElementById(
+        "aboutLightboxClose"
+    );
+
+const aboutPhotos =
+    document.querySelectorAll(
+        ".about-photo img"
+    );
+
+aboutPhotos.forEach(
+    image=>{
+
+        image.addEventListener(
+            "click",
+            ()=>{
+
+                aboutLightboxImage.src =
+                    image.src;
+
+                aboutLightboxImage.alt =
+                    image.alt || "D&V STORE";
+
+                aboutLightbox.classList.add(
+                    "active"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
+
+    }
+);
+
+function closeAboutLightbox(){
+
+    aboutLightbox.classList.remove(
+        "active"
+    );
+
+    aboutLightboxImage.src =
+        "";
+
+    document.body.style.overflow =
+        "";
+
+}
+
+aboutLightboxClose.addEventListener(
+    "click",
+    closeAboutLightbox
+);
+
+aboutLightbox.addEventListener(
+    "click",
+    event=>{
+
+        if(
+            event.target ===
+            aboutLightbox
+        ){
+
+            closeAboutLightbox();
+
+        }
+
+    }
+);
 
 /* =========================================================
    ESC
@@ -2979,11 +3339,12 @@ document.addEventListener(
                 "active"
             );
 
+            closeAboutLightbox();
+
         }
 
     }
 );
-
 
 /* =========================================================
    ЗАПУСК
