@@ -3,1624 +3,2507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D&V STORE — смартфоны и ремонт в Москве</title>
-<meta
-    name="description"
-    content="D&V STORE — смартфоны Apple, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, трейд-ин и ремонт в Москве."
->
+
+    <title>D&V STORE — смартфоны и ремонт в Москве</title>
+
+    <meta
+        name="description"
+        content="D&V STORE — смартфоны Apple, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, трейд-ин и ремонт в Москве."
+    >
+
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    html {
-        scroll-behavior: smooth;
-    }
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #050505;
-        color: #fff;
-        line-height: 1.5;
-    }
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-    button,
-    input,
-    select {
-        font: inherit;
-    }
-    /* =========================
-       HEADER
-    ========================= */
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: rgba(5, 5, 5, 0.94);
-        backdrop-filter: blur(15px);
-        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    }
-    .header-inner {
-        max-width: 1250px;
-        margin: auto;
-        padding: 16px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    .logo {
-        font-size: 23px;
-        font-weight: 900;
-        letter-spacing: 2px;
-        color: #d4af37;
-        white-space: nowrap;
-    }
-    .nav {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-    }
-    .nav a {
-        color: #ddd;
-        font-size: 14px;
-        transition: 0.25s;
-    }
-    .nav a:hover {
-        color: #d4af37;
-    }
-    .telegram-btn {
-        background: #d4af37;
-        color: #050505;
-        padding: 10px 17px;
-        border-radius: 10px;
-        font-weight: 800;
-        font-size: 14px;
-        white-space: nowrap;
-        transition: 0.25s;
-    }
-    .telegram-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
-    }
-    /* =========================
-       HERO
-    ========================= */
-    .hero {
-        min-height: 600px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 70px 20px;
-        background:
-            radial-gradient(
-                circle at 50% 30%,
-                rgba(212,175,55,0.12),
-                transparent 35%
-            ),
-            #050505;
-    }
-    .hero-content {
-        max-width: 850px;
-    }
-    .hero-label {
-        display: inline-block;
-        color: #d4af37;
-        border: 1px solid rgba(212,175,55,0.35);
-        border-radius: 50px;
-        padding: 7px 16px;
-        margin-bottom: 22px;
-        font-size: 13px;
-        letter-spacing: 1px;
-    }
-    .hero h1 {
-        font-size: clamp(45px, 8vw, 90px);
-        line-height: 0.95;
-        letter-spacing: -4px;
-        margin-bottom: 25px;
-    }
-    .hero h1 span {
-        color: #d4af37;
-    }
-    .hero p {
-        max-width: 650px;
-        margin: auto;
-        color: #aaa;
-        font-size: 18px;
-    }
-    .hero-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 35px;
-        flex-wrap: wrap;
-    }
-    .primary-btn,
-    .secondary-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 22px;
-        border-radius: 12px;
-        font-weight: 800;
-        transition: 0.25s;
-        cursor: pointer;
-    }
-    .primary-btn {
-        background: #d4af37;
-        color: #050505;
-    }
-    .secondary-btn {
-        border: 1px solid #333;
-        color: #fff;
-        background: transparent;
-    }
-    .primary-btn:hover,
-    .secondary-btn:hover {
-        transform: translateY(-2px);
-    }
-    /* =========================
-       INSTALLMENT NOTICE
-    ========================= */
-    .installment-banner {
-        max-width: 1000px;
-        margin: 25px auto 0;
-        padding: 18px 22px;
-        border: 1px solid rgba(212,175,55,0.35);
-        background: linear-gradient(
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #fff;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.header-inner {
+    max-width: 1250px;
+    margin: auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #d4af37;
+    white-space: nowrap;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav a {
+    color: #ddd;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.nav a:hover {
+    color: #d4af37;
+}
+
+.telegram-btn {
+    background: #d4af37;
+    color: #050505;
+    padding: 10px 17px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: 0.25s;
+}
+
+.telegram-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(212,175,55,0.12),
+            transparent 35%
+        ),
+        #050505;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-label {
+    display: inline-block;
+    color: #d4af37;
+    border: 1px solid rgba(212,175,55,0.35);
+    border-radius: 50px;
+    padding: 7px 16px;
+    margin-bottom: 22px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #d4af37;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #aaa;
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: #d4af37;
+    color: #050505;
+}
+
+.secondary-btn {
+    border: 1px solid #333;
+    color: #fff;
+    background: transparent;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   INSTALLMENT
+========================= */
+
+.installment-banner {
+    max-width: 1000px;
+    margin: 25px auto 0;
+    padding: 18px 22px;
+
+    border: 1px solid rgba(212,175,55,0.35);
+
+    background:
+        linear-gradient(
             135deg,
             rgba(212,175,55,0.12),
             rgba(255,255,255,0.02)
         );
-        border-radius: 16px;
-        text-align: center;
-    }
-    .installment-banner strong {
-        color: #d4af37;
-        font-size: 17px;
-    }
-    .installment-banner span {
-        display: block;
-        color: #999;
-        margin-top: 4px;
-        font-size: 13px;
-    }
-    .installment-banner a {
-        color: #d4af37;
-        font-weight: 800;
-    }
-    /* =========================
-       GENERAL
-    ========================= */
-    .section {
-        max-width: 1250px;
-        margin: auto;
-        padding: 80px 20px;
-    }
-    .section-title {
-        text-align: center;
-        font-size: 38px;
-        margin-bottom: 12px;
-    }
-    .section-title span {
-        color: #d4af37;
-    }
-    .section-subtitle {
-        text-align: center;
-        color: #888;
-        max-width: 650px;
-        margin: 0 auto 40px;
-    }
-    /* =========================
-       TRADE-IN
-    ========================= */
-    .tradein-section {
-        background:
-            radial-gradient(
-                circle at 50% 50%,
-                rgba(212,175,55,0.07),
-                transparent 40%
-            );
-    }
-    .tradein-box {
-        max-width: 850px;
-        margin: auto;
-        background: linear-gradient(145deg, #101010, #080808);
-        border: 1px solid rgba(212,175,55,0.22);
-        border-radius: 24px;
-        padding: 35px;
-        box-shadow: 0 20px 70px rgba(0,0,0,0.35);
-    }
-    .tradein-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
-    .tradein-field {
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-    }
-    .tradein-field label {
-        color: #aaa;
-        font-size: 13px;
-    }
-    .tradein-field select {
-        width: 100%;
-        background: #0b0b0b;
-        color: #fff;
-        border: 1px solid #292929;
-        padding: 14px;
-        border-radius: 11px;
-        outline: none;
-    }
-    .tradein-field select:focus {
-        border-color: #d4af37;
-    }
-    .tradein-button {
-        width: 100%;
-        border: none;
-        background: #d4af37;
-        color: #050505;
-        padding: 16px;
-        border-radius: 12px;
-        font-weight: 900;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.25s;
-    }
-    .tradein-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(212,175,55,0.2);
-    }
-    .tradein-result {
-        display: none;
-        margin-top: 25px;
-        padding: 25px;
-        border-radius: 16px;
-        background: #0b0b0b;
-        border: 1px solid #292929;
-        text-align: center;
-    }
-    .tradein-result.active {
-        display: block;
-    }
-    .tradein-result-title {
-        color: #999;
-        font-size: 13px;
-        margin-bottom: 5px;
-    }
-    .tradein-price {
-        color: #d4af37;
-        font-size: 32px;
-        font-weight: 900;
-        margin-bottom: 10px;
-    }
-    .tradein-details {
-        color: #ccc;
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-    .tradein-warning {
-        color: #888;
-        font-size: 12px;
-        line-height: 1.5;
-        margin-bottom: 18px;
-    }
-    .tradein-telegram {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: #d4af37;
-        color: #050505;
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-weight: 900;
-    }
-    /* =========================
-       CATALOG
-    ========================= */
-    .catalog-tools {
-        display: grid;
-        grid-template-columns: 1fr 220px;
-        gap: 12px;
-        margin-bottom: 30px;
-    }
-    .search {
-        width: 100%;
-        background: #0d0d0d;
-        color: #fff;
-        border: 1px solid #292929;
-        padding: 15px 17px;
-        border-radius: 12px;
-        outline: none;
-    }
-    .search:focus {
-        border-color: #d4af37;
-    }
-    .brand-filter {
-        width: 100%;
-        background: #0d0d0d;
-        color: #fff;
-        border: 1px solid #292929;
-        padding: 15px;
-        border-radius: 12px;
-        outline: none;
-    }
+
+    border-radius: 16px;
+    text-align: center;
+}
+
+.installment-banner strong {
+    color: #d4af37;
+    font-size: 17px;
+}
+
+.installment-banner span {
+    display: block;
+    color: #999;
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+.installment-banner a {
+    color: #d4af37;
+    font-weight: 800;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.section {
+    max-width: 1250px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.section-title span {
+    color: #d4af37;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #888;
+    max-width: 650px;
+    margin: 0 auto 40px;
+}
+
+/* =========================
+   TRADE-IN
+========================= */
+
+.tradein-section {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(212,175,55,0.07),
+            transparent 40%
+        );
+}
+
+.tradein-box {
+    max-width: 850px;
+    margin: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101010,
+            #080808
+        );
+
+    border: 1px solid rgba(212,175,55,0.22);
+    border-radius: 24px;
+    padding: 35px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.35);
+}
+
+.tradein-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.tradein-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.tradein-field label {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.tradein-field select {
+    width: 100%;
+    background: #0b0b0b;
+    color: #fff;
+    border: 1px solid #292929;
+    padding: 14px;
+    border-radius: 11px;
+    outline: none;
+}
+
+.tradein-field select:focus {
+    border-color: #d4af37;
+}
+
+.tradein-button {
+    width: 100%;
+    border: none;
+    background: #d4af37;
+    color: #050505;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.25s;
+}
+
+.tradein-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 10px 30px rgba(212,175,55,0.2);
+}
+
+.tradein-result {
+    display: none;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 16px;
+    background: #0b0b0b;
+    border: 1px solid #292929;
+    text-align: center;
+}
+
+.tradein-result.active {
+    display: block;
+}
+
+.tradein-result-title {
+    color: #d4af37;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.tradein-price {
+    color: #d4af37;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.tradein-details {
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.tradein-warning {
+    color: #888;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.tradein-warning strong {
+    color: #d4af37;
+}
+
+.tradein-telegram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #d4af37;
+    color: #050505;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+/* =========================
+   CATALOG
+========================= */
+
+.catalog-tools {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.search {
+    width: 100%;
+    background: #0d0d0d;
+    color: #fff;
+    border: 1px solid #292929;
+    padding: 15px 17px;
+    border-radius: 12px;
+    outline: none;
+}
+
+.search:focus {
+    border-color: #d4af37;
+}
+
+.brand-filter {
+    width: 100%;
+    background: #0d0d0d;
+    color: #fff;
+    border: 1px solid #292929;
+    padding: 15px;
+    border-radius: 12px;
+    outline: none;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.product-card {
+    background: #0c0c0c;
+    border: 1px solid #202020;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212,175,55,0.5);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.4);
+}
+
+.product-image {
+    width: 100%;
+    height: 260px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.product-info {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-brand {
+    color: #d4af37;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.product-name {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.product-description {
+    color: #888;
+    font-size: 13px;
+    min-height: 40px;
+    margin-bottom: 12px;
+}
+
+.product-price {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.product-old-price {
+    color: #666;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.stock {
+    font-size: 12px;
+    color: #67d47a;
+    margin-bottom: 15px;
+}
+
+.stock.out {
+    color: #ff6666;
+}
+
+.buy-btn {
+    margin-top: auto;
+    width: 100%;
+    border: none;
+    background: #d4af37;
+    color: #050505;
+    padding: 13px;
+    border-radius: 10px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.buy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 20px rgba(212,175,55,0.2);
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 50px 10px;
+    grid-column: 1 / -1;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box {
+    background:
+        linear-gradient(
+            145deg,
+            #0d0d0d,
+            #080808
+        );
+
+    border: 1px solid #202020;
+    border-radius: 22px;
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-box p {
+    color: #aaa;
+    margin-bottom: 18px;
+}
+
+.about-highlight {
+    color: #d4af37;
+    font-weight: 800;
+}
+
+/* =========================
+   REPAIR
+========================= */
+
+.repair {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(212,175,55,0.08),
+            transparent 35%
+        ),
+        #050505;
+}
+
+.repair-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.repair-card {
+    background: #0d0d0d;
+    border: 1px solid #202020;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.repair-card h3 {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.repair-card p {
+    color: #888;
+    font-size: 14px;
+}
+
+.repair-cta {
+    text-align: center;
+    margin-top: 35px;
+}
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews-box {
+    text-align: center;
+    background: #0c0c0c;
+    border: 1px solid #202020;
+    border-radius: 22px;
+    padding: 45px 25px;
+}
+
+.stars {
+    color: #d4af37;
+    font-size: 32px;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.reviews-box p {
+    color: #999;
+    max-width: 600px;
+    margin: 0 auto 25px;
+}
+
+.review-btn {
+    display: inline-block;
+    background: #d4af37;
+    color: #050505;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+/* =========================
+   CONTACTS
+========================= */
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.contact-card {
+    background: #0c0c0c;
+    border: 1px solid #202020;
+    border-radius: 18px;
+    padding: 28px;
+    text-align: center;
+}
+
+.contact-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.contact-card h3 {
+    margin-bottom: 8px;
+}
+
+.contact-card p {
+    color: #999;
+}
+
+.contact-card a {
+    color: #d4af37;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid #1c1c1c;
+    padding: 30px 20px;
+    text-align: center;
+    color: #666;
+}
+
+footer strong {
+    color: #d4af37;
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.82);
+    backdrop-filter: blur(8px);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6);
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    border: none;
+    background: none;
+    color: #888;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+    padding-right: 30px;
+}
+
+.modal-product {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.modal-price {
+    font-size: 26px;
+    font-weight: 900;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.modal-btn {
+    display: block;
+    width: 100%;
+    background: #d4af37;
+    color: #050505;
+    text-align: center;
+    padding: 14px;
+    border-radius: 11px;
+    font-weight: 900;
+}
+
+.credit-modal {
+    text-align: center;
+    max-width: 430px;
+}
+
+.credit-icon {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.credit-modal h2 {
+    color: #d4af37;
+    padding: 0;
+}
+
+.credit-modal p {
+    color: #aaa;
+    margin: 10px 0 20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1050px) {
+
     .products {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-    }
-    .product-card {
-        background: #0c0c0c;
-        border: 1px solid #202020;
-        border-radius: 18px;
-        overflow: hidden;
-        transition: 0.3s;
-        display: flex;
-        flex-direction: column;
-    }
-    .product-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(212,175,55,0.5);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    }
-    .product-image {
-        width: 100%;
-        height: 260px;
-        background: #111;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-    .product-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 15px;
-    }
-    .product-info {
-        padding: 18px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-    }
-    .product-brand {
-        color: #d4af37;
-        text-transform: uppercase;
-        font-size: 11px;
-        letter-spacing: 1px;
-        margin-bottom: 6px;
-    }
-    .product-name {
-        font-size: 17px;
-        font-weight: 800;
-        margin-bottom: 8px;
-    }
-    .product-description {
-        color: #888;
-        font-size: 13px;
-        min-height: 40px;
-        margin-bottom: 12px;
-    }
-    .product-price {
-        font-size: 22px;
-        font-weight: 900;
-        margin-bottom: 5px;
-    }
-    .product-old-price {
-        color: #666;
-        text-decoration: line-through;
-        font-size: 13px;
-        margin-bottom: 8px;
-    }
-    .stock {
-        font-size: 12px;
-        color: #67d47a;
-        margin-bottom: 15px;
-    }
-    .stock.out {
-        color: #ff6666;
-    }
-    .buy-btn {
-        margin-top: auto;
-        width: 100%;
-        border: none;
-        background: #d4af37;
-        color: #050505;
-        padding: 13px;
-        border-radius: 10px;
-        font-weight: 900;
-        cursor: pointer;
-        transition: 0.25s;
-    }
-    .buy-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(212,175,55,0.2);
-    }
-    .empty {
-        text-align: center;
-        color: #777;
-        padding: 50px 10px;
-        grid-column: 1 / -1;
-    }
-    /* =========================
-       ABOUT
-    ========================= */
-    .about-box {
-        background: linear-gradient(145deg, #0d0d0d, #080808);
-        border: 1px solid #202020;
-        border-radius: 22px;
-        padding: 40px;
-        max-width: 900px;
-        margin: auto;
-        text-align: center;
-    }
-    .about-box p {
-        color: #aaa;
-        margin-bottom: 18px;
-    }
-    .about-highlight {
-        color: #d4af37;
-        font-weight: 800;
-    }
-    /* =========================
-       REPAIR
-    ========================= */
-    .repair {
-        background:
-            radial-gradient(
-                circle at 50% 50%,
-                rgba(212,175,55,0.08),
-                transparent 35%
-            ),
-            #050505;
-    }
-    .repair-grid {
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin-top: 35px;
     }
-    .repair-card {
-        background: #0d0d0d;
-        border: 1px solid #202020;
-        border-radius: 16px;
-        padding: 25px;
+}
+
+@media (max-width: 800px) {
+
+    .nav {
+        display: none;
     }
-    .repair-card h3 {
-        color: #fff;
-        margin-bottom: 8px;
+
+    .catalog-tools {
+        grid-template-columns: 1fr;
     }
-    .repair-card p {
-        color: #888;
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .repair-grid,
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tradein-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 520px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .header-inner {
+        padding: 13px 14px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .telegram-btn {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        letter-spacing: -2px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 60px 14px;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .product-image {
+        height: 190px;
+    }
+
+    .product-info {
+        padding: 13px;
+    }
+
+    .product-name {
         font-size: 14px;
     }
-    .repair-cta {
-        text-align: center;
-        margin-top: 35px;
+
+    .product-description {
+        font-size: 11px;
     }
-    /* =========================
-       REVIEWS
-    ========================= */
-    .reviews-box {
-        text-align: center;
-        background: #0c0c0c;
-        border: 1px solid #202020;
-        border-radius: 22px;
-        padding: 45px 25px;
+
+    .product-price {
+        font-size: 18px;
     }
-    .stars {
-        color: #d4af37;
-        font-size: 32px;
-        letter-spacing: 5px;
-        margin-bottom: 15px;
+
+    .buy-btn {
+        padding: 11px 5px;
+        font-size: 12px;
     }
-    .reviews-box p {
-        color: #999;
-        max-width: 600px;
-        margin: 0 auto 25px;
+
+    .about-box {
+        padding: 25px 18px;
     }
-    .review-btn {
-        display: inline-block;
-        background: #d4af37;
-        color: #050505;
-        padding: 13px 22px;
-        border-radius: 10px;
-        font-weight: 900;
+
+    .tradein-box {
+        padding: 22px 16px;
     }
-    /* =========================
-       CONTACTS
-    ========================= */
-    .contacts-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
+
+    .tradein-price {
+        font-size: 27px;
     }
-    .contact-card {
-        background: #0c0c0c;
-        border: 1px solid #202020;
-        border-radius: 18px;
-        padding: 28px;
-        text-align: center;
-    }
-    .contact-icon {
-        font-size: 28px;
-        margin-bottom: 12px;
-    }
-    .contact-card h3 {
-        margin-bottom: 8px;
-    }
-    .contact-card p {
-        color: #999;
-    }
-    .contact-card a {
-        color: #d4af37;
-    }
-    /* =========================
-       FOOTER
-    ========================= */
-    footer {
-        border-top: 1px solid #1c1c1c;
-        padding: 30px 20px;
-        text-align: center;
-        color: #666;
-    }
-    footer strong {
-        color: #d4af37;
-    }
-    /* =========================
-       MODALS
-    ========================= */
-    .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 2000;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background: rgba(0,0,0,0.82);
-        backdrop-filter: blur(8px);
-    }
-    .modal.active {
-        display: flex;
-    }
-    .modal-content {
-        position: relative;
-        width: 100%;
-        max-width: 470px;
-        max-height: 90vh;
-        overflow-y: auto;
-        background: #0d0d0d;
-        border: 1px solid #2a2a2a;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    }
-    .modal-close {
-        position: absolute;
-        top: 12px;
-        right: 15px;
-        border: none;
-        background: none;
-        color: #888;
-        font-size: 30px;
-        cursor: pointer;
-    }
-    .modal-content h2 {
-        margin-bottom: 10px;
-        padding-right: 30px;
-    }
-    .modal-product {
-        color: #aaa;
-        margin-bottom: 20px;
-    }
-    .modal-price {
-        font-size: 26px;
-        font-weight: 900;
-        color: #d4af37;
-        margin-bottom: 20px;
-    }
-    .modal-btn {
-        display: block;
-        width: 100%;
-        background: #d4af37;
-        color: #050505;
-        text-align: center;
-        padding: 14px;
-        border-radius: 11px;
-        font-weight: 900;
-    }
-    .credit-modal {
-        text-align: center;
-        max-width: 430px;
-    }
-    .credit-icon {
-        font-size: 45px;
-        margin-bottom: 12px;
-    }
-    .credit-modal h2 {
-        color: #d4af37;
-        padding: 0;
-    }
-    .credit-modal p {
-        color: #aaa;
-        margin: 10px 0 20px;
-    }
-    /* =========================
-       MOBILE
-    ========================= */
-    @media (max-width: 1050px) {
-        .products {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-    @media (max-width: 800px) {
-        .nav {
-            display: none;
-        }
-        .catalog-tools {
-            grid-template-columns: 1fr;
-        }
-        .products {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .repair-grid,
-        .contacts-grid {
-            grid-template-columns: 1fr;
-        }
-        .tradein-grid {
-            grid-template-columns: 1fr;
-        }
-        .hero {
-            min-height: 520px;
-        }
-    }
-    @media (max-width: 520px) {
-        .header-inner {
-            padding: 13px 14px;
-        }
-        .logo {
-            font-size: 18px;
-        }
-        .telegram-btn {
-            padding: 9px 12px;
-            font-size: 12px;
-        }
-        .hero h1 {
-            font-size: 52px;
-            letter-spacing: -2px;
-        }
-        .hero p {
-            font-size: 15px;
-        }
-        .section {
-            padding: 60px 14px;
-        }
-        .section-title {
-            font-size: 30px;
-        }
-        .products {
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .product-image {
-            height: 190px;
-        }
-        .product-info {
-            padding: 13px;
-        }
-        .product-name {
-            font-size: 14px;
-        }
-        .product-description {
-            font-size: 11px;
-        }
-        .product-price {
-            font-size: 18px;
-        }
-        .buy-btn {
-            padding: 11px 5px;
-            font-size: 12px;
-        }
-        .about-box {
-            padding: 25px 18px;
-        }
-        .tradein-box {
-            padding: 22px 16px;
-        }
-        .tradein-price {
-            font-size: 27px;
-        }
-    }
+}
 </style>
 </head>
+
 <body>
+
 <!-- =========================
      HEADER
 ========================= -->
+
 <header>
-<div class="header-inner">
-    <a href="#" class="logo">
-        D&V STORE
-    </a>
-    <nav class="nav">
-        <a href="#catalog">Каталог</a>
-        <a href="#tradein">Трейд-ин</a>
-        <a href="#about">О нас</a>
-        <a href="#repair">Ремонт</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
-    <a
-        class="telegram-btn"
-        href="https://t.me/DV_STORE_ORDER"
-        target="_blank"
-    >
-        Telegram
-    </a>
-</div>
+    <div class="header-inner">
+
+        <a href="#" class="logo">
+            D&V STORE
+        </a>
+
+        <nav class="nav">
+            <a href="#catalog">Каталог</a>
+            <a href="#tradein">Трейд-ин</a>
+            <a href="#about">О нас</a>
+            <a href="#repair">Ремонт</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <a
+            class="telegram-btn"
+            href="https://t.me/DV_STORE_ORDER"
+            target="_blank"
+        >
+            Telegram
+        </a>
+
+    </div>
 </header>
+
 <!-- =========================
      HERO
 ========================= -->
+
 <section class="hero">
-<div class="hero-content">
-    <div class="hero-label">
-        МОСКВА • D&V STORE
-    </div>
-    <h1>
-        D&V <span>STORE</span>
-    </h1>
-    <p>
-        Смартфоны Apple, Samsung, Xiaomi, Honor,
-        Google, OnePlus и другие.
-        Покупка смартфонов, трейд-ин и ремонт в Москве.
-    </p>
-    <div class="hero-buttons">
-        <a
-            href="#catalog"
-            class="primary-btn"
-        >
-            Смотреть каталог
-        </a>
-        <a
-            href="#tradein"
-            class="secondary-btn"
-        >
-            📱 Оценить мой телефон
-        </a>
-    </div>
-    <div class="installment-banner">
-        <strong>
-            💳 ЕСТЬ РАССРОЧКА ДЛЯ ГРАЖДАН РФ
-        </strong>
-        <span>
-            Условия и подробности уточняйте в Telegram:
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            МОСКВА • D&V STORE
+        </div>
+
+        <h1>
+            D&V <span>STORE</span>
+        </h1>
+
+        <p>
+            Смартфоны Apple, Samsung, Xiaomi, Honor,
+            Google, OnePlus и другие.
+            Покупка смартфонов, трейд-ин и ремонт в Москве.
+        </p>
+
+        <div class="hero-buttons">
+
             <a
-                href="https://t.me/DV_STORE_ORDER"
-                target="_blank"
+                href="#catalog"
+                class="primary-btn"
             >
-                @DV_STORE_ORDER
+                Смотреть каталог
             </a>
-        </span>
+
+            <a
+                href="#tradein"
+                class="secondary-btn"
+            >
+                📱 Оценить мой телефон
+            </a>
+
+        </div>
+
+        <div class="installment-banner">
+
+            <strong>
+                💳 ЕСТЬ РАССРОЧКА ДЛЯ ГРАЖДАН РФ
+            </strong>
+
+            <span>
+                Условия и подробности уточняйте в Telegram:
+
+                <a
+                    href="https://t.me/DV_STORE_ORDER"
+                    target="_blank"
+                >
+                    @DV_STORE_ORDER
+                </a>
+            </span>
+
+        </div>
+
     </div>
-</div>
+
 </section>
+
 <!-- =========================
      TRADE-IN
 ========================= -->
+
 <section
     class="section tradein-section"
     id="tradein"
 >
-<h2 class="section-title">
-    Оценить <span>мой телефон</span>
-</h2>
-<p class="section-subtitle">
-    Выберите модель, память, состояние аккумулятора
-    и наличие коробки — сайт покажет ориентировочную цену.
-</p>
-<div class="tradein-box">
-    <div class="tradein-grid">
-        <div class="tradein-field">
-            <label for="tradeModel">
-                Модель телефона
-            </label>
-            <select id="tradeModel">
-                <option value="">
-                    Выберите модель
-                </option>
-                <option value="iphone17promax">
-                    iPhone 17 Pro Max
-                </option>
-                <option value="iphone17pro">
-                    iPhone 17 Pro
-                </option>
-                <option value="iphone17">
-                    iPhone 17
-                </option>
-                <option value="iphone16promax">
-                    iPhone 16 Pro Max
-                </option>
-                <option value="iphone16pro">
-                    iPhone 16 Pro
-                </option>
-                <option value="iphone16plus">
-                    iPhone 16 Plus
-                </option>
-                <option value="iphone16">
-                    iPhone 16
-                </option>
-                <option value="iphone15promax">
-                    iPhone 15 Pro Max
-                </option>
-                <option value="iphone15pro">
-                    iPhone 15 Pro
-                </option>
-                <option value="iphone15plus">
-                    iPhone 15 Plus
-                </option>
-                <option value="iphone15">
-                    iPhone 15
-                </option>
-                <option value="iphone14promax">
-                    iPhone 14 Pro Max
-                </option>
-                <option value="iphone14pro">
-                    iPhone 14 Pro
-                </option>
-                <option value="iphone14plus">
-                    iPhone 14 Plus
-                </option>
-                <option value="iphone14">
-                    iPhone 14
-                </option>
-                <option value="iphone13promax">
-                    iPhone 13 Pro Max
-                </option>
-                <option value="iphone13pro">
-                    iPhone 13 Pro
-                </option>
-                <option value="iphone13">
-                    iPhone 13
-                </option>
-                <option value="iphone13mini">
-                    iPhone 13 mini
-                </option>
-                <option value="iphone12promax">
-                    iPhone 12 Pro Max
-                </option>
-                <option value="iphone12pro">
-                    iPhone 12 Pro
-                </option>
-                <option value="iphone12">
-                    iPhone 12
-                </option>
-                <option value="iphone12mini">
-                    iPhone 12 mini
-                </option>
-                <option value="iphone11promax">
-                    iPhone 11 Pro Max
-                </option>
-                <option value="iphone11pro">
-                    iPhone 11 Pro
-                </option>
-                <option value="iphone11">
-                    iPhone 11
-                </option>
-            </select>
+
+    <h2 class="section-title">
+        Оценить <span>мой телефон</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Выберите модель, память, состояние аккумулятора
+        и наличие коробки — сайт покажет ориентировочную цену.
+    </p>
+
+    <div class="tradein-box">
+
+        <div class="tradein-grid">
+
+            <div class="tradein-field">
+
+                <label for="tradeModel">
+                    Модель телефона
+                </label>
+
+                <select id="tradeModel">
+
+                    <option value="">
+                        Выберите модель
+                    </option>
+
+                    <option value="iphone17promax">
+                        iPhone 17 Pro Max
+                    </option>
+
+                    <option value="iphone17pro">
+                        iPhone 17 Pro
+                    </option>
+
+                    <option value="iphone17">
+                        iPhone 17
+                    </option>
+
+                    <option value="iphone16promax">
+                        iPhone 16 Pro Max
+                    </option>
+
+                    <option value="iphone16pro">
+                        iPhone 16 Pro
+                    </option>
+
+                    <option value="iphone16plus">
+                        iPhone 16 Plus
+                    </option>
+
+                    <option value="iphone16">
+                        iPhone 16
+                    </option>
+
+                    <option value="iphone15promax">
+                        iPhone 15 Pro Max
+                    </option>
+
+                    <option value="iphone15pro">
+                        iPhone 15 Pro
+                    </option>
+
+                    <option value="iphone15plus">
+                        iPhone 15 Plus
+                    </option>
+
+                    <option value="iphone15">
+                        iPhone 15
+                    </option>
+
+                    <option value="iphone14promax">
+                        iPhone 14 Pro Max
+                    </option>
+
+                    <option value="iphone14pro">
+                        iPhone 14 Pro
+                    </option>
+
+                    <option value="iphone14plus">
+                        iPhone 14 Plus
+                    </option>
+
+                    <option value="iphone14">
+                        iPhone 14
+                    </option>
+
+                    <option value="iphone13promax">
+                        iPhone 13 Pro Max
+                    </option>
+
+                    <option value="iphone13pro">
+                        iPhone 13 Pro
+                    </option>
+
+                    <option value="iphone13">
+                        iPhone 13
+                    </option>
+
+                    <option value="iphone13mini">
+                        iPhone 13 mini
+                    </option>
+
+                    <option value="iphone12promax">
+                        iPhone 12 Pro Max
+                    </option>
+
+                    <option value="iphone12pro">
+                        iPhone 12 Pro
+                    </option>
+
+                    <option value="iphone12">
+                        iPhone 12
+                    </option>
+
+                    <option value="iphone12mini">
+                        iPhone 12 mini
+                    </option>
+
+                    <option value="iphone11promax">
+                        iPhone 11 Pro Max
+                    </option>
+
+                    <option value="iphone11pro">
+                        iPhone 11 Pro
+                    </option>
+
+                    <option value="iphone11">
+                        iPhone 11
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="tradein-field">
+
+                <label for="tradeMemory">
+                    Память
+                </label>
+
+                <select id="tradeMemory">
+
+                    <option value="">
+                        Сначала выберите модель
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="tradein-field">
+
+                <label for="tradeBattery">
+                    Состояние аккумулятора
+                </label>
+
+                <select id="tradeBattery">
+
+                    <option value="">
+                        Выберите АКБ
+                    </option>
+
+                    <option value="85plus">
+                        85% и выше
+                    </option>
+
+                    <option value="below85">
+                        Ниже 85%
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="tradein-field">
+
+                <label for="tradeBox">
+                    Коробка
+                </label>
+
+                <select id="tradeBox">
+
+                    <option value="">
+                        Выберите вариант
+                    </option>
+
+                    <option value="yes">
+                        Есть коробка
+                    </option>
+
+                    <option value="no">
+                        Нет коробки
+                    </option>
+
+                </select>
+
+            </div>
+
         </div>
-        <div class="tradein-field">
-            <label for="tradeMemory">
-                Память
-            </label>
-            <select id="tradeMemory">
-                <option value="">
-                    Выберите память
-                </option>
-                <option value="64">
-                    64 ГБ
-                </option>
-                <option value="128">
-                    128 ГБ
-                </option>
-                <option value="256">
-                    256 ГБ
-                </option>
-                <option value="512">
-                    512 ГБ
-                </option>
-                <option value="1024">
-                    1 ТБ
-                </option>
-            </select>
-        </div>
-        <div class="tradein-field">
-            <label for="tradeBattery">
-                Состояние аккумулятора
-            </label>
-            <select id="tradeBattery">
-                <option value="">
-                    Выберите АКБ
-                </option>
-                <option value="85plus">
-                    85% и выше
-                </option>
-                <option value="below85">
-                    Ниже 85%
-                </option>
-            </select>
-        </div>
-        <div class="tradein-field">
-            <label for="tradeBox">
-                Коробка
-            </label>
-            <select id="tradeBox">
-                <option value="">
-                    Выберите вариант
-                </option>
-                <option value="yes">
-                    Есть коробка
-                </option>
-                <option value="no">
-                    Нет коробки
-                </option>
-            </select>
-        </div>
-    </div>
-    <button
-        id="tradeCalculate"
-        class="tradein-button"
-    >
-        📱 Оценить мой телефон
-    </button>
-    <div
-        id="tradeResult"
-        class="tradein-result"
-    >
-        <div class="tradein-result-title">
-            ОРИЕНТИРОВОЧНАЯ ЦЕНА
-        </div>
-        <div
-            id="tradePrice"
-            class="tradein-price"
-        ></div>
-        <div
-            id="tradeDetails"
-            class="tradein-details"
-        ></div>
-        <div class="tradein-warning">
-            ⚠️ Это ориентировочная цена.
-            Итоговая стоимость зависит от реального
-            состояния устройства, экрана, корпуса,
-            камер, Face ID, True Tone и других факторов.
-            <br><br>
-            Для точной оценки напишите нам в Telegram:
-            <strong>@DV_STORE_ORDER</strong>
-        </div>
-        <a
-            id="tradeTelegram"
-            class="tradein-telegram"
-            href="https://t.me/DV_STORE_ORDER"
-            target="_blank"
+
+        <button
+            id="tradeCalculate"
+            class="tradein-button"
         >
-            Получить точную оценку в Telegram
-        </a>
+            📱 Оценить мой телефон
+        </button>
+
+        <div
+            id="tradeResult"
+            class="tradein-result"
+        >
+
+            <div class="tradein-result-title">
+                ОРИЕНТИРОВОЧНАЯ ЦЕНА
+            </div>
+
+            <div
+                id="tradePrice"
+                class="tradein-price"
+            ></div>
+
+            <div
+                id="tradeDetails"
+                class="tradein-details"
+            ></div>
+
+            <div class="tradein-warning">
+
+                ⚠️ Цена является ориентировочной.
+
+                Итоговая стоимость зависит от реального
+                состояния устройства, экрана, корпуса,
+                камер, Face ID, True Tone, количества
+                циклов аккумулятора и других факторов.
+
+                <br><br>
+
+                Для точной оценки напишите нам в Telegram:
+
+                <strong>
+                    @DV_STORE_ORDER
+                </strong>
+
+            </div>
+
+            <a
+                id="tradeTelegram"
+                class="tradein-telegram"
+                href="https://t.me/DV_STORE_ORDER"
+                target="_blank"
+            >
+                Получить точную оценку в Telegram
+            </a>
+
+        </div>
+
     </div>
-</div>
+
 </section>
+
 <!-- =========================
      CATALOG
 ========================= -->
+
 <section
     class="section"
     id="catalog"
 >
-<h2 class="section-title">
-    Наш <span>каталог</span>
-</h2>
-<p class="section-subtitle">
-    Актуальные модели смартфонов.
-    Каталог автоматически обновляется.
-</p>
-<div class="catalog-tools">
-    <input
-        id="search"
-        class="search"
-        type="text"
-        placeholder="Поиск модели..."
-    >
-    <select
-        id="brandFilter"
-        class="brand-filter"
-    >
-        <option value="all">
-            Все бренды
-        </option>
-        <option value="Apple">
-            Apple
-        </option>
-        <option value="Samsung">
-            Samsung
-        </option>
-        <option value="Xiaomi">
-            Xiaomi
-        </option>
-        <option value="Honor">
-            Honor
-        </option>
-        <option value="Google">
-            Google
-        </option>
-        <option value="OnePlus">
-            OnePlus
-        </option>
-        <option value="Huawei">
-            Huawei
-        </option>
-        <option value="Nothing">
-            Nothing
-        </option>
-        <option value="Realme">
-            Realme
-        </option>
-    </select>
-</div>
-<div
-    id="products"
-    class="products"
->
-    <div class="empty">
-        Загружаем каталог...
+
+    <h2 class="section-title">
+        Наш <span>каталог</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Актуальные модели смартфонов.
+        Каталог автоматически обновляется.
+    </p>
+
+    <div class="catalog-tools">
+
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="Поиск модели..."
+        >
+
+        <select
+            id="brandFilter"
+            class="brand-filter"
+        >
+
+            <option value="all">
+                Все бренды
+            </option>
+
+            <option value="Apple">
+                Apple
+            </option>
+
+            <option value="Samsung">
+                Samsung
+            </option>
+
+            <option value="Xiaomi">
+                Xiaomi
+            </option>
+
+            <option value="Honor">
+                Honor
+            </option>
+
+            <option value="Google">
+                Google
+            </option>
+
+            <option value="OnePlus">
+                OnePlus
+            </option>
+
+            <option value="Huawei">
+                Huawei
+            </option>
+
+            <option value="Nothing">
+                Nothing
+            </option>
+
+            <option value="Realme">
+                Realme
+            </option>
+
+        </select>
+
     </div>
-</div>
+
+    <div
+        id="products"
+        class="products"
+    >
+
+        <div class="empty">
+            Загружаем каталог...
+        </div>
+
+    </div>
+
 </section>
+
 <!-- =========================
      ABOUT
 ========================= -->
+
 <section
     class="section"
     id="about"
 >
-<h2 class="section-title">
-    О <span>D&V STORE</span>
-</h2>
-<p class="section-subtitle">
-    Магазин смартфонов и сервис в Москве
-</p>
-<div class="about-box">
-    <p>
-        <span class="about-highlight">
-            D&V STORE
-        </span>
-        — место, где можно подобрать смартфон,
-        оформить заказ, воспользоваться трейд-ин
-        и обратиться за ремонтом.
+
+    <h2 class="section-title">
+        О <span>D&V STORE</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Магазин смартфонов и сервис в Москве
     </p>
-    <p>
-        Мы работаем с популярными брендами
-        смартфонов и стараемся держать актуальные
-        цены и наличие в каталоге.
-    </p>
-    <p>
-        Если вы не нашли нужную модель —
-        напишите нам в Telegram,
-        и мы постараемся помочь.
-    </p>
-</div>
+
+    <div class="about-box">
+
+        <p>
+            <span class="about-highlight">
+                D&V STORE
+            </span>
+
+            — место, где можно подобрать смартфон,
+            оформить заказ, воспользоваться трейд-ин
+            и обратиться за ремонтом.
+        </p>
+
+        <p>
+            Мы работаем с популярными брендами
+            смартфонов и стараемся держать актуальные
+            цены и наличие в каталоге.
+        </p>
+
+        <p>
+            Если вы не нашли нужную модель —
+            напишите нам в Telegram,
+            и мы постараемся помочь.
+        </p>
+
+    </div>
+
 </section>
+
 <!-- =========================
      REPAIR
 ========================= -->
+
 <section
     class="section repair"
     id="repair"
 >
-<h2 class="section-title">
-    Ремонт <span>смартфонов</span>
-</h2>
-<p class="section-subtitle">
-    Поможем восстановить смартфон
-    и вернуть его в рабочее состояние.
-</p>
-<div class="repair-grid">
-    <div class="repair-card">
-        <h3>Замена экрана</h3>
-        <p>
-            Разбит дисплей, появились полосы
-            или не работает сенсор.
-        </p>
+
+    <h2 class="section-title">
+        Ремонт <span>смартфонов</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Поможем восстановить смартфон
+        и вернуть его в рабочее состояние.
+    </p>
+
+    <div class="repair-grid">
+
+        <div class="repair-card">
+            <h3>Замена экрана</h3>
+            <p>
+                Разбит дисплей, появились полосы
+                или не работает сенсор.
+            </p>
+        </div>
+
+        <div class="repair-card">
+            <h3>Замена аккумулятора</h3>
+            <p>
+                Быстро садится батарея или смартфон
+                выключается на холоде.
+            </p>
+        </div>
+
+        <div class="repair-card">
+            <h3>Разъём зарядки</h3>
+            <p>
+                Телефон плохо заряжается или перестал
+                видеть кабель.
+            </p>
+        </div>
+
+        <div class="repair-card">
+            <h3>Ремонт камеры</h3>
+            <p>
+                Камера не запускается, появились проблемы
+                с фокусировкой или изображением.
+            </p>
+        </div>
+
+        <div class="repair-card">
+            <h3>Динамик</h3>
+            <p>
+                Пропал звук, появились хрипы или
+                собеседника плохо слышно.
+            </p>
+        </div>
+
+        <div class="repair-card">
+            <h3>Диагностика</h3>
+            <p>
+                Определим причину неисправности
+                и расскажем о вариантах ремонта.
+            </p>
+        </div>
+
     </div>
-    <div class="repair-card">
-        <h3>Замена аккумулятора</h3>
-        <p>
-            Быстро садится батарея или смартфон
-            выключается на холоде.
-        </p>
+
+    <div class="repair-cta">
+
+        <a
+            href="https://t.me/DV_STORE_ORDER"
+            target="_blank"
+            class="primary-btn"
+        >
+            Обсудить ремонт
+        </a>
+
     </div>
-    <div class="repair-card">
-        <h3>Разъём зарядки</h3>
-        <p>
-            Телефон плохо заряжается или перестал
-            видеть кабель.
-        </p>
-    </div>
-    <div class="repair-card">
-        <h3>Ремонт камеры</h3>
-        <p>
-            Камера не запускается, появились проблемы
-            с фокусировкой или изображением.
-        </p>
-    </div>
-    <div class="repair-card">
-        <h3>Динамик</h3>
-        <p>
-            Пропал звук, появились хрипы или
-            собеседника плохо слышно.
-        </p>
-    </div>
-    <div class="repair-card">
-        <h3>Диагностика</h3>
-        <p>
-            Определим причину неисправности
-            и расскажем о вариантах ремонта.
-        </p>
-    </div>
-</div>
-<div class="repair-cta">
-    <a
-        href="https://t.me/DV_STORE_ORDER"
-        target="_blank"
-        class="primary-btn"
-    >
-        Обсудить ремонт
-    </a>
-</div>
+
 </section>
+
 <!-- =========================
      REVIEWS
 ========================= -->
+
 <section
     class="section"
     id="reviews"
 >
-<h2 class="section-title">
-    Отзывы <span>клиентов</span>
-</h2>
-<div class="reviews-box">
-    <div class="stars">
-        ★★★★★
+
+    <h2 class="section-title">
+        Отзывы <span>клиентов</span>
+    </h2>
+
+    <div class="reviews-box">
+
+        <div class="stars">
+            ★★★★★
+        </div>
+
+        <p>
+            Хотите посмотреть реальные отзывы клиентов?
+            Все отзывы доступны на нашей странице
+            в Яндекс Картах.
+        </p>
+
+        <a
+            href="https://yandex.ru/maps/org/dv_store/179122901606?si=mjgm0kypxfxr88nz7yr3d2u12w"
+            target="_blank"
+            class="review-btn"
+        >
+            Читать отзывы на Яндекс Картах
+        </a>
+
     </div>
-    <p>
-        Хотите посмотреть реальные отзывы клиентов?
-        Все отзывы доступны на нашей странице
-        в Яндекс Картах.
-    </p>
-    <a
-        href="https://yandex.ru/maps/org/dv_store/179122901606?si=mjgm0kypxfxr88nz7yr3d2u12w"
-        target="_blank"
-        class="review-btn"
-    >
-        Читать отзывы на Яндекс Картах
-    </a>
-</div>
+
 </section>
+
 <!-- =========================
      CONTACTS
 ========================= -->
+
 <section
     class="section"
     id="contacts"
 >
-<h2 class="section-title">
-    <span>Контакты</span>
-</h2>
-<p class="section-subtitle">
-    Будем рады помочь с выбором
-    смартфона или ремонтом.
-</p>
-<div class="contacts-grid">
-    <div class="contact-card">
-        <div class="contact-icon">
-            📍
+
+    <h2 class="section-title">
+        <span>Контакты</span>
+    </h2>
+
+    <p class="section-subtitle">
+        Будем рады помочь с выбором
+        смартфона или ремонтом.
+    </p>
+
+    <div class="contacts-grid">
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                📍
+            </div>
+
+            <h3>
+                Адрес
+            </h3>
+
+            <p>
+                Профсоюзная ул., 109,
+                корп. 2, Москва
+            </p>
+
         </div>
-        <h3>
-            Адрес
-        </h3>
-        <p>
-            Профсоюзная ул., 109,
-            корп. 2, Москва
-        </p>
-    </div>
-    <div class="contact-card">
-        <div class="contact-icon">
-            📞
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                📞
+            </div>
+
+            <h3>
+                Телефон
+            </h3>
+
+            <p>
+
+                <a href="tel:+79933617829">
+                    +7 993 361 7829
+                </a>
+
+            </p>
+
         </div>
-        <h3>
-            Телефон
-        </h3>
-        <p>
-            <a href="tel:+79933617829">
-                +7 993 361 7829
-            </a>
-        </p>
-    </div>
-    <div class="contact-card">
-        <div class="contact-icon">
-            💬
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                💬
+            </div>
+
+            <h3>
+                Telegram
+            </h3>
+
+            <p>
+
+                <a
+                    href="https://t.me/DV_STORE_ORDER"
+                    target="_blank"
+                >
+                    @DV_STORE_ORDER
+                </a>
+
+            </p>
+
         </div>
-        <h3>
-            Telegram
-        </h3>
-        <p>
-            <a
-                href="https://t.me/DV_STORE_ORDER"
-                target="_blank"
-            >
-                @DV_STORE_ORDER
-            </a>
-        </p>
+
     </div>
-</div>
+
 </section>
+
 <!-- =========================
      FOOTER
 ========================= -->
+
 <footer>
-<strong>
-    D&V STORE
-</strong>
-<br>
-Смартфоны • Трейд-ин • Ремонт • Москва
-<br><br>
-© 2026 D&V STORE
+
+    <strong>
+        D&V STORE
+    </strong>
+
+    <br>
+
+    Смартфоны • Трейд-ин • Ремонт • Москва
+
+    <br><br>
+
+    © 2026 D&V STORE
+
 </footer>
+
 <!-- =========================
      ORDER MODAL
 ========================= -->
+
 <div
     id="modal"
     class="modal"
 >
-<div class="modal-content">
-    <button
-        id="modalClose"
-        class="modal-close"
-    >
-        ×
-    </button>
-    <h2>
-        Заказать товар
-    </h2>
-    <div
-        id="modalProduct"
-        class="modal-product"
-    ></div>
-    <div
-        id="modalPrice"
-        class="modal-price"
-    ></div>
-    <a
-        id="modalTelegram"
-        href="https://t.me/DV_STORE_ORDER"
-        target="_blank"
-        class="modal-btn"
-    >
-        Заказать в Telegram
-    </a>
+
+    <div class="modal-content">
+
+        <button
+            id="modalClose"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <h2>
+            Заказать товар
+        </h2>
+
+        <div
+            id="modalProduct"
+            class="modal-product"
+        ></div>
+
+        <div
+            id="modalPrice"
+            class="modal-price"
+        ></div>
+
+        <a
+            id="modalTelegram"
+            href="https://t.me/DV_STORE_ORDER"
+            target="_blank"
+            class="modal-btn"
+        >
+            Заказать в Telegram
+        </a>
+
+    </div>
+
 </div>
-</div>
+
 <!-- =========================
      INSTALLMENT MODAL
 ========================= -->
+
 <div
     id="creditModal"
     class="modal"
 >
-<div class="modal-content credit-modal">
-    <button
-        id="creditClose"
-        class="modal-close"
-    >
-        ×
-    </button>
-    <div class="credit-icon">
-        💳
+
+    <div class="modal-content credit-modal">
+
+        <button
+            id="creditClose"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <div class="credit-icon">
+            💳
+        </div>
+
+        <h2>
+            Рассрочка для граждан РФ
+        </h2>
+
+        <p>
+            Есть возможность оформить рассрочку.
+            Условия и доступность уточняйте у менеджера.
+        </p>
+
+        <a
+            href="https://t.me/DV_STORE_ORDER"
+            target="_blank"
+            class="modal-btn"
+        >
+            Написать в Telegram
+        </a>
+
     </div>
-    <h2>
-        Рассрочка для граждан РФ
-    </h2>
-    <p>
-        Есть возможность оформить рассрочку.
-        Условия и доступность уточняйте у менеджера.
-    </p>
-    <a
-        href="https://t.me/DV_STORE_ORDER"
-        target="_blank"
-        class="modal-btn"
-    >
-        Написать в Telegram
-    </a>
+
 </div>
-</div>
+
 <script>
+
 /* =========================
    ПЕРЕМЕННЫЕ
 ========================= */
+
 let allProducts = [];
+
 const productsContainer =
     document.getElementById("products");
+
 const searchInput =
     document.getElementById("search");
+
 const brandFilter =
     document.getElementById("brandFilter");
+
 const modal =
     document.getElementById("modal");
+
 const modalClose =
     document.getElementById("modalClose");
+
 const modalProduct =
     document.getElementById("modalProduct");
+
 const modalPrice =
     document.getElementById("modalPrice");
+
 const modalTelegram =
     document.getElementById("modalTelegram");
+
+
 /* =========================
    TRADE-IN ЭЛЕМЕНТЫ
 ========================= */
+
 const tradeModel =
     document.getElementById("tradeModel");
+
 const tradeMemory =
     document.getElementById("tradeMemory");
+
 const tradeBattery =
     document.getElementById("tradeBattery");
+
 const tradeBox =
     document.getElementById("tradeBox");
+
 const tradeCalculate =
     document.getElementById("tradeCalculate");
+
 const tradeResult =
     document.getElementById("tradeResult");
+
 const tradePrice =
     document.getElementById("tradePrice");
+
 const tradeDetails =
     document.getElementById("tradeDetails");
+
 const tradeTelegram =
     document.getElementById("tradeTelegram");
+
+
 /* =========================
    ЦЕНЫ TRADE-IN
+   ПРИМЕРНО НА 7 000 ₽ НИЖЕ
+   ТВОЕГО ПРАЙСА
 ========================= */
+
 const tradePrices = {
+
     iphone17promax: {
+
         name: "iPhone 17 Pro Max",
-        good: [80000, 85000],
-        low: [72000, 78000]
+
+        memories: {
+
+            "256": {
+                good: [85000, 101000],
+                low: [81000, 87000]
+            },
+
+            "512": {
+                good: [97000, 111000],
+                low: [96000, 101000]
+            },
+
+            "1024": {
+                good: [115000, 123000],
+                low: [108000, 115000]
+            },
+
+            "2048": {
+                good: [135000, 143000],
+                low: [128000, 135000]
+            }
+
+        }
     },
+
+
     iphone17pro: {
+
         name: "iPhone 17 Pro",
-        good: [70000, 75000],
-        low: [63000, 68000]
+
+        memories: {
+
+            "256": {
+                good: [80000, 92000],
+                low: [74000, 83000]
+            },
+
+            "512": {
+                good: [98000, 100000],
+                low: [87000, 90000]
+            }
+
+        }
     },
+
+
     iphone17: {
+
         name: "iPhone 17",
-        good: [55000, 60000],
-        low: [50000, 54000]
+
+        memories: {
+
+            "256": {
+                good: [58000, 62000],
+                low: [58000, 58000]
+            }
+
+        }
     },
+
+
     iphone16promax: {
+
         name: "iPhone 16 Pro Max",
-        good: [60000, 65000],
-        low: [55000, 55000]
+
+        memories: {
+
+            "256": {
+                good: [68000, 77000],
+                low: [63000, 71000]
+            },
+
+            "512": {
+                good: [67000, 76000],
+                low: [67000, 71000]
+            },
+
+            "1024": {
+                good: [75000, 80000],
+                low: [75000, 75000]
+            }
+
+        }
     },
+
+
     iphone16pro: {
+
         name: "iPhone 16 Pro",
-        good: [60000, 60000],
-        low: [50000, 50000]
+
+        memories: {
+
+            "128": {
+                good: [52000, 63000],
+                low: [52000, 55000]
+            },
+
+            "256": {
+                good: [57000, 62000],
+                low: [57000, 62000]
+            },
+
+            "512": {
+                good: [67000, 67000],
+                low: [67000, 67000]
+            }
+
+        }
     },
+
+
     iphone16plus: {
+
         name: "iPhone 16 Plus",
-        good: [48000, 52000],
-        low: [43000, 47000]
+
+        memories: {
+
+            "128": {
+                good: [43000, 53000],
+                low: [43000, 43000]
+            }
+
+        }
     },
+
+
     iphone16: {
+
         name: "iPhone 16",
-        good: [45000, 48000],
-        low: [40000, 43000]
+
+        memories: {
+
+            "128": {
+                good: [42000, 50000],
+                low: [39000, 39000]
+            },
+
+            "256": {
+                good: [49000, 53000],
+                low: [49000, 49000]
+            }
+
+        }
     },
+
+
     iphone15promax: {
+
         name: "iPhone 15 Pro Max",
-        good: [48000, 50000],
-        low: [43000, 45000]
+
+        memories: {
+
+            "256": {
+                good: [51000, 51000],
+                low: [45000, 51000]
+            },
+
+            "512": {
+                good: [57000, 57000],
+                low: [57000, 57000]
+            },
+
+            "1024": {
+                good: [52000, 57000],
+                low: [52000, 55000]
+            }
+
+        }
     },
+
+
     iphone15pro: {
+
         name: "iPhone 15 Pro",
-        good: [43000, 45000],
-        low: [38000, 40000]
+
+        memories: {
+
+            "128": {
+                good: [44000, 47000],
+                low: [40000, 44000]
+            },
+
+            "256": {
+                good: [49000, 49000],
+                low: [41000, 49000]
+            },
+
+            "512": {
+                good: [52000, 54000],
+                low: [50000, 54000]
+            }
+
+        }
     },
+
+
     iphone15plus: {
+
         name: "iPhone 15 Plus",
-        good: [40000, 43000],
-        low: [36000, 39000]
+
+        memories: {
+
+            "128": {
+                good: [38000, 38000],
+                low: [38000, 38000]
+            }
+
+        }
     },
+
+
     iphone15: {
+
         name: "iPhone 15",
-        good: [35000, 38000],
-        low: [31000, 34000]
+
+        memories: {
+
+            "128": {
+                good: [34000, 34000],
+                low: [29000, 34000]
+            },
+
+            "256": {
+                good: [42000, 42000],
+                low: [36000, 42000]
+            }
+
+        }
     },
+
+
     iphone14promax: {
+
         name: "iPhone 14 Pro Max",
-        good: [42000, 46000],
-        low: [37000, 41000]
+
+        memories: {
+
+            "256": {
+                good: [38000, 38000],
+                low: [38000, 38000]
+            },
+
+            "512": {
+                good: [39000, 39000],
+                low: [39000, 39000]
+            }
+
+        }
     },
+
+
     iphone14pro: {
+
         name: "iPhone 14 Pro",
-        good: [36000, 40000],
-        low: [32000, 35000]
+
+        memories: {
+
+            "256": {
+                good: [31000, 32000],
+                low: [31000, 32000]
+            }
+
+        }
     },
+
+
     iphone14plus: {
+
         name: "iPhone 14 Plus",
-        good: [32000, 35000],
-        low: [28000, 31000]
+
+        memories: {
+
+            "128": {
+                good: [22000, 22000],
+                low: [22000, 22000]
+            },
+
+            "256": {
+                good: [24000, 24000],
+                low: [24000, 24000]
+            },
+
+            "512": {
+                good: [33000, 33000],
+                low: [33000, 33000]
+            }
+
+        }
     },
+
+
     iphone14: {
+
         name: "iPhone 14",
-        good: [28000, 32000],
-        low: [24000, 27000]
+
+        memories: {
+
+            "128": {
+                good: [21000, 27000],
+                low: [19000, 21000]
+            },
+
+            "512": {
+                good: [31000, 32000],
+                low: [31000, 31000]
+            }
+
+        }
     },
+
+
     iphone13promax: {
+
         name: "iPhone 13 Pro Max",
-        good: [35000, 39000],
-        low: [30000, 34000]
+
+        memories: {
+
+            "128": {
+                good: [26000, 26000],
+                low: [26000, 26000]
+            },
+
+            "512": {
+                good: [31000, 38000],
+                low: [31000, 31000]
+            },
+
+            "1024": {
+                good: [37000, 37000],
+                low: [37000, 37000]
+            }
+
+        }
     },
+
+
     iphone13pro: {
+
         name: "iPhone 13 Pro",
-        good: [30000, 34000],
-        low: [26000, 29000]
+
+        memories: {
+
+            "128": {
+                good: [21000, 22000],
+                low: [21000, 22000]
+            },
+
+            "256": {
+                good: [27000, 28000],
+                low: [27000, 27000]
+            },
+
+            "1024": {
+                good: [39000, 39000],
+                low: [39000, 39000]
+            }
+
+        }
     },
+
+
     iphone13: {
+
         name: "iPhone 13",
-        good: [24000, 28000],
-        low: [21000, 23000]
+
+        memories: {
+
+            "128": {
+                good: [18000, 18000],
+                low: [14000, 18000]
+            },
+
+            "256": {
+                good: [23000, 23000],
+                low: [16000, 23000]
+            },
+
+            "512": {
+                good: [24000, 28000],
+                low: [24000, 24000]
+            }
+
+        }
     },
+
+
     iphone13mini: {
+
         name: "iPhone 13 mini",
-        good: [21000, 24000],
-        low: [18000, 20000]
+
+        memories: {
+
+            "128": {
+                good: [22000, 22000],
+                low: [22000, 22000]
+            }
+
+        }
     },
+
+
     iphone12promax: {
+
         name: "iPhone 12 Pro Max",
-        good: [27000, 31000],
-        low: [23000, 26000]
+
+        memories: {
+
+            "256": {
+                good: [18000, 18000],
+                low: [18000, 18000]
+            }
+
+        }
     },
+
+
     iphone12pro: {
+
         name: "iPhone 12 Pro",
-        good: [23000, 26000],
-        low: [20000, 22000]
+
+        memories: {
+
+            "256": {
+                good: [20000, 21000],
+                low: [15000, 21000]
+            }
+
+        }
     },
+
+
     iphone12: {
+
         name: "iPhone 12",
-        good: [19000, 22000],
-        low: [16000, 18000]
+
+        memories: {
+
+            "128": {
+                good: [19000, 19000],
+                low: [13000, 18000]
+            },
+
+            "256": {
+                good: [20000, 20000],
+                low: [20000, 20000]
+            }
+
+        }
     },
+
+
     iphone12mini: {
+
         name: "iPhone 12 mini",
-        good: [17000, 20000],
-        low: [14000, 16000]
+
+        memories: {
+
+            "128": {
+                good: [13000, 13000],
+                low: [13000, 13000]
+            }
+
+        }
     },
+
+
     iphone11promax: {
+
         name: "iPhone 11 Pro Max",
-        good: [22000, 25000],
-        low: [18000, 21000]
+
+        memories: {
+
+            "256": {
+                good: [18000, 18000],
+                low: [18000, 18000]
+            }
+
+        }
     },
+
+
     iphone11pro: {
+
         name: "iPhone 11 Pro",
-        good: [18000, 21000],
-        low: [15000, 17000]
+
+        memories: {
+
+            "256": {
+                good: [15000, 15000],
+                low: [15000, 15000]
+            }
+
+        }
     },
+
+
     iphone11: {
+
         name: "iPhone 11",
-        good: [15000, 18000],
-        low: [12000, 14000]
+
+        memories: {
+
+            "128": {
+                good: [8000, 8000],
+                low: [8000, 8000]
+            }
+
+        }
     }
+
 };
+
+
+/* =========================
+   АВТОМАТИЧЕСКАЯ ПАМЯТЬ
+========================= */
+
+function updateMemoryOptions() {
+
+    const model =
+        tradeModel.value;
+
+    tradeMemory.innerHTML = `
+        <option value="">
+            Выберите память
+        </option>
+    `;
+
+    if (
+        !model ||
+        !tradePrices[model]
+    ) {
+        return;
+    }
+
+    const memories =
+        Object.keys(
+            tradePrices[model].memories
+        );
+
+    memories.forEach(memory => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = memory;
+
+        option.textContent =
+            memory === "1024"
+                ? "1 ТБ"
+                : memory === "2048"
+                    ? "2 ТБ"
+                    : `${memory} ГБ`;
+
+        tradeMemory.appendChild(option);
+
+    });
+}
+
+tradeModel.addEventListener(
+    "change",
+    updateMemoryOptions
+);
+
+
 /* =========================
    ЗАГРУЗКА КАТАЛОГА
 ========================= */
+
 async function loadProducts() {
+
     try {
+
         const response =
             await fetch(
                 "products.json?time=" +
                 Date.now()
             );
+
         if (!response.ok) {
+
             throw new Error(
                 "Ошибка загрузки products.json"
             );
         }
+
         allProducts =
             await response.json();
+
         renderProducts();
+
     } catch (error) {
+
         console.error(error);
+
         productsContainer.innerHTML = `
+
             <div class="empty">
+
                 Не удалось загрузить каталог.
+
                 <br>
+
                 Попробуйте обновить страницу.
+
             </div>
+
         `;
     }
 }
+
+
 /* =========================
    ОТОБРАЖЕНИЕ ТОВАРОВ
 ========================= */
+
 function renderProducts() {
+
     const search =
         searchInput.value
             .toLowerCase()
             .trim();
+
     const brand =
         brandFilter.value;
+
     const filtered =
         allProducts.filter(product => {
+
             const name =
                 String(
                     product.name || ""
                 ).toLowerCase();
+
             const productBrand =
                 String(
                     product.brand || ""
                 );
+
             const matchesSearch =
                 !search ||
                 name.includes(search);
+
             const matchesBrand =
                 brand === "all" ||
                 productBrand === brand;
+
             return (
                 matchesSearch &&
                 matchesBrand
             );
+
         });
+
     if (!filtered.length) {
+
         productsContainer.innerHTML = `
+
             <div class="empty">
                 Ничего не найдено.
             </div>
+
         `;
+
         return;
     }
+
     productsContainer.innerHTML =
         filtered.map(product => {
+
             const price =
                 Number(
                     product.price || 0
                 ).toLocaleString(
                     "ru-RU"
                 );
+
             const oldPrice =
                 Number(
                     product.old_price || 0
                 ).toLocaleString(
                     "ru-RU"
                 );
+
             const stock =
                 String(
                     product.stock || ""
                 );
+
             const isOut =
                 stock
                     .toLowerCase()
                     .includes("нет");
+
             return `
+
                 <div class="product-card">
+
                     <div class="product-image">
+
                         <img
                             src="${escapeHtml(
                                 product.image || ""
@@ -1634,26 +2517,41 @@ function renderProducts() {
                                 this.style.display='none';
                             "
                         >
+
                     </div>
+
                     <div class="product-info">
+
                         <div class="product-brand">
+
                             ${escapeHtml(
                                 product.brand || ""
                             )}
+
                         </div>
+
                         <div class="product-name">
+
                             ${escapeHtml(
                                 product.name || ""
                             )}
+
                         </div>
+
                         <div class="product-description">
+
                             ${escapeHtml(
                                 product.description || ""
                             )}
+
                         </div>
+
                         <div class="product-price">
+
                             ${price} ₽
+
                         </div>
+
                         ${
                             product.old_price &&
                             Number(
@@ -1662,7 +2560,9 @@ function renderProducts() {
                             Number(
                                 product.price
                             )
+
                             ?
+
                             `
                             <div
                                 class="product-old-price"
@@ -1670,18 +2570,26 @@ function renderProducts() {
                                 ${oldPrice} ₽
                             </div>
                             `
+
                             :
+
                             ""
                         }
+
                         <div
                             class="stock ${
-                                isOut ? "out" : ""
+                                isOut
+                                    ? "out"
+                                    : ""
                             }"
                         >
+
                             ${escapeHtml(
                                 stock
                             )}
+
                         </div>
+
                         <button
                             class="buy-btn"
                             onclick='openProductModal(${JSON.stringify(
@@ -1690,18 +2598,27 @@ function renderProducts() {
                         >
                             Заказать
                         </button>
+
                     </div>
+
                 </div>
+
             `;
+
         }).join("");
 }
+
+
 /* =========================
    ОКНО ЗАКАЗА
 ========================= */
+
 function openProductModal(product) {
+
     modalProduct.textContent =
         product.name ||
         "Товар";
+
     modalPrice.textContent =
         Number(
             product.price || 0
@@ -1709,11 +2626,14 @@ function openProductModal(product) {
             "ru-RU"
         ) +
         " ₽";
+
     const message =
         "Здравствуйте! " +
         "Хочу заказать: " +
-        (product.name ||
-        "товар") +
+        (
+            product.name ||
+            "товар"
+        ) +
         " за " +
         Number(
             product.price || 0
@@ -1721,258 +2641,370 @@ function openProductModal(product) {
             "ru-RU"
         ) +
         " ₽";
+
     modalTelegram.href =
         "https://t.me/DV_STORE_ORDER?text=" +
         encodeURIComponent(
             message
         );
+
     modal.classList.add(
         "active"
     );
 }
+
+
 /* =========================
    TRADE-IN РАСЧЁТ
 ========================= */
+
 tradeCalculate.addEventListener(
     "click",
     calculateTradeIn
 );
+
 function calculateTradeIn() {
+
     const model =
         tradeModel.value;
+
     const memory =
         tradeMemory.value;
+
     const battery =
         tradeBattery.value;
+
     const box =
         tradeBox.value;
+
     if (
         !model ||
         !memory ||
         !battery ||
         !box
     ) {
+
         alert(
             "Пожалуйста, выберите модель, память, состояние АКБ и наличие коробки."
         );
+
         return;
     }
+
     const data =
         tradePrices[model];
-    if (!data) {
+
+    if (
+        !data ||
+        !data.memories[memory]
+    ) {
+
+        alert(
+            "Для выбранной модели такой объём памяти не указан."
+        );
+
         return;
     }
-    let priceRange =
+
+    const memoryData =
+        data.memories[memory];
+
+    const priceRange =
         battery === "85plus"
-            ? [...data.good]
-            : [...data.low];
-    /*
-       ПАМЯТЬ
-       Базовая цена указана ориентировочно
-       для стандартной комплектации.
-       За увеличенный объём памяти
-       добавляем небольшую надбавку.
-    */
-    const memoryExtra = {
-        "64": 0,
-        "128": 0,
-        "256": 2000,
-        "512": 4000,
-        "1024": 6000
-    };
-    const extra =
-        memoryExtra[memory] || 0;
-    priceRange[0] += extra;
-    priceRange[1] += extra;
-    /*
-       Коробка не добавляет большую сумму,
-       но наличие коробки учитывается менеджером
-       при окончательной оценке.
-    */
+            ? [...memoryData.good]
+            : [...memoryData.low];
+
     const formattedMin =
         priceRange[0].toLocaleString(
             "ru-RU"
         );
+
     const formattedMax =
         priceRange[1].toLocaleString(
             "ru-RU"
         );
+
     const batteryText =
         battery === "85plus"
             ? "АКБ 85%+"
             : "АКБ ниже 85%";
+
     const boxText =
         box === "yes"
             ? "коробка есть"
             : "без коробки";
-    tradePrice.textContent =
-        priceRange[0] === priceRange[1]
-            ? `${formattedMin} ₽`
-            : `${formattedMin}–${formattedMax} ₽`;
+
+    if (
+        priceRange[0] ===
+        priceRange[1]
+    ) {
+
+        tradePrice.textContent =
+            `${formattedMin} ₽`;
+
+    } else {
+
+        tradePrice.textContent =
+            `${formattedMin}–${formattedMax} ₽`;
+
+    }
+
     tradeDetails.textContent =
-        `${data.name} • ${memory} ГБ • ${batteryText} • ${boxText}`;
+        `${data.name} • ${formatMemory(memory)} • ${batteryText} • ${boxText}`;
+
+    const telegramPrice =
+        priceRange[0] ===
+        priceRange[1]
+
+            ? `${formattedMin} ₽`
+
+            : `${formattedMin}–${formattedMax} ₽`;
+
     const telegramMessage =
+
         "Здравствуйте! Хочу оценить телефон.\n\n" +
+
         "Модель: " +
         data.name +
         "\n" +
+
         "Память: " +
-        memory +
-        " ГБ\n" +
+        formatMemory(memory) +
+        "\n" +
+
         "АКБ: " +
         batteryText +
         "\n" +
+
         "Коробка: " +
         boxText +
         "\n\n" +
+
         "Ориентировочная цена на сайте: " +
-        priceRange[0].toLocaleString("ru-RU") +
-        "–" +
-        priceRange[1].toLocaleString("ru-RU") +
-        " ₽";
+        telegramPrice +
+
+        "\n\n" +
+
+        "Готов отправить фото телефона для точной оценки.";
+
     tradeTelegram.href =
         "https://t.me/DV_STORE_ORDER?text=" +
         encodeURIComponent(
             telegramMessage
         );
+
     tradeResult.classList.add(
         "active"
     );
+
     tradeResult.scrollIntoView({
         behavior: "smooth",
         block: "nearest"
     });
 }
+
+
+/* =========================
+   ФОРМАТ ПАМЯТИ
+========================= */
+
+function formatMemory(memory) {
+
+    if (memory === "1024") {
+        return "1 ТБ";
+    }
+
+    if (memory === "2048") {
+        return "2 ТБ";
+    }
+
+    return memory + " ГБ";
+}
+
+
 /* =========================
    ЗАКРЫТИЕ МОДАЛКИ
 ========================= */
+
 modalClose.addEventListener(
     "click",
     () => {
+
         modal.classList.remove(
             "active"
         );
+
     }
 );
+
 modal.addEventListener(
     "click",
     event => {
+
         if (
             event.target === modal
         ) {
+
             modal.classList.remove(
                 "active"
             );
+
         }
+
     }
 );
+
+
 /* =========================
    ПОИСК
 ========================= */
+
 searchInput.addEventListener(
     "input",
     renderProducts
 );
+
+
 /* =========================
    ФИЛЬТР
 ========================= */
+
 brandFilter.addEventListener(
     "change",
     renderProducts
 );
+
+
 /* =========================
    ЗАЩИТА HTML
 ========================= */
+
 function escapeHtml(value) {
+
     return String(value)
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /'/g,
             "&#039;"
         );
 }
+
+
 /* =========================
    ОКНО РАССРОЧКИ
 ========================= */
+
 const creditModal =
     document.getElementById(
         "creditModal"
     );
+
 const creditClose =
     document.getElementById(
         "creditClose"
     );
-/*
-   Показываем предложение
-   при первом заходе на сайт.
-*/
+
 window.addEventListener(
     "load",
     () => {
+
         setTimeout(
             () => {
+
                 creditModal.classList.add(
                     "active"
                 );
+
             },
             700
         );
+
     }
 );
+
 creditClose.addEventListener(
     "click",
     () => {
+
         creditModal.classList.remove(
             "active"
         );
+
     }
 );
+
 creditModal.addEventListener(
     "click",
     event => {
+
         if (
-            event.target === creditModal
+            event.target ===
+            creditModal
         ) {
+
             creditModal.classList.remove(
                 "active"
             );
+
         }
+
     }
 );
+
+
+/* =========================
+   ESC
+========================= */
+
 document.addEventListener(
     "keydown",
     event => {
+
         if (
             event.key === "Escape"
         ) {
+
             modal.classList.remove(
                 "active"
             );
+
             creditModal.classList.remove(
                 "active"
             );
+
         }
+
     }
 );
+
+
 /* =========================
    ЗАПУСК
 ========================= */
+
 loadProducts();
+
 </script>
+
 </body>
 </html>
