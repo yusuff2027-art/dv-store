@@ -1,280 +1,263 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>D&V STORE — смартфоны и ремонт в Москве</title>
+<title>D&V STORE — смартфоны и ремонт в Москве</title>
 
-    <meta
-        name="description"
-        content="D&V STORE — смартфоны Apple, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, трейд-ин и ремонт в Москве."
-    >
+<meta name="description"
+content="D&V STORE — смартфоны Apple, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, покупка в трейд-ин и ремонт в Москве.">
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #050505;
-    color: #fff;
-    line-height: 1.5;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+    line-height:1.5;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-button,
-input,
-select {
-    font: inherit;
+button,input,select{
+    font:inherit;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(5, 5, 5, 0.94);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,5,5,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(212,175,55,.15);
 }
 
-.header-inner {
-    max-width: 1250px;
-    margin: auto;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.logo {
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #d4af37;
-    white-space: nowrap;
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:#d4af37;
+    white-space:nowrap;
 }
 
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+.nav{
+    display:flex;
+    align-items:center;
+    gap:24px;
 }
 
-.nav a {
-    color: #ddd;
-    font-size: 14px;
-    transition: 0.25s;
+.nav a{
+    color:#ddd;
+    font-size:14px;
+    transition:.25s;
 }
 
-.nav a:hover {
-    color: #d4af37;
+.nav a:hover{
+    color:#d4af37;
 }
 
-.telegram-btn {
-    background: #d4af37;
-    color: #050505;
-    padding: 10px 17px;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 14px;
-    white-space: nowrap;
-    transition: 0.25s;
+.telegram-btn{
+    background:#d4af37;
+    color:#050505;
+    padding:10px 17px;
+    border-radius:10px;
+    font-weight:800;
+    font-size:14px;
+    white-space:nowrap;
+    transition:.25s;
 }
 
-.telegram-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+.telegram-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 25px rgba(212,175,55,.25);
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
-.hero {
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 70px 20px;
+.hero{
+    min-height:600px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 20px;
 
     background:
         radial-gradient(
             circle at 50% 30%,
-            rgba(212,175,55,0.12),
+            rgba(212,175,55,.12),
             transparent 35%
         ),
         #050505;
 }
 
-.hero-content {
-    max-width: 850px;
+.hero-content{
+    max-width:850px;
 }
 
-.hero-label {
-    display: inline-block;
-    color: #d4af37;
-    border: 1px solid rgba(212,175,55,0.35);
-    border-radius: 50px;
-    padding: 7px 16px;
-    margin-bottom: 22px;
-    font-size: 13px;
-    letter-spacing: 1px;
+.hero-label{
+    display:inline-block;
+    color:#d4af37;
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:50px;
+    padding:7px 16px;
+    margin-bottom:22px;
+    font-size:13px;
+    letter-spacing:1px;
 }
 
-.hero h1 {
-    font-size: clamp(45px, 8vw, 90px);
-    line-height: 0.95;
-    letter-spacing: -4px;
-    margin-bottom: 25px;
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:25px;
 }
 
-.hero h1 span {
-    color: #d4af37;
+.hero h1 span{
+    color:#d4af37;
 }
 
-.hero p {
-    max-width: 650px;
-    margin: auto;
-    color: #aaa;
-    font-size: 18px;
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#aaa;
+    font-size:18px;
 }
 
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 35px;
-    flex-wrap: wrap;
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:35px;
+    flex-wrap:wrap;
 }
 
 .primary-btn,
-.secondary-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 22px;
-    border-radius: 12px;
-    font-weight: 800;
-    transition: 0.25s;
-    cursor: pointer;
+.secondary-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 22px;
+    border-radius:12px;
+    font-weight:800;
+    transition:.25s;
+    cursor:pointer;
 }
 
-.primary-btn {
-    background: #d4af37;
-    color: #050505;
+.primary-btn{
+    background:#d4af37;
+    color:#050505;
 }
 
-.secondary-btn {
-    border: 1px solid #333;
-    color: #fff;
-    background: transparent;
+.secondary-btn{
+    border:1px solid #333;
+    color:#fff;
+    background:transparent;
 }
 
 .primary-btn:hover,
-.secondary-btn:hover {
-    transform: translateY(-2px);
+.secondary-btn:hover{
+    transform:translateY(-2px);
 }
 
-/* =========================
-   INSTALLMENT
-========================= */
+/* INSTALLMENT */
 
-.installment-banner {
-    max-width: 1000px;
-    margin: 25px auto 0;
-    padding: 18px 22px;
-
-    border: 1px solid rgba(212,175,55,0.35);
-
+.installment-banner{
+    max-width:1000px;
+    margin:25px auto 0;
+    padding:18px 22px;
+    border:1px solid rgba(212,175,55,.35);
     background:
         linear-gradient(
             135deg,
-            rgba(212,175,55,0.12),
-            rgba(255,255,255,0.02)
+            rgba(212,175,55,.12),
+            rgba(255,255,255,.02)
         );
-
-    border-radius: 16px;
-    text-align: center;
+    border-radius:16px;
+    text-align:center;
 }
 
-.installment-banner strong {
-    color: #d4af37;
-    font-size: 17px;
+.installment-banner strong{
+    color:#d4af37;
+    font-size:17px;
 }
 
-.installment-banner span {
-    display: block;
-    color: #999;
-    margin-top: 4px;
-    font-size: 13px;
+.installment-banner span{
+    display:block;
+    color:#999;
+    margin-top:4px;
+    font-size:13px;
 }
 
-.installment-banner a {
-    color: #d4af37;
-    font-weight: 800;
+.installment-banner a{
+    color:#d4af37;
+    font-weight:800;
 }
 
-/* =========================
-   GENERAL
-========================= */
+/* GENERAL */
 
-.section {
-    max-width: 1250px;
-    margin: auto;
-    padding: 80px 20px;
+.section{
+    max-width:1250px;
+    margin:auto;
+    padding:80px 20px;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 38px;
-    margin-bottom: 12px;
+.section-title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:12px;
 }
 
-.section-title span {
-    color: #d4af37;
+.section-title span{
+    color:#d4af37;
 }
 
-.section-subtitle {
-    text-align: center;
-    color: #888;
-    max-width: 650px;
-    margin: 0 auto 40px;
+.section-subtitle{
+    text-align:center;
+    color:#888;
+    max-width:700px;
+    margin:0 auto 40px;
 }
 
-/* =========================
-   TRADE-IN
-========================= */
+/* TRADE IN */
 
-.tradein-section {
+.tradein-section{
     background:
         radial-gradient(
             circle at 50% 50%,
-            rgba(212,175,55,0.07),
+            rgba(212,175,55,.07),
             transparent 40%
         );
 }
 
-.tradein-box {
-    max-width: 850px;
-    margin: auto;
+.tradein-box{
+    max-width:850px;
+    margin:auto;
 
     background:
         linear-gradient(
@@ -283,634 +266,602 @@ header {
             #080808
         );
 
-    border: 1px solid rgba(212,175,55,0.22);
-    border-radius: 24px;
-    padding: 35px;
+    border:1px solid rgba(212,175,55,.22);
+    border-radius:24px;
+    padding:35px;
 
-    box-shadow:
-        0 20px 70px rgba(0,0,0,0.35);
+    box-shadow:0 20px 70px rgba(0,0,0,.35);
 }
 
-.tradein-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+.tradein-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-.tradein-field {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
+.tradein-field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
 }
 
-.tradein-field label {
-    color: #aaa;
-    font-size: 13px;
+.tradein-field label{
+    color:#aaa;
+    font-size:13px;
 }
 
-.tradein-field select {
-    width: 100%;
-    background: #0b0b0b;
-    color: #fff;
-    border: 1px solid #292929;
-    padding: 14px;
-    border-radius: 11px;
-    outline: none;
+.tradein-field select{
+    width:100%;
+    background:#0b0b0b;
+    color:#fff;
+    border:1px solid #292929;
+    padding:14px;
+    border-radius:11px;
+    outline:none;
 }
 
-.tradein-field select:focus {
-    border-color: #d4af37;
+.tradein-field select:focus{
+    border-color:#d4af37;
 }
 
-.tradein-button {
-    width: 100%;
-    border: none;
-    background: #d4af37;
-    color: #050505;
-    padding: 16px;
-    border-radius: 12px;
-    font-weight: 900;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: 0.25s;
+.tradein-button{
+    width:100%;
+    border:none;
+    background:#d4af37;
+    color:#050505;
+    padding:16px;
+    border-radius:12px;
+    font-weight:900;
+    cursor:pointer;
+    margin-top:20px;
+    transition:.25s;
 }
 
-.tradein-button:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 10px 30px rgba(212,175,55,0.2);
+.tradein-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(212,175,55,.2);
 }
 
-.tradein-result {
-    display: none;
-    margin-top: 25px;
-    padding: 25px;
-    border-radius: 16px;
-    background: #0b0b0b;
-    border: 1px solid #292929;
-    text-align: center;
+.tradein-result{
+    display:none;
+    margin-top:25px;
+    padding:25px;
+    border-radius:16px;
+    background:#0b0b0b;
+    border:1px solid #292929;
+    text-align:center;
 }
 
-.tradein-result.active {
-    display: block;
+.tradein-result.active{
+    display:block;
 }
 
-.tradein-result-title {
-    color: #d4af37;
-    font-size: 14px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+.tradein-result-title{
+    color:#d4af37;
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:8px;
 }
 
-.tradein-price {
-    color: #d4af37;
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: 10px;
+.tradein-price{
+    color:#d4af37;
+    font-size:32px;
+    font-weight:900;
+    margin-bottom:10px;
 }
 
-.tradein-details {
-    color: #ccc;
-    font-size: 14px;
-    margin-bottom: 15px;
+.tradein-details{
+    color:#ccc;
+    font-size:14px;
+    margin-bottom:15px;
 }
 
-.tradein-warning {
-    color: #888;
-    font-size: 12px;
-    line-height: 1.6;
-    margin-bottom: 18px;
+.tradein-warning{
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+    margin-bottom:18px;
 }
 
-.tradein-warning strong {
-    color: #d4af37;
+.tradein-warning strong{
+    color:#d4af37;
 }
 
-.tradein-telegram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #d4af37;
-    color: #050505;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: 900;
+.tradein-telegram{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#d4af37;
+    color:#050505;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:900;
 }
 
-/* =========================
-   CATALOG
-========================= */
+/* CATALOG */
 
-.catalog-tools {
-    display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 12px;
-    margin-bottom: 30px;
+.catalog-tools{
+    display:grid;
+    grid-template-columns:1fr 220px;
+    gap:12px;
+    margin-bottom:30px;
 }
 
-.search {
-    width: 100%;
-    background: #0d0d0d;
-    color: #fff;
-    border: 1px solid #292929;
-    padding: 15px 17px;
-    border-radius: 12px;
-    outline: none;
+.search,
+.brand-filter{
+    width:100%;
+    background:#0d0d0d;
+    color:#fff;
+    border:1px solid #292929;
+    padding:15px 17px;
+    border-radius:12px;
+    outline:none;
 }
 
-.search:focus {
-    border-color: #d4af37;
+.search:focus,
+.brand-filter:focus{
+    border-color:#d4af37;
 }
 
-.brand-filter {
-    width: 100%;
-    background: #0d0d0d;
-    color: #fff;
-    border: 1px solid #292929;
-    padding: 15px;
-    border-radius: 12px;
-    outline: none;
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+.product-card{
+    background:#0c0c0c;
+    border:1px solid #202020;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
 }
 
-.product-card {
-    background: #0c0c0c;
-    border: 1px solid #202020;
-    border-radius: 18px;
-    overflow: hidden;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
+.product-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(212,175,55,.5);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212,175,55,0.5);
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.4);
+.product-image{
+    width:100%;
+    height:260px;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
 }
 
-.product-image {
-    width: 100%;
-    height: 260px;
-    background: #111;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:15px;
 }
 
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 15px;
+.product-info{
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
 }
 
-.product-info {
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.product-brand{
+    color:#d4af37;
+    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:1px;
+    margin-bottom:6px;
 }
 
-.product-brand {
-    color: #d4af37;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
+.product-name{
+    font-size:17px;
+    font-weight:800;
+    margin-bottom:8px;
 }
 
-.product-name {
-    font-size: 17px;
-    font-weight: 800;
-    margin-bottom: 8px;
+.product-description{
+    color:#888;
+    font-size:13px;
+    min-height:40px;
+    margin-bottom:12px;
 }
 
-.product-description {
-    color: #888;
-    font-size: 13px;
-    min-height: 40px;
-    margin-bottom: 12px;
+.product-price{
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:5px;
 }
 
-.product-price {
-    font-size: 22px;
-    font-weight: 900;
-    margin-bottom: 5px;
+.product-old-price{
+    color:#666;
+    text-decoration:line-through;
+    font-size:13px;
+    margin-bottom:8px;
 }
 
-.product-old-price {
-    color: #666;
-    text-decoration: line-through;
-    font-size: 13px;
-    margin-bottom: 8px;
+.stock{
+    font-size:12px;
+    color:#67d47a;
+    margin-bottom:15px;
 }
 
-.stock {
-    font-size: 12px;
-    color: #67d47a;
-    margin-bottom: 15px;
+.stock.out{
+    color:#ff6666;
 }
 
-.stock.out {
-    color: #ff6666;
+.buy-btn{
+    margin-top:auto;
+    width:100%;
+    border:none;
+    background:#d4af37;
+    color:#050505;
+    padding:13px;
+    border-radius:10px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.25s;
 }
 
-.buy-btn {
-    margin-top: auto;
-    width: 100%;
-    border: none;
-    background: #d4af37;
-    color: #050505;
-    padding: 13px;
-    border-radius: 10px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: 0.25s;
+.buy-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(212,175,55,.2);
 }
 
-.buy-btn:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 8px 20px rgba(212,175,55,0.2);
+.empty{
+    text-align:center;
+    color:#777;
+    padding:50px 10px;
+    grid-column:1/-1;
 }
 
-.empty {
-    text-align: center;
-    color: #777;
-    padding: 50px 10px;
-    grid-column: 1 / -1;
-}
+/* ABOUT */
 
-/* =========================
-   ABOUT
-========================= */
-
-.about-box {
+.about-box{
     background:
         linear-gradient(
             145deg,
             #0d0d0d,
             #080808
         );
-
-    border: 1px solid #202020;
-    border-radius: 22px;
-    padding: 40px;
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
+    border:1px solid #202020;
+    border-radius:22px;
+    padding:40px;
+    max-width:900px;
+    margin:auto;
+    text-align:center;
 }
 
-.about-box p {
-    color: #aaa;
-    margin-bottom: 18px;
+.about-box p{
+    color:#aaa;
+    margin-bottom:18px;
 }
 
-.about-highlight {
-    color: #d4af37;
-    font-weight: 800;
+.about-highlight{
+    color:#d4af37;
+    font-weight:800;
 }
 
-/* =========================
-   REPAIR
-========================= */
+/* REPAIR */
 
-.repair {
+.repair{
     background:
         radial-gradient(
             circle at 50% 50%,
-            rgba(212,175,55,0.08),
+            rgba(212,175,55,.08),
             transparent 35%
         ),
         #050505;
 }
 
-.repair-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 35px;
+.repair-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:35px;
 }
 
-.repair-card {
-    background: #0d0d0d;
-    border: 1px solid #202020;
-    border-radius: 16px;
-    padding: 25px;
+.repair-card{
+    background:#0d0d0d;
+    border:1px solid #202020;
+    border-radius:16px;
+    padding:25px;
 }
 
-.repair-card h3 {
-    color: #fff;
-    margin-bottom: 8px;
+.repair-card h3{
+    margin-bottom:8px;
 }
 
-.repair-card p {
-    color: #888;
-    font-size: 14px;
+.repair-card p{
+    color:#888;
+    font-size:14px;
 }
 
-.repair-cta {
-    text-align: center;
-    margin-top: 35px;
+.repair-cta{
+    text-align:center;
+    margin-top:35px;
 }
 
-/* =========================
-   REVIEWS
-========================= */
+/* REVIEWS */
 
-.reviews-box {
-    text-align: center;
-    background: #0c0c0c;
-    border: 1px solid #202020;
-    border-radius: 22px;
-    padding: 45px 25px;
+.reviews-box{
+    text-align:center;
+    background:#0c0c0c;
+    border:1px solid #202020;
+    border-radius:22px;
+    padding:45px 25px;
 }
 
-.stars {
-    color: #d4af37;
-    font-size: 32px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
+.stars{
+    color:#d4af37;
+    font-size:32px;
+    letter-spacing:5px;
+    margin-bottom:15px;
 }
 
-.reviews-box p {
-    color: #999;
-    max-width: 600px;
-    margin: 0 auto 25px;
+.reviews-box p{
+    color:#999;
+    max-width:600px;
+    margin:0 auto 25px;
 }
 
-.review-btn {
-    display: inline-block;
-    background: #d4af37;
-    color: #050505;
-    padding: 13px 22px;
-    border-radius: 10px;
-    font-weight: 900;
+.review-btn{
+    display:inline-block;
+    background:#d4af37;
+    color:#050505;
+    padding:13px 22px;
+    border-radius:10px;
+    font-weight:900;
 }
 
-/* =========================
-   CONTACTS
-========================= */
+/* CONTACTS */
 
-.contacts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.contacts-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.contact-card {
-    background: #0c0c0c;
-    border: 1px solid #202020;
-    border-radius: 18px;
-    padding: 28px;
-    text-align: center;
+.contact-card{
+    background:#0c0c0c;
+    border:1px solid #202020;
+    border-radius:18px;
+    padding:28px;
+    text-align:center;
 }
 
-.contact-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
+.contact-icon{
+    font-size:28px;
+    margin-bottom:12px;
 }
 
-.contact-card h3 {
-    margin-bottom: 8px;
+.contact-card h3{
+    margin-bottom:8px;
 }
 
-.contact-card p {
-    color: #999;
+.contact-card p{
+    color:#999;
 }
 
-.contact-card a {
-    color: #d4af37;
+.contact-card a{
+    color:#d4af37;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
-footer {
-    border-top: 1px solid #1c1c1c;
-    padding: 30px 20px;
-    text-align: center;
-    color: #666;
+footer{
+    border-top:1px solid #1c1c1c;
+    padding:30px 20px;
+    text-align:center;
+    color:#666;
 }
 
-footer strong {
-    color: #d4af37;
+footer strong{
+    color:#d4af37;
 }
 
-/* =========================
-   MODALS
-========================= */
+/* MODALS */
 
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(0,0,0,0.82);
-    backdrop-filter: blur(8px);
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(8px);
 }
 
-.modal.active {
-    display: flex;
+.modal.active{
+    display:flex;
 }
 
-.modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 470px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: #0d0d0d;
-    border: 1px solid #2a2a2a;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.6);
+.modal-content{
+    position:relative;
+    width:100%;
+    max-width:470px;
+    max-height:90vh;
+    overflow-y:auto;
+    background:#0d0d0d;
+    border:1px solid #2a2a2a;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    border: none;
-    background: none;
-    color: #888;
-    font-size: 30px;
-    cursor: pointer;
+.modal-close{
+    position:absolute;
+    top:12px;
+    right:15px;
+    border:none;
+    background:none;
+    color:#888;
+    font-size:30px;
+    cursor:pointer;
 }
 
-.modal-content h2 {
-    margin-bottom: 10px;
-    padding-right: 30px;
+.modal-content h2{
+    margin-bottom:10px;
+    padding-right:30px;
 }
 
-.modal-product {
-    color: #aaa;
-    margin-bottom: 20px;
+.modal-product{
+    color:#aaa;
+    margin-bottom:20px;
 }
 
-.modal-price {
-    font-size: 26px;
-    font-weight: 900;
-    color: #d4af37;
-    margin-bottom: 20px;
+.modal-price{
+    font-size:26px;
+    font-weight:900;
+    color:#d4af37;
+    margin-bottom:20px;
 }
 
-.modal-btn {
-    display: block;
-    width: 100%;
-    background: #d4af37;
-    color: #050505;
-    text-align: center;
-    padding: 14px;
-    border-radius: 11px;
-    font-weight: 900;
+.modal-btn{
+    display:block;
+    width:100%;
+    background:#d4af37;
+    color:#050505;
+    text-align:center;
+    padding:14px;
+    border-radius:11px;
+    font-weight:900;
 }
 
-.credit-modal {
-    text-align: center;
-    max-width: 430px;
+.credit-modal{
+    text-align:center;
+    max-width:430px;
 }
 
-.credit-icon {
-    font-size: 45px;
-    margin-bottom: 12px;
+.credit-icon{
+    font-size:45px;
+    margin-bottom:12px;
 }
 
-.credit-modal h2 {
-    color: #d4af37;
-    padding: 0;
+.credit-modal h2{
+    color:#d4af37;
+    padding:0;
 }
 
-.credit-modal p {
-    color: #aaa;
-    margin: 10px 0 20px;
+.credit-modal p{
+    color:#aaa;
+    margin:10px 0 20px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
-@media (max-width: 1050px) {
-
-    .products {
-        grid-template-columns: repeat(3, 1fr);
+@media(max-width:1050px){
+    .products{
+        grid-template-columns:repeat(3,1fr);
     }
 }
 
-@media (max-width: 800px) {
+@media(max-width:800px){
 
-    .nav {
-        display: none;
+    .nav{
+        display:none;
     }
 
-    .catalog-tools {
-        grid-template-columns: 1fr;
+    .catalog-tools{
+        grid-template-columns:1fr;
     }
 
-    .products {
-        grid-template-columns: repeat(2, 1fr);
+    .products{
+        grid-template-columns:repeat(2,1fr);
     }
 
     .repair-grid,
-    .contacts-grid {
-        grid-template-columns: 1fr;
+    .contacts-grid{
+        grid-template-columns:1fr;
     }
 
-    .tradein-grid {
-        grid-template-columns: 1fr;
+    .tradein-grid{
+        grid-template-columns:1fr;
     }
 
-    .hero {
-        min-height: 520px;
+    .hero{
+        min-height:520px;
     }
 }
 
-@media (max-width: 520px) {
+@media(max-width:520px){
 
-    .header-inner {
-        padding: 13px 14px;
+    .header-inner{
+        padding:13px 14px;
     }
 
-    .logo {
-        font-size: 18px;
+    .logo{
+        font-size:18px;
     }
 
-    .telegram-btn {
-        padding: 9px 12px;
-        font-size: 12px;
+    .telegram-btn{
+        padding:9px 12px;
+        font-size:12px;
     }
 
-    .hero h1 {
-        font-size: 52px;
-        letter-spacing: -2px;
+    .hero h1{
+        font-size:52px;
+        letter-spacing:-2px;
     }
 
-    .hero p {
-        font-size: 15px;
+    .hero p{
+        font-size:15px;
     }
 
-    .section {
-        padding: 60px 14px;
+    .section{
+        padding:60px 14px;
     }
 
-    .section-title {
-        font-size: 30px;
+    .section-title{
+        font-size:30px;
     }
 
-    .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+    .products{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
     }
 
-    .product-image {
-        height: 190px;
+    .product-image{
+        height:190px;
     }
 
-    .product-info {
-        padding: 13px;
+    .product-info{
+        padding:13px;
     }
 
-    .product-name {
-        font-size: 14px;
+    .product-name{
+        font-size:14px;
     }
 
-    .product-description {
-        font-size: 11px;
+    .product-description{
+        font-size:11px;
     }
 
-    .product-price {
-        font-size: 18px;
+    .product-price{
+        font-size:18px;
     }
 
-    .buy-btn {
-        padding: 11px 5px;
-        font-size: 12px;
+    .buy-btn{
+        padding:11px 5px;
+        font-size:12px;
     }
 
-    .about-box {
-        padding: 25px 18px;
+    .about-box{
+        padding:25px 18px;
     }
 
-    .tradein-box {
-        padding: 22px 16px;
+    .tradein-box{
+        padding:22px 16px;
     }
 
-    .tradein-price {
-        font-size: 27px;
+    .tradein-price{
+        font-size:27px;
     }
 }
 </style>
@@ -921,9 +872,7 @@ footer strong {
 <header>
     <div class="header-inner">
 
-        <a href="#" class="logo">
-            D&V STORE
-        </a>
+        <a href="#" class="logo">D&V STORE</a>
 
         <nav class="nav">
             <a href="#catalog">Каталог</a>
@@ -966,17 +915,11 @@ footer strong {
 
         <div class="hero-buttons">
 
-            <a
-                href="#catalog"
-                class="primary-btn"
-            >
+            <a href="#catalog" class="primary-btn">
                 Смотреть каталог
             </a>
 
-            <a
-                href="#tradein"
-                class="secondary-btn"
-            >
+            <a href="#tradein" class="secondary-btn">
                 📱 Оценить мой телефон
             </a>
 
@@ -1005,6 +948,8 @@ footer strong {
 
 </section>
 
+
+<!-- TRADE-IN -->
 
 <section
     class="section tradein-section"
@@ -1302,6 +1247,8 @@ footer strong {
 </section>
 
 
+<!-- CATALOG -->
+
 <section
     class="section"
     id="catalog"
@@ -1334,41 +1281,15 @@ footer strong {
                 Все бренды
             </option>
 
-            <option value="Apple">
-                Apple
-            </option>
-
-            <option value="Samsung">
-                Samsung
-            </option>
-
-            <option value="Xiaomi">
-                Xiaomi
-            </option>
-
-            <option value="Honor">
-                Honor
-            </option>
-
-            <option value="Google">
-                Google
-            </option>
-
-            <option value="OnePlus">
-                OnePlus
-            </option>
-
-            <option value="Huawei">
-                Huawei
-            </option>
-
-            <option value="Nothing">
-                Nothing
-            </option>
-
-            <option value="Realme">
-                Realme
-            </option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="Honor">Honor</option>
+            <option value="Google">Google</option>
+            <option value="OnePlus">OnePlus</option>
+            <option value="Huawei">Huawei</option>
+            <option value="Nothing">Nothing</option>
+            <option value="Realme">Realme</option>
 
         </select>
 
@@ -1388,6 +1309,8 @@ footer strong {
 
 </section>
 
+
+<!-- ABOUT -->
 
 <section
     class="section"
@@ -1430,6 +1353,8 @@ footer strong {
 
 </section>
 
+
+<!-- REPAIR -->
 
 <section
     class="section repair"
@@ -1512,6 +1437,8 @@ footer strong {
 </section>
 
 
+<!-- REVIEWS -->
+
 <section
     class="section"
     id="reviews"
@@ -1546,6 +1473,8 @@ footer strong {
 </section>
 
 
+<!-- CONTACTS -->
+
 <section
     class="section"
     id="contacts"
@@ -1568,9 +1497,7 @@ footer strong {
                 📍
             </div>
 
-            <h3>
-                Адрес
-            </h3>
+            <h3>Адрес</h3>
 
             <p>
                 Профсоюзная ул., 109,
@@ -1579,25 +1506,23 @@ footer strong {
 
         </div>
 
+
         <div class="contact-card">
 
             <div class="contact-icon">
                 📞
             </div>
 
-            <h3>
-                Телефон
-            </h3>
+            <h3>Телефон</h3>
 
             <p>
-
                 <a href="tel:+79933617829">
                     +7 993 361 7829
                 </a>
-
             </p>
 
         </div>
+
 
         <div class="contact-card">
 
@@ -1605,19 +1530,15 @@ footer strong {
                 💬
             </div>
 
-            <h3>
-                Telegram
-            </h3>
+            <h3>Telegram</h3>
 
             <p>
-
                 <a
                     href="https://t.me/DV_STORE_ORDER"
                     target="_blank"
                 >
                     @DV_STORE_ORDER
                 </a>
-
             </p>
 
         </div>
@@ -1629,9 +1550,7 @@ footer strong {
 
 <footer>
 
-    <strong>
-        D&V STORE
-    </strong>
+    <strong>D&V STORE</strong>
 
     <br>
 
@@ -1643,6 +1562,8 @@ footer strong {
 
 </footer>
 
+
+<!-- ORDER MODAL -->
 
 <div
     id="modal"
@@ -1686,6 +1607,8 @@ footer strong {
 </div>
 
 
+<!-- CREDIT MODAL -->
+
 <div
     id="creditModal"
     class="modal"
@@ -1728,9 +1651,9 @@ footer strong {
 
 <script>
 
-/* =========================
-   ПЕРЕМЕННЫЕ
-========================= */
+/* =========================================================
+   ОСНОВНЫЕ ПЕРЕМЕННЫЕ
+========================================================= */
 
 let allProducts = [];
 
@@ -1759,9 +1682,9 @@ const modalTelegram =
     document.getElementById("modalTelegram");
 
 
-/* =========================
-   TRADE-IN ЭЛЕМЕНТЫ
-========================= */
+/* =========================================================
+   TRADE-IN
+========================================================= */
 
 const tradeModel =
     document.getElementById("tradeModel");
@@ -1794,486 +1717,441 @@ const tradeTelegram =
     document.getElementById("tradeTelegram");
 
 
-/* =========================
-   ЦЕНЫ TRADE-IN
-   ПРИМЕРНО НА 7 000 ₽ НИЖЕ
-   ИСХОДНОГО ПРАЙСА
-========================= */
+/* =========================================================
+   ОСНОВНОЙ ПРАЙС TRADE-IN
+
+   Эти значения — твой исходный ориентир.
+
+   Если память есть в прайсе — используем её напрямую.
+
+   Если памяти нет — ниже JS автоматически
+   рассчитывает её от ближайшего известного объёма.
+========================================================= */
 
 const tradePrices = {
 
-    iphone17promax: {
-        name: "iPhone 17 Pro Max",
-        memories: {
-
-            "256": {
-                good: [85000, 101000],
-                low: [81000, 87000]
-            },
-
-            "512": {
-                good: [97000, 111000],
-                low: [96000, 101000]
-            },
-
-            "1024": {
-                good: [115000, 123000],
-                low: [108000, 115000]
-            },
-
-            "2048": {
-                good: [135000, 143000],
-                low: [128000, 135000]
-            }
-
+    iphone17promax:{
+        name:"iPhone 17 Pro Max",
+        memories:{
+            "256":{good:[85000,101000],low:[81000,87000]},
+            "512":{good:[97000,111000],low:[96000,101000]},
+            "1024":{good:[115000,123000],low:[108000,115000]},
+            "2048":{good:[135000,143000],low:[128000,135000]}
         }
     },
 
-
-    iphone17pro: {
-        name: "iPhone 17 Pro",
-        memories: {
-
-            "256": {
-                good: [80000, 92000],
-                low: [74000, 83000]
-            },
-
-            "512": {
-                good: [98000, 100000],
-                low: [87000, 90000]
-            }
-
+    iphone17pro:{
+        name:"iPhone 17 Pro",
+        memories:{
+            "256":{good:[80000,92000],low:[74000,83000]},
+            "512":{good:[98000,100000],low:[87000,90000]}
         }
     },
 
-
-    iphone17: {
-        name: "iPhone 17",
-        memories: {
-
-            "256": {
-                good: [58000, 62000],
-                low: [58000, 58000]
-            }
-
+    iphone17:{
+        name:"iPhone 17",
+        memories:{
+            "256":{good:[58000,62000],low:[58000,58000]}
         }
     },
 
-
-    iphone16promax: {
-        name: "iPhone 16 Pro Max",
-        memories: {
-
-            "256": {
-                good: [68000, 77000],
-                low: [63000, 71000]
-            },
-
-            "512": {
-                good: [67000, 76000],
-                low: [67000, 71000]
-            },
-
-            "1024": {
-                good: [75000, 80000],
-                low: [75000, 75000]
-            }
-
+    iphone16promax:{
+        name:"iPhone 16 Pro Max",
+        memories:{
+            "256":{good:[68000,77000],low:[63000,71000]},
+            "512":{good:[67000,76000],low:[67000,71000]},
+            "1024":{good:[75000,80000],low:[75000,75000]}
         }
     },
 
-
-    iphone16pro: {
-        name: "iPhone 16 Pro",
-        memories: {
-
-            "128": {
-                good: [52000, 63000],
-                low: [52000, 55000]
-            },
-
-            "256": {
-                good: [57000, 62000],
-                low: [57000, 62000]
-            },
-
-            "512": {
-                good: [67000, 67000],
-                low: [67000, 67000]
-            }
-
+    iphone16pro:{
+        name:"iPhone 16 Pro",
+        memories:{
+            "128":{good:[52000,63000],low:[52000,55000]},
+            "256":{good:[57000,62000],low:[57000,62000]},
+            "512":{good:[67000,67000],low:[67000,67000]}
         }
     },
 
-
-    iphone16plus: {
-        name: "iPhone 16 Plus",
-        memories: {
-
-            "128": {
-                good: [43000, 53000],
-                low: [43000, 43000]
-            }
-
+    iphone16plus:{
+        name:"iPhone 16 Plus",
+        memories:{
+            "128":{good:[43000,53000],low:[43000,43000]}
         }
     },
 
-
-    iphone16: {
-        name: "iPhone 16",
-        memories: {
-
-            "128": {
-                good: [42000, 50000],
-                low: [39000, 39000]
-            },
-
-            "256": {
-                good: [49000, 53000],
-                low: [49000, 49000]
-            }
-
+    iphone16:{
+        name:"iPhone 16",
+        memories:{
+            "128":{good:[42000,50000],low:[39000,39000]},
+            "256":{good:[49000,53000],low:[49000,49000]}
         }
     },
 
-
-    iphone15promax: {
-        name: "iPhone 15 Pro Max",
-        memories: {
-
-            "256": {
-                good: [51000, 51000],
-                low: [45000, 51000]
-            },
-
-            "512": {
-                good: [57000, 57000],
-                low: [57000, 57000]
-            },
-
-            "1024": {
-                good: [52000, 57000],
-                low: [52000, 55000]
-            }
-
+    iphone15promax:{
+        name:"iPhone 15 Pro Max",
+        memories:{
+            "256":{good:[51000,51000],low:[45000,51000]},
+            "512":{good:[57000,57000],low:[57000,57000]},
+            "1024":{good:[52000,57000],low:[52000,55000]}
         }
     },
 
-
-    iphone15pro: {
-        name: "iPhone 15 Pro",
-        memories: {
-
-            "128": {
-                good: [44000, 47000],
-                low: [40000, 44000]
-            },
-
-            "256": {
-                good: [49000, 49000],
-                low: [41000, 49000]
-            },
-
-            "512": {
-                good: [52000, 54000],
-                low: [50000, 54000]
-            }
-
+    iphone15pro:{
+        name:"iPhone 15 Pro",
+        memories:{
+            "128":{good:[44000,47000],low:[40000,44000]},
+            "256":{good:[49000,49000],low:[41000,49000]},
+            "512":{good:[52000,54000],low:[50000,54000]}
         }
     },
 
-
-    iphone15plus: {
-        name: "iPhone 15 Plus",
-        memories: {
-
-            "128": {
-                good: [38000, 38000],
-                low: [38000, 38000]
-            }
-
+    iphone15plus:{
+        name:"iPhone 15 Plus",
+        memories:{
+            "128":{good:[38000,38000],low:[38000,38000]}
         }
     },
 
-
-    iphone15: {
-        name: "iPhone 15",
-        memories: {
-
-            "128": {
-                good: [34000, 34000],
-                low: [29000, 34000]
-            },
-
-            "256": {
-                good: [42000, 42000],
-                low: [36000, 42000]
-            }
-
+    iphone15:{
+        name:"iPhone 15",
+        memories:{
+            "128":{good:[34000,34000],low:[29000,34000]},
+            "256":{good:[42000,42000],low:[36000,42000]}
         }
     },
 
-
-    iphone14promax: {
-        name: "iPhone 14 Pro Max",
-        memories: {
-
-            "256": {
-                good: [38000, 38000],
-                low: [38000, 38000]
-            },
-
-            "512": {
-                good: [39000, 39000],
-                low: [39000, 39000]
-            }
-
+    iphone14promax:{
+        name:"iPhone 14 Pro Max",
+        memories:{
+            "256":{good:[38000,38000],low:[38000,38000]},
+            "512":{good:[39000,39000],low:[39000,39000]}
         }
     },
 
-
-    iphone14pro: {
-        name: "iPhone 14 Pro",
-        memories: {
-
-            "256": {
-                good: [31000, 32000],
-                low: [31000, 32000]
-            }
-
+    iphone14pro:{
+        name:"iPhone 14 Pro",
+        memories:{
+            "256":{good:[31000,32000],low:[31000,32000]}
         }
     },
 
-
-    iphone14plus: {
-        name: "iPhone 14 Plus",
-        memories: {
-
-            "128": {
-                good: [22000, 22000],
-                low: [22000, 22000]
-            },
-
-            "256": {
-                good: [24000, 24000],
-                low: [24000, 24000]
-            },
-
-            "512": {
-                good: [33000, 33000],
-                low: [33000, 33000]
-            }
-
+    iphone14plus:{
+        name:"iPhone 14 Plus",
+        memories:{
+            "128":{good:[22000,22000],low:[22000,22000]},
+            "256":{good:[24000,24000],low:[24000,24000]},
+            "512":{good:[33000,33000],low:[33000,33000]}
         }
     },
 
-
-    iphone14: {
-        name: "iPhone 14",
-        memories: {
-
-            "128": {
-                good: [21000, 27000],
-                low: [19000, 21000]
-            },
-
-            "512": {
-                good: [31000, 32000],
-                low: [31000, 31000]
-            }
-
+    iphone14:{
+        name:"iPhone 14",
+        memories:{
+            "128":{good:[21000,27000],low:[19000,21000]},
+            "512":{good:[31000,32000],low:[31000,31000]}
         }
     },
 
-
-    iphone13promax: {
-        name: "iPhone 13 Pro Max",
-        memories: {
-
-            "128": {
-                good: [26000, 26000],
-                low: [26000, 26000]
-            },
-
-            "512": {
-                good: [31000, 38000],
-                low: [31000, 31000]
-            },
-
-            "1024": {
-                good: [37000, 37000],
-                low: [37000, 37000]
-            }
-
+    iphone13promax:{
+        name:"iPhone 13 Pro Max",
+        memories:{
+            "128":{good:[26000,26000],low:[26000,26000]},
+            "512":{good:[31000,38000],low:[31000,31000]},
+            "1024":{good:[37000,37000],low:[37000,37000]}
         }
     },
 
-
-    iphone13pro: {
-        name: "iPhone 13 Pro",
-        memories: {
-
-            "128": {
-                good: [21000, 22000],
-                low: [21000, 22000]
-            },
-
-            "256": {
-                good: [27000, 28000],
-                low: [27000, 27000]
-            },
-
-            "1024": {
-                good: [39000, 39000],
-                low: [39000, 39000]
-            }
-
+    iphone13pro:{
+        name:"iPhone 13 Pro",
+        memories:{
+            "128":{good:[21000,22000],low:[21000,22000]},
+            "256":{good:[27000,28000],low:[27000,27000]},
+            "1024":{good:[39000,39000],low:[39000,39000]}
         }
     },
 
-
-    iphone13: {
-        name: "iPhone 13",
-        memories: {
-
-            "128": {
-                good: [18000, 18000],
-                low: [14000, 18000]
-            },
-
-            "256": {
-                good: [23000, 23000],
-                low: [16000, 23000]
-            },
-
-            "512": {
-                good: [24000, 28000],
-                low: [24000, 24000]
-            }
-
+    iphone13:{
+        name:"iPhone 13",
+        memories:{
+            "128":{good:[18000,18000],low:[14000,18000]},
+            "256":{good:[23000,23000],low:[16000,23000]},
+            "512":{good:[24000,28000],low:[24000,24000]}
         }
     },
 
-
-    iphone13mini: {
-        name: "iPhone 13 mini",
-        memories: {
-
-            "128": {
-                good: [22000, 22000],
-                low: [22000, 22000]
-            }
-
+    iphone13mini:{
+        name:"iPhone 13 mini",
+        memories:{
+            "128":{good:[22000,22000],low:[22000,22000]}
         }
     },
 
-
-    iphone12promax: {
-        name: "iPhone 12 Pro Max",
-        memories: {
-
-            "256": {
-                good: [18000, 18000],
-                low: [18000, 18000]
-            }
-
+    iphone12promax:{
+        name:"iPhone 12 Pro Max",
+        memories:{
+            "256":{good:[18000,18000],low:[18000,18000]}
         }
     },
 
-
-    iphone12pro: {
-        name: "iPhone 12 Pro",
-        memories: {
-
-            "256": {
-                good: [20000, 21000],
-                low: [15000, 21000]
-            }
-
+    iphone12pro:{
+        name:"iPhone 12 Pro",
+        memories:{
+            "256":{good:[20000,21000],low:[15000,21000]}
         }
     },
 
-
-    iphone12: {
-        name: "iPhone 12",
-        memories: {
-
-            "128": {
-                good: [19000, 19000],
-                low: [13000, 18000]
-            },
-
-            "256": {
-                good: [20000, 20000],
-                low: [20000, 20000]
-            }
-
+    iphone12:{
+        name:"iPhone 12",
+        memories:{
+            "128":{good:[19000,19000],low:[13000,18000]},
+            "256":{good:[20000,20000],low:[20000,20000]}
         }
     },
 
-
-    iphone12mini: {
-        name: "iPhone 12 mini",
-        memories: {
-
-            "128": {
-                good: [13000, 13000],
-                low: [13000, 13000]
-            }
-
+    iphone12mini:{
+        name:"iPhone 12 mini",
+        memories:{
+            "128":{good:[13000,13000],low:[13000,13000]}
         }
     },
 
-
-    iphone11promax: {
-        name: "iPhone 11 Pro Max",
-        memories: {
-
-            "256": {
-                good: [18000, 18000],
-                low: [18000, 18000]
-            }
-
+    iphone11promax:{
+        name:"iPhone 11 Pro Max",
+        memories:{
+            "256":{good:[18000,18000],low:[18000,18000]}
         }
     },
 
-
-    iphone11pro: {
-        name: "iPhone 11 Pro",
-        memories: {
-
-            "256": {
-                good: [15000, 15000],
-                low: [15000, 15000]
-            }
-
+    iphone11pro:{
+        name:"iPhone 11 Pro",
+        memories:{
+            "256":{good:[15000,15000],low:[15000,15000]}
         }
     },
 
-
-    iphone11: {
-        name: "iPhone 11",
-        memories: {
-
-            "128": {
-                good: [8000, 8000],
-                low: [8000, 8000]
-            }
-
+    iphone11:{
+        name:"iPhone 11",
+        memories:{
+            "128":{good:[8000,8000],low:[8000,8000]}
         }
     }
 
 };
 
 
-/* =========================
-   ПАМЯТЬ
-   ВСЕГДА ПОКАЗЫВАЕМ
-   128 / 256 / 512 / 1 ТБ / 2 ТБ
-========================= */
+/* =========================================================
+   ВСЕ ОБЪЁМЫ
 
-function updateMemoryOptions() {
+   Пользователь просил, чтобы у каждой модели были
+   все варианты:
+   128 / 256 / 512 / 1 TB / 2 TB
+========================================================= */
+
+const ALL_MEMORIES = [
+    "128",
+    "256",
+    "512",
+    "1024",
+    "2048"
+];
+
+
+/* =========================================================
+   КОЭФФИЦИЕНТЫ ДЛЯ РАСЧЁТА НЕДОСТАЮЩЕЙ ПАМЯТИ
+
+   База = 256 GB.
+
+   Это НЕ меняет реальные цены из прайса.
+   Формула применяется только если конкретной
+   памяти нет в твоём прайсе.
+========================================================= */
+
+const MEMORY_ADJUSTMENTS = {
+
+    "128": -6000,
+
+    "256": 0,
+
+    "512": 7000,
+
+    "1024": 18000,
+
+    "2048": 30000
+
+};
+
+
+/* =========================================================
+   ПОЛУЧЕНИЕ ЦЕНЫ ДЛЯ ЛЮБОЙ ПАМЯТИ
+========================================================= */
+
+function getMemoryData(modelData, targetMemory){
+
+    /*
+        Если цена уже есть в нашем прайсе —
+        возвращаем её без изменений.
+    */
+
+    if(
+        modelData.memories[targetMemory]
+    ){
+
+        return {
+            data:modelData.memories[targetMemory],
+            estimated:false
+        };
+
+    }
+
+
+    /*
+        Ищем ближайший известный объём.
+    */
+
+    const knownMemories =
+        Object.keys(modelData.memories)
+        .map(Number)
+        .sort((a,b)=>a-b);
+
+    const target =
+        Number(targetMemory);
+
+    let nearest =
+        knownMemories[0];
+
+    let nearestDistance =
+        Math.abs(
+            target -
+            nearest
+        );
+
+
+    knownMemories.forEach(memory=>{
+
+        const distance =
+            Math.abs(
+                target -
+                memory
+            );
+
+        if(
+            distance <
+            nearestDistance
+        ){
+
+            nearest =
+                memory;
+
+            nearestDistance =
+                distance;
+
+        }
+
+    });
+
+
+    const nearestKey =
+        String(nearest);
+
+
+    const nearestData =
+        modelData.memories[
+            nearestKey
+        ];
+
+
+    /*
+        Насколько надо изменить цену
+        от ближайшего известного объёма.
+    */
+
+    const targetAdjustment =
+        MEMORY_ADJUSTMENTS[
+            targetMemory
+        ] || 0;
+
+    const nearestAdjustment =
+        MEMORY_ADJUSTMENTS[
+            nearestKey
+        ] || 0;
+
+    const difference =
+        targetAdjustment -
+        nearestAdjustment;
+
+
+    const good = [
+
+        Math.max(
+            0,
+            nearestData.good[0] +
+            difference
+        ),
+
+        Math.max(
+            0,
+            nearestData.good[1] +
+            difference
+        )
+
+    ];
+
+
+    const low = [
+
+        Math.max(
+            0,
+            nearestData.low[0] +
+            difference
+        ),
+
+        Math.max(
+            0,
+            nearestData.low[1] +
+            difference
+        )
+
+    ];
+
+
+    return {
+
+        data:{
+            good:good,
+            low:low
+        },
+
+        estimated:true
+
+    };
+
+}
+
+
+/* =========================================================
+   ФОРМАТ ПАМЯТИ
+========================================================= */
+
+function formatMemory(memory){
+
+    if(memory==="1024"){
+        return "1 ТБ";
+    }
+
+    if(memory==="2048"){
+        return "2 ТБ";
+    }
+
+    return memory+" ГБ";
+}
+
+
+/* =========================================================
+   ПОКАЗЫВАЕМ ВСЕ 5 ВАРИАНТОВ ПАМЯТИ
+========================================================= */
+
+function updateMemoryOptions(){
 
     const model =
         tradeModel.value;
@@ -2284,54 +2162,47 @@ function updateMemoryOptions() {
         </option>
     `;
 
-    if (!model) {
+    if(
+        !model ||
+        !tradePrices[model]
+    ){
         return;
     }
 
-    const allMemories = [
-        "128",
-        "256",
-        "512",
-        "1024",
-        "2048"
-    ];
 
-    allMemories.forEach(memory => {
+    ALL_MEMORIES.forEach(memory=>{
 
         const option =
-            document.createElement("option");
+            document.createElement(
+                "option"
+            );
 
-        option.value = memory;
+        option.value =
+            memory;
+
+        const modelData =
+            tradePrices[model];
+
+        const isReal =
+            Boolean(
+                modelData.memories[memory]
+            );
 
         option.textContent =
-            memory === "1024"
-                ? "1 ТБ"
-                : memory === "2048"
-                    ? "2 ТБ"
-                    : `${memory} ГБ`;
+            isReal
+                ? formatMemory(memory)
+                : formatMemory(memory) +
+                  " • расчёт";
 
-        /*
-         * Если у модели нет такой памяти,
-         * помечаем её в списке.
-         */
 
-        const hasPrice =
-            tradePrices[model] &&
-            tradePrices[model].memories &&
-            tradePrices[model].memories[memory];
-
-        if (!hasPrice) {
-
-            option.textContent +=
-                " — цена не указана";
-
-            option.dataset.unavailable = "true";
-        }
-
-        tradeMemory.appendChild(option);
+        tradeMemory.appendChild(
+            option
+        );
 
     });
+
 }
+
 
 tradeModel.addEventListener(
     "change",
@@ -2339,294 +2210,9 @@ tradeModel.addEventListener(
 );
 
 
-/* =========================
-   ЗАГРУЗКА КАТАЛОГА
-========================= */
-
-async function loadProducts() {
-
-    try {
-
-        const response =
-            await fetch(
-                "products.json?time=" +
-                Date.now()
-            );
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Ошибка загрузки products.json"
-            );
-        }
-
-        allProducts =
-            await response.json();
-
-        renderProducts();
-
-    } catch (error) {
-
-        console.error(error);
-
-        productsContainer.innerHTML = `
-
-            <div class="empty">
-
-                Не удалось загрузить каталог.
-
-                <br>
-
-                Попробуйте обновить страницу.
-
-            </div>
-
-        `;
-    }
-}
-
-
-/* =========================
-   ОТОБРАЖЕНИЕ ТОВАРОВ
-========================= */
-
-function renderProducts() {
-
-    const search =
-        searchInput.value
-            .toLowerCase()
-            .trim();
-
-    const brand =
-        brandFilter.value;
-
-    const filtered =
-        allProducts.filter(product => {
-
-            const name =
-                String(
-                    product.name || ""
-                ).toLowerCase();
-
-            const productBrand =
-                String(
-                    product.brand || ""
-                );
-
-            const matchesSearch =
-                !search ||
-                name.includes(search);
-
-            const matchesBrand =
-                brand === "all" ||
-                productBrand === brand;
-
-            return (
-                matchesSearch &&
-                matchesBrand
-            );
-
-        });
-
-    if (!filtered.length) {
-
-        productsContainer.innerHTML = `
-
-            <div class="empty">
-                Ничего не найдено.
-            </div>
-
-        `;
-
-        return;
-    }
-
-    productsContainer.innerHTML =
-        filtered.map(product => {
-
-            const price =
-                Number(
-                    product.price || 0
-                ).toLocaleString(
-                    "ru-RU"
-                );
-
-            const oldPrice =
-                Number(
-                    product.old_price || 0
-                ).toLocaleString(
-                    "ru-RU"
-                );
-
-            const stock =
-                String(
-                    product.stock || ""
-                );
-
-            const isOut =
-                stock
-                    .toLowerCase()
-                    .includes("нет");
-
-            return `
-
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img
-                            src="${escapeHtml(
-                                product.image || ""
-                            )}"
-                            alt="${escapeHtml(
-                                product.name ||
-                                "Товар"
-                            )}"
-                            loading="lazy"
-                            onerror="
-                                this.style.display='none';
-                            "
-                        >
-
-                    </div>
-
-                    <div class="product-info">
-
-                        <div class="product-brand">
-
-                            ${escapeHtml(
-                                product.brand || ""
-                            )}
-
-                        </div>
-
-                        <div class="product-name">
-
-                            ${escapeHtml(
-                                product.name || ""
-                            )}
-
-                        </div>
-
-                        <div class="product-description">
-
-                            ${escapeHtml(
-                                product.description || ""
-                            )}
-
-                        </div>
-
-                        <div class="product-price">
-
-                            ${price} ₽
-
-                        </div>
-
-                        ${
-                            product.old_price &&
-                            Number(
-                                product.old_price
-                            ) >
-                            Number(
-                                product.price
-                            )
-
-                            ?
-
-                            `
-                            <div
-                                class="product-old-price"
-                            >
-                                ${oldPrice} ₽
-                            </div>
-                            `
-
-                            :
-
-                            ""
-                        }
-
-                        <div
-                            class="stock ${
-                                isOut
-                                    ? "out"
-                                    : ""
-                            }"
-                        >
-
-                            ${escapeHtml(
-                                stock
-                            )}
-
-                        </div>
-
-                        <button
-                            class="buy-btn"
-                            onclick='openProductModal(${JSON.stringify(
-                                product
-                            )})'
-                        >
-                            Заказать
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
-}
-
-
-/* =========================
-   ОКНО ЗАКАЗА
-========================= */
-
-function openProductModal(product) {
-
-    modalProduct.textContent =
-        product.name ||
-        "Товар";
-
-    modalPrice.textContent =
-        Number(
-            product.price || 0
-        ).toLocaleString(
-            "ru-RU"
-        ) +
-        " ₽";
-
-    const message =
-        "Здравствуйте! " +
-        "Хочу заказать: " +
-        (
-            product.name ||
-            "товар"
-        ) +
-        " за " +
-        Number(
-            product.price || 0
-        ).toLocaleString(
-            "ru-RU"
-        ) +
-        " ₽";
-
-    modalTelegram.href =
-        "https://t.me/DV_STORE_ORDER?text=" +
-        encodeURIComponent(
-            message
-        );
-
-    modal.classList.add(
-        "active"
-    );
-}
-
-
-/* =========================
+/* =========================================================
    TRADE-IN РАСЧЁТ
-========================= */
+========================================================= */
 
 tradeCalculate.addEventListener(
     "click",
@@ -2634,7 +2220,7 @@ tradeCalculate.addEventListener(
 );
 
 
-function calculateTradeIn() {
+function calculateTradeIn(){
 
     const model =
         tradeModel.value;
@@ -2652,68 +2238,89 @@ function calculateTradeIn() {
         tradeBox.value;
 
 
-    if (
+    if(
         !model ||
         !memory ||
         !battery ||
         !sim ||
         !box
-    ) {
+    ){
 
         alert(
             "Пожалуйста, выберите модель, память, состояние АКБ, SIM/eSIM и наличие коробки."
         );
 
         return;
+
     }
 
 
-    const data =
+    const modelData =
         tradePrices[model];
 
 
-    if (
-        !data ||
-        !data.memories[memory]
-    ) {
+    if(!modelData){
 
         alert(
-            "Для выбранной модели такой объём памяти не указан в нашем прайсе. Выберите другой объём памяти."
+            "Модель не найдена."
         );
 
         return;
+
     }
 
 
+    /*
+        Получаем реальную или
+        рассчитанную цену памяти.
+    */
+
+    const memoryResult =
+        getMemoryData(
+            modelData,
+            memory
+        );
+
+
     const memoryData =
-        data.memories[memory];
+        memoryResult.data;
 
 
     /*
-        БАЗОВАЯ ЦЕНА
-        SIM + eSIM:
-        примерно -7 000 ₽
-        от исходного прайса.
+        АКБ
     */
 
     let priceRange =
         battery === "85plus"
+
             ? [...memoryData.good]
+
             : [...memoryData.low];
 
 
     /*
-        ТОЛЬКО eSIM:
-        дополнительно минус 3–5 тыс. ₽.
+        SIM + eSIM
 
-        В итоге относительно исходного
-        прайса получается примерно
-        -10 000…12 000 ₽.
+        Наши цены уже рассчитаны
+        примерно на 7 000 ₽ ниже
+        исходного прайса.
     */
 
-    if (
+
+    /*
+        Только eSIM
+
+        Дополнительно:
+        -5 000 ₽ с минимальной цены
+        -3 000 ₽ с максимальной цены.
+
+        В итоге получается примерно
+        на 10–12 тыс. ниже исходной цены.
+    */
+
+    if(
         sim === "esim_only"
-    ) {
+    ){
 
         priceRange = [
 
@@ -2732,70 +2339,136 @@ function calculateTradeIn() {
     }
 
 
+    /*
+        Если вдруг после расчёта
+        минимум оказался выше максимума,
+        меняем местами.
+    */
+
+    if(
+        priceRange[0] >
+        priceRange[1]
+    ){
+
+        priceRange.reverse();
+
+    }
+
+
     const formattedMin =
-        priceRange[0].toLocaleString(
+        priceRange[0]
+        .toLocaleString(
             "ru-RU"
         );
 
     const formattedMax =
-        priceRange[1].toLocaleString(
+        priceRange[1]
+        .toLocaleString(
             "ru-RU"
         );
 
 
     const batteryText =
         battery === "85plus"
+
             ? "АКБ 85%+"
+
             : "АКБ ниже 85%";
 
 
     const simText =
         sim === "sim_esim"
+
             ? "SIM + eSIM"
+
             : "только eSIM";
 
 
     const boxText =
         box === "yes"
+
             ? "коробка есть"
+
             : "без коробки";
 
 
-    if (
+    /*
+        Показываем цену.
+    */
+
+    if(
         priceRange[0] ===
         priceRange[1]
-    ) {
+    ){
 
         tradePrice.textContent =
-            `${formattedMin} ₽`;
+            formattedMin +
+            " ₽";
 
-    } else {
+    }else{
 
         tradePrice.textContent =
-            `${formattedMin}–${formattedMax} ₽`;
+            formattedMin +
+            "–" +
+            formattedMax +
+            " ₽";
 
     }
 
 
-    tradeDetails.textContent =
-        `${data.name} • ${formatMemory(memory)} • ${batteryText} • ${simText} • ${boxText}`;
+    /*
+        Дополнительная пометка,
+        если цена была рассчитана нами.
+    */
 
+    const estimatedText =
+        memoryResult.estimated
+
+            ? " • память — расчётная цена"
+
+            : "";
+
+
+    tradeDetails.textContent =
+        modelData.name +
+        " • " +
+        formatMemory(memory) +
+        " • " +
+        batteryText +
+        " • " +
+        simText +
+        " • " +
+        boxText +
+        estimatedText;
+
+
+    /*
+        Цена для Telegram.
+    */
 
     const telegramPrice =
         priceRange[0] ===
         priceRange[1]
 
-            ? `${formattedMin} ₽`
+            ? formattedMin +
+              " ₽"
 
-            : `${formattedMin}–${formattedMax} ₽`;
+            : formattedMin +
+              "–" +
+              formattedMax +
+              " ₽";
 
+
+    /*
+        Сообщение Telegram.
+    */
 
     const telegramMessage =
 
         "Здравствуйте! Хочу оценить телефон.\n\n" +
 
         "Модель: " +
-        data.name +
+        modelData.name +
         "\n" +
 
         "Память: " +
@@ -2835,53 +2508,357 @@ function calculateTradeIn() {
 
 
     tradeResult.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
+        behavior:"smooth",
+        block:"nearest"
     });
+
 }
 
 
-/* =========================
-   ФОРМАТ ПАМЯТИ
-========================= */
+/* =========================================================
+   ЗАГРУЗКА КАТАЛОГА
+========================================================= */
 
-function formatMemory(memory) {
+async function loadProducts(){
 
-    if (memory === "1024") {
-        return "1 ТБ";
+    try{
+
+        const response =
+            await fetch(
+                "products.json?time=" +
+                Date.now()
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Ошибка загрузки products.json"
+            );
+
+        }
+
+
+        allProducts =
+            await response.json();
+
+
+        renderProducts();
+
+    }catch(error){
+
+        console.error(error);
+
+        productsContainer.innerHTML = `
+
+            <div class="empty">
+
+                Не удалось загрузить каталог.
+
+                <br><br>
+
+                Попробуйте обновить страницу.
+
+            </div>
+
+        `;
+
     }
 
-    if (memory === "2048") {
-        return "2 ТБ";
-    }
-
-    return memory + " ГБ";
 }
 
 
-/* =========================
+/* =========================================================
+   ОТОБРАЖЕНИЕ ТОВАРОВ
+========================================================= */
+
+function renderProducts(){
+
+    const search =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    const brand =
+        brandFilter.value;
+
+
+    const filtered =
+        allProducts.filter(
+            product=>{
+
+                const name =
+                    String(
+                        product.name ||
+                        ""
+                    )
+                    .toLowerCase();
+
+
+                const productBrand =
+                    String(
+                        product.brand ||
+                        ""
+                    );
+
+
+                const matchesSearch =
+                    !search ||
+                    name.includes(
+                        search
+                    );
+
+
+                const matchesBrand =
+                    brand === "all" ||
+                    productBrand === brand;
+
+
+                return (
+                    matchesSearch &&
+                    matchesBrand
+                );
+
+            }
+        );
+
+
+    if(!filtered.length){
+
+        productsContainer.innerHTML = `
+
+            <div class="empty">
+                Ничего не найдено.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    productsContainer.innerHTML =
+        filtered.map(
+            product=>{
+
+                const price =
+                    Number(
+                        product.price ||
+                        0
+                    )
+                    .toLocaleString(
+                        "ru-RU"
+                    );
+
+
+                const oldPrice =
+                    Number(
+                        product.old_price ||
+                        0
+                    )
+                    .toLocaleString(
+                        "ru-RU"
+                    );
+
+
+                const stock =
+                    String(
+                        product.stock ||
+                        ""
+                    );
+
+
+                const isOut =
+                    stock
+                    .toLowerCase()
+                    .includes(
+                        "нет"
+                    );
+
+
+                return `
+
+                    <div class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="${escapeHtml(
+                                    product.image ||
+                                    ""
+                                )}"
+                                alt="${escapeHtml(
+                                    product.name ||
+                                    "Товар"
+                                )}"
+                                loading="lazy"
+                                onerror="
+                                    this.style.display='none';
+                                "
+                            >
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="product-brand">
+                                ${escapeHtml(
+                                    product.brand ||
+                                    ""
+                                )}
+                            </div>
+
+                            <div class="product-name">
+                                ${escapeHtml(
+                                    product.name ||
+                                    ""
+                                )}
+                            </div>
+
+                            <div class="product-description">
+                                ${escapeHtml(
+                                    product.description ||
+                                    ""
+                                )}
+                            </div>
+
+                            <div class="product-price">
+                                ${price} ₽
+                            </div>
+
+                            ${
+                                product.old_price &&
+                                Number(
+                                    product.old_price
+                                ) >
+                                Number(
+                                    product.price
+                                )
+
+                                ?
+
+                                `
+                                <div class="product-old-price">
+                                    ${oldPrice} ₽
+                                </div>
+                                `
+
+                                :
+
+                                ""
+                            }
+
+                            <div
+                                class="stock ${
+                                    isOut
+                                        ? "out"
+                                        : ""
+                                }"
+                            >
+                                ${escapeHtml(
+                                    stock
+                                )}
+                            </div>
+
+                            <button
+                                class="buy-btn"
+                                onclick='openProductModal(${JSON.stringify(
+                                    product
+                                )})'
+                            >
+                                Заказать
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
+   МОДАЛКА ТОВАРА
+========================================================= */
+
+function openProductModal(product){
+
+    modalProduct.textContent =
+        product.name ||
+        "Товар";
+
+
+    modalPrice.textContent =
+        Number(
+            product.price ||
+            0
+        )
+        .toLocaleString(
+            "ru-RU"
+        ) +
+        " ₽";
+
+
+    const message =
+        "Здравствуйте! " +
+        "Хочу заказать: " +
+        (
+            product.name ||
+            "товар"
+        ) +
+        " за " +
+        Number(
+            product.price ||
+            0
+        )
+        .toLocaleString(
+            "ru-RU"
+        ) +
+        " ₽";
+
+
+    modalTelegram.href =
+        "https://t.me/DV_STORE_ORDER?text=" +
+        encodeURIComponent(
+            message
+        );
+
+
+    modal.classList.add(
+        "active"
+    );
+
+}
+
+
+/* =========================================================
    ЗАКРЫТИЕ МОДАЛКИ
-========================= */
+========================================================= */
 
 modalClose.addEventListener(
     "click",
-    () => {
-
+    ()=>{
         modal.classList.remove(
             "active"
         );
-
     }
 );
 
 
 modal.addEventListener(
     "click",
-    event => {
+    event=>{
 
-        if (
-            event.target === modal
-        ) {
+        if(
+            event.target ===
+            modal
+        ){
 
             modal.classList.remove(
                 "active"
@@ -2893,9 +2870,9 @@ modal.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    ПОИСК
-========================= */
+========================================================= */
 
 searchInput.addEventListener(
     "input",
@@ -2903,9 +2880,9 @@ searchInput.addEventListener(
 );
 
 
-/* =========================
-   ФИЛЬТР
-========================= */
+/* =========================================================
+   ФИЛЬТР БРЕНДА
+========================================================= */
 
 brandFilter.addEventListener(
     "change",
@@ -2913,11 +2890,11 @@ brandFilter.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    ЗАЩИТА HTML
-========================= */
+========================================================= */
 
-function escapeHtml(value) {
+function escapeHtml(value){
 
     return String(value)
 
@@ -2945,12 +2922,13 @@ function escapeHtml(value) {
             /'/g,
             "&#039;"
         );
+
 }
 
 
-/* =========================
-   ОКНО РАССРОЧКИ
-========================= */
+/* =========================================================
+   РАССРОЧКА
+========================================================= */
 
 const creditModal =
     document.getElementById(
@@ -2965,10 +2943,10 @@ const creditClose =
 
 window.addEventListener(
     "load",
-    () => {
+    ()=>{
 
         setTimeout(
-            () => {
+            ()=>{
 
                 creditModal.classList.add(
                     "active"
@@ -2984,7 +2962,7 @@ window.addEventListener(
 
 creditClose.addEventListener(
     "click",
-    () => {
+    ()=>{
 
         creditModal.classList.remove(
             "active"
@@ -2996,12 +2974,12 @@ creditClose.addEventListener(
 
 creditModal.addEventListener(
     "click",
-    event => {
+    event=>{
 
-        if (
+        if(
             event.target ===
             creditModal
-        ) {
+        ){
 
             creditModal.classList.remove(
                 "active"
@@ -3013,17 +2991,18 @@ creditModal.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    ESC
-========================= */
+========================================================= */
 
 document.addEventListener(
     "keydown",
-    event => {
+    event=>{
 
-        if (
-            event.key === "Escape"
-        ) {
+        if(
+            event.key ===
+            "Escape"
+        ){
 
             modal.classList.remove(
                 "active"
@@ -3039,9 +3018,9 @@ document.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    ЗАПУСК
-========================= */
+========================================================= */
 
 loadProducts();
 
