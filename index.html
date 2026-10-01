@@ -642,8 +642,6 @@ header{
     font-weight:800;
 }
 
-/* ABOUT TELEGRAM BUTTON */
-
 .about-contact{
     margin-top:28px;
 }
@@ -665,7 +663,9 @@ header{
     box-shadow:0 10px 30px rgba(212,175,55,.2);
 }
 
-/* ABOUT GALLERY */
+/* =========================================================
+   ABOUT GALLERY
+========================================================= */
 
 .about-gallery{
     max-width:1100px;
@@ -704,7 +704,9 @@ header{
     transform:scale(1.05);
 }
 
-/* ABOUT LIGHTBOX */
+/* =========================================================
+   ABOUT LIGHTBOX
+========================================================= */
 
 .about-lightbox{
     position:fixed;
@@ -801,32 +803,142 @@ header{
 
 .reviews-box{
     text-align:center;
-    background:#0c0c0c;
-    border:1px solid #202020;
-    border-radius:22px;
-    padding:45px 25px;
+    background:
+        linear-gradient(
+            145deg,
+            #101010,
+            #080808
+        );
+    border:1px solid rgba(212,175,55,.22);
+    border-radius:24px;
+    padding:40px 25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
 }
 
 .stars{
     color:#d4af37;
     font-size:32px;
     letter-spacing:5px;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
 .reviews-box p{
     color:#999;
-    max-width:600px;
+    max-width:650px;
     margin:0 auto 25px;
 }
 
+.review-photos{
+    max-width:1000px;
+    margin:30px auto 30px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.review-photo{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border-radius:16px;
+    background:#0b0b0b;
+    border:1px solid #252525;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.review-photo:hover{
+    transform:translateY(-4px);
+    border-color:rgba(212,175,55,.55);
+    box-shadow:0 12px 35px rgba(0,0,0,.45);
+}
+
+.review-photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .45s ease;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.review-photo:hover img{
+    transform:scale(1.04);
+}
+
+.review-caption{
+    margin-top:8px;
+    color:#777;
+    font-size:12px;
+}
+
 .review-btn{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     background:#d4af37;
     color:#050505;
     padding:13px 22px;
     border-radius:10px;
     font-weight:900;
+    transition:.25s;
+}
+
+.review-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(212,175,55,.2);
+}
+
+/* =========================================================
+   REVIEWS LIGHTBOX
+========================================================= */
+
+.review-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:6000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.97);
+    backdrop-filter:blur(12px);
+}
+
+.review-lightbox.active{
+    display:flex;
+}
+
+.review-lightbox img{
+    max-width:95vw;
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:14px;
+    box-shadow:0 25px 90px rgba(0,0,0,.8);
+}
+
+.review-lightbox-close{
+    position:absolute;
+    top:18px;
+    right:22px;
+    width:48px;
+    height:48px;
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:50%;
+    background:#d4af37;
+    color:#050505;
+    font-size:32px;
+    line-height:42px;
+    cursor:pointer;
+    z-index:2;
+    transition:.25s;
+}
+
+.review-lightbox-close:hover{
+    transform:scale(1.08);
 }
 
 /* =========================================================
@@ -981,6 +1093,10 @@ footer strong{
         grid-template-columns:repeat(3,1fr);
     }
 
+    .review-photos{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
 @media(max-width:800px){
@@ -1018,6 +1134,11 @@ footer strong{
     .about-photo-wide{
         grid-column:span 2;
         aspect-ratio:16/9;
+    }
+
+    .review-photos{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
     }
 
 }
@@ -1129,6 +1250,54 @@ footer strong{
 
     .tradein-price{
         font-size:27px;
+    }
+
+    /* REVIEWS MOBILE */
+
+    .reviews-box{
+        padding:30px 14px;
+        border-radius:20px;
+    }
+
+    .stars{
+        font-size:27px;
+        letter-spacing:3px;
+    }
+
+    .review-photos{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        margin-top:25px;
+    }
+
+    .review-photo{
+        border-radius:12px;
+        aspect-ratio:4/5;
+    }
+
+    .review-btn{
+        width:100%;
+        padding:13px 10px;
+        font-size:13px;
+    }
+
+    .review-lightbox{
+        padding:8px;
+    }
+
+    .review-lightbox img{
+        max-width:100%;
+        max-height:84vh;
+        border-radius:10px;
+    }
+
+    .review-lightbox-close{
+        top:10px;
+        right:10px;
+        width:43px;
+        height:43px;
+        font-size:28px;
+        line-height:38px;
     }
 
 }
@@ -1698,7 +1867,6 @@ footer strong{
 
     </div>
 
-
     <!-- =====================================================
          ФОТО D&V STORE
     ====================================================== -->
@@ -1935,6 +2103,14 @@ footer strong{
         Отзывы <span>клиентов</span>
     </h2>
 
+    <p class="section-subtitle">
+
+        Реальные отзывы клиентов D&V STORE.
+        Нажмите на фото, чтобы открыть отзыв
+        в полном размере.
+
+    </p>
+
     <div class="reviews-box">
 
         <div class="stars">
@@ -1943,11 +2119,70 @@ footer strong{
 
         <p>
 
-            Хотите посмотреть реальные отзывы клиентов?
-            Все отзывы доступны на нашей странице
-            D&V STORE в Яндекс Картах.
+            Спасибо нашим клиентам за доверие.
+            Здесь мы собрали фотографии отзывов,
+            а больше отзывов можно посмотреть
+            на странице D&V STORE в Яндекс Картах.
 
         </p>
+
+        <!-- ФОТО ОТЗЫВОВ -->
+
+        <div class="review-photos">
+
+            <div
+                class="review-photo"
+                data-review-image="images/IMG_7513.jpeg"
+            >
+
+                <img
+                    src="images/IMG_7513.jpeg"
+                    alt="Отзыв клиента D&V STORE"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div
+                class="review-photo"
+                data-review-image="images/IMG_7517.jpeg"
+            >
+
+                <img
+                    src="images/IMG_7517.jpeg"
+                    alt="Отзыв клиента D&V STORE"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div
+                class="review-photo"
+                data-review-image="images/IMG_7516.jpeg"
+            >
+
+                <img
+                    src="images/IMG_7516.jpeg"
+                    alt="Отзыв клиента D&V STORE"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div
+                class="review-photo"
+                data-review-image="images/IMG_7515.jpeg"
+            >
+
+                <img
+                    src="images/IMG_7515.jpeg"
+                    alt="Отзыв клиента D&V STORE"
+                    loading="lazy"
+                >
+
+            </div>
+
+        </div>
 
         <a
             href="https://yandex.ru/maps/org/dv_store/179122901606?si=mjgm0kypxfxr88nz7yr3d2u12w"
@@ -1955,12 +2190,37 @@ footer strong{
             rel="noopener"
             class="review-btn"
         >
-            Читать отзывы на Яндекс Картах
+            ⭐ Читать отзывы на Яндекс Картах
         </a>
 
     </div>
 
 </section>
+
+<!-- =========================================================
+     REVIEWS LIGHTBOX
+========================================================= -->
+
+<div
+    class="review-lightbox"
+    id="reviewLightbox"
+>
+
+    <button
+        class="review-lightbox-close"
+        id="reviewLightboxClose"
+        aria-label="Закрыть отзыв"
+    >
+        ×
+    </button>
+
+    <img
+        id="reviewLightboxImage"
+        src=""
+        alt="Отзыв клиента D&V STORE"
+    >
+
+</div>
 
 <!-- =========================================================
      CONTACTS
@@ -2699,16 +2959,6 @@ function calculateTradeIn(){
             ? [...memoryData.good]
             : [...memoryData.low];
 
-    /*
-        SIM + eSIM
-
-        Базовые цены уже примерно на 7 000 ₽
-        ниже исходного ориентира.
-
-        Дополнительно снимаем 5 000 ₽
-        с обеих границ.
-    */
-
     if(sim==="sim_esim"){
 
         priceRange = [
@@ -2726,10 +2976,6 @@ function calculateTradeIn(){
         ];
 
     }
-
-    /*
-        Только eSIM
-    */
 
     if(sim==="esim_only"){
 
@@ -3322,6 +3568,99 @@ aboutLightbox.addEventListener(
 );
 
 /* =========================================================
+   REVIEWS PHOTO LIGHTBOX
+========================================================= */
+
+const reviewLightbox =
+    document.getElementById(
+        "reviewLightbox"
+    );
+
+const reviewLightboxImage =
+    document.getElementById(
+        "reviewLightboxImage"
+    );
+
+const reviewLightboxClose =
+    document.getElementById(
+        "reviewLightboxClose"
+    );
+
+const reviewPhotos =
+    document.querySelectorAll(
+        ".review-photo"
+    );
+
+reviewPhotos.forEach(
+    photo=>{
+
+        photo.addEventListener(
+            "click",
+            ()=>{
+
+                const image =
+                    photo.querySelector("img");
+
+                if(!image){
+                    return;
+                }
+
+                reviewLightboxImage.src =
+                    image.src;
+
+                reviewLightboxImage.alt =
+                    image.alt ||
+                    "Отзыв клиента D&V STORE";
+
+                reviewLightbox.classList.add(
+                    "active"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
+
+    }
+);
+
+function closeReviewLightbox(){
+
+    reviewLightbox.classList.remove(
+        "active"
+    );
+
+    reviewLightboxImage.src =
+        "";
+
+    document.body.style.overflow =
+        "";
+
+}
+
+reviewLightboxClose.addEventListener(
+    "click",
+    closeReviewLightbox
+);
+
+reviewLightbox.addEventListener(
+    "click",
+    event=>{
+
+        if(
+            event.target ===
+            reviewLightbox
+        ){
+
+            closeReviewLightbox();
+
+        }
+
+    }
+);
+
+/* =========================================================
    ESC
 ========================================================= */
 
@@ -3340,6 +3679,8 @@ document.addEventListener(
             );
 
             closeAboutLightbox();
+
+            closeReviewLightbox();
 
         }
 
