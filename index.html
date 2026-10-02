@@ -34,8 +34,6 @@
 
 <meta name="theme-color" content="#050505">
 
-<!-- Open Graph -->
-
 <meta
     property="og:type"
     content="website"
@@ -65,8 +63,6 @@
     property="og:locale"
     content="ru_RU"
 >
-
-<!-- Schema.org -->
 
 <script type="application/ld+json">
 {
@@ -182,7 +178,7 @@ header{
 }
 
 /* =========================================================
-   HERO — НОВАЯ ЗАСТАВКА D&V STORE
+   HERO
 ========================================================= */
 
 .hero{
@@ -208,8 +204,6 @@ header{
     background-repeat:no-repeat;
 }
 
-/* дополнительное затемнение по краям */
-
 .hero::before{
     content:"";
     position:absolute;
@@ -228,43 +222,13 @@ header{
 .hero-content{
     position:relative;
     z-index:2;
+    width:100%;
     max-width:850px;
 }
 
-.hero-label{
-    display:inline-block;
-    color:#d4af37;
-    border:1px solid rgba(212,175,55,.55);
-    background:rgba(0,0,0,.42);
-    backdrop-filter:blur(8px);
-    border-radius:50px;
-    padding:7px 16px;
-    margin-bottom:22px;
-    font-size:13px;
-    letter-spacing:1px;
-}
-
-.hero h1{
-    font-size:clamp(45px,8vw,90px);
-    line-height:.95;
-    letter-spacing:-4px;
-    margin-bottom:25px;
-
-    text-shadow:
-        0 4px 25px rgba(0,0,0,.75);
-}
-
-.hero h1 span{
-    color:#d4af37;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-    color:#eee;
-    font-size:18px;
-    text-shadow:0 2px 12px rgba(0,0,0,.8);
-}
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-buttons{
     display:flex;
@@ -1191,21 +1155,7 @@ footer strong{
     .hero{
         min-height:calc(100vh - 58px);
         padding:60px 14px;
-
         background-position:center center;
-    }
-
-    .hero h1{
-        font-size:52px;
-        letter-spacing:-2px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    .hero-label{
-        font-size:11px;
     }
 
     .installment-banner{
@@ -1305,8 +1255,6 @@ footer strong{
         font-size:27px;
     }
 
-    /* REVIEWS MOBILE */
-
     .reviews-box{
         padding:30px 14px;
         border-radius:20px;
@@ -1370,29 +1318,12 @@ footer strong{
 
         <nav class="nav">
 
-            <a href="#catalog">
-                Каталог
-            </a>
-
-            <a href="#tradein">
-                Трейд-ин
-            </a>
-
-            <a href="#about">
-                О нас
-            </a>
-
-            <a href="#repair">
-                Ремонт
-            </a>
-
-            <a href="#reviews">
-                Отзывы
-            </a>
-
-            <a href="#contacts">
-                Контакты
-            </a>
+            <a href="#catalog">Каталог</a>
+            <a href="#tradein">Трейд-ин</a>
+            <a href="#about">О нас</a>
+            <a href="#repair">Ремонт</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
 
         </nav>
 
@@ -1417,21 +1348,8 @@ footer strong{
 
     <div class="hero-content">
 
-        <div class="hero-label">
-            МОСКВА • D&V STORE
-        </div>
-
-        <h1>
-            Купить <span>iPhone</span><br>
-            и смартфоны в Москве
-        </h1>
-
-        <p>
-            D&V STORE — смартфоны Apple, Samsung, Xiaomi,
-            Honor, Google, OnePlus и другие.
-            Покупка смартфонов, Trade-in и ремонт
-            телефонов в Москве.
-        </p>
+        <!-- Текст с заставки убран, потому что он уже есть
+             на новой фоновой картинке -->
 
         <div class="hero-buttons">
 
@@ -1517,26 +1435,32 @@ footer strong{
                     <option value="iphone17promax">iPhone 17 Pro Max</option>
                     <option value="iphone17pro">iPhone 17 Pro</option>
                     <option value="iphone17">iPhone 17</option>
+
                     <option value="iphone16promax">iPhone 16 Pro Max</option>
                     <option value="iphone16pro">iPhone 16 Pro</option>
                     <option value="iphone16plus">iPhone 16 Plus</option>
                     <option value="iphone16">iPhone 16</option>
+
                     <option value="iphone15promax">iPhone 15 Pro Max</option>
                     <option value="iphone15pro">iPhone 15 Pro</option>
                     <option value="iphone15plus">iPhone 15 Plus</option>
                     <option value="iphone15">iPhone 15</option>
+
                     <option value="iphone14promax">iPhone 14 Pro Max</option>
                     <option value="iphone14pro">iPhone 14 Pro</option>
                     <option value="iphone14plus">iPhone 14 Plus</option>
                     <option value="iphone14">iPhone 14</option>
+
                     <option value="iphone13promax">iPhone 13 Pro Max</option>
                     <option value="iphone13pro">iPhone 13 Pro</option>
                     <option value="iphone13">iPhone 13</option>
                     <option value="iphone13mini">iPhone 13 mini</option>
+
                     <option value="iphone12promax">iPhone 12 Pro Max</option>
                     <option value="iphone12pro">iPhone 12 Pro</option>
                     <option value="iphone12">iPhone 12</option>
                     <option value="iphone12mini">iPhone 12 mini</option>
+
                     <option value="iphone11promax">iPhone 11 Pro Max</option>
                     <option value="iphone11pro">iPhone 11 Pro</option>
                     <option value="iphone11">iPhone 11</option>
@@ -1874,8 +1798,6 @@ footer strong{
 
 </section>
 
-<!-- ABOUT LIGHTBOX -->
-
 <div
     class="about-lightbox"
     id="aboutLightbox"
@@ -1911,11 +1833,9 @@ footer strong{
     </h2>
 
     <p class="section-subtitle">
-
         Ремонт телефонов и диагностика.
         Поможем определить неисправность
         и подобрать вариант ремонта.
-
     </p>
 
     <div class="repair-grid">
@@ -1981,11 +1901,9 @@ footer strong{
     </h2>
 
     <p class="section-subtitle">
-
         Реальные отзывы клиентов D&V STORE.
         Нажмите на фото, чтобы открыть отзыв
         в полном размере.
-
     </p>
 
     <div class="reviews-box">
@@ -1995,12 +1913,10 @@ footer strong{
         </div>
 
         <p>
-
             Спасибо нашим клиентам за доверие.
             Здесь мы собрали фотографии отзывов,
             а больше отзывов можно посмотреть
             на странице D&V STORE в Яндекс Картах.
-
         </p>
 
         <div class="review-photos">
@@ -2064,8 +1980,6 @@ footer strong{
 
 </section>
 
-<!-- REVIEWS LIGHTBOX -->
-
 <div
     class="review-lightbox"
     id="reviewLightbox"
@@ -2112,9 +2026,7 @@ footer strong{
                 📍
             </div>
 
-            <h3>
-                Адрес
-            </h3>
+            <h3>Адрес</h3>
 
             <p>
                 Профсоюзная ул., 109,
@@ -2129,9 +2041,7 @@ footer strong{
                 📞
             </div>
 
-            <h3>
-                Телефон
-            </h3>
+            <h3>Телефон</h3>
 
             <p>
                 <a href="tel:+79933617829">
@@ -2147,9 +2057,7 @@ footer strong{
                 💬
             </div>
 
-            <h3>
-                Telegram
-            </h3>
+            <h3>Telegram</h3>
 
             <p>
                 <a
@@ -2173,9 +2081,7 @@ footer strong{
 
 <footer>
 
-    <strong>
-        D&V STORE
-    </strong>
+    <strong>D&V STORE</strong>
 
     <br>
 
@@ -2753,8 +2659,30 @@ tradeModel.addEventListener(
 );
 
 /* =========================================================
-   TRADE-IN
+   TRADE-IN — НОВАЯ ЛОГИКА ВЫЧЕТОВ
 ========================================================= */
+
+/*
+    iPhone 11 → iPhone 17 Pro Max:
+
+    АКБ 85%+:
+    коробка есть:
+        SIM + eSIM = -20 000
+        eSIM = -25 000
+
+    коробки нет:
+        SIM + eSIM = -23 000
+        eSIM = -27 000
+
+    АКБ ниже 85%:
+    коробка есть:
+        SIM + eSIM = -25 000
+        eSIM = -30 000
+
+    коробки нет:
+        SIM + eSIM = -28 000
+        eSIM = -32 000
+*/
 
 tradeCalculate.addEventListener(
     "click",
@@ -2815,43 +2743,79 @@ function calculateTradeIn(){
             ? [...memoryData.good]
             : [...memoryData.low];
 
-    if(sim==="sim_esim"){
+    /*
+       Определяем вычет.
+       Для всех моделей от iPhone 11 до iPhone 17 Pro Max
+       применяется одна согласованная схема.
+    */
 
-        priceRange = [
+    let deduction = 0;
 
-            Math.max(
-                0,
-                priceRange[0]-5000
-            ),
+    if(battery === "85plus"){
 
-            Math.max(
-                0,
-                priceRange[1]-5000
-            )
+        if(box === "yes"){
 
-        ];
+            if(sim === "sim_esim"){
+                deduction = 20000;
+            }
+
+            if(sim === "esim_only"){
+                deduction = 25000;
+            }
+
+        }else{
+
+            if(sim === "sim_esim"){
+                deduction = 23000;
+            }
+
+            if(sim === "esim_only"){
+                deduction = 27000;
+            }
+
+        }
+
+    }else{
+
+        if(box === "yes"){
+
+            if(sim === "sim_esim"){
+                deduction = 25000;
+            }
+
+            if(sim === "esim_only"){
+                deduction = 30000;
+            }
+
+        }else{
+
+            if(sim === "sim_esim"){
+                deduction = 28000;
+            }
+
+            if(sim === "esim_only"){
+                deduction = 32000;
+            }
+
+        }
 
     }
 
-    if(sim==="esim_only"){
+    priceRange = [
 
-        priceRange = [
+        Math.max(
+            0,
+            priceRange[0] - deduction
+        ),
 
-            Math.max(
-                0,
-                priceRange[0]-8000
-            ),
+        Math.max(
+            0,
+            priceRange[1] - deduction
+        )
 
-            Math.max(
-                0,
-                priceRange[1]-11000
-            )
+    ];
 
-        ];
-
-    }
-
-    if(priceRange[0]>priceRange[1]){
+    if(priceRange[0] > priceRange[1]){
 
         priceRange.reverse();
 
@@ -2864,29 +2828,29 @@ function calculateTradeIn(){
         priceRange[1].toLocaleString("ru-RU");
 
     const batteryText =
-        battery==="85plus"
+        battery === "85plus"
             ? "АКБ 85%+"
             : "АКБ ниже 85%";
 
     const simText =
-        sim==="sim_esim"
+        sim === "sim_esim"
             ? "SIM + eSIM"
             : "только eSIM";
 
     const boxText =
-        box==="yes"
+        box === "yes"
             ? "коробка есть"
             : "без коробки";
 
-    if(priceRange[0]===priceRange[1]){
+    if(priceRange[0] === priceRange[1]){
 
         tradePrice.textContent =
-            formattedMin+" ₽";
+            formattedMin + " ₽";
 
     }else{
 
         tradePrice.textContent =
-            formattedMin+"–"+formattedMax+" ₽";
+            formattedMin + "–" + formattedMax + " ₽";
 
     }
 
@@ -2896,55 +2860,55 @@ function calculateTradeIn(){
             : "";
 
     tradeDetails.textContent =
-        modelData.name+
-        " • "+
-        formatMemory(memory)+
-        " • "+
-        batteryText+
-        " • "+
-        simText+
-        " • "+
-        boxText+
+        modelData.name +
+        " • " +
+        formatMemory(memory) +
+        " • " +
+        batteryText +
+        " • " +
+        simText +
+        " • " +
+        boxText +
         estimatedText;
 
     const telegramPrice =
-        priceRange[0]===priceRange[1]
-            ? formattedMin+" ₽"
-            : formattedMin+"–"+formattedMax+" ₽";
+        priceRange[0] === priceRange[1]
+            ? formattedMin + " ₽"
+            : formattedMin + "–" + formattedMax + " ₽";
 
     const telegramMessage =
 
-        "Здравствуйте! Хочу оценить телефон.\n\n"+
+        "Здравствуйте! Хочу оценить телефон.\n\n" +
 
-        "Модель: "+
-        modelData.name+
-        "\n"+
+        "Модель: " +
+        modelData.name +
+        "\n" +
 
-        "Память: "+
-        formatMemory(memory)+
-        "\n"+
+        "Память: " +
+        formatMemory(memory) +
+        "\n" +
 
-        "АКБ: "+
-        batteryText+
-        "\n"+
+        "АКБ: " +
+        batteryText +
+        "\n" +
 
-        "SIM/eSIM: "+
-        simText+
-        "\n"+
+        "SIM/eSIM: " +
+        simText +
+        "\n" +
 
-        "Коробка: "+
-        boxText+
-        "\n\n"+
+        "Коробка: " +
+        boxText +
+        "\n\n" +
 
-        "Ориентировочная цена на сайте: "+
-        telegramPrice+
+        "Ориентировочная цена на сайте: " +
+        telegramPrice +
 
-        "\n\n"+
+        "\n\n" +
 
         "Готов отправить фото телефона для точной оценки.";
 
     tradeTelegram.href =
-        "https://t.me/DV_STORE_ORDER?text="+
+        "https://t.me/DV_STORE_ORDER?text=" +
         encodeURIComponent(
             telegramMessage
         );
@@ -2970,7 +2934,7 @@ async function loadProducts(){
 
         const response =
             await fetch(
-                "products.json?time="+Date.now()
+                "products.json?time=" + Date.now()
             );
 
         if(!response.ok){
@@ -3042,8 +3006,8 @@ function renderProducts(){
                     name.includes(search);
 
                 const matchesBrand =
-                    brand==="all" ||
-                    productBrand===brand;
+                    brand === "all" ||
+                    productBrand === brand;
 
                 return (
                     matchesSearch &&
@@ -3104,7 +3068,8 @@ function renderProducts(){
                                     product.image || ""
                                 )}"
                                 alt="${escapeHtml(
-                                    product.name || "Смартфон D&V STORE"
+                                    product.name ||
+                                    "Смартфон D&V STORE"
                                 )}"
                                 loading="lazy"
                                 onerror="
@@ -3198,24 +3163,24 @@ function openProductModal(product){
         Number(
             product.price || 0
         )
-        .toLocaleString("ru-RU")+
+        .toLocaleString("ru-RU") +
         " ₽";
 
     const message =
-        "Здравствуйте! "+
-        "Хочу заказать: "+
+        "Здравствуйте! " +
+        "Хочу заказать: " +
         (
             product.name || "товар"
-        )+
-        " за "+
+        ) +
+        " за " +
         Number(
             product.price || 0
         )
-        .toLocaleString("ru-RU")+
+        .toLocaleString("ru-RU") +
         " ₽";
 
     modalTelegram.href =
-        "https://t.me/DV_STORE_ORDER?text="+
+        "https://t.me/DV_STORE_ORDER?text=" +
         encodeURIComponent(message);
 
     modal.classList.add("active");
@@ -3237,7 +3202,7 @@ modal.addEventListener(
     "click",
     event=>{
 
-        if(event.target===modal){
+        if(event.target === modal){
 
             modal.classList.remove("active");
 
@@ -3327,7 +3292,7 @@ creditModal.addEventListener(
     "click",
     event=>{
 
-        if(event.target===creditModal){
+        if(event.target === creditModal){
 
             creditModal.classList.remove(
                 "active"
@@ -3524,7 +3489,7 @@ document.addEventListener(
     "keydown",
     event=>{
 
-        if(event.key==="Escape"){
+        if(event.key === "Escape"){
 
             modal.classList.remove(
                 "active"
