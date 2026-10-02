@@ -46,6 +46,7 @@
 </script>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -176,11 +177,13 @@ header{
             0 8px 30px rgba(0,0,0,.6),
             0 0 0 0 rgba(212,175,55,.45);
     }
+
     70%{
         box-shadow:
             0 8px 30px rgba(0,0,0,.6),
             0 0 0 14px rgba(212,175,55,0);
     }
+
     100%{
         box-shadow:
             0 8px 30px rgba(0,0,0,.6),
@@ -330,38 +333,114 @@ header{
 /* ================= INSTALLMENT ================= */
 
 .installment-banner{
-    max-width:1000px;
-    margin:25px auto 0;
-    padding:18px 22px;
-    border:1px solid rgba(212,175,55,.45);
+    max-width:850px;
+    margin:32px auto 0;
+    padding:24px 26px;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    text-align:left;
 
     background:
         linear-gradient(
             135deg,
-            rgba(0,0,0,.65),
-            rgba(212,175,55,.12)
+            rgba(212,175,55,.14),
+            rgba(0,0,0,.72)
         );
 
-    backdrop-filter:blur(10px);
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:20px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35);
+
+    backdrop-filter:blur(12px);
+}
+
+.installment-icon{
+    width:58px;
+    height:58px;
+    min-width:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     border-radius:16px;
-    text-align:center;
+
+    background:rgba(212,175,55,.15);
+    border:1px solid rgba(212,175,55,.35);
+
+    font-size:28px;
 }
 
-.installment-banner strong{
-    color:#d4af37;
-    font-size:17px;
+.installment-content{
+    flex:1;
 }
 
-.installment-banner span{
+.installment-content strong{
     display:block;
-    color:#ddd;
-    margin-top:4px;
-    font-size:13px;
+    color:#d4af37;
+    font-size:20px;
+    font-weight:900;
+    margin-bottom:5px;
 }
 
-.installment-banner a{
-    color:#d4af37;
-    font-weight:800;
+.installment-content p{
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.installment-content span{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+/* КНОПКИ TELEGRAM + WHATSAPP */
+
+.installment-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.installment-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:11px 18px;
+
+    border-radius:10px;
+
+    font-size:13px;
+    font-weight:900;
+
+    transition:.25s;
+}
+
+.telegram-installment-button{
+    background:#d4af37;
+    color:#050505;
+}
+
+.whatsapp-installment-button{
+    background:#25D366;
+    color:#fff;
+}
+
+.installment-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
 }
 
 /* ================= GENERAL ================= */
@@ -1031,26 +1110,6 @@ footer strong{
     font-weight:900;
 }
 
-.credit-modal{
-    text-align:center;
-    max-width:430px;
-}
-
-.credit-icon{
-    font-size:45px;
-    margin-bottom:12px;
-}
-
-.credit-modal h2{
-    color:#d4af37;
-    padding:0;
-}
-
-.credit-modal p{
-    color:#aaa;
-    margin:10px 0 20px;
-}
-
 /* ================= MOBILE ================= */
 
 @media(max-width:1050px){
@@ -1139,15 +1198,43 @@ footer strong{
         letter-spacing:1.4px;
     }
 
+    /* ================= INSTALLMENT MOBILE ================= */
+
     .installment-banner{
-        padding:15px 12px;
+        margin-top:25px;
+        padding:20px 16px;
+        gap:14px;
+        align-items:flex-start;
     }
 
-    .installment-banner strong{
-        font-size:14px;
+    .installment-icon{
+        width:46px;
+        height:46px;
+        min-width:46px;
+        border-radius:13px;
+        font-size:22px;
     }
 
-    .installment-banner span{
+    .installment-content strong{
+        font-size:17px;
+    }
+
+    .installment-content p{
+        font-size:13px;
+    }
+
+    .installment-content span{
+        font-size:12px;
+    }
+
+    .installment-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .installment-button{
+        width:100%;
+        padding:12px 10px;
         font-size:12px;
     }
 
@@ -1233,6 +1320,7 @@ footer strong{
         font-size:24px;
     }
 }
+
 </style>
 </head>
 
@@ -1241,6 +1329,7 @@ footer strong{
 <!-- ================= HEADER ================= -->
 
 <header>
+
     <div class="header-inner">
 
         <a href="#" class="logo">
@@ -1248,12 +1337,31 @@ footer strong{
         </a>
 
         <nav class="nav">
-            <a href="#catalog">Каталог</a>
-            <a href="#tradein">Трейд-ин</a>
-            <a href="#about">О нас</a>
-            <a href="#repair">Ремонт</a>
-            <a href="#reviews">Отзывы</a>
-            <a href="#contacts">Контакты</a>
+
+            <a href="#catalog">
+                Каталог
+            </a>
+
+            <a href="#tradein">
+                Трейд-ин
+            </a>
+
+            <a href="#about">
+                О нас
+            </a>
+
+            <a href="#repair">
+                Ремонт
+            </a>
+
+            <a href="#reviews">
+                Отзывы
+            </a>
+
+            <a href="#contacts">
+                Контакты
+            </a>
+
         </nav>
 
         <a
@@ -1266,6 +1374,7 @@ footer strong{
         </a>
 
     </div>
+
 </header>
 
 <!-- ================= FLOATING PHONE ================= -->
@@ -1306,32 +1415,68 @@ footer strong{
 
         <div class="hero-buttons">
 
-            <a href="#catalog" class="primary-btn">
+            <a
+                href="#catalog"
+                class="primary-btn"
+            >
                 Смотреть каталог
             </a>
 
-            <a href="#tradein" class="secondary-btn">
+            <a
+                href="#tradein"
+                class="secondary-btn"
+            >
                 📱 Оценить мой iPhone
             </a>
 
         </div>
 
+        <!-- ================= INSTALLMENT ================= -->
+
         <div class="installment-banner">
 
-            <strong>
-                💳 ЕСТЬ РАССРОЧКА ДЛЯ ГРАЖДАН РФ
-            </strong>
+            <div class="installment-icon">
+                💳
+            </div>
 
-            <span>
-                Условия и подробности уточняйте в Telegram:
-                <a
-                    href="https://t.me/DV_STORE_ORDER"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    @DV_STORE_ORDER
-                </a>
-            </span>
+            <div class="installment-content">
+
+                <strong>
+                    Рассрочка на смартфоны
+                </strong>
+
+                <p>
+                    Забирайте смартфон сейчас — оплачивайте постепенно.
+                </p>
+
+                <span>
+                    Рассрочка доступна только гражданам Российской Федерации.
+                    Возможность оформления и условия уточняйте у нашего менеджера.
+                </span>
+
+                <div class="installment-buttons">
+
+                    <a
+                        href="https://t.me/DV_STORE_ORDER"
+                        target="_blank"
+                        rel="noopener"
+                        class="installment-button telegram-installment-button"
+                    >
+                        💬 Написать в Telegram
+                    </a>
+
+                    <a
+                        href="https://wa.me/79933617829"
+                        target="_blank"
+                        rel="noopener"
+                        class="installment-button whatsapp-installment-button"
+                    >
+                        💬 Написать в WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -1372,38 +1517,109 @@ footer strong{
                         Выберите модель
                     </option>
 
-                    <option value="iphone17promax">iPhone 17 Pro Max</option>
-                    <option value="iphone17pro">iPhone 17 Pro</option>
-                    <option value="iphone17">iPhone 17</option>
+                    <option value="iphone17promax">
+                        iPhone 17 Pro Max
+                    </option>
 
-                    <option value="iphone16promax">iPhone 16 Pro Max</option>
-                    <option value="iphone16pro">iPhone 16 Pro</option>
-                    <option value="iphone16plus">iPhone 16 Plus</option>
-                    <option value="iphone16">iPhone 16</option>
+                    <option value="iphone17pro">
+                        iPhone 17 Pro
+                    </option>
 
-                    <option value="iphone15promax">iPhone 15 Pro Max</option>
-                    <option value="iphone15pro">iPhone 15 Pro</option>
-                    <option value="iphone15plus">iPhone 15 Plus</option>
-                    <option value="iphone15">iPhone 15</option>
+                    <option value="iphone17">
+                        iPhone 17
+                    </option>
 
-                    <option value="iphone14promax">iPhone 14 Pro Max</option>
-                    <option value="iphone14pro">iPhone 14 Pro</option>
-                    <option value="iphone14plus">iPhone 14 Plus</option>
-                    <option value="iphone14">iPhone 14</option>
+                    <option value="iphone16promax">
+                        iPhone 16 Pro Max
+                    </option>
 
-                    <option value="iphone13promax">iPhone 13 Pro Max</option>
-                    <option value="iphone13pro">iPhone 13 Pro</option>
-                    <option value="iphone13">iPhone 13</option>
-                    <option value="iphone13mini">iPhone 13 mini</option>
+                    <option value="iphone16pro">
+                        iPhone 16 Pro
+                    </option>
 
-                    <option value="iphone12promax">iPhone 12 Pro Max</option>
-                    <option value="iphone12pro">iPhone 12 Pro</option>
-                    <option value="iphone12">iPhone 12</option>
-                    <option value="iphone12mini">iPhone 12 mini</option>
+                    <option value="iphone16plus">
+                        iPhone 16 Plus
+                    </option>
 
-                    <option value="iphone11promax">iPhone 11 Pro Max</option>
-                    <option value="iphone11pro">iPhone 11 Pro</option>
-                    <option value="iphone11">iPhone 11</option>
+                    <option value="iphone16">
+                        iPhone 16
+                    </option>
+
+                    <option value="iphone15promax">
+                        iPhone 15 Pro Max
+                    </option>
+
+                    <option value="iphone15pro">
+                        iPhone 15 Pro
+                    </option>
+
+                    <option value="iphone15plus">
+                        iPhone 15 Plus
+                    </option>
+
+                    <option value="iphone15">
+                        iPhone 15
+                    </option>
+
+                    <option value="iphone14promax">
+                        iPhone 14 Pro Max
+                    </option>
+
+                    <option value="iphone14pro">
+                        iPhone 14 Pro
+                    </option>
+
+                    <option value="iphone14plus">
+                        iPhone 14 Plus
+                    </option>
+
+                    <option value="iphone14">
+                        iPhone 14
+                    </option>
+
+                    <option value="iphone13promax">
+                        iPhone 13 Pro Max
+                    </option>
+
+                    <option value="iphone13pro">
+                        iPhone 13 Pro
+                    </option>
+
+                    <option value="iphone13">
+                        iPhone 13
+                    </option>
+
+                    <option value="iphone13mini">
+                        iPhone 13 mini
+                    </option>
+
+                    <option value="iphone12promax">
+                        iPhone 12 Pro Max
+                    </option>
+
+                    <option value="iphone12pro">
+                        iPhone 12 Pro
+                    </option>
+
+                    <option value="iphone12">
+                        iPhone 12
+                    </option>
+
+                    <option value="iphone12mini">
+                        iPhone 12 mini
+                    </option>
+
+                    <option value="iphone11promax">
+                        iPhone 11 Pro Max
+                    </option>
+
+                    <option value="iphone11pro">
+                        iPhone 11 Pro
+                    </option>
+
+                    <option value="iphone11">
+                        iPhone 11
+                    </option>
 
                 </select>
 
@@ -1596,16 +1812,45 @@ footer strong{
             class="brand-filter"
         >
 
-            <option value="all">Все бренды</option>
-            <option value="Apple">Apple</option>
-            <option value="Samsung">Samsung</option>
-            <option value="Xiaomi">Xiaomi</option>
-            <option value="Honor">Honor</option>
-            <option value="Google">Google</option>
-            <option value="OnePlus">OnePlus</option>
-            <option value="Huawei">Huawei</option>
-            <option value="Nothing">Nothing</option>
-            <option value="Realme">Realme</option>
+            <option value="all">
+                Все бренды
+            </option>
+
+            <option value="Apple">
+                Apple
+            </option>
+
+            <option value="Samsung">
+                Samsung
+            </option>
+
+            <option value="Xiaomi">
+                Xiaomi
+            </option>
+
+            <option value="Honor">
+                Honor
+            </option>
+
+            <option value="Google">
+                Google
+            </option>
+
+            <option value="OnePlus">
+                OnePlus
+            </option>
+
+            <option value="Huawei">
+                Huawei
+            </option>
+
+            <option value="Nothing">
+                Nothing
+            </option>
+
+            <option value="Realme">
+                Realme
+            </option>
 
         </select>
 
@@ -1697,36 +1942,66 @@ footer strong{
     <div class="about-gallery">
 
         <div class="about-photo">
-            <img src="images/IMG_7497.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7497.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
         <div class="about-photo">
-            <img src="images/IMG_7500.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7500.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
         <div class="about-photo">
-            <img src="images/IMG_7503.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7503.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
         <div class="about-photo">
-            <img src="images/IMG_7504.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7504.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
         <div class="about-photo">
-            <img src="images/IMG_7506.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7506.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
         <div class="about-photo">
-            <img src="images/IMG_7508.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7508.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
         <div class="about-photo about-photo-wide">
-            <img src="images/IMG_7509.png" alt="D&V STORE" loading="lazy">
+            <img
+                src="images/IMG_7509.png"
+                alt="D&V STORE"
+                loading="lazy"
+            >
         </div>
 
     </div>
 
 </section>
+
+<!-- ================= ABOUT LIGHTBOX ================= -->
 
 <div
     class="about-lightbox"
@@ -1769,33 +2044,69 @@ footer strong{
     <div class="repair-grid">
 
         <div class="repair-card">
-            <h3>Замена экрана</h3>
-            <p>Разбит дисплей, появились полосы или не работает сенсор.</p>
+            <h3>
+                Замена экрана
+            </h3>
+
+            <p>
+                Разбит дисплей, появились полосы
+                или не работает сенсор.
+            </p>
         </div>
 
         <div class="repair-card">
-            <h3>Замена аккумулятора</h3>
-            <p>Быстро садится батарея или смартфон выключается на холоде.</p>
+            <h3>
+                Замена аккумулятора
+            </h3>
+
+            <p>
+                Быстро садится батарея или смартфон
+                выключается на холоде.
+            </p>
         </div>
 
         <div class="repair-card">
-            <h3>Разъём зарядки</h3>
-            <p>Телефон плохо заряжается или перестал видеть кабель.</p>
+            <h3>
+                Разъём зарядки
+            </h3>
+
+            <p>
+                Телефон плохо заряжается или перестал
+                видеть кабель.
+            </p>
         </div>
 
         <div class="repair-card">
-            <h3>Ремонт камеры</h3>
-            <p>Камера не запускается, появились проблемы с фокусировкой или изображением.</p>
+            <h3>
+                Ремонт камеры
+            </h3>
+
+            <p>
+                Камера не запускается, появились проблемы
+                с фокусировкой или изображением.
+            </p>
         </div>
 
         <div class="repair-card">
-            <h3>Динамик</h3>
-            <p>Пропал звук, появились хрипы или собеседника плохо слышно.</p>
+            <h3>
+                Динамик
+            </h3>
+
+            <p>
+                Пропал звук, появились хрипы или
+                собеседника плохо слышно.
+            </p>
         </div>
 
         <div class="repair-card">
-            <h3>Диагностика</h3>
-            <p>Определим причину неисправности и расскажем о вариантах ремонта.</p>
+            <h3>
+                Диагностика
+            </h3>
+
+            <p>
+                Определим причину неисправности и
+                расскажем о вариантах ремонта.
+            </p>
         </div>
 
     </div>
@@ -1848,35 +2159,43 @@ footer strong{
         <div class="review-photos">
 
             <div class="review-photo">
+
                 <img
                     src="images/IMG_7513.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
+
             </div>
 
             <div class="review-photo">
+
                 <img
                     src="images/IMG_7517.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
+
             </div>
 
             <div class="review-photo">
+
                 <img
                     src="images/IMG_7516.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
+
             </div>
 
             <div class="review-photo">
+
                 <img
                     src="images/IMG_7515.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
+
             </div>
 
         </div>
@@ -1893,6 +2212,8 @@ footer strong{
     </div>
 
 </section>
+
+<!-- ================= REVIEW LIGHTBOX ================= -->
 
 <div
     class="review-lightbox"
@@ -1960,9 +2281,11 @@ footer strong{
             </h3>
 
             <p>
+
                 <a href="tel:+79933617829">
                     +7 (993) 361-78-29
                 </a>
+
             </p>
 
         </div>
@@ -1978,6 +2301,7 @@ footer strong{
             </h3>
 
             <p>
+
                 <a
                     href="https://t.me/DV_STORE_ORDER"
                     target="_blank"
@@ -1985,6 +2309,7 @@ footer strong{
                 >
                     @DV_STORE_ORDER
                 </a>
+
             </p>
 
         </div>
@@ -1997,7 +2322,9 @@ footer strong{
 
 <footer>
 
-    <strong>D&V STORE</strong>
+    <strong>
+        D&V STORE
+    </strong>
 
     <br>
 
@@ -2006,6 +2333,7 @@ footer strong{
     <br><br>
 
     📞
+
     <a href="tel:+79933617829">
         +7 (993) 361-78-29
     </a>
@@ -2054,48 +2382,6 @@ footer strong{
             class="modal-btn"
         >
             Заказать в Telegram
-        </a>
-
-    </div>
-
-</div>
-
-<!-- ================= CREDIT MODAL ================= -->
-
-<div
-    id="creditModal"
-    class="modal"
->
-
-    <div class="modal-content credit-modal">
-
-        <button
-            id="creditClose"
-            class="modal-close"
-        >
-            ×
-        </button>
-
-        <div class="credit-icon">
-            💳
-        </div>
-
-        <h2>
-            Рассрочка для граждан РФ
-        </h2>
-
-        <p>
-            Есть возможность оформить рассрочку.
-            Условия и доступность уточняйте у менеджера.
-        </p>
-
-        <a
-            href="https://t.me/DV_STORE_ORDER"
-            target="_blank"
-            rel="noopener"
-            class="modal-btn"
-        >
-            Написать в Telegram
         </a>
 
     </div>
@@ -2603,18 +2889,6 @@ tradeModel.addEventListener(
 
 /* =========================================================
    ВЫЧЕТЫ TRADE-IN
-=========================================================
-
-   iPhone 15 / 16 / 17:
-   SIM + eSIM → -12 000 ₽
-   eSIM → -15 000 ₽
-
-   iPhone 11 / 12 / 13 / 14:
-   SIM + eSIM → -8 000 ₽
-   eSIM → -10 000 ₽
-
-   Коробка на размер вычета НЕ влияет.
-
 ========================================================= */
 
 function getDeduction(model,sim){
@@ -2660,8 +2934,6 @@ function getDeduction(model,sim){
 
     ];
 
-    /* iPhone 11–14 */
-
     if(oldIphones.includes(model)){
 
         if(sim === "sim_esim"){
@@ -2673,8 +2945,6 @@ function getDeduction(model,sim){
         }
 
     }
-
-    /* iPhone 15–17 */
 
     if(newIphones.includes(model)){
 
@@ -2755,11 +3025,6 @@ function calculateTradeIn(){
             ? [...memoryResult.data.good]
             : [...memoryResult.data.low];
 
-    /*
-       Специальные цены iPhone 11
-       128 / 256 / 512 GB.
-    */
-
     const isSpecialIphone11 =
         model === "iphone11" &&
         (
@@ -2769,11 +3034,6 @@ function calculateTradeIn(){
         );
 
     let deduction = 0;
-
-    /*
-       Для специальных цен iPhone 11
-       дополнительные вычеты НЕ применяем.
-    */
 
     if(!isSpecialIphone11){
 
@@ -3241,67 +3501,6 @@ function escapeHtml(value){
 }
 
 /* =========================================================
-   РАССРОЧКА
-========================================================= */
-
-const creditModal =
-    document.getElementById(
-        "creditModal"
-    );
-
-const creditClose =
-    document.getElementById(
-        "creditClose"
-    );
-
-window.addEventListener(
-    "load",
-    ()=>{
-
-        setTimeout(
-            ()=>{
-
-                creditModal.classList.add(
-                    "active"
-                );
-
-            },
-            700
-        );
-
-    }
-);
-
-creditClose.addEventListener(
-    "click",
-    ()=>{
-
-        creditModal.classList.remove(
-            "active"
-        );
-
-    }
-);
-
-creditModal.addEventListener(
-    "click",
-    event=>{
-
-        if(
-            event.target ===
-            creditModal
-        ){
-
-            creditModal.classList.remove(
-                "active"
-            );
-
-        }
-
-    }
-);
-
-/* =========================================================
    ABOUT LIGHTBOX
 ========================================================= */
 
@@ -3483,10 +3682,6 @@ document.addEventListener(
         if(event.key === "Escape"){
 
             modal.classList.remove(
-                "active"
-            );
-
-            creditModal.classList.remove(
                 "active"
             );
 
