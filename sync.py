@@ -7,7 +7,6 @@ from html import unescape
 from urllib.parse import urljoin, urlparse
 
 BASE_URL = "https://apple-avenue.ru"
-
 IMAGE_DIR = "images"
 
 os.makedirs(IMAGE_DIR, exist_ok=True)
@@ -20,11 +19,14 @@ HEADERS = {
     )
 }
 
+
 # =========================================================
 # IPHONE КАТЕГОРИИ
 # =========================================================
 
 IPHONE_CATEGORY_URLS = [
+    f"{BASE_URL}/catalog/iphone_18_pro_max/",
+    f"{BASE_URL}/catalog/iphone_18_pro/",
     f"{BASE_URL}/catalog/iphone_17_pro_max/",
     f"{BASE_URL}/catalog/iphone_17_pro/",
     f"{BASE_URL}/catalog/iphone_17/",
@@ -39,6 +41,7 @@ IPHONE_CATEGORY_URLS = [
     f"{BASE_URL}/catalog/iphone_12/",
     f"{BASE_URL}/catalog/iphone_11/",
 ]
+
 
 # =========================================================
 # ANDROID БРЕНДЫ
@@ -64,6 +67,7 @@ ANDROID_BRANDS = {
     "sony": "Sony",
     "zte": "ZTE",
 }
+
 
 # =========================================================
 # HTTP
@@ -191,6 +195,8 @@ def get_iphone_product_links(html):
     result = []
 
     category_names = [
+        "iphone_18_pro_max",
+        "iphone_18_pro",
         "iphone_17_pro_max",
         "iphone_17_pro",
         "iphone_17",
@@ -276,14 +282,11 @@ def get_android_product_links(html):
             if x
         ]
 
-        # Нужна структура:
-        # /catalog/category/product/
         if len(parts) < 3:
             continue
 
         slug = parts[-1]
 
-        # Не собираем страницы категорий
         if slug in (
             "catalog",
             "smartfony",
@@ -299,9 +302,6 @@ def get_android_product_links(html):
         if not brand:
             continue
 
-        # Дополнительная защита.
-        # Настоящий товар обычно содержит модель
-        # и характеристики в slug.
         product_words = [
             "galaxy",
             "samsung",
@@ -399,16 +399,12 @@ def discover_android_categories():
             if "/catalog/" not in path:
                 continue
 
-            # Проверяем, относится ли ссылка
-            # к Android-бренду
             if not any(
                 brand in path
                 for brand in ANDROID_BRANDS
             ):
                 continue
 
-            # Категория должна быть минимум
-            # /catalog/xxxxx/
             parts = [
                 x for x in path.split("/")
                 if x
@@ -488,7 +484,6 @@ def get_product_image(
 
         image_lower = image.lower()
 
-        # Только настоящие картинки товаров
         if "/upload/iblock/" not in image_lower:
             continue
 
@@ -674,7 +669,6 @@ def get_memory(
     name
 ):
 
-    # Сначала ищем в названии
     match = re.search(
         r"(\d+)\s*(TB|Tb|tb|GB|Gb|gb|ГБ|гб)",
         name,
@@ -753,46 +747,28 @@ COLOR_MAP = {
 
     "черный": "Black",
     "чёрный": "Black",
-
     "белый": "White",
-
     "серебристый": "Silver",
-
     "синий": "Blue",
-
     "голубой": "Blue",
-
     "зеленый": "Green",
     "зелёный": "Green",
-
     "фиолетовый": "Purple",
-
     "розовый": "Pink",
-
     "желтый": "Yellow",
     "жёлтый": "Yellow",
-
     "красный": "Red",
-
     "золотой": "Gold",
-
     "серый": "Gray",
-
     "графит": "Graphite",
-
     "оранжевый": "Orange",
-
     "песочный": "Desert",
 
     "натуральный титан": "Natural Titanium",
-
     "черный титан": "Black Titanium",
     "чёрный титан": "Black Titanium",
-
     "белый титан": "White Titanium",
-
     "синий титан": "Blue Titanium",
-
     "песочный титан": "Desert Titanium",
 
     "натуральный": "Natural Titanium",
@@ -815,7 +791,6 @@ COLOR_MAP = {
     "white titanium": "White Titanium",
     "black titanium": "Black Titanium",
     "desert titanium": "Desert Titanium",
-
 }
 
 
@@ -830,8 +805,6 @@ def get_color(
         + clean_text(html)
     ).lower()
 
-    # Сначала длинные названия
-    # чтобы "титан" не перебивал
     for color in sorted(
         COLOR_MAP.keys(),
         key=len,
@@ -857,13 +830,6 @@ def get_sim_type(
     text = clean_text(
         html
     ).lower()
-
-    # Очень важный момент:
-    # сначала ищем точные характеристики
-    # Apple Avenue может писать:
-    # физическая SIM + eSIM
-    # только eSIM
-    # nano+e-SIM
 
     if re.search(
         r"физическ\w*\s+sim\s*\+\s*esim",
@@ -905,7 +871,6 @@ def get_sim_type(
 
         return "eSIM"
 
-    # Android часто пишет Dual SIM
     if re.search(
         r"dual\s*sim",
         text,
@@ -1182,7 +1147,6 @@ def validate_product(
     ):
         return False
 
-    # Проверяем бренд
     if brand == "Apple":
 
         if "iphone" not in name_lower:
@@ -1227,8 +1191,6 @@ def parse_product(
         or get_brand_from_url(url)
     )
 
-    # Если бренд не определён,
-    # пробуем определить по названию
     if not brand:
 
         name_lower = name.lower()
@@ -1417,8 +1379,6 @@ def collect_android_urls():
         discover_android_categories()
     )
 
-    # Если категории нашли —
-    # идём по ним
     for category_url in category_urls:
 
         print(
@@ -1504,7 +1464,10 @@ try:
 
     android_urls = collect_android_urls()
 
-    # Объединяем
+    # =====================================================
+    # ОБЪЕДИНЯЕМ
+    # =====================================================
+
     all_urls = []
 
     for url in iphone_urls:
