@@ -2,90 +2,50 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>D&V STORE — смартфоны, трейд-ин и ремонт в Москве</title>
 
-<meta
-    name="description"
-    content="D&V STORE — магазин смартфонов в Москве. iPhone, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, трейд-ин и ремонт."
->
+<meta name="description" content="D&V STORE — магазин смартфонов в Москве. iPhone, Samsung, Xiaomi, Honor, Google, OnePlus и другие. Покупка смартфонов, трейд-ин и ремонт.">
 
-<meta
-    name="keywords"
-    content="купить смартфон Москва, купить iPhone Москва, iPhone Москва, Samsung Москва, Xiaomi Москва, Honor Москва, трейд-ин iPhone Москва, ремонт iPhone Москва, ремонт смартфонов Москва, D&V STORE"
->
+<meta name="keywords" content="купить смартфон Москва, купить iPhone Москва, iPhone Москва, Samsung Москва, Xiaomi Москва, Honor Москва, трейд-ин iPhone Москва, ремонт iPhone Москва, ремонт смартфонов Москва, D&V STORE">
 
-<meta
-    name="robots"
-    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-<meta
-    name="yandex-verification"
-    content="081c2f2c8bb7b95b"
-/>
+<meta name="yandex-verification" content="081c2f2c8bb7b95b">
 
-<link
-    rel="canonical"
-    href="https://dv-store.ru/"
->
+<link rel="canonical" href="https://dv-store.ru/">
 
 <meta name="theme-color" content="#050505">
 
-<meta
-    property="og:type"
-    content="website"
->
-
-<meta
-    property="og:site_name"
-    content="D&V STORE"
->
-
-<meta
-    property="og:title"
-    content="D&V STORE — смартфоны, трейд-ин и ремонт в Москве"
->
-
-<meta
-    property="og:description"
-    content="Смартфоны Apple, Samsung, Xiaomi, Honor, Google и другие. Покупка, трейд-ин и ремонт смартфонов в Москве."
->
-
-<meta
-    property="og:url"
-    content="https://dv-store.ru/"
->
-
-<meta
-    property="og:locale"
-    content="ru_RU"
->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="D&V STORE">
+<meta property="og:title" content="D&V STORE — смартфоны, трейд-ин и ремонт в Москве">
+<meta property="og:description" content="Смартфоны Apple, Samsung, Xiaomi, Honor, Google и другие. Покупка, трейд-ин и ремонт смартфонов в Москве.">
+<meta property="og:url" content="https://dv-store.ru/">
+<meta property="og:locale" content="ru_RU">
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "D&V STORE",
-    "url": "https://dv-store.ru/",
-    "telephone": "+7 993 361 7829",
-    "description": "Магазин смартфонов, трейд-ин и ремонт смартфонов в Москве.",
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Профсоюзная ул., 109, корп. 2",
-        "addressLocality": "Москва",
-        "addressCountry": "RU"
+    "@context":"https://schema.org",
+    "@type":"Store",
+    "name":"D&V STORE",
+    "url":"https://dv-store.ru/",
+    "telephone":"+7 993 361 7829",
+    "description":"Магазин смартфонов, трейд-ин и ремонт смартфонов в Москве.",
+    "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Профсоюзная ул., 109, корп. 2",
+        "addressLocality":"Москва",
+        "addressCountry":"RU"
     },
-    "sameAs": [
+    "sameAs":[
         "https://t.me/DV_STORE_ORDER"
     ]
 }
 </script>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -103,6 +63,10 @@ body{
     line-height:1.5;
 }
 
+body.no-scroll{
+    overflow:hidden;
+}
+
 a{
     color:inherit;
     text-decoration:none;
@@ -114,9 +78,7 @@ select{
     font:inherit;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* ================= HEADER ================= */
 
 header{
     position:sticky;
@@ -177,16 +139,80 @@ header{
     box-shadow:0 8px 25px rgba(212,175,55,.25);
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* ================= FLOATING PHONE ================= */
 
-.hero{
-    min-height:calc(100vh - 72px);
+.phone-float{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:4000;
+
+    width:62px;
+    height:62px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        145deg,
+        #e6c65c,
+        #d4af37
+    );
+
+    color:#050505;
+    font-size:27px;
+
+    border:3px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.6),
+        0 0 0 0 rgba(212,175,55,.5);
+
+    animation:phonePulse 2.2s infinite;
+    transition:.25s;
+}
+
+.phone-float:hover{
+    transform:scale(1.08);
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.7),
+        0 0 25px rgba(212,175,55,.35);
+}
+
+@keyframes phonePulse{
+    0%{
+        box-shadow:
+            0 8px 30px rgba(0,0,0,.6),
+            0 0 0 0 rgba(212,175,55,.45);
+    }
+
+    70%{
+        box-shadow:
+            0 8px 30px rgba(0,0,0,.6),
+            0 0 0 14px rgba(212,175,55,0);
+    }
+
+    100%{
+        box-shadow:
+            0 8px 30px rgba(0,0,0,.6),
+            0 0 0 0 rgba(212,175,55,0);
+    }
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:calc(100vh - 72px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     text-align:center;
+
     padding:80px 20px;
 
     position:relative;
@@ -194,13 +220,14 @@ header{
 
     background:
         linear-gradient(
-            rgba(0,0,0,.28),
-            rgba(0,0,0,.68)
+            180deg,
+            rgba(0,0,0,.30),
+            rgba(0,0,0,.78)
         ),
-        url("images/0C4C7D63-1C82-4ADB-88A4-A9E40D44015F.png");
+        url("images/IMG_7544.png");
 
     background-size:cover;
-    background-position:center center;
+    background-position:center;
     background-repeat:no-repeat;
 }
 
@@ -208,33 +235,98 @@ header{
     content:"";
     position:absolute;
     inset:0;
-    pointer-events:none;
 
     background:
         radial-gradient(
             circle at center,
-            transparent 20%,
-            rgba(0,0,0,.18) 55%,
-            rgba(0,0,0,.55) 100%
+            transparent 10%,
+            rgba(0,0,0,.12) 45%,
+            rgba(0,0,0,.72) 100%
         );
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:180px;
+
+    background:linear-gradient(
+        transparent,
+        #050505
+    );
 }
 
 .hero-content{
     position:relative;
     z-index:2;
+
     width:100%;
-    max-width:850px;
+    max-width:900px;
 }
 
-/* =========================================================
-   HERO BUTTONS
-========================================================= */
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:9px 17px;
+
+    border:1px solid rgba(212,175,55,.65);
+    border-radius:999px;
+
+    background:rgba(0,0,0,.48);
+    backdrop-filter:blur(10px);
+
+    color:#d4af37;
+
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+}
+
+.hero-title{
+    font-size:clamp(42px,7vw,78px);
+    line-height:.95;
+    font-weight:1000;
+    letter-spacing:-3px;
+
+    text-shadow:
+        0 5px 30px rgba(0,0,0,.8);
+}
+
+.hero-title span{
+    color:#d4af37;
+}
+
+.hero-subtitle{
+    max-width:650px;
+    margin:22px auto 0;
+
+    color:#eee;
+    font-size:clamp(16px,2vw,20px);
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.9);
+}
+
+.hero-small{
+    margin-top:13px;
+    color:#bbb;
+    font-size:13px;
+}
 
 .hero-buttons{
     display:flex;
     justify-content:center;
     gap:12px;
-    margin-top:35px;
+
+    margin-top:32px;
+
     flex-wrap:wrap;
 }
 
@@ -243,9 +335,11 @@ header{
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     padding:14px 22px;
     border-radius:12px;
-    font-weight:800;
+
+    font-weight:900;
     transition:.25s;
     cursor:pointer;
 }
@@ -258,7 +352,7 @@ header{
 .secondary-btn{
     border:1px solid rgba(255,255,255,.3);
     color:#fff;
-    background:rgba(0,0,0,.45);
+    background:rgba(0,0,0,.5);
     backdrop-filter:blur(8px);
 }
 
@@ -267,22 +361,25 @@ header{
     transform:translateY(-2px);
 }
 
-/* =========================================================
-   INSTALLMENT
-========================================================= */
+/* ================= INSTALLMENT ================= */
 
 .installment-banner{
     max-width:1000px;
     margin:25px auto 0;
+
     padding:18px 22px;
+
     border:1px solid rgba(212,175,55,.45);
+
     background:
         linear-gradient(
             135deg,
-            rgba(0,0,0,.55),
+            rgba(0,0,0,.65),
             rgba(212,175,55,.12)
         );
+
     backdrop-filter:blur(10px);
+
     border-radius:16px;
     text-align:center;
 }
@@ -304,9 +401,7 @@ header{
     font-weight:800;
 }
 
-/* =========================================================
-   GENERAL
-========================================================= */
+/* ================= GENERAL ================= */
 
 .section{
     max-width:1250px;
@@ -331,9 +426,7 @@ header{
     margin:0 auto 40px;
 }
 
-/* =========================================================
-   TRADE IN
-========================================================= */
+/* ================= TRADE IN ================= */
 
 .tradein-section{
     background:
@@ -357,9 +450,11 @@ header{
 
     border:1px solid rgba(212,175,55,.22);
     border-radius:24px;
+
     padding:35px;
 
-    box-shadow:0 20px 70px rgba(0,0,0,.35);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.35);
 }
 
 .tradein-grid{
@@ -381,11 +476,15 @@ header{
 
 .tradein-field select{
     width:100%;
+
     background:#0b0b0b;
     color:#fff;
+
     border:1px solid #292929;
+
     padding:14px;
     border-radius:11px;
+
     outline:none;
 }
 
@@ -395,14 +494,22 @@ header{
 
 .tradein-button{
     width:100%;
+
     border:none;
+
     background:#d4af37;
     color:#050505;
+
     padding:16px;
+
     border-radius:12px;
+
     font-weight:900;
+
     cursor:pointer;
+
     margin-top:20px;
+
     transition:.25s;
 }
 
@@ -413,11 +520,15 @@ header{
 
 .tradein-result{
     display:none;
+
     margin-top:25px;
     padding:25px;
+
     border-radius:16px;
+
     background:#0b0b0b;
     border:1px solid #292929;
+
     text-align:center;
 }
 
@@ -461,16 +572,18 @@ header{
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     background:#d4af37;
     color:#050505;
+
     padding:12px 20px;
+
     border-radius:10px;
+
     font-weight:900;
 }
 
-/* =========================================================
-   CATALOG
-========================================================= */
+/* ================= CATALOG ================= */
 
 .catalog-tools{
     display:grid;
@@ -482,11 +595,15 @@ header{
 .search,
 .brand-filter{
     width:100%;
+
     background:#0d0d0d;
     color:#fff;
+
     border:1px solid #292929;
+
     padding:15px 17px;
     border-radius:12px;
+
     outline:none;
 }
 
@@ -504,80 +621,104 @@ header{
 .product-card{
     background:#0c0c0c;
     border:1px solid #202020;
+
     border-radius:18px;
     overflow:hidden;
+
     transition:.3s;
+
     display:flex;
     flex-direction:column;
 }
 
 .product-card:hover{
     transform:translateY(-5px);
+
     border-color:rgba(212,175,55,.5);
-    box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
 }
 
 .product-image{
     width:100%;
     height:260px;
+
     background:#111;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
 }
 
 .product-image img{
     width:100%;
     height:100%;
+
     object-fit:contain;
+
     padding:15px;
 }
 
 .product-info{
     padding:18px;
+
     display:flex;
     flex-direction:column;
+
     flex:1;
 }
 
 .product-brand{
     color:#d4af37;
+
     text-transform:uppercase;
+
     font-size:11px;
     letter-spacing:1px;
+
     margin-bottom:6px;
 }
 
 .product-name{
     font-size:17px;
     font-weight:800;
+
     margin-bottom:8px;
 }
 
 .product-description{
     color:#888;
     font-size:13px;
+
     min-height:40px;
+
     margin-bottom:12px;
 }
 
 .product-price{
     font-size:22px;
     font-weight:900;
+
     margin-bottom:5px;
 }
 
 .product-old-price{
     color:#666;
+
     text-decoration:line-through;
+
     font-size:13px;
+
     margin-bottom:8px;
 }
 
 .stock{
     font-size:12px;
     color:#67d47a;
+
     margin-bottom:15px;
 }
 
@@ -587,32 +728,42 @@ header{
 
 .buy-btn{
     margin-top:auto;
+
     width:100%;
+
     border:none;
+
     background:#d4af37;
     color:#050505;
+
     padding:13px;
+
     border-radius:10px;
+
     font-weight:900;
+
     cursor:pointer;
+
     transition:.25s;
 }
 
 .buy-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(212,175,55,.2);
+
+    box-shadow:
+        0 8px 20px rgba(212,175,55,.2);
 }
 
 .empty{
     text-align:center;
     color:#777;
+
     padding:50px 10px;
+
     grid-column:1/-1;
 }
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* ================= ABOUT ================= */
 
 .about-box{
     background:
@@ -621,11 +772,17 @@ header{
             #0d0d0d,
             #080808
         );
+
     border:1px solid #202020;
+
     border-radius:22px;
+
     padding:40px;
+
     max-width:900px;
+
     margin:auto;
+
     text-align:center;
 }
 
@@ -647,38 +804,51 @@ header{
     display:inline-flex;
     align-items:center;
     justify-content:center;
+
     padding:13px 24px;
+
     border-radius:12px;
+
     background:#d4af37;
     color:#050505;
+
     font-weight:900;
+
     transition:.25s;
 }
 
 .about-button:hover{
     transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(212,175,55,.2);
-}
 
-/* =========================================================
-   ABOUT GALLERY
-========================================================= */
+    box-shadow:
+        0 10px 30px rgba(212,175,55,.2);
+}
 
 .about-gallery{
     max-width:1100px;
+
     margin:35px auto 0;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
 }
 
 .about-photo{
     position:relative;
+
     overflow:hidden;
+
     border-radius:18px;
+
     background:#0c0c0c;
+
     border:1px solid #202020;
+
     aspect-ratio:4/3;
+
     cursor:pointer;
 }
 
@@ -690,71 +860,87 @@ header{
 .about-photo img{
     width:100%;
     height:100%;
+
     display:block;
+
     object-fit:cover;
+
     transition:transform .5s ease;
-    user-select:none;
-    -webkit-user-drag:none;
 }
 
 .about-photo:hover img{
     transform:scale(1.05);
 }
 
-/* =========================================================
-   ABOUT LIGHTBOX
-========================================================= */
+/* ================= LIGHTBOX ================= */
 
-.about-lightbox{
+.about-lightbox,
+.review-lightbox{
     position:fixed;
+
     inset:0;
+
     z-index:5000;
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
+
     background:rgba(0,0,0,.96);
+
     backdrop-filter:blur(10px);
 }
 
-.about-lightbox.active{
+.about-lightbox.active,
+.review-lightbox.active{
     display:flex;
 }
 
-.about-lightbox img{
-    max-width:95%;
+.about-lightbox img,
+.review-lightbox img{
+    max-width:95vw;
     max-height:90vh;
+
     width:auto;
     height:auto;
+
     object-fit:contain;
+
     border-radius:14px;
-    box-shadow:0 20px 80px rgba(0,0,0,.7);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.7);
 }
 
-.about-lightbox-close{
+.about-lightbox-close,
+.review-lightbox-close{
     position:absolute;
+
     top:20px;
     right:25px;
+
     width:48px;
     height:48px;
+
     border:1px solid rgba(212,175,55,.4);
+
     border-radius:50%;
+
     background:#d4af37;
     color:#050505;
+
     font-size:32px;
     line-height:42px;
+
     cursor:pointer;
+
     z-index:2;
-    transition:.25s;
 }
 
-.about-lightbox-close:hover{
-    transform:scale(1.08);
-}
-
-/* =========================================================
-   REPAIR
-========================================================= */
+/* ================= REPAIR ================= */
 
 .repair{
     background:
@@ -768,15 +954,21 @@ header{
 
 .repair-grid{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
+
     margin-top:35px;
 }
 
 .repair-card{
     background:#0d0d0d;
+
     border:1px solid #202020;
+
     border-radius:16px;
+
     padding:25px;
 }
 
@@ -794,165 +986,135 @@ header{
     margin-top:35px;
 }
 
-/* =========================================================
-   REVIEWS
-========================================================= */
+/* ================= REVIEWS ================= */
 
 .reviews-box{
     text-align:center;
+
     background:
         linear-gradient(
             145deg,
             #101010,
             #080808
         );
+
     border:1px solid rgba(212,175,55,.22);
+
     border-radius:24px;
+
     padding:40px 25px;
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
 }
 
 .stars{
     color:#d4af37;
+
     font-size:32px;
+
     letter-spacing:5px;
+
     margin-bottom:12px;
 }
 
 .reviews-box p{
     color:#999;
+
     max-width:650px;
+
     margin:0 auto 25px;
 }
 
 .review-photos{
     max-width:1000px;
-    margin:30px auto 30px;
+
+    margin:30px auto;
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:14px;
 }
 
 .review-photo{
     position:relative;
+
     aspect-ratio:4/5;
+
     overflow:hidden;
+
     border-radius:16px;
+
     background:#0b0b0b;
+
     border:1px solid #252525;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
 .review-photo:hover{
     transform:translateY(-4px);
+
     border-color:rgba(212,175,55,.55);
-    box-shadow:0 12px 35px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45);
 }
 
 .review-photo img{
     width:100%;
     height:100%;
+
     display:block;
+
     object-fit:cover;
+
     transition:transform .45s ease;
-    user-select:none;
-    -webkit-user-drag:none;
 }
 
 .review-photo:hover img{
     transform:scale(1.04);
 }
 
-.review-caption{
-    margin-top:8px;
-    color:#777;
-    font-size:12px;
-}
-
 .review-btn{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
+
     background:#d4af37;
     color:#050505;
+
     padding:13px 22px;
+
     border-radius:10px;
+
     font-weight:900;
-    transition:.25s;
 }
 
-.review-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(212,175,55,.2);
-}
-
-/* =========================================================
-   REVIEWS LIGHTBOX
-========================================================= */
-
-.review-lightbox{
-    position:fixed;
-    inset:0;
-    z-index:6000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:rgba(0,0,0,.97);
-    backdrop-filter:blur(12px);
-}
-
-.review-lightbox.active{
-    display:flex;
-}
-
-.review-lightbox img{
-    max-width:95vw;
-    max-height:90vh;
-    width:auto;
-    height:auto;
-    object-fit:contain;
-    border-radius:14px;
-    box-shadow:0 25px 90px rgba(0,0,0,.8);
-}
-
-.review-lightbox-close{
-    position:absolute;
-    top:18px;
-    right:22px;
-    width:48px;
-    height:48px;
-    border:1px solid rgba(212,175,55,.4);
-    border-radius:50%;
-    background:#d4af37;
-    color:#050505;
-    font-size:32px;
-    line-height:42px;
-    cursor:pointer;
-    z-index:2;
-    transition:.25s;
-}
-
-.review-lightbox-close:hover{
-    transform:scale(1.08);
-}
-
-/* =========================================================
-   CONTACTS
-========================================================= */
+/* ================= CONTACTS ================= */
 
 .contacts-grid{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:18px;
 }
 
 .contact-card{
     background:#0c0c0c;
+
     border:1px solid #202020;
+
     border-radius:18px;
+
     padding:28px;
+
     text-align:center;
 }
 
@@ -973,14 +1135,15 @@ header{
     color:#d4af37;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* ================= FOOTER ================= */
 
 footer{
     border-top:1px solid #1c1c1c;
+
     padding:30px 20px;
+
     text-align:center;
+
     color:#666;
 }
 
@@ -988,19 +1151,24 @@ footer strong{
     color:#d4af37;
 }
 
-/* =========================================================
-   MODALS
-========================================================= */
+/* ================= MODALS ================= */
 
 .modal{
     position:fixed;
+
     inset:0;
+
     z-index:2000;
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
+
     background:rgba(0,0,0,.82);
+
     backdrop-filter:blur(8px);
 }
 
@@ -1010,58 +1178,87 @@ footer strong{
 
 .modal-content{
     position:relative;
+
     width:100%;
+
     max-width:470px;
+
     max-height:90vh;
+
     overflow-y:auto;
+
     background:#0d0d0d;
+
     border:1px solid #2a2a2a;
+
     border-radius:20px;
+
     padding:30px;
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6);
 }
 
 .modal-close{
     position:absolute;
+
     top:12px;
     right:15px;
+
     border:none;
+
     background:none;
+
     color:#888;
+
     font-size:30px;
+
     cursor:pointer;
 }
 
 .modal-content h2{
     margin-bottom:10px;
+
     padding-right:30px;
 }
 
 .modal-product{
     color:#aaa;
+
     margin-bottom:20px;
 }
 
 .modal-price{
     font-size:26px;
+
     font-weight:900;
+
     color:#d4af37;
+
     margin-bottom:20px;
 }
 
 .modal-btn{
     display:block;
+
     width:100%;
+
     background:#d4af37;
+
     color:#050505;
+
     text-align:center;
+
     padding:14px;
+
     border-radius:11px;
+
     font-weight:900;
 }
 
 .credit-modal{
     text-align:center;
+
     max-width:430px;
 }
 
@@ -1077,12 +1274,11 @@ footer strong{
 
 .credit-modal p{
     color:#aaa;
+
     margin:10px 0 20px;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:1050px){
 
@@ -1093,7 +1289,6 @@ footer strong{
     .review-photos{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media(max-width:800px){
@@ -1122,19 +1317,20 @@ footer strong{
     .hero{
         min-height:calc(100vh - 60px);
         padding:70px 18px;
-        background-position:center center;
+    }
+
+    .hero-title{
+        letter-spacing:-2px;
     }
 
     .about-gallery{
         grid-template-columns:repeat(2,1fr);
-        gap:10px;
     }
 
     .about-photo-wide{
         grid-column:span 2;
         aspect-ratio:16/9;
     }
-
 }
 
 @media(max-width:520px){
@@ -1154,8 +1350,20 @@ footer strong{
 
     .hero{
         min-height:calc(100vh - 58px);
-        padding:60px 14px;
-        background-position:center center;
+        padding:55px 14px;
+    }
+
+    .hero-title{
+        font-size:46px;
+    }
+
+    .hero-subtitle{
+        font-size:15px;
+    }
+
+    .hero-badge{
+        font-size:10px;
+        letter-spacing:1.4px;
     }
 
     .installment-banner{
@@ -1214,8 +1422,6 @@ footer strong{
 
     .about-button{
         width:100%;
-        box-sizing:border-box;
-        text-align:center;
     }
 
     .about-gallery{
@@ -1229,24 +1435,6 @@ footer strong{
         aspect-ratio:4/3;
     }
 
-    .about-lightbox{
-        padding:10px;
-    }
-
-    .about-lightbox img{
-        max-width:100%;
-        max-height:82vh;
-    }
-
-    .about-lightbox-close{
-        top:12px;
-        right:12px;
-        width:43px;
-        height:43px;
-        font-size:28px;
-        line-height:38px;
-    }
-
     .tradein-box{
         padding:22px 16px;
     }
@@ -1255,61 +1443,31 @@ footer strong{
         font-size:27px;
     }
 
-    .reviews-box{
-        padding:30px 14px;
-        border-radius:20px;
-    }
-
-    .stars{
-        font-size:27px;
-        letter-spacing:3px;
-    }
-
     .review-photos{
         grid-template-columns:1fr 1fr;
         gap:8px;
-        margin-top:25px;
-    }
-
-    .review-photo{
-        border-radius:12px;
-        aspect-ratio:4/5;
     }
 
     .review-btn{
         width:100%;
-        padding:13px 10px;
-        font-size:13px;
     }
 
-    .review-lightbox{
-        padding:8px;
+    .phone-float{
+        width:56px;
+        height:56px;
+        right:15px;
+        bottom:15px;
+        font-size:24px;
     }
-
-    .review-lightbox img{
-        max-width:100%;
-        max-height:84vh;
-        border-radius:10px;
-    }
-
-    .review-lightbox-close{
-        top:10px;
-        right:10px;
-        width:43px;
-        height:43px;
-        font-size:28px;
-        line-height:38px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<header>
+<!-- ================= HEADER ================= -->
 
+<header>
     <div class="header-inner">
 
         <a href="#" class="logo">
@@ -1317,14 +1475,12 @@ footer strong{
         </a>
 
         <nav class="nav">
-
             <a href="#catalog">Каталог</a>
             <a href="#tradein">Трейд-ин</a>
             <a href="#about">О нас</a>
             <a href="#repair">Ремонт</a>
             <a href="#reviews">Отзывы</a>
             <a href="#contacts">Контакты</a>
-
         </nav>
 
         <a
@@ -1337,19 +1493,43 @@ footer strong{
         </a>
 
     </div>
-
 </header>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- ================= FLOATING PHONE ================= -->
+
+<a
+    href="tel:+79933617829"
+    class="phone-float"
+    aria-label="Позвонить в D&V STORE"
+    title="Позвонить +7 (993) 361-78-29"
+>
+    📞
+</a>
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <!-- Текст с заставки убран, потому что он уже есть
-             на новой фоновой картинке -->
+        <div class="hero-badge">
+            D&V STORE • МОСКВА
+        </div>
+
+        <h1 class="hero-title">
+            ТЕХНИКА.<br>
+            <span>TRADE-IN.</span><br>
+            СЕРВИС.
+        </h1>
+
+        <p class="hero-subtitle">
+            Смартфоны, честный Trade-in и ремонт.
+            Подберём устройство под ваш бюджет.
+        </p>
+
+        <p class="hero-small">
+            📱 Оцените свой iPhone онлайн и узнайте ориентировочную стоимость
+        </p>
 
         <div class="hero-buttons">
 
@@ -1364,7 +1544,7 @@ footer strong{
                 href="#tradein"
                 class="secondary-btn"
             >
-                📱 Оценить мой телефон
+                📱 Оценить мой iPhone
             </a>
 
         </div>
@@ -1376,10 +1556,7 @@ footer strong{
             </strong>
 
             <span>
-
-                Условия и подробности уточняйте
-                в Telegram:
-
+                Условия и подробности уточняйте в Telegram:
                 <a
                     href="https://t.me/DV_STORE_ORDER"
                     target="_blank"
@@ -1387,7 +1564,6 @@ footer strong{
                 >
                     @DV_STORE_ORDER
                 </a>
-
             </span>
 
         </div>
@@ -1396,9 +1572,7 @@ footer strong{
 
 </section>
 
-<!-- =========================================================
-     TRADE-IN
-========================================================= -->
+<!-- ================= TRADE-IN ================= -->
 
 <section
     class="section tradein-section"
@@ -1406,14 +1580,13 @@ footer strong{
 >
 
     <h2 class="section-title">
-        Оценить <span>мой телефон</span>
+        Оценить <span>мой iPhone</span>
     </h2>
 
     <p class="section-subtitle">
-        Онлайн-оценка iPhone для Trade-in в Москве.
         Выберите модель, память, состояние аккумулятора,
-        SIM/eSIM и наличие коробки — сайт покажет
-        ориентировочную стоимость устройства.
+        SIM/eSIM и наличие коробки. Сайт покажет
+        ориентировочную стоимость Trade-in.
     </p>
 
     <div class="tradein-box">
@@ -1563,7 +1736,7 @@ footer strong{
             id="tradeCalculate"
             class="tradein-button"
         >
-            📱 Оценить мой телефон
+            📱 Рассчитать Trade-in
         </button>
 
         <div
@@ -1572,7 +1745,7 @@ footer strong{
         >
 
             <div class="tradein-result-title">
-                ОРИЕНТИРОВОЧНАЯ ЦЕНА
+                ОРИЕНТИРОВОЧНАЯ ЦЕНА TRADE-IN
             </div>
 
             <div
@@ -1596,10 +1769,15 @@ footer strong{
 
                 <br><br>
 
-                Для точной оценки напишите нам в Telegram:
+                Для точной оценки отправьте фото телефона
+                менеджеру в Telegram.
+
+                <br><br>
 
                 <strong>
-                    @DV_STORE_ORDER
+                    Если модели или конфигурации нет в прайсе,
+                    цена рассчитывается ориентировочно
+                    по ближайшей доступной конфигурации.
                 </strong>
 
             </div>
@@ -1620,9 +1798,7 @@ footer strong{
 
 </section>
 
-<!-- =========================================================
-     CATALOG
-========================================================= -->
+<!-- ================= CATALOG ================= -->
 
 <section
     class="section"
@@ -1653,16 +1829,45 @@ footer strong{
             class="brand-filter"
         >
 
-            <option value="all">Все бренды</option>
-            <option value="Apple">Apple</option>
-            <option value="Samsung">Samsung</option>
-            <option value="Xiaomi">Xiaomi</option>
-            <option value="Honor">Honor</option>
-            <option value="Google">Google</option>
-            <option value="OnePlus">OnePlus</option>
-            <option value="Huawei">Huawei</option>
-            <option value="Nothing">Nothing</option>
-            <option value="Realme">Realme</option>
+            <option value="all">
+                Все бренды
+            </option>
+
+            <option value="Apple">
+                Apple
+            </option>
+
+            <option value="Samsung">
+                Samsung
+            </option>
+
+            <option value="Xiaomi">
+                Xiaomi
+            </option>
+
+            <option value="Honor">
+                Honor
+            </option>
+
+            <option value="Google">
+                Google
+            </option>
+
+            <option value="OnePlus">
+                OnePlus
+            </option>
+
+            <option value="Huawei">
+                Huawei
+            </option>
+
+            <option value="Nothing">
+                Nothing
+            </option>
+
+            <option value="Realme">
+                Realme
+            </option>
 
         </select>
 
@@ -1681,9 +1886,7 @@ footer strong{
 
 </section>
 
-<!-- =========================================================
-     ABOUT
-========================================================= -->
+<!-- ================= ABOUT ================= -->
 
 <section
     class="section"
@@ -1696,33 +1899,27 @@ footer strong{
 
     <p class="section-subtitle">
         Магазин техники в Москве, которому важны
-        качество, честность и доверие клиентов
+        качество, честность и доверие клиентов.
     </p>
 
     <div class="about-box">
 
         <p>
-
             <span class="about-highlight">
                 D&V STORE
             </span>
-
             — магазин современной техники в Москве.
             Мы помогаем подобрать смартфон под задачи
             и бюджет клиента.
-
         </p>
 
         <p>
-
             В каталоге представлены популярные модели
             Apple, Samsung, Xiaomi, Honor и других
             известных брендов.
-
         </p>
 
         <p>
-
             У нас можно приобрести смартфон,
             воспользоваться
             <span class="about-highlight">
@@ -1730,23 +1927,18 @@ footer strong{
             </span>,
             получить предварительную оценку устройства
             и обратиться за ремонтом.
-
         </p>
 
         <p>
-
             Для нас важно не просто продать устройство,
             а помочь подобрать подходящую модель
             и сделать покупку максимально удобной.
-
         </p>
 
         <p>
-
-            Не нашли нужную модель в каталоге?
+            Не нашли нужную модель?
             Напишите нам в Telegram — поможем подобрать
             устройство и уточним актуальное наличие.
-
         </p>
 
         <div class="about-contact">
@@ -1819,9 +2011,7 @@ footer strong{
 
 </div>
 
-<!-- =========================================================
-     REPAIR
-========================================================= -->
+<!-- ================= REPAIR ================= -->
 
 <section
     class="section repair"
@@ -1842,32 +2032,50 @@ footer strong{
 
         <div class="repair-card">
             <h3>Замена экрана</h3>
-            <p>Разбит дисплей, появились полосы или не работает сенсор.</p>
+            <p>
+                Разбит дисплей, появились полосы
+                или не работает сенсор.
+            </p>
         </div>
 
         <div class="repair-card">
             <h3>Замена аккумулятора</h3>
-            <p>Быстро садится батарея или смартфон выключается на холоде.</p>
+            <p>
+                Быстро садится батарея или смартфон
+                выключается на холоде.
+            </p>
         </div>
 
         <div class="repair-card">
             <h3>Разъём зарядки</h3>
-            <p>Телефон плохо заряжается или перестал видеть кабель.</p>
+            <p>
+                Телефон плохо заряжается или
+                перестал видеть кабель.
+            </p>
         </div>
 
         <div class="repair-card">
             <h3>Ремонт камеры</h3>
-            <p>Камера не запускается, появились проблемы с фокусировкой или изображением.</p>
+            <p>
+                Камера не запускается, появились
+                проблемы с фокусировкой или изображением.
+            </p>
         </div>
 
         <div class="repair-card">
             <h3>Динамик</h3>
-            <p>Пропал звук, появились хрипы или собеседника плохо слышно.</p>
+            <p>
+                Пропал звук, появились хрипы
+                или собеседника плохо слышно.
+            </p>
         </div>
 
         <div class="repair-card">
             <h3>Диагностика</h3>
-            <p>Определим причину неисправности и расскажем о вариантах ремонта.</p>
+            <p>
+                Определим причину неисправности
+                и расскажем о вариантах ремонта.
+            </p>
         </div>
 
     </div>
@@ -1887,9 +2095,7 @@ footer strong{
 
 </section>
 
-<!-- =========================================================
-     REVIEWS
-========================================================= -->
+<!-- ================= REVIEWS ================= -->
 
 <section
     class="section"
@@ -1921,10 +2127,7 @@ footer strong{
 
         <div class="review-photos">
 
-            <div
-                class="review-photo"
-                data-review-image="images/IMG_7513.jpeg"
-            >
+            <div class="review-photo">
                 <img
                     src="images/IMG_7513.jpeg"
                     alt="Отзыв клиента D&V STORE"
@@ -1932,10 +2135,7 @@ footer strong{
                 >
             </div>
 
-            <div
-                class="review-photo"
-                data-review-image="images/IMG_7517.jpeg"
-            >
+            <div class="review-photo">
                 <img
                     src="images/IMG_7517.jpeg"
                     alt="Отзыв клиента D&V STORE"
@@ -1943,10 +2143,7 @@ footer strong{
                 >
             </div>
 
-            <div
-                class="review-photo"
-                data-review-image="images/IMG_7516.jpeg"
-            >
+            <div class="review-photo">
                 <img
                     src="images/IMG_7516.jpeg"
                     alt="Отзыв клиента D&V STORE"
@@ -1954,10 +2151,7 @@ footer strong{
                 >
             </div>
 
-            <div
-                class="review-photo"
-                data-review-image="images/IMG_7515.jpeg"
-            >
+            <div class="review-photo">
                 <img
                     src="images/IMG_7515.jpeg"
                     alt="Отзыв клиента D&V STORE"
@@ -2001,9 +2195,7 @@ footer strong{
 
 </div>
 
-<!-- =========================================================
-     CONTACTS
-========================================================= -->
+<!-- ================= CONTACTS ================= -->
 
 <section
     class="section"
@@ -2026,7 +2218,9 @@ footer strong{
                 📍
             </div>
 
-            <h3>Адрес</h3>
+            <h3>
+                Адрес
+            </h3>
 
             <p>
                 Профсоюзная ул., 109,
@@ -2041,11 +2235,13 @@ footer strong{
                 📞
             </div>
 
-            <h3>Телефон</h3>
+            <h3>
+                Телефон
+            </h3>
 
             <p>
                 <a href="tel:+79933617829">
-                    +7 993 361 7829
+                    +7 (993) 361-78-29
                 </a>
             </p>
 
@@ -2057,7 +2253,9 @@ footer strong{
                 💬
             </div>
 
-            <h3>Telegram</h3>
+            <h3>
+                Telegram
+            </h3>
 
             <p>
                 <a
@@ -2075,9 +2273,7 @@ footer strong{
 
 </section>
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -2089,13 +2285,18 @@ footer strong{
 
     <br><br>
 
+    📞
+    <a href="tel:+79933617829">
+        +7 (993) 361-78-29
+    </a>
+
+    <br><br>
+
     © 2026 D&V STORE
 
 </footer>
 
-<!-- =========================================================
-     ORDER MODAL
-========================================================= -->
+<!-- ================= ORDER MODAL ================= -->
 
 <div
     id="modal"
@@ -2139,9 +2340,7 @@ footer strong{
 
 </div>
 
-<!-- =========================================================
-     CREDIT MODAL
-========================================================= -->
+<!-- ================= CREDIT MODAL ================= -->
 
 <div
     id="creditModal"
@@ -2250,7 +2449,8 @@ const tradeTelegram =
     document.getElementById("tradeTelegram");
 
 /* =========================================================
-   ОСНОВНОЙ ПРАЙС TRADE-IN
+   НОВЫЙ ПРАЙС TRADE-IN
+   ЦЕНЫ НИЖЕ — БАЗА ИЗ ПРИСЛАННОГО ПРАЙСА.
 ========================================================= */
 
 const tradePrices = {
@@ -2258,122 +2458,134 @@ const tradePrices = {
     iphone17promax:{
         name:"iPhone 17 Pro Max",
         memories:{
-            "256":{good:[85000,101000],low:[81000,87000]},
-            "512":{good:[97000,111000],low:[96000,101000]},
-            "1024":{good:[115000,123000],low:[108000,115000]},
-            "2048":{good:[135000,143000],low:[128000,135000]}
+            "256":{good:[88000,105000],low:[88000,95000]},
+            "512":{good:[98000,113000],low:[98000,106000]},
+            "1024":{good:[108000,128000],low:[108000,117000]},
+            "2048":{good:[141000,153000],low:[141000,153000]}
         }
     },
 
     iphone17pro:{
         name:"iPhone 17 Pro",
         memories:{
-            "256":{good:[80000,92000],low:[74000,83000]},
-            "512":{good:[98000,100000],low:[87000,90000]}
+            "256":{good:[87000,99000],low:[78000,87000]},
+            "512":{good:[97000,105000],low:[97000,98000]},
+            "1024":{good:[98000,117000],low:[98000,117000]}
         }
     },
 
     iphone17:{
         name:"iPhone 17",
         memories:{
-            "256":{good:[58000,62000],low:[58000,58000]}
+            "256":{good:[69000,74000],low:[69000,69000]}
         }
     },
 
     iphone16promax:{
         name:"iPhone 16 Pro Max",
         memories:{
-            "256":{good:[68000,77000],low:[63000,71000]},
-            "512":{good:[67000,76000],low:[67000,71000]},
-            "1024":{good:[75000,80000],low:[75000,75000]}
+            "256":{good:[67000,78500],low:[67000,72000]},
+            "512":{good:[76000,86000],low:[76000,78000]},
+            "1024":{good:[80000,96000],low:[80000,85000]}
         }
     },
 
     iphone16pro:{
         name:"iPhone 16 Pro",
         memories:{
-            "128":{good:[52000,63000],low:[52000,55000]},
-            "256":{good:[57000,62000],low:[57000,62000]},
-            "512":{good:[67000,67000],low:[67000,67000]}
+            "128":{good:[63000,66000],low:[63000,65000]},
+            "256":{good:[68000,71000],low:[68000,70000]},
+            "512":{good:[72000,77000],low:[72000,74000]},
+            "1024":{good:[73000,75000],low:[73000,75000]}
         }
     },
 
     iphone16plus:{
         name:"iPhone 16 Plus",
         memories:{
-            "128":{good:[43000,53000],low:[43000,43000]}
+            "256":{good:[61000,62000],low:[61000,61000]},
+            "512":{good:[56000,56000],low:[56000,56000]}
         }
     },
 
     iphone16:{
         name:"iPhone 16",
         memories:{
-            "128":{good:[42000,50000],low:[39000,39000]},
-            "256":{good:[49000,53000],low:[49000,49000]}
+            "128":{good:[45000,54000],low:[45000,48000]},
+            "256":{good:[62000,62000],low:[62000,62000]}
         }
     },
 
     iphone15promax:{
         name:"iPhone 15 Pro Max",
         memories:{
-            "256":{good:[51000,51000],low:[45000,51000]},
-            "512":{good:[57000,57000],low:[57000,57000]},
-            "1024":{good:[52000,57000],low:[52000,55000]}
+            "256":{good:[56000,61000],low:[56000,58000]},
+            "512":{good:[64000,64000],low:[64000,64000]},
+            "1024":{good:[60000,61000],low:[60000,60000]}
         }
     },
 
     iphone15pro:{
         name:"iPhone 15 Pro",
         memories:{
-            "128":{good:[44000,47000],low:[40000,44000]},
-            "256":{good:[49000,49000],low:[41000,49000]},
-            "512":{good:[52000,54000],low:[50000,54000]}
+            "128":{good:[49000,56000],low:[49000,52000]},
+            "256":{good:[55000,62000],low:[52000,56000]},
+            "512":{good:[56000,61000],low:[56000,59000]},
+            "1024":{good:[58000,63000],low:[58000,61000]}
         }
     },
 
     iphone15plus:{
         name:"iPhone 15 Plus",
         memories:{
-            "128":{good:[38000,38000],low:[38000,38000]}
+            "128":{good:[38000,38000],low:[38000,38000]},
+            "256":{good:[40000,42000],low:[40000,42000]},
+            "512":{good:[47000,47000],low:[47000,47000]}
         }
     },
 
     iphone15:{
         name:"iPhone 15",
         memories:{
-            "128":{good:[34000,34000],low:[29000,34000]},
-            "256":{good:[42000,42000],low:[36000,42000]}
+            "128":{good:[34000,34000],low:[34000,34000]},
+            "256":{good:[40000,40000],low:[40000,40000]}
         }
     },
 
     iphone14promax:{
         name:"iPhone 14 Pro Max",
         memories:{
+            "128":{good:[30000,30000],low:[30000,30000]},
             "256":{good:[38000,38000],low:[38000,38000]},
-            "512":{good:[39000,39000],low:[39000,39000]}
+            "512":{good:[39000,39000],low:[39000,39000]},
+            "1024":{good:[42000,42000],low:[42000,42000]}
         }
     },
 
     iphone14pro:{
         name:"iPhone 14 Pro",
         memories:{
-            "256":{good:[31000,32000],low:[31000,32000]}
+            "128":{good:[28000,28000],low:[28000,28000]},
+            "256":{good:[31000,32000],low:[31000,31000]},
+            "512":{good:[35000,35000],low:[35000,35000]},
+            "1024":{good:[39000,39000],low:[39000,39000]}
         }
     },
 
     iphone14plus:{
         name:"iPhone 14 Plus",
         memories:{
-            "128":{good:[22000,22000],low:[22000,22000]},
-            "256":{good:[24000,24000],low:[24000,24000]},
-            "512":{good:[33000,33000],low:[33000,33000]}
+            "128":{good:[25000,25000],low:[25000,25000]},
+            "256":{good:[27000,27000],low:[27000,27000]},
+            "512":{good:[32000,32000],low:[32000,32000]}
         }
     },
 
     iphone14:{
         name:"iPhone 14",
         memories:{
-            "128":{good:[21000,27000],low:[19000,21000]},
+            "128":{good:[24000,27000],low:[22000,24000]},
+            "256":{good:[28000,28000],low:[28000,28000]},
             "512":{good:[31000,32000],low:[31000,31000]}
         }
     },
@@ -2381,17 +2593,19 @@ const tradePrices = {
     iphone13promax:{
         name:"iPhone 13 Pro Max",
         memories:{
-            "128":{good:[26000,26000],low:[26000,26000]},
-            "512":{good:[31000,38000],low:[31000,31000]},
-            "1024":{good:[37000,37000],low:[37000,37000]}
+            "128":{good:[37000,38000],low:[31000,33000]},
+            "256":{good:[36000,41000],low:[31000,36000]},
+            "512":{good:[38000,50000],low:[38000,38000]},
+            "1024":{good:[44000,44000],low:[44000,44000]}
         }
     },
 
     iphone13pro:{
         name:"iPhone 13 Pro",
         memories:{
-            "128":{good:[21000,22000],low:[21000,22000]},
-            "256":{good:[27000,28000],low:[27000,27000]},
+            "128":{good:[30000,30000],low:[27000,30000]},
+            "256":{good:[34000,34000],low:[30000,34000]},
+            "512":{good:[36000,36000],low:[36000,36000]},
             "1024":{good:[39000,39000],low:[39000,39000]}
         }
     },
@@ -2399,66 +2613,89 @@ const tradePrices = {
     iphone13:{
         name:"iPhone 13",
         memories:{
-            "128":{good:[18000,18000],low:[14000,18000]},
-            "256":{good:[23000,23000],low:[16000,23000]},
-            "512":{good:[24000,28000],low:[24000,24000]}
+            "128":{good:[26000,26000],low:[23000,26000]},
+            "256":{good:[30000,30000],low:[30000,30000]},
+            "512":{good:[34000,34000],low:[34000,34000]}
         }
     },
 
     iphone13mini:{
         name:"iPhone 13 mini",
         memories:{
-            "128":{good:[22000,22000],low:[22000,22000]}
+            "128":{good:[26000,28000],low:[26000,26000]},
+            "256":{good:[28000,28000],low:[28000,28000]}
         }
     },
 
     iphone12promax:{
         name:"iPhone 12 Pro Max",
         memories:{
-            "256":{good:[18000,18000],low:[18000,18000]}
+            "128":{good:[20000,20000],low:[18000,20000]},
+            "256":{good:[22000,22000],low:[20000,22000]},
+            "512":{good:[26000,26000],low:[26000,26000]}
         }
     },
 
     iphone12pro:{
         name:"iPhone 12 Pro",
         memories:{
-            "256":{good:[20000,21000],low:[15000,21000]}
+            "128":{good:[18000,18000],low:[16000,18000]},
+            "256":{good:[20000,20000],low:[18000,20000]},
+            "512":{good:[24000,24000],low:[24000,24000]}
         }
     },
 
     iphone12:{
         name:"iPhone 12",
         memories:{
-            "128":{good:[19000,19000],low:[13000,18000]},
-            "256":{good:[20000,20000],low:[20000,20000]}
+            "64":{good:[15000,15000],low:[15000,15000]},
+            "128":{good:[20000,20000],low:[18000,20000]},
+            "256":{good:[23000,23000],low:[23000,23000]}
         }
     },
 
     iphone12mini:{
         name:"iPhone 12 mini",
         memories:{
-            "128":{good:[13000,13000],low:[13000,13000]}
+            "64":{good:[16000,16000],low:[16000,16000]},
+            "128":{good:[27000,27000],low:[24000,27000]},
+            "256":{good:[30000,30000],low:[30000,30000]}
         }
     },
 
     iphone11promax:{
         name:"iPhone 11 Pro Max",
         memories:{
-            "256":{good:[18000,18000],low:[18000,18000]}
+            "64":{good:[16000,16000],low:[16000,16000]},
+            "256":{good:[18000,18000],low:[18000,18000]},
+            "512":{good:[19000,19000],low:[19000,19000]}
         }
     },
 
     iphone11pro:{
         name:"iPhone 11 Pro",
         memories:{
-            "256":{good:[15000,15000],low:[15000,15000]}
+            "64":{good:[16000,16000],low:[16000,16000]},
+            "256":{good:[20000,20000],low:[20000,20000]},
+            "512":{good:[19000,19000],low:[19000,19000]}
         }
     },
+
+    /*
+       Специальный фикс по твоему условию:
+       iPhone 11:
+       128 = 5 000
+       256 = 7 000
+       512 = 10 000
+    */
 
     iphone11:{
         name:"iPhone 11",
         memories:{
-            "128":{good:[8000,8000],low:[8000,8000]}
+            "64":{good:[4000,4000],low:[4000,4000]},
+            "128":{good:[5000,5000],low:[5000,5000]},
+            "256":{good:[7000,7000],low:[7000,7000]},
+            "512":{good:[10000,10000],low:[10000,10000]}
         }
     }
 
@@ -2469,6 +2706,7 @@ const tradePrices = {
 ========================================================= */
 
 const ALL_MEMORIES = [
+    "64",
     "128",
     "256",
     "512",
@@ -2477,22 +2715,19 @@ const ALL_MEMORIES = [
 ];
 
 /* =========================================================
-   КОЭФФИЦИЕНТЫ
+   ПОМОЩЬ ПРИ ОТСУТСТВУЮЩЕЙ ПАМЯТИ
 ========================================================= */
 
 const MEMORY_ADJUSTMENTS = {
 
-    "128": -6000,
-    "256": 0,
-    "512": 7000,
-    "1024": 18000,
-    "2048": 30000
+    "64":-9000,
+    "128":-5000,
+    "256":0,
+    "512":7000,
+    "1024":18000,
+    "2048":30000
 
 };
-
-/* =========================================================
-   ПОЛУЧЕНИЕ ЦЕНЫ
-========================================================= */
 
 function getMemoryData(modelData,targetMemory){
 
@@ -2524,10 +2759,13 @@ function getMemoryData(modelData,targetMemory){
         const distance =
             Math.abs(target-memory);
 
-        if(distance<nearestDistance){
+        if(distance < nearestDistance){
 
-            nearest=memory;
-            nearestDistance=distance;
+            nearest =
+                memory;
+
+            nearestDistance =
+                distance;
 
         }
 
@@ -2546,41 +2784,35 @@ function getMemoryData(modelData,targetMemory){
         MEMORY_ADJUSTMENTS[nearestKey] || 0;
 
     const difference =
-        targetAdjustment-nearestAdjustment;
-
-    const good = [
-
-        Math.max(
-            0,
-            nearestData.good[0]+difference
-        ),
-
-        Math.max(
-            0,
-            nearestData.good[1]+difference
-        )
-
-    ];
-
-    const low = [
-
-        Math.max(
-            0,
-            nearestData.low[0]+difference
-        ),
-
-        Math.max(
-            0,
-            nearestData.low[1]+difference
-        )
-
-    ];
+        targetAdjustment -
+        nearestAdjustment;
 
     return {
 
         data:{
-            good:good,
-            low:low
+            good:[
+                Math.max(
+                    0,
+                    nearestData.good[0] + difference
+                ),
+
+                Math.max(
+                    0,
+                    nearestData.good[1] + difference
+                )
+            ],
+
+            low:[
+                Math.max(
+                    0,
+                    nearestData.low[0] + difference
+                ),
+
+                Math.max(
+                    0,
+                    nearestData.low[1] + difference
+                )
+            ]
         },
 
         estimated:true
@@ -2595,20 +2827,19 @@ function getMemoryData(modelData,targetMemory){
 
 function formatMemory(memory){
 
-    if(memory==="1024"){
+    if(memory === "1024"){
         return "1 ТБ";
     }
 
-    if(memory==="2048"){
+    if(memory === "2048"){
         return "2 ТБ";
     }
 
-    return memory+" ГБ";
-
+    return memory + " ГБ";
 }
 
 /* =========================================================
-   ПАМЯТЬ
+   ОБНОВЛЕНИЕ ПАМЯТИ
 ========================================================= */
 
 function updateMemoryOptions(){
@@ -2622,7 +2853,10 @@ function updateMemoryOptions(){
         </option>
     `;
 
-    if(!model || !tradePrices[model]){
+    if(
+        !model ||
+        !tradePrices[model]
+    ){
         return;
     }
 
@@ -2634,18 +2868,16 @@ function updateMemoryOptions(){
         option.value =
             memory;
 
-        const modelData =
-            tradePrices[model];
-
-        const isReal =
+        const real =
             Boolean(
-                modelData.memories[memory]
+                tradePrices[model]
+                .memories[memory]
             );
 
         option.textContent =
-            isReal
+            real
                 ? formatMemory(memory)
-                : formatMemory(memory)+" • расчёт";
+                : formatMemory(memory) + " • расчёт";
 
         tradeMemory.appendChild(option);
 
@@ -2659,30 +2891,44 @@ tradeModel.addEventListener(
 );
 
 /* =========================================================
-   TRADE-IN — НОВАЯ ЛОГИКА ВЫЧЕТОВ
+   ВЫЧЕТЫ TRADE-IN
+=========================================================
+
+   Коробка + SIM/eSIM       = -15 000
+   Без коробки + SIM/eSIM  = -17 000
+
+   Коробка + eSIM           = -18 000
+   Без коробки + eSIM      = -20 000
+
+   Для iPhone 11 специальная цена
+   уже задана выше.
+
 ========================================================= */
 
-/*
-    iPhone 11 → iPhone 17 Pro Max:
+function getDeduction(sim,box){
 
-    АКБ 85%+:
-    коробка есть:
-        SIM + eSIM = -20 000
-        eSIM = -25 000
+    if(sim === "sim_esim"){
 
-    коробки нет:
-        SIM + eSIM = -23 000
-        eSIM = -27 000
+        return box === "yes"
+            ? 15000
+            : 17000;
 
-    АКБ ниже 85%:
-    коробка есть:
-        SIM + eSIM = -25 000
-        eSIM = -30 000
+    }
 
-    коробки нет:
-        SIM + eSIM = -28 000
-        eSIM = -32 000
-*/
+    if(sim === "esim_only"){
+
+        return box === "yes"
+            ? 18000
+            : 20000;
+
+    }
+
+    return 0;
+}
+
+/* =========================================================
+   РАСЧЁТ TRADE-IN
+========================================================= */
 
 tradeCalculate.addEventListener(
     "click",
@@ -2706,14 +2952,19 @@ function calculateTradeIn(){
     const box =
         tradeBox.value;
 
-    if(!model || !memory || !battery || !sim || !box){
+    if(
+        !model ||
+        !memory ||
+        !battery ||
+        !sim ||
+        !box
+    ){
 
         alert(
-            "Пожалуйста, выберите модель, память, состояние АКБ, SIM/eSIM и наличие коробки."
+            "Пожалуйста, выберите модель, память, АКБ, SIM/eSIM и наличие коробки."
         );
 
         return;
-
     }
 
     const modelData =
@@ -2726,7 +2977,6 @@ function calculateTradeIn(){
         );
 
         return;
-
     }
 
     const memoryResult =
@@ -2735,85 +2985,52 @@ function calculateTradeIn(){
             memory
         );
 
-    const memoryData =
-        memoryResult.data;
-
     let priceRange =
         battery === "85plus"
-            ? [...memoryData.good]
-            : [...memoryData.low];
+            ? [...memoryResult.data.good]
+            : [...memoryResult.data.low];
 
     /*
-       Определяем вычет.
-       Для всех моделей от iPhone 11 до iPhone 17 Pro Max
-       применяется одна согласованная схема.
+       ВАЖНО:
+       Для iPhone 11 специальные цены
+       5 / 7 / 10 тысяч используются напрямую.
+       Поэтому дополнительные вычеты к ним
+       НЕ применяем.
     */
+
+    const isSpecialIphone11 =
+        model === "iphone11" &&
+        (
+            memory === "128" ||
+            memory === "256" ||
+            memory === "512"
+        );
 
     let deduction = 0;
 
-    if(battery === "85plus"){
+    if(!isSpecialIphone11){
 
-        if(box === "yes"){
+        deduction =
+            getDeduction(
+                sim,
+                box
+            );
 
-            if(sim === "sim_esim"){
-                deduction = 20000;
-            }
+        priceRange = [
 
-            if(sim === "esim_only"){
-                deduction = 25000;
-            }
+            Math.max(
+                0,
+                priceRange[0] - deduction
+            ),
 
-        }else{
+            Math.max(
+                0,
+                priceRange[1] - deduction
+            )
 
-            if(sim === "sim_esim"){
-                deduction = 23000;
-            }
-
-            if(sim === "esim_only"){
-                deduction = 27000;
-            }
-
-        }
-
-    }else{
-
-        if(box === "yes"){
-
-            if(sim === "sim_esim"){
-                deduction = 25000;
-            }
-
-            if(sim === "esim_only"){
-                deduction = 30000;
-            }
-
-        }else{
-
-            if(sim === "sim_esim"){
-                deduction = 28000;
-            }
-
-            if(sim === "esim_only"){
-                deduction = 32000;
-            }
-
-        }
+        ];
 
     }
-
-    priceRange = [
-
-        Math.max(
-            0,
-            priceRange[0] - deduction
-        ),
-
-        Math.max(
-            0,
-            priceRange[1] - deduction
-        )
-
-    ];
 
     if(priceRange[0] > priceRange[1]){
 
@@ -2822,10 +3039,12 @@ function calculateTradeIn(){
     }
 
     const formattedMin =
-        priceRange[0].toLocaleString("ru-RU");
+        priceRange[0]
+        .toLocaleString("ru-RU");
 
     const formattedMax =
-        priceRange[1].toLocaleString("ru-RU");
+        priceRange[1]
+        .toLocaleString("ru-RU");
 
     const batteryText =
         battery === "85plus"
@@ -2842,7 +3061,10 @@ function calculateTradeIn(){
             ? "коробка есть"
             : "без коробки";
 
-    if(priceRange[0] === priceRange[1]){
+    if(
+        priceRange[0] ===
+        priceRange[1]
+    ){
 
         tradePrice.textContent =
             formattedMin + " ₽";
@@ -2850,14 +3072,24 @@ function calculateTradeIn(){
     }else{
 
         tradePrice.textContent =
-            formattedMin + "–" + formattedMax + " ₽";
+            formattedMin +
+            "–" +
+            formattedMax +
+            " ₽";
 
     }
 
-    const estimatedText =
+    let estimatedText =
         memoryResult.estimated
             ? " • память — расчётная цена"
             : "";
+
+    if(isSpecialIphone11){
+
+        estimatedText +=
+            " • специальная цена iPhone 11";
+
+    }
 
     tradeDetails.textContent =
         modelData.name +
@@ -2874,10 +3106,12 @@ function calculateTradeIn(){
     const telegramPrice =
         priceRange[0] === priceRange[1]
             ? formattedMin + " ₽"
-            : formattedMin + "–" + formattedMax + " ₽";
+            : formattedMin +
+              "–" +
+              formattedMax +
+              " ₽";
 
     const telegramMessage =
-
         "Здравствуйте! Хочу оценить телефон.\n\n" +
 
         "Модель: " +
@@ -2902,7 +3136,6 @@ function calculateTradeIn(){
 
         "Ориентировочная цена на сайте: " +
         telegramPrice +
-
         "\n\n" +
 
         "Готов отправить фото телефона для точной оценки.";
@@ -2921,11 +3154,10 @@ function calculateTradeIn(){
         behavior:"smooth",
         block:"nearest"
     });
-
 }
 
 /* =========================================================
-   ЗАГРУЗКА КАТАЛОГА
+   КАТАЛОГ
 ========================================================= */
 
 async function loadProducts(){
@@ -2934,7 +3166,8 @@ async function loadProducts(){
 
         const response =
             await fetch(
-                "products.json?time=" + Date.now()
+                "products.json?time=" +
+                Date.now()
             );
 
         if(!response.ok){
@@ -2957,23 +3190,17 @@ async function loadProducts(){
         productsContainer.innerHTML = `
 
             <div class="empty">
-
                 Не удалось загрузить каталог.
-
                 <br><br>
-
                 Попробуйте обновить страницу.
-
             </div>
 
         `;
-
     }
-
 }
 
 /* =========================================================
-   ОТОБРАЖЕНИЕ ТОВАРОВ
+   ОТОБРАЖЕНИЕ КАТАЛОГА
 ========================================================= */
 
 function renderProducts(){
@@ -3001,17 +3228,20 @@ function renderProducts(){
                         product.brand || ""
                     );
 
-                const matchesSearch =
-                    !search ||
-                    name.includes(search);
-
-                const matchesBrand =
-                    brand === "all" ||
-                    productBrand === brand;
-
                 return (
-                    matchesSearch &&
-                    matchesBrand
+
+                    (
+                        !search ||
+                        name.includes(search)
+                    )
+
+                    &&
+
+                    (
+                        brand === "all" ||
+                        productBrand === brand
+                    )
+
                 );
 
             }
@@ -3028,7 +3258,6 @@ function renderProducts(){
         `;
 
         return;
-
     }
 
     productsContainer.innerHTML =
@@ -3067,11 +3296,14 @@ function renderProducts(){
                                 src="${escapeHtml(
                                     product.image || ""
                                 )}"
+
                                 alt="${escapeHtml(
                                     product.name ||
                                     "Смартфон D&V STORE"
                                 )}"
+
                                 loading="lazy"
+
                                 onerror="
                                     this.style.display='none';
                                 "
@@ -3123,7 +3355,9 @@ function renderProducts(){
 
                             <div
                                 class="stock ${
-                                    isOut ? "out" : ""
+                                    isOut
+                                        ? "out"
+                                        : ""
                                 }"
                             >
                                 ${escapeHtml(stock)}
@@ -3131,9 +3365,7 @@ function renderProducts(){
 
                             <button
                                 class="buy-btn"
-                                onclick='openProductModal(${JSON.stringify(
-                                    product
-                                )})'
+                                onclick='openProductModal(${JSON.stringify(product)})'
                             >
                                 Заказать
                             </button>
@@ -3147,7 +3379,6 @@ function renderProducts(){
             }
         )
         .join("");
-
 }
 
 /* =========================================================
@@ -3157,7 +3388,8 @@ function renderProducts(){
 function openProductModal(product){
 
     modalProduct.textContent =
-        product.name || "Товар";
+        product.name ||
+        "Товар";
 
     modalPrice.textContent =
         Number(
@@ -3170,7 +3402,8 @@ function openProductModal(product){
         "Здравствуйте! " +
         "Хочу заказать: " +
         (
-            product.name || "товар"
+            product.name ||
+            "товар"
         ) +
         " за " +
         Number(
@@ -3184,11 +3417,10 @@ function openProductModal(product){
         encodeURIComponent(message);
 
     modal.classList.add("active");
-
 }
 
 /* =========================================================
-   ЗАКРЫТИЕ МОДАЛКИ
+   МОДАЛКА ЗАКАЗА
 ========================================================= */
 
 modalClose.addEventListener(
@@ -3204,7 +3436,9 @@ modal.addEventListener(
 
         if(event.target === modal){
 
-            modal.classList.remove("active");
+            modal.classList.remove(
+                "active"
+            );
 
         }
 
@@ -3220,29 +3454,23 @@ searchInput.addEventListener(
     renderProducts
 );
 
-/* =========================================================
-   ФИЛЬТР БРЕНДА
-========================================================= */
-
 brandFilter.addEventListener(
     "change",
     renderProducts
 );
 
 /* =========================================================
-   ЗАЩИТА HTML
+   HTML ESCAPE
 ========================================================= */
 
 function escapeHtml(value){
 
     return String(value)
-
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
 
 /* =========================================================
@@ -3292,7 +3520,10 @@ creditModal.addEventListener(
     "click",
     event=>{
 
-        if(event.target === creditModal){
+        if(
+            event.target ===
+            creditModal
+        ){
 
             creditModal.classList.remove(
                 "active"
@@ -3304,7 +3535,7 @@ creditModal.addEventListener(
 );
 
 /* =========================================================
-   ABOUT PHOTO LIGHTBOX
+   ABOUT LIGHTBOX
 ========================================================= */
 
 const aboutLightbox =
@@ -3322,13 +3553,9 @@ const aboutLightboxClose =
         "aboutLightboxClose"
     );
 
-const aboutPhotos =
-    document.querySelectorAll(
-        ".about-photo img"
-    );
-
-aboutPhotos.forEach(
-    image=>{
+document
+    .querySelectorAll(".about-photo img")
+    .forEach(image=>{
 
         image.addEventListener(
             "click",
@@ -3338,20 +3565,21 @@ aboutPhotos.forEach(
                     image.src;
 
                 aboutLightboxImage.alt =
-                    image.alt || "D&V STORE";
+                    image.alt ||
+                    "D&V STORE";
 
                 aboutLightbox.classList.add(
                     "active"
                 );
 
-                document.body.style.overflow =
-                    "hidden";
+                document.body.classList.add(
+                    "no-scroll"
+                );
 
             }
         );
 
-    }
-);
+    });
 
 function closeAboutLightbox(){
 
@@ -3362,9 +3590,9 @@ function closeAboutLightbox(){
     aboutLightboxImage.src =
         "";
 
-    document.body.style.overflow =
-        "";
-
+    document.body.classList.remove(
+        "no-scroll"
+    );
 }
 
 aboutLightboxClose.addEventListener(
@@ -3389,7 +3617,7 @@ aboutLightbox.addEventListener(
 );
 
 /* =========================================================
-   REVIEWS PHOTO LIGHTBOX
+   REVIEWS LIGHTBOX
 ========================================================= */
 
 const reviewLightbox =
@@ -3407,13 +3635,9 @@ const reviewLightboxClose =
         "reviewLightboxClose"
     );
 
-const reviewPhotos =
-    document.querySelectorAll(
-        ".review-photo"
-    );
-
-reviewPhotos.forEach(
-    photo=>{
+document
+    .querySelectorAll(".review-photo")
+    .forEach(photo=>{
 
         photo.addEventListener(
             "click",
@@ -3437,14 +3661,14 @@ reviewPhotos.forEach(
                     "active"
                 );
 
-                document.body.style.overflow =
-                    "hidden";
+                document.body.classList.add(
+                    "no-scroll"
+                );
 
             }
         );
 
-    }
-);
+    });
 
 function closeReviewLightbox(){
 
@@ -3455,9 +3679,9 @@ function closeReviewLightbox(){
     reviewLightboxImage.src =
         "";
 
-    document.body.style.overflow =
-        "";
-
+    document.body.classList.remove(
+        "no-scroll"
+    );
 }
 
 reviewLightboxClose.addEventListener(
