@@ -182,34 +182,61 @@ header{
 }
 
 /* =========================================================
-   HERO
+   HERO — НОВАЯ ЗАСТАВКА D&V STORE
 ========================================================= */
 
 .hero{
-    min-height:600px;
+    min-height:calc(100vh - 72px);
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:70px 20px;
+    padding:80px 20px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.28),
+            rgba(0,0,0,.68)
+        ),
+        url("images/0C4C7D63-1C82-4ADB-88A4-A9E40D44015F.png");
+
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+/* дополнительное затемнение по краям */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
 
     background:
         radial-gradient(
-            circle at 50% 30%,
-            rgba(212,175,55,.12),
-            transparent 35%
-        ),
-        #050505;
+            circle at center,
+            transparent 20%,
+            rgba(0,0,0,.18) 55%,
+            rgba(0,0,0,.55) 100%
+        );
 }
 
 .hero-content{
+    position:relative;
+    z-index:2;
     max-width:850px;
 }
 
 .hero-label{
     display:inline-block;
     color:#d4af37;
-    border:1px solid rgba(212,175,55,.35);
+    border:1px solid rgba(212,175,55,.55);
+    background:rgba(0,0,0,.42);
+    backdrop-filter:blur(8px);
     border-radius:50px;
     padding:7px 16px;
     margin-bottom:22px;
@@ -222,6 +249,9 @@ header{
     line-height:.95;
     letter-spacing:-4px;
     margin-bottom:25px;
+
+    text-shadow:
+        0 4px 25px rgba(0,0,0,.75);
 }
 
 .hero h1 span{
@@ -231,8 +261,9 @@ header{
 .hero p{
     max-width:700px;
     margin:auto;
-    color:#aaa;
+    color:#eee;
     font-size:18px;
+    text-shadow:0 2px 12px rgba(0,0,0,.8);
 }
 
 .hero-buttons{
@@ -261,9 +292,10 @@ header{
 }
 
 .secondary-btn{
-    border:1px solid #333;
+    border:1px solid rgba(255,255,255,.3);
     color:#fff;
-    background:transparent;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(8px);
 }
 
 .primary-btn:hover,
@@ -279,13 +311,14 @@ header{
     max-width:1000px;
     margin:25px auto 0;
     padding:18px 22px;
-    border:1px solid rgba(212,175,55,.35);
+    border:1px solid rgba(212,175,55,.45);
     background:
         linear-gradient(
             135deg,
-            rgba(212,175,55,.12),
-            rgba(255,255,255,.02)
+            rgba(0,0,0,.55),
+            rgba(212,175,55,.12)
         );
+    backdrop-filter:blur(10px);
     border-radius:16px;
     text-align:center;
 }
@@ -297,7 +330,7 @@ header{
 
 .installment-banner span{
     display:block;
-    color:#999;
+    color:#ddd;
     margin-top:4px;
     font-size:13px;
 }
@@ -1123,7 +1156,9 @@ footer strong{
     }
 
     .hero{
-        min-height:520px;
+        min-height:calc(100vh - 60px);
+        padding:70px 18px;
+        background-position:center center;
     }
 
     .about-gallery{
@@ -1134,11 +1169,6 @@ footer strong{
     .about-photo-wide{
         grid-column:span 2;
         aspect-ratio:16/9;
-    }
-
-    .review-photos{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
     }
 
 }
@@ -1158,6 +1188,13 @@ footer strong{
         font-size:12px;
     }
 
+    .hero{
+        min-height:calc(100vh - 58px);
+        padding:60px 14px;
+
+        background-position:center center;
+    }
+
     .hero h1{
         font-size:52px;
         letter-spacing:-2px;
@@ -1165,6 +1202,22 @@ footer strong{
 
     .hero p{
         font-size:15px;
+    }
+
+    .hero-label{
+        font-size:11px;
+    }
+
+    .installment-banner{
+        padding:15px 12px;
+    }
+
+    .installment-banner strong{
+        font-size:14px;
+    }
+
+    .installment-banner span{
+        font-size:12px;
     }
 
     .section{
@@ -1461,109 +1514,32 @@ footer strong{
                         Выберите модель
                     </option>
 
-                    <option value="iphone17promax">
-                        iPhone 17 Pro Max
-                    </option>
-
-                    <option value="iphone17pro">
-                        iPhone 17 Pro
-                    </option>
-
-                    <option value="iphone17">
-                        iPhone 17
-                    </option>
-
-                    <option value="iphone16promax">
-                        iPhone 16 Pro Max
-                    </option>
-
-                    <option value="iphone16pro">
-                        iPhone 16 Pro
-                    </option>
-
-                    <option value="iphone16plus">
-                        iPhone 16 Plus
-                    </option>
-
-                    <option value="iphone16">
-                        iPhone 16
-                    </option>
-
-                    <option value="iphone15promax">
-                        iPhone 15 Pro Max
-                    </option>
-
-                    <option value="iphone15pro">
-                        iPhone 15 Pro
-                    </option>
-
-                    <option value="iphone15plus">
-                        iPhone 15 Plus
-                    </option>
-
-                    <option value="iphone15">
-                        iPhone 15
-                    </option>
-
-                    <option value="iphone14promax">
-                        iPhone 14 Pro Max
-                    </option>
-
-                    <option value="iphone14pro">
-                        iPhone 14 Pro
-                    </option>
-
-                    <option value="iphone14plus">
-                        iPhone 14 Plus
-                    </option>
-
-                    <option value="iphone14">
-                        iPhone 14
-                    </option>
-
-                    <option value="iphone13promax">
-                        iPhone 13 Pro Max
-                    </option>
-
-                    <option value="iphone13pro">
-                        iPhone 13 Pro
-                    </option>
-
-                    <option value="iphone13">
-                        iPhone 13
-                    </option>
-
-                    <option value="iphone13mini">
-                        iPhone 13 mini
-                    </option>
-
-                    <option value="iphone12promax">
-                        iPhone 12 Pro Max
-                    </option>
-
-                    <option value="iphone12pro">
-                        iPhone 12 Pro
-                    </option>
-
-                    <option value="iphone12">
-                        iPhone 12
-                    </option>
-
-                    <option value="iphone12mini">
-                        iPhone 12 mini
-                    </option>
-
-                    <option value="iphone11promax">
-                        iPhone 11 Pro Max
-                    </option>
-
-                    <option value="iphone11pro">
-                        iPhone 11 Pro
-                    </option>
-
-                    <option value="iphone11">
-                        iPhone 11
-                    </option>
+                    <option value="iphone17promax">iPhone 17 Pro Max</option>
+                    <option value="iphone17pro">iPhone 17 Pro</option>
+                    <option value="iphone17">iPhone 17</option>
+                    <option value="iphone16promax">iPhone 16 Pro Max</option>
+                    <option value="iphone16pro">iPhone 16 Pro</option>
+                    <option value="iphone16plus">iPhone 16 Plus</option>
+                    <option value="iphone16">iPhone 16</option>
+                    <option value="iphone15promax">iPhone 15 Pro Max</option>
+                    <option value="iphone15pro">iPhone 15 Pro</option>
+                    <option value="iphone15plus">iPhone 15 Plus</option>
+                    <option value="iphone15">iPhone 15</option>
+                    <option value="iphone14promax">iPhone 14 Pro Max</option>
+                    <option value="iphone14pro">iPhone 14 Pro</option>
+                    <option value="iphone14plus">iPhone 14 Plus</option>
+                    <option value="iphone14">iPhone 14</option>
+                    <option value="iphone13promax">iPhone 13 Pro Max</option>
+                    <option value="iphone13pro">iPhone 13 Pro</option>
+                    <option value="iphone13">iPhone 13</option>
+                    <option value="iphone13mini">iPhone 13 mini</option>
+                    <option value="iphone12promax">iPhone 12 Pro Max</option>
+                    <option value="iphone12pro">iPhone 12 Pro</option>
+                    <option value="iphone12">iPhone 12</option>
+                    <option value="iphone12mini">iPhone 12 mini</option>
+                    <option value="iphone11promax">iPhone 11 Pro Max</option>
+                    <option value="iphone11pro">iPhone 11 Pro</option>
+                    <option value="iphone11">iPhone 11</option>
 
                 </select>
 
@@ -1753,10 +1729,7 @@ footer strong{
             class="brand-filter"
         >
 
-            <option value="all">
-                Все бренды
-            </option>
-
+            <option value="all">Все бренды</option>
             <option value="Apple">Apple</option>
             <option value="Samsung">Samsung</option>
             <option value="Xiaomi">Xiaomi</option>
@@ -1867,89 +1840,41 @@ footer strong{
 
     </div>
 
-    <!-- =====================================================
-         ФОТО D&V STORE
-    ====================================================== -->
-
     <div class="about-gallery">
 
         <div class="about-photo">
-
-            <img
-                src="images/IMG_7497.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7497.png" alt="D&V STORE" loading="lazy">
         </div>
 
         <div class="about-photo">
-
-            <img
-                src="images/IMG_7500.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7500.png" alt="D&V STORE" loading="lazy">
         </div>
 
         <div class="about-photo">
-
-            <img
-                src="images/IMG_7503.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7503.png" alt="D&V STORE" loading="lazy">
         </div>
 
         <div class="about-photo">
-
-            <img
-                src="images/IMG_7504.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7504.png" alt="D&V STORE" loading="lazy">
         </div>
 
         <div class="about-photo">
-
-            <img
-                src="images/IMG_7506.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7506.png" alt="D&V STORE" loading="lazy">
         </div>
 
         <div class="about-photo">
-
-            <img
-                src="images/IMG_7508.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7508.png" alt="D&V STORE" loading="lazy">
         </div>
 
         <div class="about-photo about-photo-wide">
-
-            <img
-                src="images/IMG_7509.png"
-                alt="D&V STORE"
-                loading="lazy"
-            >
-
+            <img src="images/IMG_7509.png" alt="D&V STORE" loading="lazy">
         </div>
 
     </div>
 
 </section>
 
-<!-- =========================================================
-     ABOUT LIGHTBOX
-========================================================= -->
+<!-- ABOUT LIGHTBOX -->
 
 <div
     class="about-lightbox"
@@ -1996,81 +1921,33 @@ footer strong{
     <div class="repair-grid">
 
         <div class="repair-card">
-
-            <h3>
-                Замена экрана
-            </h3>
-
-            <p>
-                Разбит дисплей, появились полосы
-                или не работает сенсор.
-            </p>
-
+            <h3>Замена экрана</h3>
+            <p>Разбит дисплей, появились полосы или не работает сенсор.</p>
         </div>
 
         <div class="repair-card">
-
-            <h3>
-                Замена аккумулятора
-            </h3>
-
-            <p>
-                Быстро садится батарея или смартфон
-                выключается на холоде.
-            </p>
-
+            <h3>Замена аккумулятора</h3>
+            <p>Быстро садится батарея или смартфон выключается на холоде.</p>
         </div>
 
         <div class="repair-card">
-
-            <h3>
-                Разъём зарядки
-            </h3>
-
-            <p>
-                Телефон плохо заряжается или перестал
-                видеть кабель.
-            </p>
-
+            <h3>Разъём зарядки</h3>
+            <p>Телефон плохо заряжается или перестал видеть кабель.</p>
         </div>
 
         <div class="repair-card">
-
-            <h3>
-                Ремонт камеры
-            </h3>
-
-            <p>
-                Камера не запускается, появились проблемы
-                с фокусировкой или изображением.
-            </p>
-
+            <h3>Ремонт камеры</h3>
+            <p>Камера не запускается, появились проблемы с фокусировкой или изображением.</p>
         </div>
 
         <div class="repair-card">
-
-            <h3>
-                Динамик
-            </h3>
-
-            <p>
-                Пропал звук, появились хрипы или
-                собеседника плохо слышно.
-            </p>
-
+            <h3>Динамик</h3>
+            <p>Пропал звук, появились хрипы или собеседника плохо слышно.</p>
         </div>
 
         <div class="repair-card">
-
-            <h3>
-                Диагностика
-            </h3>
-
-            <p>
-                Определим причину неисправности
-                и расскажем о вариантах ремонта.
-            </p>
-
+            <h3>Диагностика</h3>
+            <p>Определим причину неисправности и расскажем о вариантах ремонта.</p>
         </div>
 
     </div>
@@ -2126,60 +2003,50 @@ footer strong{
 
         </p>
 
-        <!-- ФОТО ОТЗЫВОВ -->
-
         <div class="review-photos">
 
             <div
                 class="review-photo"
                 data-review-image="images/IMG_7513.jpeg"
             >
-
                 <img
                     src="images/IMG_7513.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
-
             </div>
 
             <div
                 class="review-photo"
                 data-review-image="images/IMG_7517.jpeg"
             >
-
                 <img
                     src="images/IMG_7517.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
-
             </div>
 
             <div
                 class="review-photo"
                 data-review-image="images/IMG_7516.jpeg"
             >
-
                 <img
                     src="images/IMG_7516.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
-
             </div>
 
             <div
                 class="review-photo"
                 data-review-image="images/IMG_7515.jpeg"
             >
-
                 <img
                     src="images/IMG_7515.jpeg"
                     alt="Отзыв клиента D&V STORE"
                     loading="lazy"
                 >
-
             </div>
 
         </div>
@@ -2197,9 +2064,7 @@ footer strong{
 
 </section>
 
-<!-- =========================================================
-     REVIEWS LIGHTBOX
-========================================================= -->
+<!-- REVIEWS LIGHTBOX -->
 
 <div
     class="review-lightbox"
@@ -2236,10 +2101,7 @@ footer strong{
     </h2>
 
     <p class="section-subtitle">
-
-        Магазин смартфонов и ремонт телефонов
-        в Москве.
-
+        Магазин смартфонов и ремонт телефонов в Москве.
     </p>
 
     <div class="contacts-grid">
@@ -2272,11 +2134,9 @@ footer strong{
             </h3>
 
             <p>
-
                 <a href="tel:+79933617829">
                     +7 993 361 7829
                 </a>
-
             </p>
 
         </div>
@@ -2292,7 +2152,6 @@ footer strong{
             </h3>
 
             <p>
-
                 <a
                     href="https://t.me/DV_STORE_ORDER"
                     target="_blank"
@@ -2300,7 +2159,6 @@ footer strong{
                 >
                     @DV_STORE_ORDER
                 </a>
-
             </p>
 
         </div>
@@ -2402,10 +2260,8 @@ footer strong{
         </h2>
 
         <p>
-
             Есть возможность оформить рассрочку.
             Условия и доступность уточняйте у менеджера.
-
         </p>
 
         <a
@@ -2729,7 +2585,7 @@ const MEMORY_ADJUSTMENTS = {
 };
 
 /* =========================================================
-   ПОЛУЧЕНИЕ ЦЕНЫ ДЛЯ ЛЮБОЙ ПАМЯТИ
+   ПОЛУЧЕНИЕ ЦЕНЫ
 ========================================================= */
 
 function getMemoryData(modelData,targetMemory){
@@ -2846,7 +2702,7 @@ function formatMemory(memory){
 }
 
 /* =========================================================
-   ПОКАЗЫВАЕМ ВСЕ ВАРИАНТЫ ПАМЯТИ
+   ПАМЯТЬ
 ========================================================= */
 
 function updateMemoryOptions(){
@@ -2897,7 +2753,7 @@ tradeModel.addEventListener(
 );
 
 /* =========================================================
-   TRADE-IN РАСЧЁТ
+   TRADE-IN
 ========================================================= */
 
 tradeCalculate.addEventListener(
